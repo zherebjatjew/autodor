@@ -38,3 +38,15 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug'
+
+group :development do
+  gem 'rspec-rails'
+  gem 'ruby-debug'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'webrat'
+end
+
+
