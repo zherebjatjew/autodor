@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Autodor::Application.config.secret_token = '0067eca1296ea6e5c3cbbb095f7c23561a3e4a38674911262e2475a16419a67736c486f68bf9cd71c6c1e295c321c79f48cd58a4eaf91557884ae971c6f82a95'
+Autodor::Application.config.secret_token = '39652bf9380058597e276a97e1c4c9688a0777d584c96a164e6fd719f94c1b842f16b251eb807c404652bca0e11df774888cc12a8b981ad89f81215bc3501fca'
