@@ -3,29 +3,15 @@
   <head>
     <title><%= title %></title>
     <%= csrf_meta_tag %>
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" />
-    <![endif]-->
-    <%= stylesheet_link_tag 'stylesheets/screen', :media => 'screen' %>
-    <%= stylesheet_link_tag 'stylesheets/print',  :media => 'print' %>
-    <!--[if lf IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
-    <%= stylesheet_link_tag 'custom', :media => 'screen' %>
+    <%= render 'layouts/stylesheets' %>
   </head>
   <body>
     <div class="container">
-      <header>
-        <%= image_tag("rails.png", :alt => "autodor", :class => "round") %>
-        <nav class="round">
-          <ul>
-            <li><%= link_to "Home", '#' %></li>
-            <li><%= link_to "Help", '#' %></li>
-            <li><%= link_to "Log in", '#' %></li>
-          </ul>
-        </nav>
-      </header>
+      <%= render 'layouts/header' %>
       <section class="round">
         <%= yield %>
       </section>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>
