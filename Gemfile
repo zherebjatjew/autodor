@@ -7,7 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'activerecord-jdbcsqlite3-adapter'
 
-gem 'jruby-openssl'
+#gem 'jruby-openssl'
 gem 'json'
 
 # Gems used only for assets and not required
