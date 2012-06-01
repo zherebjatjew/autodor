@@ -5,16 +5,11 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'activerecord-jdbcsqlite3-adapter'
+#gem 'activerecord-jdbcsqlite3-adapter'
 
-<<<<<<< HEAD
 #gem 'jruby-openssl'
+gem 'therubyracer'
 gem 'json'
-=======
-gem 'jruby-openssl', '0.7.7'
-gem 'json', '1.7.3'
-gem 'spockets', '0.1.1'
->>>>>>> develop
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -28,7 +23,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails', '~> 2.0.2'
+#gem 'jquery-rails', '~> 2.0.2'
 
 group :development do
   gem 'rspec-rails', '~> 2.10.1'
