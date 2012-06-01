@@ -27,11 +27,17 @@ gem 'jquery-rails', '~> 2.0.2'
 group :development do
   gem 'rspec-rails', '~> 2.10.1'
   gem 'annotate', '~> 2.4.0'
+  gem 'sqlite3-ruby', :require => "sqlite3"
 end
 
 group :test do
   gem 'rspec-rails', '~> 2.10.1'
   gem 'webrat', '~> 0.7.3'
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # To use ActiveModel has_secure_password
