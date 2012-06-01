@@ -7,8 +7,14 @@ gem 'rails', '3.2.3'
 
 gem 'activerecord-jdbcsqlite3-adapter'
 
+<<<<<<< HEAD
 #gem 'jruby-openssl'
 gem 'json'
+=======
+gem 'jruby-openssl', '0.7.7'
+gem 'json', '1.7.3'
+gem 'spockets', '0.1.1'
+>>>>>>> develop
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,7 +28,17 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.0.2'
+
+group :development do
+  gem 'rspec-rails', '~> 2.10.1'
+  gem 'annotate', '~> 2.4.0'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 2.10.1'
+  gem 'webrat', '~> 0.7.3'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -39,14 +55,5 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug'
 
-group :development do
-  gem 'rspec-rails'
-  gem 'ruby-debug'
-end
-
-group :test do
-  gem 'rspec-rails'
-  gem 'webrat'
-end
 
 
