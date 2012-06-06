@@ -6,6 +6,7 @@ Autodor::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/help', :to => 'pages#help'
   match '/signup', :to => 'users#new'
+  match '/users/:id', :to => 'users#show'
 
 #  get "pages/home"
 #  get "pages/contact"

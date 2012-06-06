@@ -7,6 +7,7 @@ gem 'rails', '3.2.3'
 
 gem 'therubyracer'
 gem 'json'
+gem 'gravatar_image_tag', '1.0.0.pre2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -32,6 +33,7 @@ group :test do
   gem 'rspec-rails', '~> 2.10.1'
   gem 'webrat', '~> 0.7.3'
   gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'factory_girl_rails', '1.0'
 end
 
 group :production do
