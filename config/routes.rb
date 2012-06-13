@@ -1,13 +1,14 @@
 Autodor::Application.routes.draw do
 
-  resource :users, :as => 'user'
+#  map.resources :users
+  resources :users #, :as => 'user'
 
   match '/about', :to => 'pages#about'
   match '/contact', :to => 'pages#contact'
   match '/help', :to => 'pages#help'
   match '/signup', :to => 'users#new'
   match '/users/:id', :to => 'users#show'
-  match '/users', :to => 'users#show'
+#  match '/users', :to => 'users#show'
 
 #  get "pages/home"
 #  get "pages/contact"
