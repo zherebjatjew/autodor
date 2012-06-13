@@ -4,6 +4,11 @@
     <title><%= title %></title>
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
+    <section class="round">
+      <%= flash.each do |key, value| %>
+        <div class="flash" <%= key %>"><%= value%></div>
+      <% end %>
+    </section>
   </head>
   <body>
     <div class="container">

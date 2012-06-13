@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
     if @user.save
       # success
+      flash[:success] = "Welcome to Autodor!"
       redirect_to @user
     else
       @title = "Sign up"
