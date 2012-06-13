@@ -1,8 +1,6 @@
 Autodor::Application.routes.draw do
 
-  get "users/new"
-#  post "users"
-  resource :users
+  resource :users, :as => 'user'
 
   match '/about', :to => 'pages#about'
   match '/contact', :to => 'pages#contact'
