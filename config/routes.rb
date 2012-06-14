@@ -1,18 +1,24 @@
 Autodor::Application.routes.draw do
 
-#  map.resources :users
-  resources :users #, :as => 'user'
+  resources :users
+#  resources :sessions, :only => [:new, :create, :destroy]
+  resources :sessions do
+    member do
+      get 'new'
+      post 'create'
+      delete 'destroy'
+    end
+  end
+
+  match '/signup', :to => 'users#new'
+  match '/signin', :to => 'sessions#new'
+  match '/signout', :to => 'sessions#destroy'
 
   match '/about', :to => 'pages#about'
   match '/contact', :to => 'pages#contact'
   match '/help', :to => 'pages#help'
   match '/signup', :to => 'users#new'
   match '/users/:id', :to => 'users#show'
-#  match '/users', :to => 'users#show'
-
-#  get "pages/home"
-#  get "pages/contact"
-#  get "pages/about"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
