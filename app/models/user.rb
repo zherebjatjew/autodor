@@ -4,16 +4,24 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :email, :name, :password, :password_confirmation
 
-  validates :name,  :presence => true,
-                    :length   => { :maximum => 50 }
-  validates :email, :presence => true,
-                    :format => { :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
-                    :uniqueness => { :case_sensitive => false }
+  validates :name,     :presence => true,
+                       :length   => { :maximum => 50 }
+  validates :email,    :presence => true,
+                       :format => { :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
+                       :uniqueness => { :case_sensitive => false }
   validates :password, :presence => true,
                        :confirmation => true,
                        :length => { :within => 6..40 }
 
   before_save :encrypt_password
+
+  def admin?
+    role == "admin"
+  end
+
+  def set_role value
+    update_attribute :role, value
+  end
 
   def has_password? submitted_password
     encrypted_password == encrypt(submitted_password)

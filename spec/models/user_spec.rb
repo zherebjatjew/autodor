@@ -122,6 +122,24 @@ describe User do
       matching_user = User.authentificate(@attr[:email], @attr[:password])
       matching_user.should == @user
     end
+  end
 
+  describe "admin attibutes" do
+    before :each do
+      @user = User.create! @attr
+    end
+
+    it "should respond to admin" do
+      @user.should respond_to :role
+    end
+
+    it "should not be an admin by defaut" do
+      @user.should_not be_admin
+    end
+
+    it "should be convertable to admin" do
+      @user.role = "admin"
+      @user.should be_admin
+    end
   end
 end
