@@ -144,6 +144,7 @@ DEPENDENCIES
   gravatar_image_tag (= 1.0.0.pre2)
   jquery-rails (~> 2.0.2)
   json
+  nokogiri
   pg
   rails (= 3.2.3)
   rspec-rails (~> 2.10.1)
