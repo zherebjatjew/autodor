@@ -1,0 +1,13 @@
+<tr>
+  <td class="order">  
+    <%= link_to order.info, order %>
+  </td>
+  <% if @user.admin? || @user.owns?(order) %>
+    <td class="command">
+      <%= button_to "delete", order, :method => :delete,
+                                   :confirm => "You sure?",
+                                   :title => order.info,
+                                   :class => 'destroy' %>
+    </td>
+  <% end %>
+</tr>

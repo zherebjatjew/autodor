@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     role == "admin"
   end
 
+  def owns? order
+    orders.include? order
+  end
+
   def set_role value
     update_attribute :role, value
   end
