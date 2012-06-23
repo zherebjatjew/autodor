@@ -142,4 +142,14 @@ describe User do
       @user.should be_admin
     end
   end
+
+  describe "orders association" do
+    before :each do
+      @user = User.create @attr
+    end
+
+    it "should have an orders attribute" do
+      @user.should respond_to :orders
+    end
+  end
 end

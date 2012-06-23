@@ -180,4 +180,45 @@ ul.users {
   list-style: none;
 }
 
+ul.orders {
+  margin-top: 1em;
+}
 
+.orders li {
+  list-style: none;
+}
+
+
+h1.order {
+  margin-bottom: 0.3em;
+}
+
+table.orders {
+  margin-top: 1em;
+}
+
+table.orders tr {
+}
+
+table.orders tr td.order {
+  boder-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+div.user_info span.user_name {
+  position: absolute;
+}
+
+div.user_info span.orders {
+  font-size: 80%;
+}
+
+form.new_order {
+  margin-bottom: 2em;
+}
+
+form.new_order textarea {
+  height: 4em;
+  margin-bottom: 0;
+}

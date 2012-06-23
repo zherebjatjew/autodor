@@ -1,6 +1,8 @@
 Autodor::Application.routes.draw do
 
+  resources :orders
   resources :users
+  match '/users/:user/orders/new' => 'orders#new', :as => :new_order
 #  resources :sessions, :only => [:new, :create, :destroy]
   resources :sessions do
     member do
@@ -69,7 +71,7 @@ Autodor::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'pages#home'
+  root :to => 'home#show'
 
   # See how all your routes lay out with "rake routes"
 

@@ -8,8 +8,15 @@
     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />
-      <strong>URL</strong>  <%= link_to user_path(@user), @user %>
+      <strong>Orders</strong> <%= @user.orders.count %>
     </td>
   </tr>
 </table>
+  <% unless @user.orders.empty? %>
+    <table class="orders" summary="My orders">
+      <%= render @orders %>
+    </table>
+    <%= will_paginate @orders %>
+  <% end %>
+  <%= link_to "add order", new_order_path(@user) %>
 

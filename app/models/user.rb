@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
+  has_many :orders
+
   def admin?
     role == "admin"
   end
