@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class Order < ActiveRecord::Base
   attr_accessible :info
   belongs_to :user
