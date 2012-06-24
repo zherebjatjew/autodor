@@ -1,0 +1,2 @@
+heroku run rake db:reset
+heroku run rake db:migrate STEP=100
