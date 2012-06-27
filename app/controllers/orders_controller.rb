@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :authenticate
-  before_filter :allowed_to_delete, :only => :destroy
+  before_filter :current_or_admin, :only => [:index, :destroy]
 
   def new
     @user = User.find params[:user]
@@ -27,17 +27,14 @@ class OrdersController < ApplicationController
     @order = Order.find_by_id params[:id]
   end
 
+  def index
+    @title = "All orders"
+    @users = Order.paginate(:page => params[:page])
+  end
+
   private
 
-    def allowed_to_delete
-      if current_user.nil?
-        false
-      else
-        if current_user.admin?
-          true
-        else
-          current_user.owns? params[:id]
-        end
-      end
+    def current_or_admin
+      deny_access unless (current_user.admin? || current_user.owns?(params[:id]))
     end
 end

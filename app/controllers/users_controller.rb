@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate, :only => [:edit, :update, :index]
-  before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => :destroy
+  before_filter :authenticate
+  before_filter :correct_user      :only => :new_order
+  before_filter :correct_or_admin, :only => [:edit, :update]
+  before_filter :admin_user,       :only => [:destroy, :index, :new, :create]
 
   def index
     @title = "All users"
@@ -10,8 +11,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @title = "Sign up"
-    @user = User.new
+    if @user.admin
+      @title = "Sign up"
+      @user = User.new
+    else
+      redirect_to @user
+    end
   end
 
   def destroy
@@ -60,16 +65,20 @@ class UsersController < ApplicationController
 
   private
 
+    def correct_or_admin
+      unless current_user.admin?
+        @user = User.find params[:id]
+        deny_access unless current_user?(@user)
+      end
+    end
+
     def correct_user
       @user = User.find params[:id]
-      redirect_to root_path unless currect_user? @user
+      deny_access unless currect_user?(@user)
     end
 
     def admin_user
-      if current_user.nil?
-        redirect_to(signin_path)
-      else
-        redirect_to(root_path) unless current_user.admin?
+      deny_access unless current_user.admin?
       end
     end
 end

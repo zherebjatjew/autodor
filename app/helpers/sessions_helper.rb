@@ -5,8 +5,11 @@ module SessionsHelper
   end
 
   def deny_access
-    store_location
-    redirect_to signin_path, :notice => "Please sign in to access this page"
+    if signed_in?
+      store_location
+      redirect_to signin_path, :notice => "Please sign in to access this page"
+    else
+      redirect_to user_path(current_user), :notice => "Not enough privileges to access the page"
   end
 
   def sign_in user
@@ -17,11 +20,6 @@ module SessionsHelper
   def sign_out
     cookies.delete :remember_token
     self.current_user = nil
-  end
-
-  def deny_access
-    store_location
-    redirect_to signin_path, :notice => "Please sign in to access thins page"
   end
 
   def redirect_back_or default
@@ -44,6 +42,9 @@ module SessionsHelper
   def signed_in?
     !current_user.nil?
   end
+
+  def admin?
+    current_user && current_user.admin
 
   private
     def user_from_remember_token
