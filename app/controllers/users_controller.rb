@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :authenticate
-  before_filter :correct_user      :only => :new_order
+  before_filter :correct_user,     :only => :new_order
   before_filter :correct_or_admin, :only => [:edit, :update]
   before_filter :admin_user,       :only => [:destroy, :index, :new, :create]
 
@@ -11,12 +11,8 @@ class UsersController < ApplicationController
   end
 
   def new
-    if @user.admin
-      @title = "Sign up"
-      @user = User.new
-    else
-      redirect_to @user
-    end
+    @title = "Sign up"
+    @user = User.new
   end
 
   def destroy
@@ -46,6 +42,7 @@ class UsersController < ApplicationController
 
   def edit
     @title = "Edit user"
+    @user = User.find params[:id]
   end
 
   def update
@@ -79,6 +76,5 @@ class UsersController < ApplicationController
 
     def admin_user
       deny_access unless current_user.admin?
-      end
     end
 end

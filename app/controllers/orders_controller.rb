@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build params[:order]
     if @order.save
       flash[:success] = "Order created!"
-      redirect_to order_path, :method => 'update'
+      redirect_to user_path(current_user), :method => 'update'
     else
       render user_path current_user
     end
