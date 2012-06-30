@@ -13,10 +13,10 @@
   </tr>
 </table>
   <% unless @user.orders.empty? %>
-    <table class="orders" summary="My orders">
+    <table class="orders" summary="Мои заявки">
       <%= render @orders %>
     </table>
     <%= will_paginate @orders %>
   <% end %>
-  <%= link_to "add order", new_order_path(@user) %>
+  <%= link_to "добавить заявку", new_order_path(@user) %>
 

@@ -2,12 +2,12 @@
   <%= gravatar_for user, :size => 30 %>
   <%= link_to user.name, user %>
   <% if current_user.admin? %>
-  | <%= link_to "edit", edit_user_path(user) %>
+  | <%= link_to "изменить", edit_user_path(user) %>
     <% if current_user != user %>
-	  | <%= button_to "delete", user, :method => :delete,
-	                                  :confirm => "You sure?",
-	                                  :title => "Delete #{user.name}",
-	                                  :class => 'destroy' %>
+	  | <%= button_to "удалить", user, :method => :delete,
+	                                   :confirm => "Вы точно хотите удалить пользователя #{user.name}?",
+	                                   :title => "Удалить #{user.name}",
+	                                   :class => 'destroy' %>
 	<% end %>
   <% end %>
 </li>

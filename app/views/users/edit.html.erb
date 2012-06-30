@@ -1,35 +1,35 @@
-<h1>Edit user</h1>
+<h1>Редактирование профиля</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "Имя" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "Электронная почта" %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password, "Пароль" %><br />
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation, "Confirmation" %><br />
+    <%= f.label :password_confirmation, "Подтверждение пароля" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
   <% if current_user.admin? && current_user != @user %>
     <div class="field">
-    <%= f.label :role %>
+    <%= f.label :role, "Роль" %>
     <%= f.select :role, options_for_select(UsersHelper.roles) %>
     </div>
   <% end %>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Сохранить" %>
   </div>
 <% end %>
 
 <div>
   <%= gravatar_for @user %>
-  <a href="http://gravatar.com/emails">change</a>
+  <a href="http://gravatar.com/emails">изменить</a>
 <div>

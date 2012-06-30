@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build params[:order]
     if @order.save
-      flash[:success] = "Order created!"
+      flash[:success] = "Заказ создан!"
       redirect_to user_path(current_user), :method => 'update'
     else
       render user_path current_user
@@ -25,11 +25,11 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by_id params[:id]
-    @title = "Order #{@order.id} - #{@order.info}"
+    @title = "Заказ #{@order.id} - #{@order.info}"
   end
 
   def index
-    @title = "All orders"
+    @title = "Все заказы"
     @users = Order.paginate(:page => params[:page])
   end
 

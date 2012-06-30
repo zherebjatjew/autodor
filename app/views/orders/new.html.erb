@@ -1,4 +1,4 @@
-<h1>Create order</h1>
+<h1>Создание заявки</h1>
 
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
@@ -7,7 +7,7 @@
   <%= f.text_area :info %>
 </div>
 <div class="actions">
-  <%= f.submit "Create" %>
+  <%= f.submit "Создать" %>
 </div>
 <% end %>
 

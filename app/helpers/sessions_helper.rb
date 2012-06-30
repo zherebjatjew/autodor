@@ -7,9 +7,9 @@ module SessionsHelper
   def deny_access
     if signed_in?
       store_location
-      redirect_to signin_path, :notice => "Please sign in to access this page"
+      redirect_to signin_path, :notice => "Вы должны зарегистрироваться, чтобы получить доступ к этой странице"
     else
-      redirect_to user_path(current_user), :notice => "Not enough privileges to access the page"
+      redirect_to user_path(current_user), :notice => "Недостаточно прав для доступа с странице"
     end
   end
 

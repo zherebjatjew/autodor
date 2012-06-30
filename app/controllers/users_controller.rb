@@ -6,18 +6,18 @@ class UsersController < ApplicationController
   before_filter :admin_user,       :only => [:destroy, :index, :new, :create]
 
   def index
-    @title = "All users"
+    @title = "Все пользователи"
     @users = User.paginate(:page => params[:page])
   end
 
   def new
-    @title = "Sign up"
+    @title = "Добавить"
     @user = User.new
   end
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destroyed"
+    flash[:success] = "Пользователь удалён"
     redirect_to users_path
   end
 
@@ -32,26 +32,26 @@ class UsersController < ApplicationController
     if @user.save
       # success
       sign_in @user
-      flash[:success] = "Welcome to Autodor!"
+      flash[:success] = "Добро пожаловать в Автодор!"
       redirect_to @user
     else
-      @title = "Sign up"
+      @title = "Добавление пользователя"
       render :new
     end
   end
 
   def edit
-    @title = "Edit user"
+    @title = "Редактирование профиля"
     @user = User.find params[:id]
   end
 
   def update
     @user = User.find params[:id]
     if @user.update_attributes params[:user]
-      flash[:success] = "Profile updated."
+      flash[:success] = "Профиль обновлён."
       redirect_to @user
     else
-      @title = "Edit user"
+      @title = "Редактировать профиль"
       render 'edit'
     end
   end

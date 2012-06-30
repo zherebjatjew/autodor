@@ -1,17 +1,17 @@
 class PagesController < ApplicationController
   def home
-    @title = 'Home'
+    @title = 'Домашняя страница'
   end
 
   def contact
-    @title = 'Contact'
+    @title = 'Контакты'
   end
 
   def about
-    @title = 'About'
+    @title = 'О программе'
   end
 
   def help
-    @title = 'Help'
+    @title = 'Справка'
   end
 end
