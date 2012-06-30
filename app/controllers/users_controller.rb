@@ -46,6 +46,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find params[:id]
     if @user.update_attributes params[:user]
       flash[:success] = "Profile updated."
       redirect_to @user
@@ -65,7 +66,7 @@ class UsersController < ApplicationController
     def correct_or_admin
       unless current_user.admin?
         @user = User.find params[:id]
-        deny_access unless current_user?(@user)
+        deny_access unless current_user == @user
       end
     end
 

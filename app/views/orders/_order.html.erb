@@ -1,6 +1,7 @@
 <tr>
   <td class="order">  
-    <%= link_to "#{order.id}. #{order.info}", order %>
+    <% created = order.created_at.strftime "%d.%m.%y" %>
+    <%= link_to "#{order.id}. #{created} #{order.info}", order %>
   </td>
   <% if @user.admin? || @user.owns?(order) %>
     <td class="order">

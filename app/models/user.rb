@@ -1,9 +1,10 @@
 # encoding: UTF-8
 require 'digest'
+require File.dirname(File.dirname(__FILE__)) + '/helpers/users_helper'
 
 class User < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :role
 
   validates :name,     :presence => true,
                        :length   => { :maximum => 50 }
@@ -13,6 +14,7 @@ class User < ActiveRecord::Base
   validates :password, :presence => true,
                        :confirmation => true,
                        :length => { :within => 6..40 }
+  validates :role,     :inclusion => { :in => UsersHelper.roles, :message => "Такой роли не бывает" }
 
   before_save :encrypt_password
 

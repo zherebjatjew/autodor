@@ -8,6 +8,7 @@ gem 'rails', '3.2.3'
 gem 'nokogiri'
 gem 'therubyracer'
 gem 'json'
+gem 'russian'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate'
 

@@ -18,10 +18,10 @@
     <%= f.label :password_confirmation, "Confirmation" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
-  <% if @user.admin? && current_user != @user %>
+  <% if current_user.admin? && current_user != @user %>
     <div class="field">
     <%= f.label :role %>
-    <%= f.text_field :role %>
+    <%= f.select :role, options_for_select(UsersHelper.roles) %>
     </div>
   <% end %>
   <div class="actions">

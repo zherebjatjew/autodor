@@ -7,8 +7,8 @@
       </h1>
     </td>
     <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>Orders</strong> <%= @user.orders.count %>
+      <%= link_to "Редактировать профиль", edit_user_path(current_user) %><br />
+      <%= pluralize @user.orders.count, "заявка" %>
     </td>
   </tr>
 </table>

@@ -7,4 +7,9 @@ module UsersHelper
       :gravatar => options
   end
 
+  # User roles list
+  def self.roles
+  	[ "admin", "operator" ]
+  end
+
 end

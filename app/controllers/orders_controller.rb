@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by_id params[:id]
+    @title = "Order #{@order.id} - #{@order.info}"
   end
 
   def index
