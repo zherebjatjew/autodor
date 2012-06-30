@@ -1,2 +1,4 @@
-<h1>Order</h1>
-<strong>Info:&nbsp;</strong><%= @order.info%><br/>
+<h1>Заявка <%= @order.id %></h1>
+<strong>Экспедитор:&nbsp;</strong><%= @order.forwarder %><br/>
+<strong>Дата оформления:&nbsp;</strong><%= @order.committed_at %><br/>
+<strong>Комментарий:&nbsp;</strong><%= @order.info%><br/>

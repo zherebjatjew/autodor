@@ -1,13 +1,21 @@
 <tr>
   <td class="order">  
-    <%= link_to order.info, order %>
+    <%= link_to "#{order.id}. #{order.info}", order %>
   </td>
   <% if @user.admin? || @user.owns?(order) %>
+    <td class="order">
+      <%= link_to @user.name, user_path(@user) %>
+    </td>
     <td class="command">
-      <%= button_to "delete", order, :method => :delete,
+      <%= button_to "изменить", order, :method => :update,
+                                       :title => order.info,
+                                       :class => 'edit_button' %>
+    </td>
+    <td class="command">
+      <%= button_to "удалить", order, :method => :delete,
                                      :confirm => "You sure?",
                                      :title => order.info,
-                                     :class => 'destroy' %>
+                                     :class => 'destroy_button' %>
     </td>
   <% end %>
 </tr>
