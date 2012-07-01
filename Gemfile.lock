@@ -31,6 +31,7 @@ GEM
     annotate (2.4.0)
     arel (3.0.2)
     builder (3.0.0)
+    calendar_date_select (1.16.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -140,10 +141,12 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 2.4.0)
+  calendar_date_select
   coffee-rails (~> 3.2.1)
   factory_girl_rails (= 1.0)
   faker (= 0.3.1)
   gravatar_image_tag (= 1.0.0.pre2)
+  i18n
   jquery-rails (~> 2.0.2)
   json
   nokogiri

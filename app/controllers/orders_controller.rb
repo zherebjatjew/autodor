@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   def new
     @user = User.find params[:user]
     @order = @user.orders.new
+    @order.forwarder = @user
   end
 
   def create
@@ -31,6 +32,22 @@ class OrdersController < ApplicationController
   def index
     @title = "Все заказы"
     @users = Order.paginate(:page => params[:page])
+  end
+
+  def edit
+    @order = Order.find params[:id]
+    @title = "Редактирование заявки"
+  end
+
+  def update
+    @order = Order.find params[:id]
+    if @order.update_attributes params[:order]
+      flash[:success] = "Заявка обновлена"
+      redirect_to @order.user
+    else
+      @title = "Редактирование заявки"
+      render 'edit'
+    end
   end
 
   private

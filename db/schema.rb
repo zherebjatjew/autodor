@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20120629145708) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.date     "committed_at"
-    t.string   "forwarder"
+    t.decimal  "forwarder_id"
   end
 
   create_table "users", :force => true do |t|

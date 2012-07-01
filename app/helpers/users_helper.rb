@@ -9,7 +9,7 @@ module UsersHelper
 
   # User roles list
   def self.roles
-  	[ "admin", "operator" ]
+  	[ ["администратор", "admin"], ["оператор", "operator"] ]
   end
 
 end

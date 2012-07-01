@@ -1,6 +1,6 @@
 <tr>
   <td class="order">  
-    <% created = order.created_at.strftime "%d.%m.%y" %>
+    <% created = order.created_at.strftime "%d.%m.%Y" %>
     <%= link_to "#{order.id}. #{created} #{order.info}", order %>
   </td>
   <% if @user.admin? || @user.owns?(order) %>
@@ -8,9 +8,7 @@
       <%= link_to @user.name, user_path(@user) %>
     </td>
     <td class="command">
-      <%= button_to "изменить", order, :method => :update,
-                                       :title => order.info,
-                                       :class => 'edit_button' %>
+      <%= link_to "изменить", edit_order_path(order) %>
     </td>
     <td class="command">
       <%= button_to "удалить", order, :method => :delete,

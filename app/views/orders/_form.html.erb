@@ -1,0 +1,31 @@
+<%= form_for(@order) do |f| %>
+  <% render 'shared/error_messages', :object => f.object %>
+<div class="field">
+  <%= f.label :forwarder, "Экспедитор" %><br />
+  <% usrs = [] %>
+  <% User.all.each { |u| usrs << [u.name, u.id]} %>
+  <%= f.select :forwarder_id, options_for_select(usrs, @order.forwarder_id.to_i) %>
+</div>
+<div class="field">
+  <%= f.label :committed_at, "Дата оформления" %><br />
+  <script type="text/javascript">
+    _translations = {
+      "OK": "OK",
+      "Now": "Сейчас",
+      "Today": "Сегодня"
+    }  
+    Date.weekdays = $w("П В С Ч П С В");  
+    Date.months = $w("Понедельник Вторник Среда Четверг Пятница Суббота Воскресенье" );
+  </script>
+<!--   calendar_date_select_tag :committed_at
+ -->
+   <%= f.text_field :committed_at %>
+</div>
+<div class="field">
+  <%= f.label :info, "Комментарий" %><br />
+  <%= f.text_area :info %>
+</div>
+<div class="actions">
+  <%= f.submit "Сохранить" %>
+</div>
+<% end %>

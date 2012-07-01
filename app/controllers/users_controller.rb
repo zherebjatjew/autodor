@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     if @user.save
       # success
       sign_in @user
-      flash[:success] = "Добро пожаловать в Автодор!"
+      flash[:success] = "Ползователь #{@user.name} добавлен в Автодор"
       redirect_to @user
     else
       @title = "Добавление пользователя"
