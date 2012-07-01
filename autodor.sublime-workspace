@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"tex",
+				"textContent"
+			],
+			[
+				"id",
+				"identity_label"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"text",
+				"text_field"
+			],
+			[
+				"la",
+				"label"
+			],
+			[
+				"forw",
+				"forwarder_id"
+			],
+			[
+				"na",
+				"name"
+			],
+			[
+				"forwar",
+				"forwarder"
+			],
+			[
+				"for",
+				"forwarder_id"
+			],
+			[
+				"par",
+				"params"
+			],
+			[
+				"us",
+				"usrs"
+			],
+			[
+				"forwarder",
+				"forwarder_id"
+			],
+			[
+				"be",
+				"belongs_to"
+			],
+			[
 				"ba",
 				"background-color"
 			]
@@ -12,73 +64,43 @@
 	"buffers":
 	[
 		{
-			"file": "app/views/layouts/_header.html.erb",
+			"file": "app/views/clients/_form.html.erb",
 			"settings":
 			{
-				"buffer_size": 644,
+				"buffer_size": 1124,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/clients_controller.rb",
+			"settings":
+			{
+				"buffer_size": 935,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "app/controllers/users_controller.rb",
 			"settings":
 			{
-				"buffer_size": 1639,
-				"line_ending": "Windows"
+				"buffer_size": 1775,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/users/index.html.erb",
+			"file": "app/views/layouts/application.html.erb",
 			"settings":
 			{
-				"buffer_size": 112,
-				"line_ending": "Windows"
+				"buffer_size": 622,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/users/_user.html.erb",
+			"file": "db/migrate/20120701173623_create_clients.rb",
 			"settings":
 			{
-				"buffer_size": 461,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "class OrdersController < ApplicationController\n  before_filter :authenticate\n  before_filter :current_or_admin, :only => [:index, :destroy]\n\n  def new\n    @user = User.find params[:user]\n    @order = @user.orders.new\n  end\n\n  def create\n    @order = current_user.orders.build params[:order]\n    if @order.save\n      flash[:success] = \"Order created!\"\n      redirect_to user_path(current_user), :method => 'update'\n    else\n      render user_path current_user\n    end\n  end\n\n  def destroy\n    @order = Order.find_by_id params[:id]\n    @order.destroy\n    redirect_back_or root_path\n  end\n\n  def show\n    @order = Order.find_by_id params[:id]\n    @title = \"Order #{@order.id} - #{@order.info}\"\n  end\n\n  def index\n    @title = \"All orders\"\n    @users = Order.paginate(:page => params[:page])\n  end\n\n  private\n\n    def current_or_admin\n      deny_access unless (current_user.admin? || current_user.owns?(params[:id]))\n    end\nend\n",
-			"file": "app/controllers/orders_controller.rb",
-			"file_size": 914,
-			"file_write_time": 129853707704442175,
-			"settings":
-			{
-				"buffer_size": 925,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/views/orders/_order.html.erb",
-			"settings":
-			{
-				"buffer_size": 740,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<h1>Заявка <%= @order.id %></h1>\n<strong>Экспедитор:&nbsp;</strong><%= @order.forwarder %><br/>\n<strong>Дата оформления:&nbsp;</strong><%= @order.committed_at %><br/>\n<strong>Комментарий:&nbsp;</strong><%= @order.info%><br/>\n",
-			"file": "app/views/orders/show.html.erb",
-			"file_size": 270,
-			"file_write_time": 129854568650170358,
-			"settings":
-			{
-				"buffer_size": 225,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/assets/stylesheets/custom.css",
-			"settings":
-			{
-				"buffer_size": 2830,
-				"line_ending": "Windows"
+				"buffer_size": 1011,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -106,13 +128,82 @@
 	},
 	"file_history":
 	[
+		"/C/autodor/app/views/orders/_form.html.erb",
+		"/C/autodor/app/models/order.rb",
+		"/C/autodor/db/migrate/20120701170817_add_signed_to_orders.rb",
+		"/C/autodor/db/migrate/20120701173623_create_clients.rb",
+		"/C/autodor/app/models/client.rb",
+		"/C/autodor/app/controllers/clients_controller.rb",
+		"/C/autodor/app/views/clients/index.html.erb",
+		"/C/autodor/app/views/clients/new.html.erb",
+		"/C/autodor/app/views/clients/edit.html.erb",
+		"/C/autodor/app/views/clients/_form.html.erb",
+		"/C/autodor/app/views/clients/_client.html.erb",
+		"/C/autodor/config/routes.rb",
+		"/C/Distr/Sublime 2.0/Data/Packages/Default/Preferences.sublime-settings",
+		"/C/autodor/app/views/orders/common.html.erb",
+		"/C/autodor/config/application.rb",
+		"/C/autodor/config/boot.rb",
+		"/C/autodor/config/database.yml",
+		"/C/autodor/config/environment.rb",
+		"/C/autodor/config/environments/development.rb",
+		"/C/autodor/config/environments/production.rb",
+		"/C/autodor/config/environments/test.rb",
+		"/C/autodor/config/initializers/backtrace_silencers.rb",
+		"/C/autodor/config/initializers/inflections.rb",
+		"/C/autodor/config/initializers/mime_types.rb",
+		"/C/autodor/config/initializers/secret_token.rb",
+		"/C/autodor/config/initializers/session_store.rb",
+		"/C/autodor/config/initializers/wrap_parameters.rb",
+		"/C/autodor/db/migrate/20120531024057_create_users.rb",
+		"/C/autodor/db/migrate/20120531032354_add_email_uniquness_index.rb",
+		"/C/autodor/db/migrate/20120606115220_add_password_to_users.rb",
+		"/C/autodor/db/migrate/20120606121211_add_salt_to_users.rb",
+		"/C/autodor/db/migrate/20120618135057_add_role_to_users.rb",
+		"/C/autodor/db/migrate/20120620144759_create_orders.rb",
 		"/C/autodor/db/migrate/20120629145708_add_committed_to_orders.rb",
-		"/C/autodor/db/migrate/20120629145708_add_commited_to_orders.rb",
+		"/C/autodor/db/schema.rb",
+		"/C/autodor/app/helpers/pages_helper.rb",
+		"/C/autodor/app/controllers/sessions_controller.rb",
 		"/C/autodor/app/controllers/users_controller.rb",
-		"/C/autodor/app/helpers/application_helper.rb",
-		"/C/autodor/app/views/home/show.html.erb",
+		"/C/autodor/app/helpers/home_helper.rb",
+		"/C/autodor/app/helpers/orders_helper.rb",
 		"/C/autodor/app/helpers/sessions_helper.rb",
-		"/C/autodor/app/assets/stylesheets/custom.css"
+		"/C/autodor/app/helpers/users_helper.rb",
+		"/C/autodor/app/controllers/pages_controller.rb",
+		"/C/autodor/app/controllers/orders_controller.rb",
+		"/C/autodor/app/controllers/home_controller.rb",
+		"/C/autodor/app/controllers/application_controller.rb",
+		"/C/autodor/app/helpers/application_helper.rb",
+		"/C/autodor/app/views/users/_user.html.erb",
+		"/C/autodor/app/views/home/show.html.erb",
+		"/C/autodor/app/views/layouts/_footer.html.erb",
+		"/C/autodor/app/views/layouts/_header.html.erb",
+		"/C/autodor/app/views/layouts/_stylesheets.html.erb",
+		"/C/autodor/app/views/layouts/application.html.erb",
+		"/C/autodor/app/views/users/edit.html.erb",
+		"/C/autodor/app/views/orders/show.html.erb",
+		"/C/autodor/app/views/orders/edit.html.erb",
+		"/C/autodor/app/views/orders/new.html.erb",
+		"/C/autodor/app/models/user.rb",
+		"/C/autodor/app/views/orders/_order.html.erb",
+		"/C/autodor/config/locales/ru.yml",
+		"/C/autodor/Gemfile",
+		"/C/autodor/config/locales/ru.rb",
+		"/C/autodor/config/locales/plurals.db",
+		"/C/autodor/app/views/sessions/new.html.erb",
+		"/C/autodor/app/views/orders/index.html.erb",
+		"/C/autodor/app/views/users/new.html.erb",
+		"/C/autodor/app/views/users/index.html.erb",
+		"/C/autodor/app/assets/stylesheets/custom.css",
+		"/C/autodor/app/views/users/show.html.erb",
+		"/C/autodor/app/views/pages/about.html.erb",
+		"/C/autodor/app/views/pages/contact.html.erb",
+		"/C/autodor/app/views/pages/help.html.erb",
+		"/C/autodor/app/views/shared/_error_messages.html.erb",
+		"/C/autodor/app/views/shared/_order_form.html.erb",
+		"/C/autodor/db/seeds.rb",
+		"/C/autodor/db/migrate/20120629145708_add_commited_to_orders.rb"
 	],
 	"find":
 	{
@@ -123,6 +214,7 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"C:\\autodor",
 			""
 		]
 	},
@@ -131,6 +223,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"user",
+			"Edit user",
+			"pluralize",
+			"set_role",
 			"command",
 			"signed_in?"
 		],
@@ -150,79 +246,23 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/layouts/_header.html.erb",
+					"file": "app/views/clients/_form.html.erb",
 					"settings":
 					{
-						"buffer_size": 644,
+						"buffer_size": 1124,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								401,
-								415
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/controllers/users_controller.rb",
-					"settings":
-					{
-						"buffer_size": 1639,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								992,
-								992
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 90.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/users/index.html.erb",
-					"settings":
-					{
-						"buffer_size": 112,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								1039,
+								1039
 							]
 						],
 						"settings":
@@ -236,19 +276,73 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "app/views/users/_user.html.erb",
+					"buffer": 1,
+					"file": "app/controllers/clients_controller.rb",
 					"settings":
 					{
-						"buffer_size": 461,
+						"buffer_size": 935,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								153,
-								153
+								924,
+								924
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/controllers/users_controller.rb",
+					"settings":
+					{
+						"buffer_size": 1775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1102,
+								1325
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/layouts/application.html.erb",
+					"settings":
+					{
+						"buffer_size": 622,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								367,
+								367
 							]
 						],
 						"settings":
@@ -265,18 +359,18 @@
 				},
 				{
 					"buffer": 4,
-					"file": "app/controllers/orders_controller.rb",
+					"file": "db/migrate/20120701173623_create_clients.rb",
 					"settings":
 					{
-						"buffer_size": 925,
+						"buffer_size": 1011,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								640,
-								640
+								335,
+								335
 							]
 						],
 						"settings":
@@ -286,89 +380,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 45.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/views/orders/_order.html.erb",
-					"settings":
-					{
-						"buffer_size": 740,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								707,
-								707
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/views/orders/show.html.erb",
-					"settings":
-					{
-						"buffer_size": 225,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								225,
-								225
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/assets/stylesheets/custom.css",
-					"settings":
-					{
-						"buffer_size": 2830,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1831,
-								1831
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2160.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -432,6 +444,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 333.0,
+	"side_bar_width": 315.0,
 	"status_bar_visible": true
 }
