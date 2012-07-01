@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 class AddCommittedToOrders < ActiveRecord::Migration
   def change
     add_column :orders, :committed_at, :date

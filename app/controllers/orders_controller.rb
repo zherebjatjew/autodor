@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 class OrdersController < ApplicationController
   before_filter :authenticate
   before_filter :current_or_admin, :only => [:index, :destroy]

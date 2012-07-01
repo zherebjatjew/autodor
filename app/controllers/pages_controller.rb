@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 class PagesController < ApplicationController
   def home
     @title = 'Домашняя страница'

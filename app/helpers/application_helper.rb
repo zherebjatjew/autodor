@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 module ApplicationHelper
   def title
     base_title = "Автодор"

@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 Autodor::Application.routes.draw do
 
   resources :orders

@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 module UsersHelper
 
   def gravatar_for user, options = { :size => 50 }
