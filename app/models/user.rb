@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :password, :presence => true,
                        :confirmation => true,
                        :length => { :within => 6..40 }
-  validates :role,     :inclusion => { :in => UsersHelper.roles, :message => "Такой роли не бывает" }
+#  validates :role,     :inclusion => { :in => UsersHelper.roles, :message => "Такой роли не бывает" }
 
   before_save :encrypt_password
 
