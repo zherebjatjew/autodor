@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 class Order < ActiveRecord::Base
-  attr_accessible :info, :forwarder_id, :committed_at, :signed, :paid, :completed
+  attr_accessible :info, :forwarder_id, :committed_at, :signed, :paid, :completed, :client_id, :sender_id, :receiver_id
 
   belongs_to :user
   has_one :forwarder, :class_name => 'User'

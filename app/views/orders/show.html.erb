@@ -1,6 +1,6 @@
 <h1>Заявка <%= @order.id %></h1>
 <strong>Экспедитор:&nbsp;</strong><%= User.find(@order.forwarder_id).name %><br/>
-<strong>Дата оформления:&nbsp;</strong><%= @order.committed_at.strftime "%d.%m.%Y" %><br/>
+<strong>Дата оформления:&nbsp;</strong><%= date_to_s @order.committed_at %><br/>
 <strong>Комментарий:&nbsp;</strong><%= @order.info%><br/>
 <%= link_to "Изменить", edit_order_path(@order) %>
 <%= link_to "Напечатать", print_order_path(@order) %>

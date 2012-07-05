@@ -1,5 +1,5 @@
 <div class="print_order">
-  <h1>Заявка на оказание транспортно-экспедиционных услуг №<%= @order.id %> от <%= @order.committed_at %></h1>
+  <h1>Заявка на оказание транспортно-экспедиционных услуг №<%= @order.id %> от <%= date_to_s @order.committed_at %></h1>
 
   <div style="order_header">
     Экспедитор и его адрес: <%= company_name %>, <%= company_address %><br />
@@ -10,19 +10,19 @@
 
   <h2>Общая информация об участниках</h2>
 
-  <table border=1 cellpadding=0 cellspacing=0 class="simple_table">
+  <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
   	<tr><th>Параметр<th>Клиент<th>Грузоотправитель<th>Грузополучатель</tr>
   	<tr>
   		<td>1. Наименование
   		<td><%= @order.client.name %>
   		<td><%= @order.sender.name %>
-  		<td><%= @order.revceiver.name %>
+  		<td><%= @order.receiver.name %>
   	</tr>
   	<tr>
   		<td>2. Адрес
   		<td><%= @order.client.address %>
   		<td><%= @order.sender.address %>
-  		<td><%= @order.revceiver.address %>
+  		<td><%= @order.receiver.address %>
   	</tr>
   	<tr>
   		<td>3. Контактное лицо
@@ -32,9 +32,9 @@
   	</tr>
   	<tr>
   		<td>Телефоны
-  		<td><%= render @order.client.phones %>
-  		<td><%= render @order.sender.phones %>
-  		<td><%= render @order.receiver.phones %>
+  		<td><%= @order.client.phones %>
+  		<td><%= @order.sender.phones %>
+  		<td><%= @order.receiver.phones %>
   	</tr>
   	<tr>
   		<td>4. Дата подачи т-та
@@ -55,23 +55,29 @@
   		<td>
   	</tr>
   </table>
+
   <h2>Информация о грузе, требуемом подвижном составе и оплате</h2>
-  <table border=0 cellpadding=0 cellspacing=0 class="simple_table">
-  	<tr>
-  		<td>1. Наименование/Вес/Объем
-  		<td><%= "#{@order.cargo.name}/#{@order.cargo.weight}/#{@order.cargo.volume}" %>
-  	</tr>
+
+  <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
+    <tr>
+      <td style="width:75mm">1. Наименование/Вес/Объём
+      <td>Цемент/20т/10м<sup>3</sup>
+    </tr>
   </table>
+
 
 
   <h2>Информация о Водителе и транспортном средстве</h2>
-  <table border=0 cellpadding=0 cellspacing=0 class="simple_table">
-  	<tr>
-  		<td>1. ФИО, год рождения
-  		<td><%= @order.driver.name + (", #{@order.driver.birth_date}" if !@order.driver.birth_date.nil?)
+
+  <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
+    <tr>
+  		<td style="width:75mm">1. ФИО, год рождения
+  		<td>---
   	</tr>
   </table>
+
   <h3>Клиент обязан:</h3>
+  
   <p>
   	Своевременно представить экспедитору полную, точную и достоверную информацию о свойствах
   груза, об условиях его перевозки и иную информацию, необходимую для исполнения экспедитором
@@ -81,3 +87,21 @@
   <p>
   	Срок разгрузки и загрузки - 12 часов, при условии подачи а/м не позднее указанного в заявке времени.
   </p>
+
+  <table border=0 cellpadding=0 cellspacing=0 style="width:100%" class="order_signs">
+    <tr>
+      <td style="height:3em;vertical-align:bottom;text-align:right">Экспедитор:
+      <td style="border-bottom:1px solid;width:35%">
+      <td>
+      <td style="height:3em;vertical-align:bottom;text-align:right">Клиент:
+      <td style="border-bottom:1px solid;width:35%">
+    </tr>
+    <tr>
+      <td>
+      <td>М.П.
+      <td>
+      <td>
+      <td>М.П.
+    </tr>
+  </table>
+</div>

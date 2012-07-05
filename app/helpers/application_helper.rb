@@ -26,5 +26,13 @@ module ApplicationHelper
   def company_phones
     "89136783350 – МТС, 83812465717-ГТС"
   end
+
+  def company_schedule
+    "24/7"
+  end
+
+  def date_to_s date
+    date.strftime "%d.%m.%Y" if !date.nil?
+  end
   
 end

@@ -54,10 +54,18 @@
 
 <div class="box">
   <h2>Отправитель</h2>
+  <div class="field">
+    <%= f.select :sender_id, options_for_select(all_clients, @order.client_id) %>
+  </div>
+  <%= link_to "добавить", new_client_path %> 
 </div>
 
 <div class="box">
   <h2>Получатель</h2>
+  <div class="field">
+    <%= f.select :receiver_id, options_for_select(all_clients, @order.client_id) %>
+  </div>
+  <%= link_to "добавить", new_client_path %> 
 </div>
 
 <div class="box">

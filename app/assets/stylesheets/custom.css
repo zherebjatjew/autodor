@@ -3,7 +3,7 @@
 }
 
 body {
-  background: #cff;
+  background: #eee;
 }
 
 header {
@@ -20,10 +20,6 @@ section {
   font-size: 120%;
   padding: 20px;
   background: #fff;
-}
-
-section h1 {
-  font-size: 200%;
 }
 
 /* Links */
@@ -233,12 +229,31 @@ form.new_order textarea {
   margin-bottom: 0;
 }
 
-table.print_order {width:100%;overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0;background-color:#fff;z-index:1;border:1px solid}
-table.print_order td {padding:0 3px;overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0;background-color:#fff;z-index:1;border:1px solid}
-table.print_order th {padding:0 3px;overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0;background-color:#fff;z-index:1;border:1px solid}
+table.print_order {overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0;background-color:#fff;z-index:1;border:1px solid}
+table.print_order td {padding:0 3px;overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0;background:#fff;background-color:#fff;z-index:1;border:1px solid}
+table.print_order th {padding:0 3px;overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0; background:#fff;background-color:#fff;z-index:1;border:1px solid}
+tbody.print_order tr.even td {background:#ffffff;}
 .dn {display:none}
 
-h2.print_order {
+.print_order h1 {
   text-align: center;
+  font-size: 150%;
+}
+.print_order h2 {
+  text-align: center;
+  font-size: 125%;
+}
+
+.print_order h3 {
+  text-align: left;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+table.order_signs td {
+  text-size: 75%;
+  vertical-align:top;
+  text-align:center;
+  background:#fff;
 }
 
