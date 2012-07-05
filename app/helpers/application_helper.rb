@@ -12,4 +12,17 @@ module ApplicationHelper
     l = image_tag("logo.png", :alt => "Sample App", :class => "round")
     link_to l, root_path
   end
+
+  def company_name
+    "ООО «АвтоДор Омск»"
+  end
+
+  def company_address
+    "644047, г.Омск, ул. 2-я Береговая, 17а"
+  end
+
+  def company_phones
+    "89136783350 – МТС, 83812465717-ГТС"
+  end
+  
 end
