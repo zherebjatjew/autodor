@@ -10,13 +10,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620144759) do
+ActiveRecord::Schema.define(:version => 20120701174541) do
+
+  create_table "clients", :force => true do |t|
+    t.boolean  "organization",  :default => false, :null => false
+    t.string   "name",                             :null => false
+    t.date     "born_at"
+    t.string   "identity"
+    t.string   "address"
+    t.string   "contact"
+    t.string   "working_hours"
+    t.string   "note"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "orders", :force => true do |t|
     t.string   "info"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.date     "committed_at"
+    t.decimal  "forwarder_id"
+    t.boolean  "signed",       :default => false, :null => false
+    t.boolean  "paid",         :default => false, :null => false
+    t.boolean  "completed",    :default => false, :null => false
+    t.decimal  "client_id"
+    t.decimal  "sender_id"
+    t.decimal  "receiver_id"
   end
 
   create_table "users", :force => true do |t|

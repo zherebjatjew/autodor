@@ -8,8 +8,11 @@ gem 'rails', '3.2.3'
 gem 'nokogiri'
 gem 'therubyracer'
 gem 'json'
+gem 'i18n'
+gem 'russian'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate'
+gem 'calendar_date_select'
 
 # Gems used only for assets and not required
 # in production environments by default.

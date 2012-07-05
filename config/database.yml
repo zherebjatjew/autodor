@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 # SQLite version 3.x
 #   gem 'activerecord-jdbcsqlite3-adapter'
 #

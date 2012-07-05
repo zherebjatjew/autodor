@@ -1,27 +1,25 @@
+# encoding : UTF-8
+
 class UsersController < ApplicationController
 
   before_filter :authenticate
-  before_filter :correct_user      :only => :new_order
+  before_filter :correct_user,     :only => :new_order
   before_filter :correct_or_admin, :only => [:edit, :update]
   before_filter :admin_user,       :only => [:destroy, :index, :new, :create]
 
   def index
-    @title = "All users"
+    @title = "Все пользователи"
     @users = User.paginate(:page => params[:page])
   end
 
   def new
-    if @user.admin
-      @title = "Sign up"
-      @user = User.new
-    else
-      redirect_to @user
-    end
+    @title = "Добавить"
+    @user = User.new
   end
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destroyed"
+    flash[:success] = "Пользователь удалён"
     redirect_to users_path
   end
 
@@ -36,24 +34,26 @@ class UsersController < ApplicationController
     if @user.save
       # success
       sign_in @user
-      flash[:success] = "Welcome to Autodor!"
+      flash[:success] = "Пользователь #{@user.name} добавлен в Автодор"
       redirect_to @user
     else
-      @title = "Sign up"
+      @title = "Добавление пользователя"
       render :new
     end
   end
 
   def edit
-    @title = "Edit user"
+    @title = "Редактирование профиля"
+    @user = User.find params[:id]
   end
 
   def update
+    @user = User.find params[:id]
     if @user.update_attributes params[:user]
-      flash[:success] = "Profile updated."
+      flash[:success] = "Профиль обновлён."
       redirect_to @user
     else
-      @title = "Edit user"
+      @title = "Редактировать профиль"
       render 'edit'
     end
   end
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     def correct_or_admin
       unless current_user.admin?
         @user = User.find params[:id]
-        deny_access unless current_user?(@user)
+        deny_access unless current_user == @user
       end
     end
 
@@ -79,6 +79,5 @@ class UsersController < ApplicationController
 
     def admin_user
       deny_access unless current_user.admin?
-      end
     end
 end

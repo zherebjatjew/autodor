@@ -7,16 +7,16 @@
       </h1>
     </td>
     <td class="sidebar round">
-      <strong>Name</strong> <%= @user.name %><br />
-      <strong>Orders</strong> <%= @user.orders.count %>
+      <%= link_to "Редактировать профиль", edit_user_path(current_user) %><br />
+      <%= pluralize @user.orders.count, "заявка" %>
     </td>
   </tr>
 </table>
   <% unless @user.orders.empty? %>
-    <table class="orders" summary="My orders">
+    <table class="orders" summary="Мои заявки">
       <%= render @orders %>
     </table>
     <%= will_paginate @orders %>
   <% end %>
-  <%= link_to "add order", new_order_path(@user) %>
+  <%= link_to "добавить заявку", new_order_path(@user) %>
 

@@ -1,6 +1,8 @@
+# encoding : UTF-8
+
 module ApplicationHelper
   def title
-    base_title = "Ruby on Rails Tutorial Sample App"
+    base_title = "Автодор"
     if @title.nil?
       base_title
     else
@@ -9,7 +11,7 @@ module ApplicationHelper
   end
 
   def logo
-    l = image_tag("logo.png", :alt => "Sample App", :class => "round")
+    l = image_tag("logo.png", :alt => "Logo", :class => "round")
     link_to l, root_path
   end
 

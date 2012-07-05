@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 module UsersHelper
 
   def gravatar_for user, options = { :size => 50 }
@@ -5,6 +7,11 @@ module UsersHelper
       :alt => user.name,
       :class => 'gravatar',
       :gravatar => options
+  end
+
+  # User roles list
+  def self.roles
+  	[ ["администратор", "admin"], ["оператор", "operator"] ]
   end
 
 end

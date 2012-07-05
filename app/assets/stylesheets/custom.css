@@ -1,5 +1,5 @@
 .container {
-  width: 710px;
+  width: 75%;
 }
 
 body {
@@ -76,7 +76,7 @@ nav ul li a:hover {
   text-decoration: underline;
 }
 
-a.signup_button {
+a.signin_button {
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -124,6 +124,12 @@ td.sidebar {
   background: #ffc;
 }
 
+td.command {
+  width: 2em;
+  text-align: right;
+  padding: 0;
+}
+
 .profile img.gravatar {
   border: 1px solid #999;
   margin-bottom: -15px;
@@ -142,6 +148,10 @@ div.field, div.actions {
 
 .field_with_errors label {
   color: #fff;
+}
+
+#delete_button {
+  background-color: #f0f0f0;
 }
 
 #error_explanation {

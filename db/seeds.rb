@@ -11,5 +11,5 @@
 admin = User.create!(:name => "Жеребятьев Дмитрий",
                      :email => "zherebjatjew@gmail.com",
                      :password => "123456",
-                     :password_confirmation => "123456")
-admin.set_role "admin"
+                     :password_confirmation => "123456",
+                     :role => "admin")

@@ -1,0 +1,29 @@
+<%= form_for(@client) do |f| %>
+  <% render 'shared/error_messages', :object => f.object %>
+  <script type="text/javascript">
+    function setMode(organization) {
+      if (organization==true) {
+        document.getElementById('name_label').textContent = 'Наименование';
+        document.getElementById('identity_label').textContent = 'ИНН'
+      } else {
+        document.getElementById('name_label').textContent = 'ФИО';
+        document.getElementById('identity_label').textContent = 'Паспортные данные'
+      }
+    }
+    function loadComplete() {
+      setMode(<%= @client.organization %>);
+    }
+  </script>
+  <div class="field">
+    <%= f.radio_button :organization, true, :onclick => 'window.setMode(true)' %>Организация<br />
+    <%= f.radio_button :organization, false, :onclick => 'window.setMode(false)' %>Физическое лицо<br />
+  </div>
+  <div class="field">
+    <%= f.label :name, "ФИО", :id => 'name_label' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :identity, "Паспортные данные", :id => 'identity_label' %><br />
+    <%= f.text_field :identity %>
+  </div>
+<% end %>
