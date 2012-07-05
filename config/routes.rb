@@ -2,15 +2,7 @@
 
 Autodor::Application.routes.draw do
 
-  resources :orders do
-    member do
-      get 'show'
-      post 'create'
-      delete 'destroy'
-      get 'edit'
-      get 'print'
-    end
-  end
+  resources :orders
 
   resources :users
   resources :clients

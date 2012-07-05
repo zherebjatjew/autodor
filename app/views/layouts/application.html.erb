@@ -5,11 +5,13 @@
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
     <%= javascript_include_tag :defaults %>
-    <section class="round">
-      <% flash.each do |key, value| %>
-        <div class="flash_<%= key %>"><%= value%></div>
-      <% end %>
-    </section>
+    <% if !flash.empty? %>
+      <section class="round">
+        <% flash.each do |key, value| %>
+          <div class="flash_<%= key %>"><%= value%></div>
+        <% end %>
+      </section>
+    <% end %>
   </head>
   <body onLoad="loadComplete()">
     <div class="container">
