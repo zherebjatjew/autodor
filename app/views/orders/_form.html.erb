@@ -3,6 +3,7 @@ CalendarDateSelect.format = (params[:fmt]||"natural").to_sym
 params[:style]||="red"
 params[:style]=nil if params[:style]=="default"
 %>
+<% store_location %>
 
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>

@@ -14,9 +14,8 @@ class ClientsController < ApplicationController
     @client = Client.new params[:client]
     if @client.save
       # success
-      sign_in @client
       flash[:success] = "Клиент #{@client.name} добавлен в Автодор"
-      redirect_to @client
+      redirect_back_or @client
     else
       render :edit
     end
