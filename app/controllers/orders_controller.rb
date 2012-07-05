@@ -52,6 +52,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def print
+    @order = Order.find params[:id]
+  end
+
   private
 
     def current_or_admin
