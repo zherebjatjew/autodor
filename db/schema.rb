@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701174541) do
+ActiveRecord::Schema.define(:version => 20120705165240) do
 
   create_table "clients", :force => true do |t|
     t.boolean  "organization",  :default => false, :null => false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20120701174541) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.string   "role",               :default => "operator"
+    t.string   "schedule"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

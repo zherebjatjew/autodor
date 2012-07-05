@@ -1,7 +1,7 @@
 <%
-CalendarDateSelect.format = (params[:fmt]||"natural").to_sym
-params[:style]||="red"
-params[:style]=nil if params[:style]=="default"
+  CalendarDateSelect.format = (params[:fmt]||"natural").to_sym
+  params[:style]||="red"
+  params[:style]=nil if params[:style]=="default"
 %>
 
 <%= form_for(@order) do |f| %>
@@ -42,6 +42,9 @@ params[:style]=nil if params[:style]=="default"
 
 <div class="box">
   <h2>Заказчик</h2>
+  <div class="field">
+    <%= f.select :client_id, options_for_select(Client.all, @order.client_id) %>
+  </div>
   <%= link_to "добавить", new_client_path %> 
 </div>
 

@@ -8,6 +8,7 @@
     </td>
     <td class="sidebar round">
       <%= link_to "Редактировать профиль", edit_user_path(current_user) %><br />
+      <strong>График работы: </strong><%= @user.schedule %><br />
       <%= pluralize @user.orders.count, "заявка" %>
     </td>
   </tr>

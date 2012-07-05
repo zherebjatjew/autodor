@@ -2,7 +2,16 @@
 
 Autodor::Application.routes.draw do
 
-  resources :orders
+  resources :orders do
+    member do
+      get 'show'
+      post 'create'
+      delete 'destroy'
+      get 'edit'
+      get 'print'
+    end
+  end
+
   resources :users
   resources :clients
   match '/users/:user/orders/new' => 'orders#new', :as => :new_order

@@ -3,3 +3,4 @@
 <strong>Дата оформления:&nbsp;</strong><%= @order.committed_at.strftime "%d.%m.%Y" %><br/>
 <strong>Комментарий:&nbsp;</strong><%= @order.info%><br/>
 <%= link_to "Изменить", edit_order_path(@order) %>
+<%= link_to "Напечатать", print_order_path(@order) %>

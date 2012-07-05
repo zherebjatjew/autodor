@@ -70,48 +70,20 @@
 				"buffer_size": 1124,
 				"line_ending": "Windows"
 			}
-		},
-		{
-			"file": "app/controllers/clients_controller.rb",
-			"settings":
-			{
-				"buffer_size": 935,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/controllers/users_controller.rb",
-			"settings":
-			{
-				"buffer_size": 1775,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/layouts/application.html.erb",
-			"settings":
-			{
-				"buffer_size": 622,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "db/migrate/20120701173623_create_clients.rb",
-			"settings":
-			{
-				"buffer_size": 1011,
-				"line_ending": "Unix"
-			}
 		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 0.0,
+		"height": 311.0,
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
 		],
-		"width": 0.0
+		"width": 416.0
 	},
 	"console":
 	{
@@ -128,12 +100,16 @@
 	},
 	"file_history":
 	[
+		"/C/autodor/app/controllers/clients_controller.rb",
+		"/C/autodor/app/controllers/users_controller.rb",
+		"/C/autodor/app/models/user.rb",
+		"/C/autodor/app/helpers/users_helper.rb",
+		"/C/autodor/db/migrate/20120701173623_create_clients.rb",
+		"/C/autodor/app/views/layouts/application.html.erb",
 		"/C/autodor/app/views/orders/_form.html.erb",
 		"/C/autodor/app/models/order.rb",
 		"/C/autodor/db/migrate/20120701170817_add_signed_to_orders.rb",
-		"/C/autodor/db/migrate/20120701173623_create_clients.rb",
 		"/C/autodor/app/models/client.rb",
-		"/C/autodor/app/controllers/clients_controller.rb",
 		"/C/autodor/app/views/clients/index.html.erb",
 		"/C/autodor/app/views/clients/new.html.erb",
 		"/C/autodor/app/views/clients/edit.html.erb",
@@ -165,11 +141,9 @@
 		"/C/autodor/db/schema.rb",
 		"/C/autodor/app/helpers/pages_helper.rb",
 		"/C/autodor/app/controllers/sessions_controller.rb",
-		"/C/autodor/app/controllers/users_controller.rb",
 		"/C/autodor/app/helpers/home_helper.rb",
 		"/C/autodor/app/helpers/orders_helper.rb",
 		"/C/autodor/app/helpers/sessions_helper.rb",
-		"/C/autodor/app/helpers/users_helper.rb",
 		"/C/autodor/app/controllers/pages_controller.rb",
 		"/C/autodor/app/controllers/orders_controller.rb",
 		"/C/autodor/app/controllers/home_controller.rb",
@@ -180,12 +154,10 @@
 		"/C/autodor/app/views/layouts/_footer.html.erb",
 		"/C/autodor/app/views/layouts/_header.html.erb",
 		"/C/autodor/app/views/layouts/_stylesheets.html.erb",
-		"/C/autodor/app/views/layouts/application.html.erb",
 		"/C/autodor/app/views/users/edit.html.erb",
 		"/C/autodor/app/views/orders/show.html.erb",
 		"/C/autodor/app/views/orders/edit.html.erb",
 		"/C/autodor/app/views/orders/new.html.erb",
-		"/C/autodor/app/models/user.rb",
 		"/C/autodor/app/views/orders/_order.html.erb",
 		"/C/autodor/config/locales/ru.yml",
 		"/C/autodor/Gemfile",
@@ -223,6 +195,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"set_role",
 			"user",
 			"Edit user",
 			"pluralize",
@@ -261,121 +234,13 @@
 						"selection":
 						[
 							[
-								1039,
-								1039
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/controllers/clients_controller.rb",
-					"settings":
-					{
-						"buffer_size": 935,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								924,
-								924
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/controllers/users_controller.rb",
-					"settings":
-					{
-						"buffer_size": 1775,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1102,
-								1325
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 450.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/views/layouts/application.html.erb",
-					"settings":
-					{
-						"buffer_size": 622,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								367,
-								367
+								355,
+								355
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "db/migrate/20120701173623_create_clients.rb",
-					"settings":
-					{
-						"buffer_size": 1011,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								335,
-								335
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
