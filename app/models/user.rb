@@ -4,7 +4,7 @@ require File.dirname(File.dirname(__FILE__)) + '/helpers/users_helper'
 
 class User < ActiveRecord::Base
   attr_accessor :password
-  attr_accessible :email, :name, :password, :password_confirmation, :role
+  attr_accessible :email, :name, :password, :password_confirmation, :role, :schedule
 
   validates :name,     :presence => true,
                        :length   => { :maximum => 50 }

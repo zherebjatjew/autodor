@@ -1,9 +1,12 @@
 <%
-CalendarDateSelect.format = (params[:fmt]||"natural").to_sym
-params[:style]||="red"
-params[:style]=nil if params[:style]=="default"
+  CalendarDateSelect.format = (params[:fmt]||"natural").to_sym
+  params[:style]||="red"
+  params[:style]=nil if params[:style]=="default"
 %>
 <% store_location %>
+
+<% all_clients = [] %>
+<% Client.all.each { |c| all_clients << [c.name, c.id] } %>
 
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
@@ -43,6 +46,9 @@ params[:style]=nil if params[:style]=="default"
 
 <div class="box">
   <h2>Заказчик</h2>
+  <div class="field">
+    <%= f.select :client_id, options_for_select(all_clients, @order.client_id) %>
+  </div>
   <%= link_to "добавить", new_client_path %> 
 </div>
 
