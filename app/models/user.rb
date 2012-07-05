@@ -24,12 +24,8 @@ class User < ActiveRecord::Base
     role == "admin"
   end
 
-  def owns? order
-    orders.include? order
-  end
-
-  def set_role value
-    update_attribute :role, value
+  def owns? item
+    item.kind_of?(Order) && orders.include?(item)
   end
 
   def has_password? submitted_password
