@@ -3,11 +3,19 @@
 }
 
 body {
-  background: #eee;
+  padding: 0;
+  margin: 0;
+  background: #fcfcfc
 }
 
 header {
-  padding-top: 20px;
+  background: #8d5;
+  padding-left: 150;
+  padding-right:0;
+  margin: 0;
+  color: #060;
+  z-order: 0;
+  box-shadow: 0 6px 6px rgba(0,0,0,0.3);
 }
 
 header img {
@@ -15,11 +23,13 @@ header img {
   background: #fff;
 }
 
-section {
-  margin-top: 1em;
-  font-size: 120%;
-  padding: 20px;
-  background: #fff;
+#main {
+  border-radius: 3px;
+  box-shadow: 0 6px 6px rgba(0,0,0,0.3);
+  margin: 0 150 10 150;
+  padding: 15 60 15 60;
+  background: white;
+  z-order:1
 }
 
 /* Links */
@@ -43,33 +53,71 @@ nav {
 }
 
 nav {
-  background-color: white;
-  padding: 0 0.7em;
   white-space: nowrap;
+  text-align:right;
+  margin-left: 0;
+  padding: 0 150 0 0;
+  background: #8c4;
 }
 
 nav ul {
   margin: 0;
-  padding: 0;
+  color:white;
 }
 
 nav ul li {
   list-style-type: none;
   display: inline-block;
-  padding: 0.2em 0;
+  padding: 0;
+  margin: 0;
 }
 
 nav ul li a {
-  padding: 0 5px;
-  font-weight: bold;
+  color:white;
+  text-decoration: none;
+  padding: 0.2em 0.5em;
 }
 
 nav ul li a:visited {
-  color: #09c;
+  color: white;
 }
 
 nav ul li a:hover {
-  text-decoration: underline;
+  background-color: #462;
+  border-radius: 3px;
+}
+
+nav.footer {
+  background:#fcfcfc;
+  text-align:center;
+  color:#888;
+}
+
+.footer a {
+  color:#888;
+}
+
+.command {
+  color:#222;
+  border-radius: 3px;
+  margin: 1px;
+  padding: 0.2em 0.5em;
+  border:1px solid #ddd;
+  background-color: #f8f8f8;
+}
+
+a.command {
+  text-decoration: none;
+}
+
+a.command:hover {
+  border: 1px solid #ccc;
+  background-color: #fdfdfd;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+}
+
+a.command:active {
+  padding: 0.3em 0.4em 0.1em 0.7em;
 }
 
 a.signin_button {

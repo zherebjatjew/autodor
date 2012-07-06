@@ -1,7 +1,7 @@
 <header>
-  <div class="menu"
-    <%= logo %>
-    <nav class="round">
+  <div class="header"
+    <%= logo %><%= company_name %>
+    <nav>
       <ul>
         <li><%= link_to "Справка", help_path %></li>
         <% if signed_in? %>
