@@ -344,3 +344,18 @@ a.radio_button_text:hover {
 a.radio_button_text:visited {
   color: #222;
 }
+
+.users {
+  width: 100%;
+}
+
+.avatar {
+  width: 1em;
+}
+
+.client_info {
+}
+
+.clients {
+  margin: 2em 0 2em 0;
+}

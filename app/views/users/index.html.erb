@@ -2,8 +2,12 @@
 
 <%= will_paginate %>
 
-<ul class="users">
+<table class="users">
   <%= render @users %>
-</ul>
+</table>
 
 <%= will_paginate %>
+
+<% if current_user.admin? %>
+  <%= link_to "Добавить", new_user_path, :class => 'command' %>
+<% end %>

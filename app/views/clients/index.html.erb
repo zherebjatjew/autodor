@@ -1,1 +1,12 @@
-<%= render @clients %>
+<h1>Наши клиенты</h1>
+
+<%= link_to "Добавить", new_client_path, :class => 'command' %>
+
+<div class="clients">
+  <%= will_paginate %>
+  <%= render @clients %>
+  <%= will_paginate %>
+</div>
+
+<%= link_to "Добавить", new_client_path, :class => 'command' %>
+

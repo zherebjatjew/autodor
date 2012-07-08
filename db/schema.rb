@@ -10,7 +10,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705165240) do
+ActiveRecord::Schema.define(:version => 20120708145905) do
+
+  create_table "cargos", :force => true do |t|
+    t.string   "name"
+    t.float    "weight_kg"
+    t.float    "volume_m"
+    t.string   "packing"
+    t.decimal  "cost"
+    t.string   "temperature"
+    t.string   "train_type"
+    t.boolean  "load"
+    t.boolean  "seal"
+    t.boolean  "pneumo"
+    t.boolean  "lift"
+    t.string   "requirements"
+    t.decimal  "transportation_charge"
+    t.string   "payment_notes"
+    t.integer  "bill_id"
+    t.date     "bill_date"
+    t.integer  "order_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+  end
 
   create_table "clients", :force => true do |t|
     t.boolean  "organization", :default => false, :null => false

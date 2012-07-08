@@ -12,18 +12,19 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build params[:order]
+    @cargos = []
     if @order.save
-      flash[:success] = "Заказ создан!"
-      redirect_to user_path(current_user), :method => 'update'
+      flash[:success] = "Заявка создана!"
+      redirect_to user_path(current_user), :method => 'show'
     else
-      render user_path current_user
+      render edit_order_path(@order)
     end
   end
 
   def destroy
     @order = Order.find_by_id params[:id]
     @order.destroy
-    redirect_back_or root_path
+    redirect_to user_path(current_user), :method => 'show'
   end
 
   def show
@@ -38,10 +39,13 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find params[:id]
+    @cargos = @order.cargos
     @title = "Редактирование заявки"
+    store_location
   end
 
   def update
+    clear_location
     @order = Order.find params[:id]
     if @order.update_attributes params[:order]
       flash[:success] = "Заявка обновлена"

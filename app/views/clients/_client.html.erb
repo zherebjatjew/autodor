@@ -1,3 +1,16 @@
-<li class="users">
-<%= @client.name %>
-</li>
+<div class="client_info">
+  <div style="float:left;width:30%"><h2><%= client.name %></h2></div><div style="float:right">
+    <%= link_to "Изменить", edit_client_path(client), :class => 'command' %>
+    <% unless client.used? %>
+      <%= link_to "Удалить", client, :method => 'delete', :confirm => "Вы точно больше не будете работать с этим клиентом?", :class => "command delete" %>
+    <% end %>
+  </div>
+  <div><p>
+    <strong>График работы: </strong><%= client.schedule %><br />
+    <% if client.organization %>
+      <strong>Контактное лицо: </strong><%= client.contact %><br />
+    <% end %>
+    <strong>Почтовый адрес: </strong><%= client.address %><br />
+    <%= client.note %>
+  </p></div>
+</div>

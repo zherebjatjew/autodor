@@ -3,9 +3,9 @@
 Autodor::Application.routes.draw do
 
   resources :orders
-
   resources :users
   resources :clients
+  resources :cargos
   match '/users/:user/orders/new' => 'orders#new', :as => :new_order
   resources :sessions do
     member do

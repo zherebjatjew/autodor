@@ -6,58 +6,60 @@
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
   <div style="width:100%">
-  <div class="box" style="float:left">
-  <div class="field">
-    <%= f.label :forwarder, "Экспедитор" %><br />
-    <% usrs = [] %>
-    <% User.all.each { |u| usrs << [u.name, u.id]} %>
-    <%= f.select :forwarder_id, options_for_select(usrs, @order.forwarder_id.to_i) %>
-  </div>
-  <div class="field">
-    <%= f.label :committed_at, "Дата оформления" %><br />
-    <%= f.calendar_date_select :committed_at %>
-  </div>
-  <div class="field">
-    <%= f.check_box :signed %>Подписана<br />
-    <%= f.check_box :paid %>Оплачена<br />
-    <%= f.check_box :completed %>Выполнена<br />
-  </div>
-  <div class="field">
-    <%= f.label :info, "Комментарий" %><br />
-    <%= f.text_area :info %>
-  </div>
-</div><div class="box" style="float:left">
-  <div class="field">
-    <%= f.label :client_id, "Заказчик" %><br />
-    <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i) %>
-    <%= link_to "добавить", new_client_path %> 
-  </div>
-  <div class="field">
-    <%= f.label :sender_id, "Отправитель" %><br />
-    <%= f.select :sender_id, options_for_select(all_clients, @order.sender_id.to_i) %>
-    <%= link_to "добавить", new_client_path %> 
-  </div>
-  <div class="field">
-    <%= f.label :receiver_id, "Получатель" %><br />
-    <%= f.select :receiver_id, options_for_select(all_clients, @order.receiver_id.to_i) %>
-    <%= link_to "добавить", new_client_path %> 
-  </div>
-</div>
-</div>
+    <div class="box">
+      <div class="field">
+        <%= f.label :forwarder, "Экспедитор" %><br />
+        <% usrs = [] %>
+        <% User.all.each { |u| usrs << [u.name, u.id]} %>
+        <%= f.select :forwarder_id, options_for_select(usrs, @order.forwarder_id.to_i) %>
+      </div>
+      <div class="field">
+        <%= f.label :committed_at, "Дата оформления" %><br />
+        <%= f.calendar_date_select :committed_at %>
+      </div>
+      <div class="field">
+        <%= f.check_box :signed %>Подписана<br />
+        <%= f.check_box :paid %>Оплачена<br />
+        <%= f.check_box :completed %>Выполнена<br />
+      </div>
+      <div class="field">
+        <%= f.label :info, "Комментарий" %><br />
+        <%= f.text_area :info %>
+      </div>
+    </div><div class="box">
+      <div class="field">
+        <%= f.label :client_id, "Заказчик" %><br />
+        <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i) %>
+        <%= link_to "добавить", new_client_path %> 
+      </div>
+      <div class="field">
+        <%= f.label :sender_id, "Отправитель" %><br />
+        <%= f.select :sender_id, options_for_select(all_clients, @order.sender_id.to_i) %>
+        <%= link_to "добавить", new_client_path %> 
+      </div>
+      <div class="field">
+        <%= f.label :receiver_id, "Получатель" %><br />
+        <%= f.select :receiver_id, options_for_select(all_clients, @order.receiver_id.to_i) %>
+        <%= link_to "добавить", new_client_path %> 
+      </div>
+    </div>
+    <div class="box">
+      <h2>Груз</h2>
+      <%= render @cargos %>
+      <%= link_to "добавить", new_cargo_path %>
+    </div>
 
-<div class="box">
-  <h2>Груз</h2>
-</div>
+    <div class="box">
+      <h2>Водитель</h2>
+    </div>
 
-<div class="box">
-  <h2>Водитель</h2>
-</div>
+    <div class="box">
+      <h2>Транспорт</h2>
+    </div>
 
-<div class="box">
-  <h2>Транспорт</h2>
-</div>
+    <div class="actions">
+      <%= f.submit "Сохранить" %>
+    </div>
+  </div>
 
-<div class="actions">
-  <%= f.submit "Сохранить" %>
-</div>
 <% end %>

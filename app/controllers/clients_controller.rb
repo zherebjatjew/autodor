@@ -1,13 +1,15 @@
 # encoding : UTF-8
 
 class ClientsController < ApplicationController
-	def index
-    @clients = Client.all
-  end
-
   def new
     @title = "Добавление клиента"
     @client = Client.new
+  end
+
+  def index
+    @title = "Список клиентов"
+    @clients = Client.paginate(:page => params[:page])
+    store_location
   end
 
   def create
@@ -15,7 +17,7 @@ class ClientsController < ApplicationController
     if @client.save
       # success
       flash[:success] = "Клиент #{@client.name} добавлен в Автодор"
-      redirect_back_or @client
+      redirect_back_or clients_path
     else
       render :edit
     end
@@ -25,7 +27,7 @@ class ClientsController < ApplicationController
     @client = Client.find params[:id]
     if @client.update_attributes params[:client]
       flash[:success] = "Информация о клиенте обновлена"
-      redirect_to @client
+      redirect_back_or clients_path
     else
       render 'edit'
     end
@@ -34,11 +36,5 @@ class ClientsController < ApplicationController
   def edit
     @title = "Изменение информации о клиенте"
     @client = Client.find params[:id]
-    if @client.update_attribues params[:client]
-      flash[:success] = "Информация о клиенте обновлена"
-      redirect_to @client
-    else
-      @title = ""
-    end
   end
 end

@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
   has_one :client
   has_one :sender, :class_name => 'Client'
   has_one :receiver, :class_name => 'Client'
+  has_many :cargo
   
   validates :user_id, :presence => true
   validates :forwarder_id, :presence => true
@@ -33,6 +34,10 @@ class Order < ActiveRecord::Base
 
   def receiver
     Client.find receiver_id
+  end
+
+  def cargos
+    Cargo.find(:all, :conditions => "order_id=#{id}")
   end
 
 end
