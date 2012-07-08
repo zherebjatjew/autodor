@@ -7,14 +7,13 @@
     <td class="order">
       <%= link_to @user.name, user_path(@user) %>
     </td>
-    <td class="command">
-      <%= link_to "изменить", edit_order_path(order) %>
+    <td class="button_cell">
+      <%= link_to "изменить", edit_order_path(order), :class => "command" %>
     </td>
-    <td class="command">
-      <%= button_to "удалить", order, :method => :delete,
-                                     :confirm => "You sure?",
-                                     :title => order.info,
-                                     :class => 'destroy_button' %>
+    <td class="button_cell">
+      <%= link_to "удалить", order, :method => :delete,
+                                    :confirm => "Вы уверены, что хотите удалить эту заявку?",
+                                    :class => 'command delete' %>
     </td>
   <% end %>
 </tr>

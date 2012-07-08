@@ -5,15 +5,15 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'nokogiri'
-gem 'therubyracer'
-gem 'json'
-gem 'i18n'
-gem 'russian'
+gem 'nokogiri', '~> 1.5.3'
+gem 'therubyracer', '~> 0.10.1'
+gem 'json', '~> 1.7.3'
+gem 'i18n', '~> 0.6.0'
+gem 'russian', '~> 0.6.0'
 gem 'gravatar_image_tag', '1.0.0.pre2'
-gem 'will_paginate'
-gem 'calendar_date_select'
-
+gem 'will_paginate', '~> 3.0.3'
+#gem 'calendar_date_select', '~> 1.16.4'
+gem 'calendar_date_select', :git => 'http://github.com/paneq/calendar_date_select.git', :branch => 'rails3test' 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -21,7 +21,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyrhino'
+  gem 'therubyrhino', '~> 1.73.4'
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -43,7 +43,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.13.2'
 end
 
 # To use ActiveModel has_secure_password

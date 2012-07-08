@@ -1,0 +1,18 @@
+<%= javascript_include_tag :calendar_date_select %>
+<script type="text/javascript">
+  _translations = {
+    "OK": "OK",
+    "Now": "Сейчас",
+    "Today": "Сегодня",
+    "Clear": "Очистить"
+  }  
+  Date.weekdays = $w("ПН ВТ СР ЧТ ПТ СБ ВС");  
+  Date.months = $w("Январь Февраль Март Апрель Май Июнь Июль Август Сентябрь Октябрь Ноябрь Декабрь" );
+</script>
+<%= stylesheet_link_tag 'calendar_date_select/gray' %>
+<%
+  CalendarDateSelect.format = (params[:fmt]||"natural").to_sym
+  params[:style]||="red"
+  params[:style]=nil if params[:style]=="default"
+%>
+

@@ -9,7 +9,7 @@ class CreateClients < ActiveRecord::Migration
       t.string :identity                                              # № паспорта      ИНН
       t.string :address                                               #             Адрес
       t.string :contact                                               #                 Контактное лицо
-      t.string :working_hours                                         #                 Часы работы
+      t.string :schedule                                              #                 Часы работы
       t.string :note                                                  #            Заметки
 
       t.timestamps

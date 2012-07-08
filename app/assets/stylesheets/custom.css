@@ -1,5 +1,4 @@
 .container {
-  width: 75%;
 }
 
 body {
@@ -9,27 +8,31 @@ body {
 }
 
 header {
+  width: 100%;
   background: #8d5;
-  padding-left: 150;
+  padding-left: 150px;
   padding-right:0;
   margin: 0;
   color: #060;
   z-order: 0;
   box-shadow: 0 6px 6px rgba(0,0,0,0.3);
+  display: block;
 }
 
-header img {
-  padding: 1em;
-  background: #fff;
+.header {
+  background: #ae5;
+  float: none;
+  width: 100%;
 }
 
 #main {
   border-radius: 3px;
   box-shadow: 0 6px 6px rgba(0,0,0,0.3);
-  margin: 0 150 10 150;
-  padding: 15 60 15 60;
+  margin: 0 150px 20px 150px;
+  padding: 15px 60px 30px 60px;
   background: white;
   z-order:1
+  line-height:2em;
 }
 
 /* Links */
@@ -56,8 +59,10 @@ nav {
   white-space: nowrap;
   text-align:right;
   margin-left: 0;
-  padding: 0 150 0 0;
-  background: #8c4;
+  margin-top: -1em;
+  padding: 0 150px 0 0;
+  background: #6b3;
+  font-family: "Helvetica";
 }
 
 nav ul {
@@ -85,26 +90,41 @@ nav ul li a:visited {
 nav ul li a:hover {
   background-color: #462;
   border-radius: 3px;
+  text-decoration: none;
 }
 
 nav.footer {
   background:#fcfcfc;
   text-align:center;
   color:#888;
+  padding-right: 0;
 }
 
-.footer a {
+nav.footer a {
   color:#888;
+  text-decoration: underline;
+}
+
+nav.footer a:visited {
+  color:#888;
+  text-decoration: underline;
+}
+
+nav.footer a:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 .command {
   color:#222;
   border-radius: 3px;
   margin: 1px;
-  padding: 0.2em 0.5em;
+  padding: 0.3em 0.5em;
   border:1px solid #ddd;
   background-color: #f8f8f8;
 }
+
 
 a.command {
   text-decoration: none;
@@ -117,7 +137,16 @@ a.command:hover {
 }
 
 a.command:active {
-  padding: 0.3em 0.4em 0.1em 0.7em;
+  padding: 0.3em 0.4em 0.3em 0.7em;
+}
+
+a.command:visited {
+  color: #222;
+}
+
+.button_cell {
+  width: 1em;
+  padding: 0.5em 0;
 }
 
 a.signin_button {
@@ -137,6 +166,18 @@ a.signin_button {
   -moz-border-radius:    10px;
   -webkit-border-radius: 10px;
   border-radius:         10px;
+}
+
+.delete {
+  border-radius: 3px;
+}
+
+.zebra tbody tr:nth-child(even) td, tbody tr.even td {background:#f1f9d1;}
+
+a.delete:hover {
+  background-color: #f88;
+  border-color: #a44;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
 footer {
@@ -165,13 +206,7 @@ td.sidebar {
   width: 30%;
   padding: 1em;
   vertical-align: top;
-  background: #ffc;
-}
-
-td.command {
-  width: 2em;
-  text-align: right;
-  padding: 0;
+  line-height: 175%;
 }
 
 .profile img.gravatar {
@@ -192,10 +227,6 @@ div.field, div.actions {
 
 .field_with_errors label {
   color: #fff;
-}
-
-#delete_button {
-  background-color: #f0f0f0;
 }
 
 #error_explanation {
@@ -280,22 +311,18 @@ form.new_order textarea {
 table.print_order {overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0;background-color:#fff;z-index:1;border:1px solid}
 table.print_order td {padding:0 3px;overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0;background:#fff;background-color:#fff;z-index:1;border:1px solid}
 table.print_order th {padding:0 3px;overflow:hidden;white-space:normal;letter-spacing:0;word-spacing:0; background:#fff;background-color:#fff;z-index:1;border:1px solid}
-tbody.print_order tr.even td {background:#ffffff;}
+table.print_order tr.even td {background:#ffffff;}
 .dn {display:none}
 
 .print_order h1 {
   text-align: center;
-  font-size: 150%;
 }
 .print_order h2 {
   text-align: center;
-  font-size: 125%;
 }
 
 .print_order h3 {
   text-align: left;
-  font-size: 100%;
-  font-weight: bold;
 }
 
 table.order_signs td {
@@ -305,3 +332,15 @@ table.order_signs td {
   background:#fff;
 }
 
+a.radio_button_text {
+  text-decoration: none;
+  color: #222;
+}
+
+a.radio_button_text:hover {
+  color: #222;
+}
+
+a.radio_button_text:visited {
+  color: #222;
+}

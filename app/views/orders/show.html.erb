@@ -1,6 +1,6 @@
 <div class="menu">
-  <%= link_to "Изменить", edit_order_path(@order), :html => { :class => "command" } %>
-  <%= link_to_function "Напечатать", "document.print()", :html => { :class => "command" } %>
+  <%= link_to "Изменить", edit_order_path(@order), :class => "command" %>
+  <%= link_to_function "Напечатать", "window.print()", :class => "command" %>
 </div>
 <div class="print_order">
   <h1>Заявка на оказание транспортно-экспедиционных услуг №<%= @order.id %> от <%= date_to_s @order.committed_at %></h1>
@@ -110,6 +110,6 @@
   </table>
 </div>
 <div class="menu">
-  <%= link_to "Изменить", edit_order_path(@order), :html => { :class => "command" } %>
-  <%= link_to_function "Напечатать", "document.print()", :html => { :class => "command" } %>
+  <%= link_to "Изменить", edit_order_path(@order), :class => "command" %>
+  <%= link_to_function "Напечатать", "window.print()", :class => "command" %>
 </div>

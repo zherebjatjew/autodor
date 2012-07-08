@@ -6,10 +6,9 @@
         <%= @user.name %>
       </h1>
     </td>
-    <td class="sidebar round">
+    <td class="sidebar">
       <%= link_to "Редактировать профиль", edit_user_path(current_user) %><br />
       <strong>График работы: </strong><%= @user.schedule %><br />
-      <%= pluralize @user.orders.count, "заявка" %>
     </td>
   </tr>
 </table>
@@ -19,5 +18,5 @@
     </table>
     <%= will_paginate @orders %>
   <% end %>
-  <%= link_to "добавить заявку", new_order_path(@user) %>
+  <%= link_to "добавить заявку", new_order_path(@user), :class => 'command' %>
 

@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @title = 'О программе'
+    @title = 'О нас'
   end
 
   def help

@@ -13,16 +13,16 @@
 ActiveRecord::Schema.define(:version => 20120705165240) do
 
   create_table "clients", :force => true do |t|
-    t.boolean  "organization",  :default => false, :null => false
-    t.string   "name",                             :null => false
+    t.boolean  "organization", :default => false, :null => false
+    t.string   "name",                            :null => false
     t.date     "born_at"
     t.string   "identity"
     t.string   "address"
     t.string   "contact"
-    t.string   "working_hours"
+    t.string   "schedule"
     t.string   "note"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "orders", :force => true do |t|

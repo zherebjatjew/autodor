@@ -1,22 +1,26 @@
 <%= form_for(@client) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
   <script type="text/javascript">
-    function setMode(organization) {
+    function setOrganization(organization) {
       if (organization==true) {
         document.getElementById('name_label').textContent = 'Наименование';
-        document.getElementById('identity_label').textContent = 'ИНН'
+        document.getElementById('identity_label').textContent = 'ИНН';
+        document.getElementById('org_mode').checked = true;
+        document.getElementById('org_only').hidden = false;
       } else {
         document.getElementById('name_label').textContent = 'ФИО';
-        document.getElementById('identity_label').textContent = 'Паспортные данные'
+        document.getElementById('identity_label').textContent = 'Паспортные данные';
+        document.getElementById('usr_mode').checked = true;
+        document.getElementById('org_only').hidden = true;
       }
     }
     function loadComplete() {
-      setMode(<%= @client.organization %>);
+      setOrganization(<%= @client.organization %>);
     }
   </script>
   <div class="field">
-    <%= f.radio_button :organization, true, :onclick => 'window.setMode(true)' %>Организация<br />
-    <%= f.radio_button :organization, false, :onclick => 'window.setMode(false)' %>Физическое лицо<br />
+    <%= f.radio_button :organization, true, :onclick => 'window.setOrganization(true)', :id => 'org_mode' %> <%= link_to_function "Организация", 'window.setOrganization(true)', :class => 'radio_button_text' %><br />
+    <%= f.radio_button :organization, false, :onclick => 'window.setOrganization(false)', :class => 'radio_button_text', :id => 'usr_mode' %> <%= link_to_function "Физическое лицо", 'window.setOrganization(false)', :class => 'radio_button_text' %><br />
   </div>
   <div class="field">
     <%= f.label :name, "ФИО", :id => 'name_label' %><br />
@@ -25,6 +29,28 @@
   <div class="field">
     <%= f.label :identity, "Паспортные данные", :id => 'identity_label' %><br />
     <%= f.text_field :identity %>
+  </div>
+  <div class="field">
+    <%= f.label :address, "Почтовый адрес" %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :born_at, "Дата рождения", :id => 'born_at_lable' %><br />
+    <%= f.calendar_date_select :born_at %>
+  </div>
+  <div id="org_only">
+    <div class="field">
+      <%= f.label :contact, "Контактное лицо" %><br />
+      <%= f.text_field :contact %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :schedule, "График работы" %><br />
+    <%= f.text_field :schedule %>
+  </div>
+  <div class="field">
+    <%= f.label :note, "Заметки" %><br />
+    <%= f.text_area :note, :style => "height:5em" %>
   </div>
   <div class="actions">
     <%= f.submit "Создать" %>
