@@ -58,11 +58,9 @@
     </div>
     <div class="box">
       <h2>Груз</h2>
-      <table class="orders">
-      <%= f.fields_for :cargos do |builder| %>
-        <%= render 'cargo/cargo_fields', :f => builder %>
+      <% @order.cargos.each do |item| %>
+        <%= render 'cargo/cargo', :item => item %>
       <% end %>
-      </table>
       <%= link_to "добавить", new_cargo_path, :class => 'command' %>
     </div>
 

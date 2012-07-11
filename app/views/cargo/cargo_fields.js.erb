@@ -1,0 +1,7 @@
+if ($("expand<%= params[:id] %>").textContent == '▼') {
+  $("cargo<%= params[:id] %>").update("<%= escape_javascript(render('cargo/cargo_fields')) %>");
+  $("expand<%= params[:id] %>").update('▲');
+} else {
+  $("cargo<%= params[:id] %>").update("");
+  $("expand<%= params[:id] %>").update('▼');
+}

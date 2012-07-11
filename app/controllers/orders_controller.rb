@@ -56,6 +56,11 @@ class OrdersController < ApplicationController
     end
   end
 
+  def cargo_fields
+    @cargo = Cargo.find params[:id]
+    render "cargo/cargo_fields"
+  end
+
   private
 
     def current_or_admin
