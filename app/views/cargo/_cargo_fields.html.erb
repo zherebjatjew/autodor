@@ -1,0 +1,60 @@
+<tr>
+  <% item = f.object %></td>
+  <td><%= item.name %></td>
+  <td width="10%" style="text-align:right"><%= item.weight_kg %></td>
+  <td width="10%" style="text-align:right"><%= item.volume_m %></td>
+  <td class="button_cell">
+    <%= link_to_function "▼", "editCargo('expand#{item.id}', 'cargo#{item.id}')",
+      :class => 'command',
+      :id => "expand#{item.id}"
+    %>
+  </td>
+  <td class="button_cell"><%= link_to "Удалить", item, :method => 'delete',
+    :confirm => "Точно удалить груз «#{item.name}»", :class => 'command delete' %></td>
+</tr>
+<tr id="<%= "cargo#{item.id}" %>" style="display:none">
+  <td colspan="5">
+    <div class="field">
+      <%= f.label :name, "Наименование" %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :weight_kg, "Масса" %><br />
+      <%= f.text_field :weight_kg %>
+    </div>
+    <div class="field">
+      <%= f.label :volume_m, "Объём" %><br />
+      <%= f.text_field :volume_m %>
+    </div>
+    <div class="field">
+      <%= f.label :packing, "Вид упаковки" %><br />
+      <%= f.text_field :packing %>
+    </div>
+    <div class="field">
+      <%= f.label :cost, "Объявленная стоимость" %><br />
+      <%= f.text_field :cost %>
+    </div>
+    <div class="field">
+      <%= f.label :temperature, "Температурный режим" %><br />
+      <%= f.text_field :temperature %>
+    </div>
+    <div class="field">
+      <%= f.label :train_type, "Тип состава" %><br />
+      <%= f.text_field :train_type %>
+    </div>
+    <div class="field">
+      <%= f.check_box :load %>Погрузка<br />
+      <%= f.check_box :seal %>Пломба<br />
+      <%= f.check_box :pneumo %>Пневмоподвеска<br />
+      <%= f.check_box :lift %>Лифт<br />
+    </div>
+    <div class="field">
+      <%= f.label :requirements, "Дополнительные требования" %><br />
+      <%= f.text_field :requirements %>
+    </div>
+    <div class="field">
+      <%= f.label :transportation_charge, "Ставка за перевозку" %><br />
+      <%= f.text_field :transportation_charge %>
+    </div>
+  </td>
+<tr>
