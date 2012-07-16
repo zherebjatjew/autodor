@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
 
   def cargo_fields
     @cargo = Cargo.find params[:id]
-    render "cargo/cargo_fields"
+    render "cargos/cargo_fields"
   end
 
   private

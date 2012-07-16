@@ -2,18 +2,15 @@
 
 <% all_clients = [] %>
 <% Client.all.each { |c| all_clients << [c.name, c.id] } %>
-
+<%= javascript_include_tag 'jquery', 'nested_form' %>
 <script type="text/javascript">
-  function editCargo(buttonName, formName) {
-    button = document.getElementById(buttonName);
-    form = document.getElementById(formName);
-    if (form.style.display == 'none') {
-      form.style.display = 'block';
-      button.textContent = '▲';
-    } else {
-      form.style.display = 'none';
-      button.textContent = '▼';
-    }
+  function editCargo(form, button) {
+    form.slideToggle(250);
+    button.text(button.text() == '▼' ? '▲' : '▼');
+  }
+  function addCargo(id) {
+    newDiv = $('cargo_template').clone(true, true);
+    $('cargo_template').append(newDiv);
   }
 </script>
 <%= form_for(@order) do |f| %>
@@ -56,12 +53,13 @@
         <%= link_to "добавить", new_client_path, :class => 'command' %> 
       </div>
     </div>
-    <div class="box">
+    <div class="box" id="cargos">
       <h2>Груз</h2>
       <% @order.cargos.each do |item| %>
-        <%= render 'cargo/cargo', :item => item %>
+        <%= render 'cargos/cargo', :item => item, :f => f %>
       <% end %>
-      <%= link_to "добавить", new_cargo_path, :class => 'command' %>
+      <%#= link_to "добавить", new_cargo_path, :class => 'command', :remote => true, :id => 'add_cargo' %>
+      <%= link_to_function "добавить", "addCargo(#{Time.new.to_i});", :class => 'command', :remote => true, :id => 'add_cargo' %>
     </div>
 
     <div class="box">
