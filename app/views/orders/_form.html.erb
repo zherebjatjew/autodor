@@ -5,8 +5,8 @@
 
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
-  <div style="width:100%">
-    <div class="box">
+  <div style="width:100%;float:left">
+    <div class="box" style="float:left">
       <div class="field">
         <%= f.label :forwarder, "Экспедитор" %><br />
         <% usrs = [] %>
@@ -43,22 +43,18 @@
         <%= link_to "Добавить", new_client_path %> 
       </div>
     </div>
-    <div class="box">
+    <div class="box" style="float:left">
       <h2>Груз</h2>
       <%= render @cargos %>
       <%= link_to "Добавить", new_cargo_path %>
-    </div>
-
-    <div class="field">
-      <%= f.label :driver_id, "Водитель" %><br />
-      <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
-      <%= f.link_to "Добавить", new_driver_path %>
-    </div>
-
-    <div class="box">
+      <div class="field">
+        <%= f.label :driver_id, "Водитель" %><br />
+        <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
+        <%= f.link_to "Добавить", new_driver_path %>
+      </div>
       <h2>Транспорт</h2>
     </div>
-
+  
     <div class="actions">
       <%= f.submit "Сохранить" %>
     </div>
