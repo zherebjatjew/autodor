@@ -49,6 +49,8 @@
       <%= link_to "Добавить", new_cargo_path %>
       <div class="field">
         <%= f.label :driver_id, "Водитель" %><br />
+        <% all_drivers = [] %>
+        <% Drivers.all.each { |d| all_drivers << [d.name, d.id] } %>
         <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
         <%= f.link_to "Добавить", new_driver_path %>
       </div>
