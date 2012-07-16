@@ -1,18 +1,18 @@
   <div class="header">
-    <div style="display:block;float:left;"><%= logo %></div><h1><%= company_name %></h1>
+    <div class="img"><%= logo %></div><h1><%= company_name %></h1>
   </div>
-    <nav>
-      <ul>
-        <li><%= link_to "Справка", help_path %></li>
-        <% if signed_in? %>
-          <% if current_user.admin? %>
-            <li><%= link_to "Пользователи", users_path %></li>
-          <% end %>
-          <li><%= link_to "Клиенты", clients_path %></li>
-          <li><%= link_to current_user.name, user_path(current_user) %></li>
-          <li><%= link_to "Выйти", signout_path, :method => :delete %></li>
-        <% else %>
-          <li><%= link_to "Войти", signin_path %></li>
+  <nav>
+    <ul>
+      <li><%= link_to "Справка", help_path %></li>
+      <% if signed_in? %>
+        <% if current_user.admin? %>
+          <li><%= link_to "Пользователи", users_path %></li>
         <% end %>
-      </ul>
-    </nav>
+        <li><%= link_to "Клиенты", clients_path %></li>
+        <li><%= link_to current_user.name, user_path(current_user) %></li>
+        <li><%= link_to "Выйти", signout_path, :method => :delete %></li>
+      <% else %>
+        <li><%= link_to "Войти", signin_path %></li>
+      <% end %>
+    </ul>
+  </nav>
