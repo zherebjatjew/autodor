@@ -18,7 +18,7 @@ class Order < ActiveRecord::Base
   validates :sender_id, :presence => true
   validates :receiver_id, :presence => true
 
-  accepts_nested_attributes_for :cargos
+  accepts_nested_attributes_for :cargos, :allow_destroy => true
 
   def forwarder
   	User.find forwarder_id

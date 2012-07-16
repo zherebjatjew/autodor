@@ -8,10 +8,28 @@
     form.slideToggle(250);
     button.text(button.text() == '▼' ? '▲' : '▼');
   }
-  function addCargo(id) {
-    newDiv = $('cargo_template').clone(true, true);
-    $('cargo_template').append(newDiv);
+  function addCargo() {
+    var newDiv = $('div#cargo_template').clone();
+    var now = new Date();
+    var newId = ((now.getHours())*60 + now.getMinutes())*60 + now.getSeconds();
+    newDiv.attr("id", "cargo" + newId);
+    $('div#cargos').appendTo(newDiv);
+    newDiv.show(250);
   }
+  //$.noConflict();
+  jQuery(document).ready(function() {
+    $('a#add-cargo').click(function() {
+      $('#cargos div:first').clone().find('id').val('')
+      .end().appendTo('#cargos');
+    });
+
+    $('.delete-cargo').live('click', function() {
+      if ($('#cargos div').length > 1)
+        $(this).parent().remove();
+      else
+        alert('You need at least one cargo.')
+    });
+  });
 </script>
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
@@ -56,10 +74,19 @@
     <div class="box" id="cargos">
       <h2>Груз</h2>
       <% @order.cargos.each do |item| %>
-        <%= render 'cargos/cargo', :item => item, :f => f %>
+        <div class="box">
+          <%= render 'cargos/cargo', :item => item, :f => f %>
+          <div id="<%= "cargo#{item.id}" %>" style="display:none">
+            <%= fields_for item do |builder| %>
+              <%= render '/cargos/cargo_fields', :f => builder %>
+            <% end %>
+            <%#= f.link_to_remove "Удалить" %>
+          </div>
+        </div>
       <% end %>
+      <div id="cargo-template" style="display:none">Ещё один груз</div>
       <%#= link_to "добавить", new_cargo_path, :class => 'command', :remote => true, :id => 'add_cargo' %>
-      <%= link_to_function "добавить", "addCargo(#{Time.new.to_i});", :class => 'command', :remote => true, :id => 'add_cargo' %>
+      <%= link_to_function "добавить", "addCargo()", :class => 'command', :remote => true, :id => 'add_cargo' %>
     </div>
 
     <div class="box">
