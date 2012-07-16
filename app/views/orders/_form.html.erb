@@ -30,27 +30,29 @@
       <div class="field">
         <%= f.label :client_id, "Заказчик" %><br />
         <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i) %>
-        <%= link_to "добавить", new_client_path %> 
+        <%= link_to "Добавить", new_client_path %> 
       </div>
       <div class="field">
         <%= f.label :sender_id, "Отправитель" %><br />
         <%= f.select :sender_id, options_for_select(all_clients, @order.sender_id.to_i) %>
-        <%= link_to "добавить", new_client_path %> 
+        <%= link_to "Добавить", new_client_path %> 
       </div>
       <div class="field">
         <%= f.label :receiver_id, "Получатель" %><br />
         <%= f.select :receiver_id, options_for_select(all_clients, @order.receiver_id.to_i) %>
-        <%= link_to "добавить", new_client_path %> 
+        <%= link_to "Добавить", new_client_path %> 
       </div>
     </div>
     <div class="box">
       <h2>Груз</h2>
       <%= render @cargos %>
-      <%= link_to "добавить", new_cargo_path %>
+      <%= link_to "Добавить", new_cargo_path %>
     </div>
 
-    <div class="box">
-      <h2>Водитель</h2>
+    <div class="field">
+      <%= f.label :driver_id, "Водитель" %><br />
+      <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
+      <%= f.link_to "Добавить", new_driver_path %>
     </div>
 
     <div class="box">
