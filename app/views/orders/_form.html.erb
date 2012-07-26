@@ -9,18 +9,31 @@
     button.text(button.text() == '▼' ? '▲' : '▼');
   }
   function addCargo() {
-    var newDiv = $('div#cargo_template').clone();
+    var newDiv = $('div#cargo-template').clone();
     var now = new Date();
     var newId = ((now.getHours())*60 + now.getMinutes())*60 + now.getSeconds();
-    newDiv.attr("id", "cargo" + newId);
-    $('div#cargos').appendTo(newDiv);
+    newDiv.attr("id", "box" + newId);
+    id = newDiv.find("#cargo_id");
+    id.attr("id", newId);
+    id.val(newId);
+    newDiv.find('div#cargo').attr("id", "cargo" + newId);
+    expand = newDiv.find('#expand');
+    expand.attr('id', 'expand' + newId);
+    expand.attr('onclick', 'editCargo($(cargo' + newId + '), $(expand' + newId + ')); return false;');
+    remove = newDiv.find('#remove');
+    remove.attr('remove' + newId);
+    remove.attr('onclick', 'delCargo($(box' + newId + ')); return false;');
+    $('div#cargos').append(newDiv);
     newDiv.show(250);
+  }
+  function delCargo(item) {
+    item.hide(250);
   }
   //$.noConflict();
   jQuery(document).ready(function() {
     $('a#add-cargo').click(function() {
       $('#cargos div:first').clone().find('id').val('')
-      .end().appendTo('#cargos');
+      .end().append('#cargos');
     });
 
     $('.delete-cargo').live('click', function() {
@@ -71,7 +84,7 @@
         <%= link_to "добавить", new_client_path, :class => 'command' %> 
       </div>
     </div>
-    <div class="box" id="cargos">
+    <div class="box">
       <h2>Груз</h2>
       <% @order.cargos.each do |item| %>
         <div class="box">
@@ -84,7 +97,17 @@
           </div>
         </div>
       <% end %>
-      <div id="cargo-template" style="display:none">Ещё один груз</div>
+      <div id="cargos">
+        <div class="box" id="cargo-template" style="display:none">
+          <% itm = @order.cargos.new %>
+          <%= render 'cargos/cargo', :item => itm, :f => f %>
+          <div id="<%= "cargo" %>" style="display:none">
+            <%= fields_for itm do |builder| %>
+              <%= render '/cargos/cargo_fields', :f => builder %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <%#= link_to "добавить", new_cargo_path, :class => 'command', :remote => true, :id => 'add_cargo' %>
       <%= link_to_function "добавить", "addCargo()", :class => 'command', :remote => true, :id => 'add_cargo' %>
     </div>
