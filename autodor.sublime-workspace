@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"at",
+				"attr"
+			],
+			[
+				"car",
+				"cargos"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
 				"back",
 				"background-color"
 			],
@@ -147,7 +159,7 @@
 			"file": "app/views/orders/_form.html.erb",
 			"settings":
 			{
-				"buffer_size": 3674,
+				"buffer_size": 4533,
 				"line_ending": "Unix"
 			}
 		},
@@ -171,7 +183,7 @@
 			"file": "app/views/cargos/_cargo.html.erb",
 			"settings":
 			{
-				"buffer_size": 577,
+				"buffer_size": 564,
 				"line_ending": "Windows"
 			}
 		},
@@ -219,7 +231,7 @@
 			"file": "app/assets/stylesheets/custom.css",
 			"settings":
 			{
-				"buffer_size": 5992,
+				"buffer_size": 6008,
 				"line_ending": "Unix"
 			}
 		}
@@ -419,7 +431,7 @@
 	"groups":
 	[
 		{
-			"selected": 9,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -427,15 +439,15 @@
 					"file": "app/views/orders/_form.html.erb",
 					"settings":
 					{
-						"buffer_size": 3674,
+						"buffer_size": 4533,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3144,
-								3144
+								607,
+								607
 							]
 						],
 						"settings":
@@ -445,7 +457,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 990.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -511,15 +523,15 @@
 					"file": "app/views/cargos/_cargo.html.erb",
 					"settings":
 					{
-						"buffer_size": 577,
+						"buffer_size": 564,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								577,
-								577
+								227,
+								227
 							]
 						],
 						"settings":
@@ -669,15 +681,15 @@
 					"file": "app/assets/stylesheets/custom.css",
 					"settings":
 					{
-						"buffer_size": 5992,
+						"buffer_size": 6008,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2021,
-								2021
+								1601,
+								1601
 							]
 						],
 						"settings":
@@ -687,7 +699,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1821.0,
+						"translation.y": 1650.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

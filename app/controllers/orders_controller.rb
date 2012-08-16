@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
     clear_location
     @order = Order.find params[:id]
     if @order.update_attributes params[:order]
+      @order.cargos.build
       flash[:success] = "Заявка обновлена"
       redirect_to @order.user
     else

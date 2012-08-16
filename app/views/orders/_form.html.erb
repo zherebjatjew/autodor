@@ -86,14 +86,50 @@
     </div>
     <div class="box">
       <h2>Груз</h2>
-      <% @order.cargos.each do |item| %>
-        <div class="box">
-          <%= render 'cargos/cargo', :item => item, :f => f %>
-          <div id="<%= "cargo#{item.id}" %>" style="display:none">
-            <%= fields_for item do |builder| %>
-              <%= render '/cargos/cargo_fields', :f => builder %>
-            <% end %>
-            <%#= f.link_to_remove "Удалить" %>
+
+      <%= f.fields_for :cargos do |builder| %>
+        <div>
+          <div class="field">
+            <%= builder.label :name, "Наименование" %><br />
+            <%= builder.text_field :name %>
+          </div>
+          <div class="field">
+            <%= builder.label :weight_kg, "Масса" %><br />
+            <%= builder.text_field :weight_kg %>
+          </div>
+          <div class="field">
+            <%= builder.label :volume_m, "Объём" %><br />
+            <%= builder.text_field :volume_m %>
+          </div>
+          <div class="field">
+            <%= builder.label :packing, "Вид упаковки" %><br />
+            <%= builder.text_field :packing %>
+          </div>
+          <div class="field">
+            <%= builder.label :cost, "Объявленная стоимость" %><br />
+            <%= builder.text_field :cost %>
+          </div>
+          <div class="field">
+            <%= builder.label :temperature, "Температурный режим" %><br />
+            <%= builder.text_field :temperature %>
+          </div>
+          <div class="field">
+            <%= builder.label :train_type, "Тип состава" %><br />
+            <%= builder.text_field :train_type %>
+          </div>
+          <div class="field">
+            <%= builder.check_box :load %>Погрузка<br />
+            <%= builder.check_box :seal %>Пломба<br />
+            <%= builder.check_box :pneumo %>Пневмоподвеска<br />
+            <%= builder.check_box :lift %>Лифт<br />
+          </div>
+          <div class="field">
+            <%= builder.label :requirements, "Дополнительные требования" %><br />
+            <%= builder.text_field :requirements %>
+          </div>
+          <div class="field">
+            <%= builder.label :transportation_charge, "Ставка за перевозку" %><br />
+            <%= builder.text_field :transportation_charge %>
           </div>
         </div>
       <% end %>
