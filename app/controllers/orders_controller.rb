@@ -48,12 +48,18 @@ class OrdersController < ApplicationController
     clear_location
     @order = Order.find params[:id]
     if @order.update_attributes params[:order]
+      @order.cargos.build
       flash[:success] = "Заявка обновлена"
       redirect_to @order.user
     else
       @title = "Редактирование заявки"
       render 'edit'
     end
+  end
+
+  def cargo_fields
+    @cargo = Cargo.find params[:id]
+    render "cargos/cargo_fields"
   end
 
   private

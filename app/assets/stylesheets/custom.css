@@ -55,7 +55,8 @@ header img {
   width: 80%;
   padding: 1em 6em 3em 6em;
   background: white;
-  z-order: 1
+  z-index:1
+  line-height:2em;
 }
 
 /* Links */
@@ -156,6 +157,18 @@ nav.footer a:hover {
 
 a.command {
   text-decoration: none;
+  -moz-transition-property: background-color;
+  -webkit-transition-property:background-color;
+  -o-transition-property:background-color;
+  transition-property:background-color;
+  -moz-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -moz-transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
 }
 
 a.command:hover {
@@ -165,6 +178,7 @@ a.command:hover {
   -moz-box-shadow: 0 0 3px rgba(0,0,0,0.3);
   filter: progid:DXImageTransform.Microsoft.shadow(direction=0, color=#808080, strength=3);
   box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  color: black;
 }
 
 a.command:active {
@@ -392,4 +406,13 @@ a.radio_button_text:visited {
 
 .clients {
   margin: 2em 0 2em 0;
+}
+
+.gradient {
+  background: #ddd;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e0e0e0', endColorstr='#c0c0c0');
+  background: -webkit-linear-gradient(top, bottom, #eee, #ccc);
+  background: -moz-linear-gradient(top, #eee, #ccc);
+  background: -o-linear-gradient(top, #eee, #ccc);
+  background: -ms-linear-gradient(top, #eee, #ccc);
 }

@@ -15,6 +15,7 @@ Autodor::Application.routes.draw do
       delete 'destroy'
     end
   end
+  match '/cargo_fields/:id' => 'orders#cargo_fields', :as => 'cargo_fields'
 
   match '/signup', :to => 'users#new'
   match '/signin', :to => 'sessions#new'

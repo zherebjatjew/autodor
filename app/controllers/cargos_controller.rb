@@ -3,6 +3,7 @@ class CargosController < ApplicationController
   end
 
   def new
+    @cargo = Cargo.new
   end
 
   def update

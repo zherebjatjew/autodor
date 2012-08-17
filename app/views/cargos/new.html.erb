@@ -1,0 +1,3 @@
+<% fields_for @cargo do |cargo_form| %>
+  <%= render :partial => 'cargos/cargo_fields', :locals => { :f => cargo_form, :cargo => @cargo } %>
+<% end %>

@@ -2,7 +2,48 @@
 
 <% all_clients = [] %>
 <% Client.all.each { |c| all_clients << [c.name, c.id] } %>
+<%= javascript_include_tag 'jquery', 'nested_form' %>
+<script type="text/javascript">
+  function editCargo(form, button) {
+    form.slideToggle(250);
+    button.text(button.text() == '▼' ? '▲' : '▼');
+  }
+  function addCargo() {
+    var newDiv = $('div#cargo-template').clone();
+    var now = new Date();
+    var newId = ((now.getHours())*60 + now.getMinutes())*60 + now.getSeconds();
+    newDiv.attr("id", "box" + newId);
+    id = newDiv.find("#cargo_id");
+    id.attr("id", newId);
+    id.val(newId);
+    newDiv.find('div#cargo').attr("id", "cargo" + newId);
+    expand = newDiv.find('#expand');
+    expand.attr('id', 'expand' + newId);
+    expand.attr('onclick', 'editCargo($(cargo' + newId + '), $(expand' + newId + ')); return false;');
+    remove = newDiv.find('#remove');
+    remove.attr('remove' + newId);
+    remove.attr('onclick', 'delCargo($(box' + newId + ')); return false;');
+    $('div#cargos').append(newDiv);
+    newDiv.show(250);
+  }
+  function delCargo(item) {
+    item.hide(250);
+  }
+  //$.noConflict();
+  jQuery(document).ready(function() {
+    $('a#add-cargo').click(function() {
+      $('#cargos div:first').clone().find('id').val('')
+      .end().append('#cargos');
+    });
 
+    $('.delete-cargo').live('click', function() {
+      if ($('#cargos div').length > 1)
+        $(this).parent().remove();
+      else
+        alert('You need at least one cargo.')
+    });
+  });
+</script>
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
   <div style="width:100%;float:left">
@@ -45,15 +86,72 @@
     </div>
     <div class="box" style="float:left">
       <h2>Груз</h2>
-      <%= render @cargos %>
-      <%= link_to "Добавить", new_cargo_path %>
-      <div class="field">
-        <%= f.label :driver_id, "Водитель" %><br />
-        <% all_drivers = [] %>
-        <% Drivers.all.each { |d| all_drivers << [d.name, d.id] } %>
-        <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
-        <%= f.link_to "Добавить", new_driver_path %>
+      <%= f.fields_for :cargos do |builder| %>
+        <div>
+          <div class="field">
+            <%= builder.label :name, "Наименование" %><br />
+            <%= builder.text_field :name %>
+          </div>
+          <div class="field">
+            <%= builder.label :weight_kg, "Масса" %><br />
+            <%= builder.text_field :weight_kg %>
+          </div>
+          <div class="field">
+            <%= builder.label :volume_m, "Объём" %><br />
+            <%= builder.text_field :volume_m %>
+          </div>
+          <div class="field">
+            <%= builder.label :packing, "Вид упаковки" %><br />
+            <%= builder.text_field :packing %>
+          </div>
+          <div class="field">
+            <%= builder.label :cost, "Объявленная стоимость" %><br />
+            <%= builder.text_field :cost %>
+          </div>
+          <div class="field">
+            <%= builder.label :temperature, "Температурный режим" %><br />
+            <%= builder.text_field :temperature %>
+          </div>
+          <div class="field">
+            <%= builder.label :train_type, "Тип состава" %><br />
+            <%= builder.text_field :train_type %>
+          </div>
+          <div class="field">
+            <%= builder.check_box :load %>Погрузка<br />
+            <%= builder.check_box :seal %>Пломба<br />
+            <%= builder.check_box :pneumo %>Пневмоподвеска<br />
+            <%= builder.check_box :lift %>Лифт<br />
+          </div>
+          <div class="field">
+            <%= builder.label :requirements, "Дополнительные требования" %><br />
+            <%= builder.text_field :requirements %>
+          </div>
+          <div class="field">
+            <%= builder.label :transportation_charge, "Ставка за перевозку" %><br />
+            <%= builder.text_field :transportation_charge %>
+          </div>
+        </div>
+      <% end %>
+      <div id="cargos">
+        <div class="box" id="cargo-template" style="display:none">
+          <% itm = @order.cargos.new %>
+          <%= render 'cargos/cargo', :item => itm, :f => f %>
+          <div id="<%= "cargo" %>" style="display:none">
+            <%= fields_for itm do |builder| %>
+              <%= render '/cargos/cargo_fields', :f => builder %>
+            <% end %>
+          </div>
+        </div>
       </div>
+      <%#= link_to "добавить", new_cargo_path, :class => 'command', :remote => true, :id => 'add_cargo' %>
+      <%= link_to_function "добавить", "addCargo()", :class => 'command', :remote => true, :id => 'add_cargo' %>
+    </div>
+
+    <div class="box">
+      <h2>Водитель</h2>
+    </div>
+
+    <div class="box">
       <h2>Транспорт</h2>
     </div>
   

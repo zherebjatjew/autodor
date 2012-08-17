@@ -1,0 +1,8 @@
+if ($("expand<%= params[:id] %>").textContent == '▼') {
+  <% @cargo = Cargo.find(params[:id]) %>
+  $("cargo<%= params[:id] %>").update("<%= escape_javascript(render('cargos/cargo_fields')) %>");
+  $("expand<%= params[:id] %>").update('▲');
+} else {
+  $("cargo<%= params[:id] %>").update("");
+  $("expand<%= params[:id] %>").update('▼');
+}

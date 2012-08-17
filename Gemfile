@@ -14,6 +14,7 @@ gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '~> 3.0.3'
 #gem 'calendar_date_select', '~> 1.16.4'
 gem 'calendar_date_select', :git => 'http://github.com/paneq/calendar_date_select.git', :branch => 'rails3test' 
+gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

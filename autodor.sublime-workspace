@@ -4,16 +4,88 @@
 		"selected_items":
 		[
 			[
-				"te",
-				"text-decoration"
+				"at",
+				"attr"
+			],
+			[
+				"car",
+				"cargos"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"f",
+				"float"
+			],
+			[
+				"vo",
+				"volume_m"
+			],
+			[
+				"weight",
+				"weight_kg"
+			],
+			[
+				"ca",
+				"cargo"
+			],
+			[
+				"cargo",
+				"cargo_fields"
+			],
+			[
+				"s",
+				"script"
+			],
+			[
+				"b",
+				"background"
 			],
 			[
 				"pa",
-				"padding-right"
+				"padding"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"radio",
+				"radio_button_text"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"te",
+				"text-align"
 			],
 			[
 				"fo",
 				"font-weight"
+			],
+			[
+				"do",
+				"text-decoration"
+			],
+			[
+				"bo",
+				"border-radius"
 			],
 			[
 				"pr",
@@ -32,16 +104,8 @@
 				"all_clients"
 			],
 			[
-				"tex",
-				"textContent"
-			],
-			[
 				"id",
 				"identity_label"
-			],
-			[
-				"get",
-				"getElementById"
 			],
 			[
 				"text",
@@ -95,23 +159,79 @@
 			"file": "app/views/orders/_form.html.erb",
 			"settings":
 			{
-				"buffer_size": 2347,
+				"buffer_size": 4533,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/layouts/application.html.erb",
+			"file": "app/views/cargos/_cargo_fields.html.erb",
 			"settings":
 			{
-				"buffer_size": 692,
+				"buffer_size": 1391,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/orders_controller.rb",
+			"settings":
+			{
+				"buffer_size": 1523,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Gemfile",
+			"file": "app/views/cargos/_cargo.html.erb",
 			"settings":
 			{
-				"buffer_size": 1476,
+				"buffer_size": 564,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/views/cargos/new.html.erb",
+			"settings":
+			{
+				"buffer_size": 151,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/controllers/cargos_controller.rb",
+			"settings":
+			{
+				"buffer_size": 129,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/cargos/new.js.erb",
+			"settings":
+			{
+				"buffer_size": 76,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/models/order.rb",
+			"settings":
+			{
+				"buffer_size": 967,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/javascripts/application.js",
+			"settings":
+			{
+				"buffer_size": 641,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/custom.css",
+			"settings":
+			{
+				"buffer_size": 6008,
 				"line_ending": "Unix"
 			}
 		}
@@ -144,27 +264,59 @@
 	},
 	"file_history":
 	[
-		"/C/autodor/app/assets/stylesheets/custom.css",
-		"/C/autodor/app/assets/stylesheets/blueprint/screen.css",
-		"/C/autodor/app/views/layouts/application.html.erb",
-		"/C/autodor/app/views/layouts/_stylesheets.html.erb",
-		"/C/autodor/app/views/orders/_order.html.erb",
-		"/C/autodor/app/views/users/show.html.erb",
-		"/C/autodor/app/views/layouts/_header.html.erb",
-		"/C/autodor/app/models/client.rb",
-		"/C/autodor/app/views/orders/_form.html.erb",
-		"/C/autodor/app/views/orders/edit.html.erb",
+		"/C/autodor/app/assets/javascripts/nested_form.js",
+		"/C/autodor/app/assets/javascripts/application.js",
+		"/C/autodor/Gemfile",
+		"/C/autodor/app/views/cargos/new.html.erb",
 		"/C/autodor/config/routes.rb",
+		"/C/autodor/app/controllers/cargos_controller.rb",
+		"/C/autodor/app/views/cargos/_cargo_fields.html.erb",
 		"/C/autodor/app/controllers/orders_controller.rb",
-		"/C/autodor/app/views/orders/show.html.erb",
-		"/C/autodor/app/views/orders/print.html.erb",
-		"/C/autodor/app/assets/stylesheets/blueprint/print.css",
-		"/C/autodor/app/helpers/application_helper.rb",
-		"/C/autodor/app/helpers/sessions_helper.rb",
-		"/C/autodor/app/controllers/clients_controller.rb",
 		"/C/autodor/app/models/order.rb",
-		"/C/autodor/app/views/clients/new.html.erb",
+		"/C/autodor/app/models/cargo.rb",
+		"/C/autodor/app/views/cargos/new.js.erb",
+		"/C/autodor/app/views/cargos/_cargo.html.erb",
+		"/C/autodor/app/views/orders/show.html.erb",
+		"/C/autodor/app/views/layouts/_header.html.erb",
+		"/C/autodor/app/assets/stylesheets/custom.css",
+		"/C/autodor/app/views/layouts/application.html.erb",
+		"/C/autodor/app/assets/stylesheets/blueprint/screen.css",
+		"/C/autodor/app/helpers/cargo_helper.rb",
+		"/C/autodor/app/views/orders/_form.html.erb",
+		"/C/autodor/app/views/cargos/new_cargo.js.erb",
+		"/C/autodor/app/views/cargos/cargo_fields.js.erb",
+		"/C/autodor/app/views/cargo/new.html.erb",
+		"/C/autodor/app/views/cargo/_cargo_fields.html.erb",
+		"/C/autodor/app/views/cargo/cargo_fields.html.erb",
+		"/C/autodor/app/views/layouts/_stylesheets.html.erb",
+		"/C/autodor/db/migrate/20120708145905_create_cargos.rb",
+		"/C/autodor/app/views/orders/cargo_fields.js.erb",
+		"/C/autodor/app/views/cargo/_cargo.html.erb",
+		"/C/autodor/app/views/cargo/index.html.erb",
+		"/C/autodor/app/views/clients/show.html.erb",
+		"/C/autodor/app/models/client.rb",
+		"/C/autodor/app/views/users/_user.html.erb",
+		"/C/autodor/app/controllers/clients_controller.rb",
+		"/C/autodor/app/views/clients/index.html.erb",
+		"/C/autodor/app/views/orders/_order.html.erb",
 		"/C/autodor/app/views/clients/_form.html.erb",
+		"/C/autodor/app/helpers/sessions_helper.rb",
+		"/C/autodor/app/views/clients/_client.html.erb",
+		"/C/autodor/app/views/users/index.html.erb",
+		"/C/autodor/db/migrate/20120701173623_create_clients.rb",
+		"/C/autodor/app/views/layouts/_calendar_date_select.html.erb",
+		"/C/autodor/app/assets/stylesheets/calendar_date_select/gray.css",
+		"/C/autodor/app/assets/javascripts/calendar_date_select.js",
+		"/C/autodor/app/views/pages/about.html.erb",
+		"/C/autodor/app/views/pages/contact.html.erb",
+		"/C/autodor/app/assets/stylesheets/blueprint/print.css",
+		"/C/autodor/app/views/users/show.html.erb",
+		"/C/autodor/app/views/layouts/_footer.html.erb",
+		"/C/autodor/app/controllers/pages_controller.rb",
+		"/C/autodor/app/views/orders/edit.html.erb",
+		"/C/autodor/app/views/orders/print.html.erb",
+		"/C/autodor/app/helpers/application_helper.rb",
+		"/C/autodor/app/views/clients/new.html.erb",
 		"/C/autodor/app/views/users/edit.html.erb",
 		"/C/autodor/app/views/users/new.html.erb",
 		"/C/autodor/app/models/user.rb",
@@ -173,11 +325,8 @@
 		"/C/autodor/config/environment.rb",
 		"/C/autodor/app/controllers/users_controller.rb",
 		"/C/autodor/app/helpers/users_helper.rb",
-		"/C/autodor/db/migrate/20120701173623_create_clients.rb",
 		"/C/autodor/db/migrate/20120701170817_add_signed_to_orders.rb",
-		"/C/autodor/app/views/clients/index.html.erb",
 		"/C/autodor/app/views/clients/edit.html.erb",
-		"/C/autodor/app/views/clients/_client.html.erb",
 		"/C/Distr/Sublime 2.0/Data/Packages/Default/Preferences.sublime-settings",
 		"/C/autodor/app/views/orders/common.html.erb",
 		"/C/autodor/config/boot.rb",
@@ -202,22 +351,15 @@
 		"/C/autodor/app/controllers/sessions_controller.rb",
 		"/C/autodor/app/helpers/home_helper.rb",
 		"/C/autodor/app/helpers/orders_helper.rb",
-		"/C/autodor/app/controllers/pages_controller.rb",
 		"/C/autodor/app/controllers/home_controller.rb",
 		"/C/autodor/app/controllers/application_controller.rb",
-		"/C/autodor/app/views/users/_user.html.erb",
 		"/C/autodor/app/views/home/show.html.erb",
-		"/C/autodor/app/views/layouts/_footer.html.erb",
 		"/C/autodor/app/views/orders/new.html.erb",
 		"/C/autodor/config/locales/ru.yml",
-		"/C/autodor/Gemfile",
 		"/C/autodor/config/locales/ru.rb",
 		"/C/autodor/config/locales/plurals.db",
 		"/C/autodor/app/views/sessions/new.html.erb",
 		"/C/autodor/app/views/orders/index.html.erb",
-		"/C/autodor/app/views/users/index.html.erb",
-		"/C/autodor/app/views/pages/about.html.erb",
-		"/C/autodor/app/views/pages/contact.html.erb",
 		"/C/autodor/app/views/pages/help.html.erb",
 		"/C/autodor/app/views/shared/_error_messages.html.erb",
 		"/C/autodor/app/views/shared/_order_form.html.erb",
@@ -233,6 +375,8 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"C:\\autodor\\app\\views",
+			"C:\\autodor",
 			"C:\\autodor\\app\\assets",
 			"C:\\autodor",
 			""
@@ -243,6 +387,22 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cloneNode",
+			"$",
+			"radius",
+			"box-shadow",
+			"px",
+			"img",
+			"cargo/",
+			"link_to_function",
+			"flash",
+			".box",
+			"clear_return_to",
+			"@client",
+			"c.",
+			"c",
+			"box",
+			"button_cell",
 			"950",
 			"section",
 			"box",
@@ -260,6 +420,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"jQuery"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -270,7 +431,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -278,15 +439,15 @@
 					"file": "app/views/orders/_form.html.erb",
 					"settings":
 					{
-						"buffer_size": 2347,
+						"buffer_size": 4533,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								38,
-								38
+								607,
+								607
 							]
 						],
 						"settings":
@@ -296,25 +457,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/views/layouts/application.html.erb",
+					"file": "app/views/cargos/_cargo_fields.html.erb",
 					"settings":
 					{
-						"buffer_size": 692,
+						"buffer_size": 1391,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								214,
-								214
+								1377,
+								1377
 							]
 						],
 						"settings":
@@ -331,18 +492,18 @@
 				},
 				{
 					"buffer": 2,
-					"file": "Gemfile",
+					"file": "app/controllers/orders_controller.rb",
 					"settings":
 					{
-						"buffer_size": 1476,
+						"buffer_size": 1523,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								187,
-								187
+								1371,
+								1371
 							]
 						],
 						"settings":
@@ -353,6 +514,192 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/cargos/_cargo.html.erb",
+					"settings":
+					{
+						"buffer_size": 564,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								227,
+								227
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/cargos/new.html.erb",
+					"settings":
+					{
+						"buffer_size": 151,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3,
+								3
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/controllers/cargos_controller.rb",
+					"settings":
+					{
+						"buffer_size": 129,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								99,
+								99
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/cargos/new.js.erb",
+					"settings":
+					{
+						"buffer_size": 76,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15,
+								15
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/JavaScript (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/models/order.rb",
+					"settings":
+					{
+						"buffer_size": 967,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								697,
+								697
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/assets/javascripts/application.js",
+					"settings":
+					{
+						"buffer_size": 641,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								641,
+								641
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/assets/stylesheets/custom.css",
+					"settings":
+					{
+						"buffer_size": 6008,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1601,
+								1601
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1650.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -397,7 +744,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

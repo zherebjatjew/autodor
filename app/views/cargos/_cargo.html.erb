@@ -1,0 +1,9 @@
+<div style="float:left;width:100%">
+  <div style="float:left"><%= item.name %></div>
+  <div style="float:right"><%= link_to_function "Удалить", "delCargo($(cargo#{item.id}))", :class => 'command delete', :id => "remove#{item.id}" %></div>
+  <div style="float:right">
+    <%= link_to_function "▼", "editCargo($(cargo#{item.id}), $(expand#{item.id}))", :class => 'command', :id => "expand#{item.id}" %>
+  </div>
+  <div style="float:right;padding-left:0.5em"><%= item.volume_m %></div>
+  <div style="float:right;padding-left:0.5em"><%= item.weight_kg %></div>
+</div>
