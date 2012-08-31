@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"at",
+				"attr"
+			],
+			[
+				"car",
+				"cargos"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"f",
+				"float"
+			],
+			[
+				"vo",
+				"volume_m"
+			],
+			[
+				"weight",
+				"weight_kg"
+			],
+			[
 				"ca",
 				"cargos"
 			],
@@ -276,10 +308,6 @@
 	},
 	"file_history":
 	[
-		"/C/autodor/app/views/clients/_client.html.erb",
-		"/C/Distr/Sublime 2.0/Data/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Distr/Sublime 2.0/Data/Packages/User/Base File.sublime-settings",
-		"/C/Distr/Sublime 2.0/Data/Packages/User/HTML (Rails).sublime-settings",
 		"/C/autodor/app/assets/javascripts/nested_form.js",
 		"/C/autodor/app/assets/javascripts/application.js",
 		"/C/autodor/Gemfile",

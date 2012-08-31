@@ -21,8 +21,6 @@ $(document).ready(function(e)
   $("body").on('click', ".numerous-add", function(e){
     e.preventDefault();
 
-    window.numerous_init()
-    
     // Remove 'for-' on this id
     var update = "#" + this.id.split("for-")[1];
     var form = forms[this.id].replace(/replace_this/g, new Date().getTime());
