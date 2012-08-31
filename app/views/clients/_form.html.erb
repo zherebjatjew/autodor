@@ -14,9 +14,9 @@
         document.getElementById('org_only').hidden = true;
       }
     }
-    function loadComplete() {
-      setOrganization(<%= @client.organization %>);
-    }
+    jQuery(document).ready(function() {
+        setOrganization(<%= @client.organization %>);
+    });
   </script>
   <div class="field">
     <%= f.radio_button :organization, true, :onclick => 'window.setOrganization(true)', :id => 'org_mode' %> <%= link_to_function "Организация", 'window.setOrganization(true)', :class => 'radio_button_text' %><br />

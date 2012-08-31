@@ -6,7 +6,7 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'nokogiri', '~> 1.5.3'
-gem 'therubyracer', '~> 0.10.1'
+gem 'therubyracer', '~> 0.10.1', :platform => :ruby
 gem 'json', '~> 1.7.3'
 gem 'i18n', '~> 0.6.0'
 gem 'russian', '~> 0.6.0'

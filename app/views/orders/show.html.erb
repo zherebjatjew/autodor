@@ -63,10 +63,12 @@
   <h2>Информация о грузе, требуемом подвижном составе и оплате</h2>
 
   <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
-    <tr>
-      <td style="width:75mm">1. Наименование/Вес/Объём
-      <td>Цемент/20т/10м<sup>3</sup>
-    </tr>
+    <% @order.cargos.each |cargo| %>
+      <tr>
+        <td style="width:75mm">1. Наименование/Вес/Объём
+        <td><%= cargo.name %>/<%= cargo.weight %>/<%= cargo.volume %>
+      </tr>
+    <% end %>
   </table>
 
 
@@ -76,6 +78,34 @@
   <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
     <tr>
       <td style="width:75mm">1. ФИО, год рождения
+      <td>---
+    </tr>
+    <tr>
+      <td>2. Паспортные данные, дата выдачи, код под-ния
+      <td>---
+    </tr>
+    <tr>
+      <td>3. Телефоны для связи (все)
+      <td>---
+    </tr>
+    <tr>
+      <td>4. Марка автомобиля
+      <td>---
+    </tr>
+    <tr>
+      <td>5. Гос. номер автомобиля
+      <td>---
+    </tr>
+    <tr>
+      <td>6. Тип кузова / V кузова, м<sup>3</sup>
+      <td>---
+    </tr>
+    <tr>
+      <td>7. Гос. номер прицепа
+      <td>---
+    </tr>
+    <tr>
+      <td>8. Тип прицепа / V прицепа, м<sup>3</sup>
       <td>---
     </tr>
   </table>

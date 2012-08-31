@@ -1,7 +1,6 @@
 <div style="float:left;width:100%">
   <div style="float:left"><%= item.name %></div>
-  <div style="float:right"><%= link_to "Удалить", item, :method => 'delete',
-    :confirm => "Точно удалить груз «#{item.name}»?", :class => 'command delete' %></div>
+  <div style="float:right"><%= link_to_function "Удалить", "delCargo($(cargo#{item.id}))", :class => 'command delete', :id => "remove#{item.id}" %></div>
   <div style="float:right">
     <%= link_to_function "▼", "editCargo($(cargo#{item.id}), $(expand#{item.id}))", :class => 'command', :id => "expand#{item.id}" %>
   </div>

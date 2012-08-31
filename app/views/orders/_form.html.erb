@@ -9,18 +9,31 @@
     button.text(button.text() == '▼' ? '▲' : '▼');
   }
   function addCargo() {
-    var newDiv = $('div#cargo_template').clone();
+    var newDiv = $('div#cargo-template').clone();
     var now = new Date();
     var newId = ((now.getHours())*60 + now.getMinutes())*60 + now.getSeconds();
-    newDiv.attr("id", "cargo" + newId);
-    $('div#cargos').appendTo(newDiv);
+    newDiv.attr("id", "box" + newId);
+    id = newDiv.find("#cargo_id");
+    id.attr("id", newId);
+    id.val(newId);
+    newDiv.find('div#cargo').attr("id", "cargo" + newId);
+    expand = newDiv.find('#expand');
+    expand.attr('id', 'expand' + newId);
+    expand.attr('onclick', 'editCargo($(cargo' + newId + '), $(expand' + newId + ')); return false;');
+    remove = newDiv.find('#remove');
+    remove.attr('remove' + newId);
+    remove.attr('onclick', 'delCargo($(box' + newId + ')); return false;');
+    $('div#cargos').append(newDiv);
     newDiv.show(250);
+  }
+  function delCargo(item) {
+    item.hide(250);
   }
   //$.noConflict();
   jQuery(document).ready(function() {
     $('a#add-cargo').click(function() {
       $('#cargos div:first').clone().find('id').val('')
-      .end().appendTo('#cargos');
+      .end().append('#cargos');
     });
 
     $('.delete-cargo').live('click', function() {
@@ -31,10 +44,11 @@
     });
   });
 </script>
+
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
-  <div style="width:100%">
-    <div class="box">
+  <div style="width:100%;float:left">
+    <div class="box" style="float:left">
       <div class="field">
         <%= f.label :forwarder, "Экспедитор" %><br />
         <% usrs = [] %>
@@ -58,35 +72,83 @@
       <div class="field">
         <%= f.label :client_id, "Заказчик" %><br />
         <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i) %>
-        <%= link_to "добавить", new_client_path, :class => 'command' %> 
+        <%= link_to "Добавить", new_client_path %> 
       </div>
       <div class="field">
         <%= f.label :sender_id, "Отправитель" %><br />
         <%= f.select :sender_id, options_for_select(all_clients, @order.sender_id.to_i) %>
-        <%= link_to "добавить", new_client_path, :class => 'command' %> 
+        <%= link_to "Добавить", new_client_path %> 
       </div>
       <div class="field">
         <%= f.label :receiver_id, "Получатель" %><br />
         <%= f.select :receiver_id, options_for_select(all_clients, @order.receiver_id.to_i) %>
-        <%= link_to "добавить", new_client_path, :class => 'command' %> 
+        <%= link_to "Добавить", new_client_path %> 
       </div>
     </div>
-    <div class="box" id="cargos">
+
+    <div class="box" style="float:left">
       <h2>Груз</h2>
-      <% @order.cargos.each do |item| %>
-        <div class="box">
-          <%= render 'cargos/cargo', :item => item, :f => f %>
-          <div id="<%= "cargo#{item.id}" %>" style="display:none">
-            <%= fields_for item do |builder| %>
-              <%= render '/cargos/cargo_fields', :f => builder %>
-            <% end %>
-            <%#= f.link_to_remove "Удалить" %>
-          </div>
+
+      <div id="tag-list"></div>
+
+      <div class="numerous">
+        <div class="numerous-form">
+
+          <%= f.fields_for :cargo, Cargo.new, :child_index => "replace_this" do |builder| %>
+            <div>
+              <div class="field">
+                <%= builder.label :name, "Наименование" %><br />
+                <%= builder.text_field :name %>
+              </div>
+              <div class="field">
+                <%= builder.label :weight_kg, "Масса" %><br />
+                <%= builder.text_field :weight_kg %>
+              </div>
+              <div class="field">
+                <%= builder.label :volume_m, "Объём" %><br />
+                <%= builder.text_field :volume_m %>
+              </div>
+              <div class="field">
+                <%= builder.label :packing, "Вид упаковки" %><br />
+                <%= builder.text_field :packing %>
+              </div>
+              <div class="field">
+                <%= builder.label :cost, "Объявленная стоимость" %><br />
+                <%= builder.text_field :cost %>
+              </div>
+              <div class="field">
+                <%= builder.label :temperature, "Температурный режим" %><br />
+                <%= builder.text_field :temperature %>
+              </div>
+              <div class="field">
+                <%= builder.label :train_type, "Тип состава" %><br />
+                <%= builder.text_field :train_type %>
+              </div>
+              <div class="field">
+                <%= builder.check_box :load %>Погрузка<br />
+                <%= builder.check_box :seal %>Пломба<br />
+                <%= builder.check_box :pneumo %>Пневмоподвеска<br />
+                <%= builder.check_box :lift %>Лифт<br />
+              </div>
+              <div class="field">
+                <%= builder.label :requirements, "Дополнительные требования" %><br />
+                <%= builder.text_field :requirements %>
+              </div>
+              <div class="field">
+                <%= builder.label :transportation_charge, "Ставка за перевозку" %><br />
+                <%= builder.text_field :transportation_charge %>
+              </div>
+              <%= builder.hidden_field :_destroy, :value => 0, :class => "numerous-remove-field" %>
+              <%= link_to "delete", "#", :class => "numerous-remove" %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-      <div id="cargo-template" style="display:none">Ещё один груз</div>
+
+        <%= link_to "add tag", "#", :class => "numerous-add", :id => "for-tag-list" %>
+      </div>
+
       <%#= link_to "добавить", new_cargo_path, :class => 'command', :remote => true, :id => 'add_cargo' %>
-      <%= link_to_function "добавить", "addCargo()", :class => 'command', :remote => true, :id => 'add_cargo' %>
+      <%#= link_to_function "добавить", "addCargo()", :class => 'command', :remote => true, :id => 'add_cargo' %>
     </div>
 
     <div class="box">
@@ -96,7 +158,7 @@
     <div class="box">
       <h2>Транспорт</h2>
     </div>
-
+  
     <div class="actions">
       <%= f.submit "Сохранить" %>
     </div>

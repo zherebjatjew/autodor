@@ -9,7 +9,7 @@
     <%= render 'layouts/stylesheets' %>
     <%= render 'layouts/calendar_date_select' %>
   </head>
-  <body onLoad="loadComplete()">
+  <body>
     <% if !flash.empty? %>
       <section>
         <% flash.each do |key, value| %>

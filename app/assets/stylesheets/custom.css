@@ -1,4 +1,8 @@
 .container {
+  width: 100%
+  float: left;
+#  text-align: center;
+  z-index: 5;
 }
 
 body {
@@ -10,26 +14,46 @@ body {
 header {
   width: 100%;
   background: #8d5;
-  padding-left: 150px;
+  padding-left: 1em;
   padding-right:0;
   margin: 0;
   color: #060;
-  z-index: 0;
-  box-shadow: 0 6px 6px rgba(0,0,0,0.3);
+  z-index: 10;
+  -webkit-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
+  -moz-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
+  filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
+  box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
   display: block;
 }
 
 .header {
   background: #ae5;
-  float: none;
+  float: left;
   width: 100%;
 }
 
+h1.header {
+  padding-bottom: 0;
+}
+
+header img {
+  margin: 0.4em;
+  display: block;
+}
+
 #main {
-  border-radius: 3px;
-  box-shadow: 0 6px 6px rgba(0,0,0,0.3);
-  margin: 0 150px 20px 150px;
-  padding: 15px 60px 30px 60px;
+  -moz-border-radius-bottomleft:      0.4em;
+  -webkit-border-bottom-left-radius:  0.4em;
+  border-bottom-left-radius:          0.4em;
+  -moz-border-radius-bottomright:     0.4em;
+  -webkit-border-bottom-right-radius: 0.4em;
+  border-bottom-right-radius:         0.4em;
+  -webkit-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
+  -moz-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
+  filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
+  box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
+  width: 80%;
+  padding: 1em 6em 3em 6em;
   background: white;
   z-index:1
   line-height:2em;
@@ -60,7 +84,7 @@ nav {
   text-align:right;
   margin-left: 0;
   margin-top: -1em;
-  padding: 0 150px 0 0;
+  padding: 0 10% 0 0;
   background: #6b3;
   font-family: "Helvetica";
 }
@@ -89,7 +113,9 @@ nav ul li a:visited {
 
 nav ul li a:hover {
   background-color: #462;
-  border-radius: 3px;
+  -moz-border-radius:    0.2em;
+  -webkit-border-radius: 0.2em;
+  border-radius:         0.2em;
   text-decoration: none;
 }
 
@@ -98,6 +124,7 @@ nav.footer {
   text-align:center;
   color:#888;
   padding-right: 0;
+  z-index: 1;
 }
 
 nav.footer a {
@@ -118,7 +145,9 @@ nav.footer a:hover {
 
 .command {
   color:#222;
-  border-radius: 3px;
+  -moz-border-radius:    0.2em;
+  -webkit-border-radius: 0.2em;
+  border-radius:         0.2em;
   margin: 1px;
   padding: 0.3em 0.5em;
   border:1px solid #ddd;
@@ -145,6 +174,9 @@ a.command {
 a.command:hover {
   border: 1px solid #ccc;
   background-color: #fdfdfd;
+  -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  filter: progid:DXImageTransform.Microsoft.shadow(direction=0, color=#808080, strength=3);
   box-shadow: 0 0 3px rgba(0,0,0,0.3);
   color: black;
 }
@@ -167,22 +199,24 @@ a.signin_button {
   margin-right: auto;
   display: block;
   text-align: center;
-  width: 190px;
+  width: 25%;
   color: #fff;
   background: #006400;
   font-size: 150%;
   font-weight: bold;
-  padding: 20px;
+  padding: 2em;
 }
 
 .round {
-  -moz-border-radius:    10px;
-  -webkit-border-radius: 10px;
-  border-radius:         10px;
+  -moz-border-radius:    0.7em;
+  -webkit-border-radius: 0.7em;
+  border-radius:         0.7em;
 }
 
 .delete {
-  border-radius: 3px;
+  -moz-border-radius:    0.2em;
+  -webkit-border-radius: 0.2em;
+  border-radius:         0.2em;
 }
 
 .zebra tbody tr:nth-child(even) td, tbody tr.even td {background:#f1f9d1;}
@@ -190,13 +224,16 @@ a.signin_button {
 a.delete:hover {
   background-color: #f88;
   border-color: #a44;
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  filter: progid:DXImageTransform.Microsoft.shadow(direction=0, color=#808080, strength=10);
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
 footer {
   text-align: center;
-  margin-top: 10px;
-  width: 710px;
+  margin-top: 1.5em;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -224,15 +261,15 @@ td.sidebar {
 
 .profile img.gravatar {
   border: 1px solid #999;
-  margin-bottom: -15px;
+  margin-bottom: -1em;
 }
 
 div.field, div.actions {
-  margin-bottom: 10px;
+  margin-bottom: 0.75em;
 }
 
 .field_with_errors {
-  margin-top: 10px;
+  margin-top: 0.75em;
   padding: 2px;
   background-color: red;
   display: table;
@@ -243,10 +280,10 @@ div.field, div.actions {
 }
 
 #error_explanation {
-  width: 400px;
+  width: 50%;
   border: 2px solid red;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
+  padding-bottom: 0.75em;
+  margin-bottom: 0.75em;
   background-color: #f0f0f0;
 }
 
@@ -254,7 +291,6 @@ div.field, div.actions {
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;
-  font-size: 12px;
   margin: -7px;
   background-color: #fff;
 }
@@ -266,7 +302,6 @@ div.field, div.actions {
 }
 
 #error_explanation ul li {
-  font-size: 12px;
   list-style: square;
 }
 
@@ -301,7 +336,7 @@ table.orders tr {
 table.orders tr td.order {
   boder-top: 1px solid #ccc;
   vertical-align: top;
-  padding-top: 10px;
+  padding-top: 0.5em;
 }
 
 div.user_info span.user_name {
