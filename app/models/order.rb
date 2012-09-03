@@ -42,7 +42,6 @@ class Order < ActiveRecord::Base
     Client.find receiver_id
   end
 
-<<<<<<< HEAD
   def driver
     Driver.find driver_id
   end
@@ -51,6 +50,4 @@ class Order < ActiveRecord::Base
     Cargo.find(:all, :conditions => "order_id=#{id}")
   end
 
-=======
->>>>>>> a211d9c6d23202e6d24181d847d0bf1c3c9c7239
 end
