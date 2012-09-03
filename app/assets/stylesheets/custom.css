@@ -72,6 +72,11 @@ box {
   margin-left: 10%;
 }
 
+#cargo {
+  margin: 0.75em;
+  float: left;
+}
+
 /* Links */
 
 a {
