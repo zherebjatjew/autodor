@@ -24,4 +24,5 @@ class Cargo < ActiveRecord::Base
   	def nice value
   		(value + 0.3).round
   	end
+  end
 end
