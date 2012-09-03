@@ -23,7 +23,9 @@
         <%= yield %>
       </div>
       <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
+      <div style="float:left;width=100%">
+        <%= debug(params) if Rails.env.development? %>
+      </div>
     </div>
   </body>
 </html>

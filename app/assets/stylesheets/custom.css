@@ -1,7 +1,6 @@
 .container {
   width: 100%
   float: left;
-  text-align: center;
   z-index: 5;
 }
 
@@ -41,6 +40,18 @@ header img {
   display: block;
 }
 
+.footer {
+  float: left;
+  width: 100%;
+  text-align: center;
+  margin-top: 1em;
+}
+
+box {
+  border: 1 solid gray;
+  background: black;
+}
+
 #main {
   -moz-border-radius-bottomleft:      0.4em;
   -webkit-border-bottom-left-radius:  0.4em;
@@ -52,11 +63,13 @@ header img {
   -moz-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
   filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
   box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  width: 80%;
+  width: 70%;
   padding: 1em 6em 3em 6em;
   background: white;
   z-index:1
-  line-height:2em;
+  line-height:1.75em;
+  float:left;
+  margin-left: 10%;
 }
 
 /* Links */
@@ -117,6 +130,7 @@ nav ul li a:hover {
   -webkit-border-radius: 0.2em;
   border-radius:         0.2em;
   text-decoration: none;
+  color: white;
 }
 
 nav.footer {
