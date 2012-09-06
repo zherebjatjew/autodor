@@ -5,9 +5,10 @@
 <%= javascript_include_tag 'jquery', 'nested_form' %>
 <script type="text/javascript">
   function editCargo(form, button) {
-    form.slideToggle(250);
+    form.slideToggle(150);
     button.text(button.text() == '▼' ? '▲' : '▼');
   }
+
   function addCargo() {
     var newDiv = $('div#cargo-template').clone();
     var now = new Date();
@@ -24,10 +25,11 @@
     remove.attr('remove' + newId);
     remove.attr('onclick', 'delCargo($(box' + newId + ')); return false;');
     $('div#cargos').append(newDiv);
-    newDiv.show(250);
+    newDiv.show(150);
   }
+
   function delCargo(item) {
-    item.hide(250);
+    item.hide(150);
   }
   //$.noConflict();
   jQuery(document).ready(function() {
@@ -48,7 +50,7 @@
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
   <div style="width:100%;float:left">
-    <div class="box" style="float:left">
+    <div class="box">
       <div class="field">
         <%= f.label :forwarder, "Экспедитор" %><br />
         <% usrs = [] %>
@@ -68,7 +70,8 @@
         <%= f.label :info, "Комментарий" %><br />
         <%= f.text_area :info %>
       </div>
-    </div><div class="box">
+    </div>
+    <div class="box">
       <div class="field">
         <%= f.label :client_id, "Заказчик" %><br />
         <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i) %>
@@ -86,74 +89,28 @@
       </div>
     </div>
 
-    <div class="box" style="float:left">
+    <div class="box">
       <h2>Груз</h2>
-
-      <div id="tag-list"></div>
-
-      <div class="numerous">
-        <div class="numerous-form">
-
-          <%= f.fields_for :cargo, Cargo.new, :child_index => "replace_this" do |builder| %>
-            <div>
-              <div class="field">
-                <%= builder.label :name, "Наименование" %><br />
-                <%= builder.text_field :name %>
-              </div>
-              <div class="field">
-                <%= builder.label :weight_kg, "Масса" %><br />
-                <%= builder.text_field :weight_kg %>
-              </div>
-              <div class="field">
-                <%= builder.label :volume_m, "Объём" %><br />
-                <%= builder.text_field :volume_m %>
-              </div>
-              <div class="field">
-                <%= builder.label :packing, "Вид упаковки" %><br />
-                <%= builder.text_field :packing %>
-              </div>
-              <div class="field">
-                <%= builder.label :cost, "Объявленная стоимость" %><br />
-                <%= builder.text_field :cost %>
-              </div>
-              <div class="field">
-                <%= builder.label :temperature, "Температурный режим" %><br />
-                <%= builder.text_field :temperature %>
-              </div>
-              <div class="field">
-                <%= builder.label :train_type, "Тип состава" %><br />
-                <%= builder.text_field :train_type %>
-              </div>
-              <div class="field">
-                <%= builder.check_box :load %>Погрузка<br />
-                <%= builder.check_box :seal %>Пломба<br />
-                <%= builder.check_box :pneumo %>Пневмоподвеска<br />
-                <%= builder.check_box :lift %>Лифт<br />
-              </div>
-              <div class="field">
-                <%= builder.label :requirements, "Дополнительные требования" %><br />
-                <%= builder.text_field :requirements %>
-              </div>
-              <div class="field">
-                <%= builder.label :transportation_charge, "Ставка за перевозку" %><br />
-                <%= builder.text_field :transportation_charge %>
-              </div>
-              <%= builder.hidden_field :_destroy, :value => 0, :class => "numerous-remove-field" %>
-              <%= link_to "delete", "#", :class => "numerous-remove" %>
-            </div>
+      <div id="cargo" style="width:100%">
+        <% unless @order.id.nil? %>
+          <% @order.cargos.each do |c| %>
+            <%= f.fields_for :cargos, c, :child_index => (c.new_record? ? "index_to_replace_with_js" : nil) do |cargo_fm| %>
+              <%= render 'cargos/cargo', :f => cargo_fm %>
+            <% end %>
           <% end %>
-        </div>
-
-        <%= link_to "add tag", "#", :class => "numerous-add", :id => "for-tag-list" %>
+        <% end %>
       </div>
-
-      <%#= link_to "добавить", new_cargo_path, :class => 'command', :remote => true, :id => 'add_cargo' %>
-      <%#= link_to_function "добавить", "addCargo()", :class => 'command', :remote => true, :id => 'add_cargo' %>
+      <div>
+        <%= add_object_link("Добавить груз", f, Cargo.new, "cargos/new_cargo", "#cargo") %>
+      </div>
     </div>
 
     <div class="box">
       <h2>Водитель</h2>
+      <% all_drivers = [] %>
+      <% Driver.all.each { |c| all_drivers << [c.name, c.id] } %>
     </div>
+      <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
 
     <div class="box">
       <h2>Транспорт</h2>

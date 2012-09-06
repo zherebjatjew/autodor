@@ -1,0 +1,18 @@
+<% id = (object.new_record? ? "index_to_replace_with_js" : object.id) %>
+<%# object.id = id %> 
+<div class="cargo_item" id="<%= id %>">
+  <%= form.fields_for :cargos, object, :child_index => id do |cargo_fm| %>
+    <div style="float:left;width:100%">
+      <div style="float:left"><%= object.name %></div>
+      <div style="float:right"><%= link_to_function "Удалить", "delCargo($(#{id}))", :class => 'command delete', :id => "remove#{id}" %></div>
+      <div style="float:right">
+        <%= link_to_function "▼", "editCargo($(form#{id}), $(expand#{id}))", :class => 'command', :id => "expand#{id}" %>
+      </div>
+      <div style="float:right;padding-left:0.5em"><%= object.volume_m %></div>
+      <div style="float:right;padding-left:0.5em"><%= object.weight_kg %></div>
+    </div>
+    <div id="form<%= id %>" style="float:left;display:none">
+      <%= render 'cargos/cargo_fields', :f => cargo_fm %>
+    </div>
+  <% end %>
+</div>
