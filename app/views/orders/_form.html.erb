@@ -109,8 +109,11 @@
       <h2>Водитель</h2>
       <% all_drivers = [] %>
       <% Driver.all.each { |c| all_drivers << [c.name, c.id] } %>
+      <div class="field">
+        <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
+        <%= link_to "Добавить", new_driver_path %>
+      </div>
     </div>
-      <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
 
     <div class="box">
       <h2>Транспорт</h2>

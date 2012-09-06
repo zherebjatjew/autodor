@@ -1,6 +1,6 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize @user.errors.count, "ошибка" %>
+    <h2><%= pluralize object.errors.count, "ошибка" %>
       Объект <%= object.class.to_s.underscore.humanize.downcase %> не может быть сохранён</h2>
     <p>Проблемы со следующими полями:</p>
     <ul>

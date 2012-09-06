@@ -21,10 +21,10 @@ class Cargo < ActiveRecord::Base
   	end
   end
 
-  private
+#  private
 
   	def nice value
   		(value + 0.3).round
     end
-  end
+ # end
 end

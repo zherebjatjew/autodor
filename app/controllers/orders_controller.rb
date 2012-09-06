@@ -11,13 +11,12 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.build params[:order]
-    @cargos = []
+    @order = current_user.orders.new params[:order]
     if @order.save
       flash[:success] = "Заявка создана!"
       redirect_to user_path(current_user), :method => 'show'
     else
-      render edit_order_path(@order)
+      render :edit
     end
   end
 

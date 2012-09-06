@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20120716145900) do
     t.string   "note"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.decimal  "driver_id"
   end
 
   create_table "orders", :force => true do |t|
@@ -71,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120716145900) do
     t.decimal  "client_id"
     t.decimal  "sender_id"
     t.decimal  "receiver_id"
+    t.decimal  "driver_id"
   end
 
   create_table "users", :force => true do |t|

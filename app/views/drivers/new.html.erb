@@ -1,0 +1,14 @@
+<%= form_for @driver do |f| %>
+  <% render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :name, "ФИО" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :identity, "Паспортные данные" %>
+    <%= f.text_field :identity %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Сохранить" %>
+  </div>
+<% end %>

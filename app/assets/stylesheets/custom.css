@@ -1,5 +1,5 @@
 .container {
-  width: 100%
+  width: 100%;
   float: left;
   z-index: 5;
 }
@@ -29,6 +29,27 @@ header {
   background: #ae5;
   float: left;
   width: 100%;
+}
+
+.footer {
+  float: left;
+  width: 100%;
+  margin-top: 1.25em;
+}
+
+.cargo_item {
+    float: left;
+    width: 100%;
+    margin: 0.25em;
+}
+
+#cargo {
+    width: 100%;
+}
+
+.box {
+    float: left;
+    width: 100%;
 }
 
 .cargo_item {
@@ -66,11 +87,13 @@ header img {
   -moz-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
   filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
   box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  width: 80%;
+  width: 70%;
   padding: 1em 6em 3em 6em;
   background: white;
-  z-index:1
+  z-index:1;
+  float: left;
   line-height:2em;
+  margin-left: 10%;
 }
 
 /* Links */
