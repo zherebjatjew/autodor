@@ -5,9 +5,10 @@
 <%= javascript_include_tag 'jquery', 'nested_form' %>
 <script type="text/javascript">
   function editCargo(form, button) {
-    form.slideToggle(250);
+    form.slideToggle(150);
     button.text(button.text() == '▼' ? '▲' : '▼');
   }
+
   function addCargo() {
     var newDiv = $('div#cargo-template').clone();
     var now = new Date();
@@ -24,10 +25,11 @@
     remove.attr('remove' + newId);
     remove.attr('onclick', 'delCargo($(box' + newId + ')); return false;');
     $('div#cargos').append(newDiv);
-    newDiv.show(250);
+    newDiv.show(150);
   }
+
   function delCargo(item) {
-    item.hide(250);
+    item.hide(150);
   }
   //$.noConflict();
   jQuery(document).ready(function() {
@@ -99,13 +101,16 @@
         <% end %>
       </div>
       <div>
-        <%= add_object_link("Добавить груз", f, Cargo.new, "cargos/cargo", "#cargo") %>
+        <%= add_object_link("Добавить груз", f, Cargo.new, "cargos/new_cargo", "#cargo") %>
       </div>
     </div>
 
     <div class="box">
       <h2>Водитель</h2>
+      <% all_drivers = [] %>
+      <% Driver.all.each { |c| all_drivers << [c.name, c.id] } %>
     </div>
+      <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
 
     <div class="box">
       <h2>Транспорт</h2>

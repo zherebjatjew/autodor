@@ -3,7 +3,7 @@
 class Order < ActiveRecord::Base
   attr_accessible :info, :forwarder_id, :committed_at,
                   :signed, :paid, :completed, :client_id,
-                  :sender_id, :receiver_id, :driver_id, :cargo_attributes
+                  :sender_id, :receiver_id, :driver_id, :cargos_attributes
 
   belongs_to :user
   has_one :forwarder, :class_name => 'User'
@@ -46,8 +46,8 @@ class Order < ActiveRecord::Base
     Driver.find driver_id
   end
 
-  def cargos
-    Cargo.find(:all, :conditions => "order_id=#{id}")
-  end
+#  def cargos
+#    Cargo.find(:all, :conditions => "order_id=#{id}")
+#  end
 
 end
