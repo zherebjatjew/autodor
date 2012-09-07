@@ -5,26 +5,26 @@ class Cargo < ActiveRecord::Base
                   :requirements, :seal, :temperature, :train_type, :transportation_charge, :volume_m,
                   :weight_kg
 
-  belongs_to :order;
+  belongs_to :order
 
   def volume
-  	"#{nice volume_m} м<sup>3</sup>"
+    "#{nice volume_m} м³"
   end
 
   def weight
-  	if weight_kg < 1
-  		"#{nice weight_kg*1000} г"
-  	if weight_kg < 1000
-  	  "#{nice weight_kg} кг"
-  	else
-  		"#{nice weight_kg/1000} т"
-  	end
+    if weight_kg < 1
+      "#{nice weight_kg*1000} г"
+    elsif weight_kg < 1000
+      "#{nice weight_kg} кг"
+    else
+      "#{nice weight_kg/1000} т"
+    end
   end
 
-#  private
+  private
 
-  	def nice value
-  		(value + 0.3).round
+    def nice value
+      (value + 0.3).round
     end
- # end
+
 end

@@ -29,7 +29,8 @@
   }
 
   function delCargo(item) {
-    item.hide(150);
+    item.find(".delete-check").attr('checked', true);
+    // item.hide(150);
   }
   //$.noConflict();
   jQuery(document).ready(function() {
@@ -91,7 +92,7 @@
 
     <div class="box">
       <h2>Груз</h2>
-      <div id="cargo" style="width:100%">
+      <div id="cargo" style="width:100%;float:left;">
         <% unless @order.id.nil? %>
           <% @order.cargos.each do |c| %>
             <%= f.fields_for :cargos, c, :child_index => (c.new_record? ? "index_to_replace_with_js" : nil) do |cargo_fm| %>

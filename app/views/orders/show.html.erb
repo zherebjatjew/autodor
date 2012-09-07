@@ -74,15 +74,16 @@
 
 
   <h2>Информация о Водителе и транспортном средстве</h2>
+  <% driver = @order.driver %>
 
   <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
     <tr>
       <td style="width:75mm">1. ФИО, год рождения
-      <td>---
+      <td><%= driver.name %>
     </tr>
     <tr>
       <td>2. Паспортные данные, дата выдачи, код под-ния
-      <td>---
+      <td><%= driver.identity %>
     </tr>
     <tr>
       <td>3. Телефоны для связи (все)

@@ -4,14 +4,18 @@
   <%= form.fields_for :cargos, object, :child_index => id do |cargo_fm| %>
     <div style="float:left;width:100%">
       <div style="float:left"><%= object.name %></div>
-      <div style="float:right"><%= link_to_function "Удалить", "delCargo($(#{id}))", :class => 'command delete', :id => "remove#{id}" %></div>
+      <div style="float:right">
+        <%#= link_to_function "Удалить", "delCargo($(#{id}))", :class => 'command delete', :id => "remove#{id}" %>
+        <%= cargo_fm.check_box :_destroy %>
+        <%= cargo_fm.label :_destroy, "Удалить" %>
+      </div>
       <div style="float:right">
         <%= link_to_function "▼", "editCargo($(form#{id}), $(expand#{id}))", :class => 'command', :id => "expand#{id}" %>
       </div>
       <div style="float:right;padding-left:0.5em"><%= object.volume_m %></div>
       <div style="float:right;padding-left:0.5em"><%= object.weight_kg %></div>
     </div>
-    <div id="form<%= id %>" style="float:left;display:none">
+    <div id="form<%= id %>" style="float:left;">
       <%= render 'cargos/cargo_fields', :f => cargo_fm %>
     </div>
   <% end %>
