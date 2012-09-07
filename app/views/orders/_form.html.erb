@@ -2,13 +2,14 @@
 
 <% all_clients = [] %>
 <% Client.all.each { |c| all_clients << [c.name, c.id] } %>
-<%= javascript_include_tag 'jquery', 'nested_form' %>
+<%#= javascript_include_tag 'jquery', 'nested_form' %>
 <script type="text/javascript">
   function editCargo(form, button) {
     form.slideToggle(150);
     button.text(button.text() == '▼' ? '▲' : '▼');
   }
 
+  /*
   function addCargo() {
     var newDiv = $('div#cargo-template').clone();
     var now = new Date();
@@ -27,12 +28,17 @@
     $('div#cargos').append(newDiv);
     newDiv.show(150);
   }
+  */
 
   function delCargo(item) {
+    // Attr change does not affect on checkbox state,
+    // so I am using plain check box yet
     item.find(".delete-check").attr('checked', true);
-    // item.hide(150);
+    item.hide(150);
   }
-  //$.noConflict();
+
+  /*
+  $.noConflict();
   jQuery(document).ready(function() {
     $('a#add-cargo').click(function() {
       $('#cargos div:first').clone().find('id').val('')
@@ -46,6 +52,7 @@
         alert('You need at least one cargo.')
     });
   });
+  */
 </script>
 
 <%= form_for(@order) do |f| %>
