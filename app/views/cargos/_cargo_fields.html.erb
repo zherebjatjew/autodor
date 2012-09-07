@@ -29,7 +29,10 @@
     <%= f.text_field :train_type %>
   </div>
   <div class="field">
-    <%= f.check_box :load %>Погрузка<br />
+    <%= f.label :load, "Погрузка" %>
+    <%= f.text_field :load %>
+  </div>
+  <div class="field">
     <%= f.check_box :seal %>Пломба<br />
     <%= f.check_box :pneumo %>Пневмоподвеска<br />
     <%= f.check_box :lift %>Лифт<br />
