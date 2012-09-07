@@ -1,4 +1,6 @@
-class DriversController < ApplicationController
+# encoding : UTF-8
+
+cclass DriversController < ApplicationController
   before_filter :authenticate
 
   def new
