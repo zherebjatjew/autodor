@@ -1,12 +1,20 @@
 <%= form_for @driver do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.label :name, "ФИО" %>
+    <%= f.label :name, "ФИО" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :identity, "Паспортные данные" %>
+    <%= f.label :identity, "Паспортные данные" %><br />
     <%= f.text_field :identity %>
+  </div>
+  <div class="field">
+    <%= f.label :phone, "Телефоны" %><br />
+    <%= f.text_area :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :born_at, "Дата рождения" %><br />
+    <%= f.calendar_date_select :born_at %>
   </div>
   <div class="actions">
     <%= f.submit "Сохранить" %>
