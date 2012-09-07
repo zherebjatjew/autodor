@@ -139,7 +139,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color:white;
+  color: white;
   text-decoration: none;
   padding: 0.2em 0.5em;
 }
@@ -154,6 +154,7 @@ nav ul li a:hover {
   -webkit-border-radius: 0.2em;
   border-radius:         0.2em;
   text-decoration: none;
+  color: white;
 }
 
 nav.footer {
@@ -439,6 +440,8 @@ a.radio_button_text:visited {
 }
 
 .client_info {
+  float: left;
+  width: 100%;
 }
 
 .clients {

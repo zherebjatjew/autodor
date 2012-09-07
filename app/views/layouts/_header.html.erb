@@ -9,6 +9,7 @@
           <li><%= link_to "Пользователи", users_path %></li>
         <% end %>
         <li><%= link_to "Клиенты", clients_path %></li>
+        <li><%= link_to "Водители", drivers_path %></li>
         <li><%= link_to current_user.name, user_path(current_user) %></li>
         <li><%= link_to "Выйти", signout_path, :method => :delete %></li>
       <% else %>
