@@ -1,6 +1,6 @@
 # encoding : UTF-8
 
-cclass DriversController < ApplicationController
+class DriversController < ApplicationController
   before_filter :authenticate
 
   def new
@@ -23,4 +23,5 @@ cclass DriversController < ApplicationController
     @title = "Изменение информации о водителе"
     @driver = Driver.find params[:id]
   end
+
 end
