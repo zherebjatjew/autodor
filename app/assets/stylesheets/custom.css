@@ -69,11 +69,12 @@ header {
 
 h1.header {
   padding-bottom: 0;
+  display: inline;
 }
 
-header img {
+.img {
   margin: 0.4em;
-  display: block;
+  float:left;
 }
 
 #main {
@@ -87,13 +88,14 @@ header img {
   -moz-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
   filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
   box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  width: 70%;
+  /*width: 70%;*/
   padding: 1em 6em 3em 6em;
   background: white;
   z-index:1;
   float: left;
   line-height:2em;
-  margin-left: 10%;
+  margin-left: 10em;
+  margin-right: 10em;
 }
 
 /* Links */
@@ -116,14 +118,18 @@ nav {
   float: right;
 }
 
+.nav-bar {
+  background: #ae5;
+  float: left;
+}
+
 nav {
   white-space: nowrap;
   text-align:right;
   margin-left: 0;
-  margin-top: -1em;
   padding: 0 10% 0 0;
   background: #6b3;
-  font-family: "Helvetica";
+  font-family: "Helvetica",serif;
 }
 
 nav ul {
@@ -372,7 +378,7 @@ table.orders tr {
 }
 
 table.orders tr td.order {
-  boder-top: 1px solid #ccc;
+  /*border-top: 1px solid #ccc;*/
   vertical-align: top;
   padding-top: 0.5em;
 }
@@ -412,7 +418,7 @@ table.print_order tr.even td {background:#ffffff;}
 }
 
 table.order_signs td {
-  text-size: 75%;
+  font-size: 75%;
   vertical-align:top;
   text-align:center;
   background:#fff;
