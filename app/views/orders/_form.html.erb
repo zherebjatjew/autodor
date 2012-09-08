@@ -2,12 +2,12 @@
 
 <% all_clients = [] %>
 <% Client.all.each { |c| all_clients << [c.name, c.id] } %>
-<%#= javascript_include_tag 'jquery', 'nested_form' %>
+<%= javascript_include_tag 'jquery', 'nested_form' %>
 <%= javascript_include_tag 'date' %>
 <script type="text/javascript">
   function toggleGroup(form, button) {
-//    form.slideToggle(150);
-    form.toggle();
+    form.slideToggle(150);
+//    form.toggle();
     button.text(button.text() == '▼' ? '▲' : '▼');
   }
 
@@ -39,8 +39,8 @@
     item.hide(150);
   }
 
-  /*
   $.noConflict();
+  /*
   jQuery(document).ready(function() {
     $('a#add-cargo').click(function() {
       $('#cargos div:first').clone().find('id').val('')

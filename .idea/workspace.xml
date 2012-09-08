@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae27cacd-d74d-4f48-bd15-4a278a19ef55" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\autodor\app\assets\javascripts\numerous.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/cargos/_cargo.html.erb" afterPath="$PROJECT_DIR$/app/views/cargos/_cargo.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/cargos/_new_cargo.html.erb" afterPath="$PROJECT_DIR$/app/views/cargos/_new_cargo.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/drivers/_driver.html.erb" afterPath="$PROJECT_DIR$/app/views/drivers/_driver.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/drivers/index.html.erb" afterPath="$PROJECT_DIR$/app/views/drivers/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/orders/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/orders/_form.html.erb" />
     </list>
@@ -35,19 +33,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/drivers/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="22" selection-start="128" selection-end="128" vertical-scroll-proportion="-1.9615384">
+            <state line="4" column="0" selection-start="158" selection-end="158" vertical-scroll-proportion="0.20178041">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_driver.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_driver.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/drivers/_driver.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="65" selection-start="556" selection-end="556" vertical-scroll-proportion="0.5771605">
+            <state line="11" column="65" selection-start="556" selection-end="556" vertical-scroll-proportion="-7.1923075">
               <folding />
             </state>
           </provider>
@@ -65,7 +63,7 @@
       <file leaf-file-name="_form.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/orders/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="18" selection-start="315" selection-end="315" vertical-scroll-proportion="-5.8846154">
+            <state line="5" column="0" selection-start="105" selection-end="159" vertical-scroll-proportion="-3.2692308">
               <folding />
             </state>
           </provider>
@@ -114,10 +112,10 @@
         <option value="$PROJECT_DIR$/db/migrate/20120907162626_add_dates_to_order.rb" />
         <option value="$PROJECT_DIR$/app/views/cargos/_cargo.html.erb" />
         <option value="$PROJECT_DIR$/app/views/cargos/_new_cargo.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/orders/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/drivers/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/orders/_order.html.erb" />
         <option value="$PROJECT_DIR$/app/views/drivers/_driver.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/orders/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/drivers/index.html.erb" />
       </list>
     </option>
   </component>
@@ -349,6 +347,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="autodor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="autodor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="autodor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="autodor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -762,20 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/orders/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="315" selection-end="315" vertical-scroll-proportion="-5.8846154">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/drivers/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="22" selection-start="128" selection-end="128" vertical-scroll-proportion="-1.9615384">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/orders/_order.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="3" selection-start="3" selection-end="3" vertical-scroll-proportion="0.0">
@@ -785,7 +809,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/drivers/_driver.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="65" selection-start="556" selection-end="556" vertical-scroll-proportion="0.5771605">
+        <state line="11" column="65" selection-start="556" selection-end="556" vertical-scroll-proportion="-7.1923075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/orders/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="105" selection-end="159" vertical-scroll-proportion="-3.2692308">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/drivers/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="158" selection-end="158" vertical-scroll-proportion="0.20178041">
           <folding />
         </state>
       </provider>
