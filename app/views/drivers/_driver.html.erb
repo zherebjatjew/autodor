@@ -1,5 +1,15 @@
-<div class="client_info">
-  <div style="float:left;width:30%"><h3><%= driver.name %></h3></div><div style="float:right">
+<% @user = current_user %>
+<div class="client_info" id="<%= driver.id %>">
+  <div style="float:left;width:30%"><h3><%= driver.name %></h3></div>
+  <div style="float:right">
     <%= link_to "Изменить", edit_driver_path(driver), :class => 'command' %>
+  </div>
+  <% unless driver.orders.empty? %>
+    <div style="float:right">
+      <%= link_to_function "▼", "toggleGroup($(form#{driver.id}), $(expand#{driver.id}))", :class => 'command', :id => "expand#{driver.id}" %>
+    </div>
+  <% end %>
+  <div style="display:none;float:left;width:100%;padding-left:3em;" id="form<%= driver.id %>">
+    <%= render :partial => "orders/order", :collection => driver.orders %>
   </div>
 </div>

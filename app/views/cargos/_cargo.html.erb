@@ -8,7 +8,7 @@
       <%= f.label :_destroy, "Удалить" %>
     </div>
     <div style="float:right">
-      <%= link_to_function "▼", "editCargo($(form#{item.id}), $(expand#{item.id}))", :class => 'command', :id => "expand#{item.id}" %>
+      <%= link_to_function "▼", "toggleGroup($(form#{item.id}), $(expand#{item.id}))", :class => 'command', :id => "expand#{item.id}" %>
     </div>
     <div style="float:right;padding-left:0.5em"><%= item.volume_m %></div>
     <div style="float:right;padding-left:0.5em"><%= item.weight_kg %></div>
