@@ -88,7 +88,7 @@ h1.header {
   -moz-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
   filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
   box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  /*width: 70%;*/
+  width: 70%;
   padding: 1em 6em 3em 6em;
   background: white;
   z-index:1;

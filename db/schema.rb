@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907045630) do
+ActiveRecord::Schema.define(:version => 20120907162626) do
 
   create_table "cargos", :force => true do |t|
     t.string   "name"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20120907045630) do
     t.decimal  "cost"
     t.string   "temperature"
     t.string   "train_type"
-    t.boolean  "load"
+    t.string   "load"
     t.boolean  "seal"
     t.boolean  "pneumo"
     t.boolean  "lift"
@@ -61,17 +61,19 @@ ActiveRecord::Schema.define(:version => 20120907045630) do
   create_table "orders", :force => true do |t|
     t.string   "info"
     t.integer  "user_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.date     "committed_at"
     t.decimal  "forwarder_id"
-    t.boolean  "signed",       :default => false, :null => false
-    t.boolean  "paid",         :default => false, :null => false
-    t.boolean  "completed",    :default => false, :null => false
+    t.boolean  "signed",        :default => false, :null => false
+    t.boolean  "paid",          :default => false, :null => false
+    t.boolean  "completed",     :default => false, :null => false
     t.decimal  "client_id"
     t.decimal  "sender_id"
     t.decimal  "receiver_id"
     t.decimal  "driver_id"
+    t.datetime "sender_date"
+    t.datetime "receiver_date"
   end
 
   create_table "users", :force => true do |t|

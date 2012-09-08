@@ -43,14 +43,14 @@
     <tr>
       <td>4. Дата подачи т-та
       <td>Поле не заполняется
-      <td>
-      <td>
+      <td><%= date_to_s @order.sender_date %>
+      <td><%= date_to_s @order.receiver_date %>
     </tr>
     <tr>
       <td>5. Не позднее
       <td>Поле не заполняется
-      <td>
-      <td>
+      <td><%= time_to_s @order.sender_date %>
+      <td><%= time_to_s @order.receiver_date %>
     </tr>
     <tr>
       <td>Режим работы

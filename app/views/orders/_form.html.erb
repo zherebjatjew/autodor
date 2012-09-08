@@ -3,6 +3,7 @@
 <% all_clients = [] %>
 <% Client.all.each { |c| all_clients << [c.name, c.id] } %>
 <%#= javascript_include_tag 'jquery', 'nested_form' %>
+<%= javascript_include_tag 'date' %>
 <script type="text/javascript">
   function editCargo(form, button) {
     form.slideToggle(150);
@@ -83,17 +84,21 @@
       <div class="field">
         <%= f.label :client_id, "Заказчик" %><br />
         <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i) %>
-        <%= link_to "Добавить", new_client_path %> 
+        <%= link_to "Добавить", new_client_path %>
       </div>
       <div class="field">
         <%= f.label :sender_id, "Отправитель" %><br />
         <%= f.select :sender_id, options_for_select(all_clients, @order.sender_id.to_i) %>
-        <%= link_to "Добавить", new_client_path %> 
+        <%= link_to "Добавить", new_client_path %><br />
+        <%= f.label :sender_date, "Дата доставки транспорта" %>
+        <%= f.calendar_date_select :sender_date, :time => true %>
       </div>
       <div class="field">
         <%= f.label :receiver_id, "Получатель" %><br />
         <%= f.select :receiver_id, options_for_select(all_clients, @order.receiver_id.to_i) %>
-        <%= link_to "Добавить", new_client_path %> 
+        <%= link_to "Добавить", new_client_path %><br />
+        <%= f.label :receiver_date, "Дата доставки транспорта" %>
+        <%= f.calendar_date_select :receiver_date, :time => true %>
       </div>
     </div>
 
