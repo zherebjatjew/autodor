@@ -7,30 +7,8 @@
 <script type="text/javascript">
   function toggleGroup(form, button) {
     form.slideToggle(150);
-//    form.toggle();
     button.text(button.text() == '▼' ? '▲' : '▼');
   }
-
-  /*
-  function addCargo() {
-    var newDiv = $('div#cargo-template').clone();
-    var now = new Date();
-    var newId = ((now.getHours())*60 + now.getMinutes())*60 + now.getSeconds();
-    newDiv.attr("id", "box" + newId);
-    id = newDiv.find("#cargo_id");
-    id.attr("id", newId);
-    id.val(newId);
-    newDiv.find('div#cargo').attr("id", "cargo" + newId);
-    expand = newDiv.find('#expand');
-    expand.attr('id', 'expand' + newId);
-    expand.attr('onclick', 'editCargo($(cargo' + newId + '), $(expand' + newId + ')); return false;');
-    remove = newDiv.find('#remove');
-    remove.attr('remove' + newId);
-    remove.attr('onclick', 'delCargo($(box' + newId + ')); return false;');
-    $('div#cargos').append(newDiv);
-    newDiv.show(150);
-  }
-  */
 
   function delCargo(item) {
     // Attr change does not affect on checkbox state,
@@ -40,21 +18,6 @@
   }
 
   $.noConflict();
-  /*
-  jQuery(document).ready(function() {
-    $('a#add-cargo').click(function() {
-      $('#cargos div:first').clone().find('id').val('')
-      .end().append('#cargos');
-    });
-
-    $('.delete-cargo').live('click', function() {
-      if ($('#cargos div').length > 1)
-        $(this).parent().remove();
-      else
-        alert('You need at least one cargo.')
-    });
-  });
-  */
 </script>
 
 <%= form_for(@order) do |f| %>

@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   attr_accessible :info, :forwarder_id, :committed_at,
                   :signed, :paid, :completed, :client_id,
                   :sender_id, :receiver_id, :driver_id, :cargos_attributes,
-                  :sender_date, :receiver_date
+                  :sender_date, :receiver_date, :truck_id, :trailer_id
 
   belongs_to :user
   has_one :forwarder, :class_name => 'User'
@@ -13,7 +13,9 @@ class Order < ActiveRecord::Base
   has_one :receiver, :class_name => 'Client'
   has_many :cargos
   has_one :driver
-  
+  has_one :truck, :class_name => 'Car'
+  has_one :trailer, :class_name => 'Car'
+
   validates :user_id, :presence => true
   validates :forwarder_id, :presence => true
   validates :client_id, :presence => true
