@@ -94,6 +94,7 @@
 
     <div class="box">
       <h2>Транспорт</h2>
+      <%= f.select :sender_id, options_for_select(all_clients, @order.sender_id.to_i) %>
     </div>
   
     <div class="actions">

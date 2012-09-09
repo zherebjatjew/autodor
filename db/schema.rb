@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120908174403) do
+ActiveRecord::Schema.define(:version => 20120909041531) do
+
+  create_table "car_owners", :force => true do |t|
+    t.integer  "car_id"
+    t.integer  "driver_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "cargos", :force => true do |t|
     t.string   "name"
@@ -41,7 +48,6 @@ ActiveRecord::Schema.define(:version => 20120908174403) do
     t.float    "volume_m"
     t.float    "payload_kg"
     t.boolean  "is_trailer"
-    t.integer  "driver_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -86,6 +92,8 @@ ActiveRecord::Schema.define(:version => 20120908174403) do
     t.decimal  "driver_id"
     t.datetime "sender_date"
     t.datetime "receiver_date"
+    t.integer  "truck_id"
+    t.integer  "trailer_id"
   end
 
   create_table "users", :force => true do |t|

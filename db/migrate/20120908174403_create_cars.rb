@@ -7,7 +7,6 @@ class CreateCars < ActiveRecord::Migration
       t.float :volume_m                   # Объём кузова
       t.float :payload_kg                 # Полезная нагрузка
       t.boolean :is_trailer               # Прицеп?
-      t.integer :driver_id                # Водитель
 
       t.timestamps
     end
