@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 class ChangeCargoLoad < ActiveRecord::Migration
   def up
     change_column :cargos, :load, :string

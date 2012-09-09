@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 class CreateCarOwners < ActiveRecord::Migration
   def change
     create_table :car_owners do |t|
