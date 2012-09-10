@@ -10,7 +10,7 @@
         <%= cargo_fm.label :_destroy, "Удалить" %>
       </div>
       <div style="float:right">
-        <%= link_to_function "▼", "editCargo($(form#{id}), $(expand#{id}))", :class => 'command', :id => "expand#{id}" %>
+        <%= link_to_function "▼", "toggleGroup($(form#{id}), $(expand#{id}))", :class => 'command', :id => "expand#{id}" %>
       </div>
       <div style="float:right;padding-left:0.5em"><%= object.volume_m %></div>
       <div style="float:right;padding-left:0.5em"><%= object.weight_kg %></div>

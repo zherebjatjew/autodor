@@ -43,14 +43,14 @@
     <tr>
       <td>4. Дата подачи т-та
       <td>Поле не заполняется
-      <td>
-      <td>
+      <td><%= date_to_s @order.sender_date %>
+      <td><%= date_to_s @order.receiver_date %>
     </tr>
     <tr>
       <td>5. Не позднее
       <td>Поле не заполняется
-      <td>
-      <td>
+      <td><%= time_to_s @order.sender_date %>
+      <td><%= time_to_s @order.receiver_date %>
     </tr>
     <tr>
       <td>Режим работы
@@ -67,6 +67,42 @@
       <tr>
         <td style="width:75mm">1. Наименование/Вес/Объём
         <td><%= cargo.name %>/<%= cargo.weight %>/<%= cargo.volume %>
+      </tr>
+      <tr>
+        <td>2. Вид упаковки
+        <td><%= cargo.packing %>
+      </tr>
+      <tr>
+        <td>3. Объявленная стоимость, руб.
+        <td><%= cargo.cost %>
+      </tr>
+      <tr>
+        <td>4. Температурный режим
+        <td><%= cargo.temperature %>
+      </tr>
+      <tr>
+        <td>5. Тип состава/Погрузка/Пломба
+        <td><%= "#{cargo.train_type}/#{cargo.load}/#{cargo.seal ? 'Да' : 'Нет'}" %>
+      </tr>
+      <tr>
+        <td>6. Пневмоподвеска/Лифт
+        <td><%= "Пневмоподвеска #{'не' if !cargo.pneumo}обязательна/Лифт #{'не' if !cargo.lift}обязателен" %>
+      </tr>
+      <tr>
+        <td>7. Дополнительные требования
+        <td><%= cargo.requirements %>
+      </tr>
+      <tr>
+        <td>8. Ставка за перевозку, руб.
+        <td><%= cargo.transportation_charge %>
+      </tr>
+      <tr>
+        <td>9. Сроки и форма оплаты
+        <td><%= cargo.payment_notes %>
+      </tr>
+      <tr>
+        <td>10. Номер ТТН/Дата ТТН
+        <td><%= "#{cargo.bill_id}/#{cargo.bill_date}" %>
       </tr>
     <% end %>
   </table>
@@ -87,7 +123,7 @@
     </tr>
     <tr>
       <td>3. Телефоны для связи (все)
-      <td>---
+      <td><%= driver.phone %>
     </tr>
     <tr>
       <td>4. Марка автомобиля

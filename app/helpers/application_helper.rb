@@ -31,8 +31,12 @@ module ApplicationHelper
     "24/7"
   end
 
-  def date_to_s date
+  def date_to_s(date)
     date.strftime "%d.%m.%Y" if !date.nil?
+  end
+
+  def time_to_s(date)
+    date.strftime "%H:%M:00" if !date.nil?
   end
 
   def add_object_link(name, form, object, partial, where)

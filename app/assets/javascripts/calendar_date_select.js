@@ -27,8 +27,6 @@ Date.first_day_of_week = 1;
 Date.months = $w("January February March April May June July August September October November December" );
 Date.padded2 = function(hour) { var padded2 = parseInt(hour, 10); if (hour < 10) padded2 = "0" + padded2; return padded2; }
 Date.prototype.getPaddedMinutes = function() { return Date.padded2(this.getMinutes()); }
-Date.prototype.getAMPMHour = function() { var hour = this.getHours(); return (hour == 0) ? 12 : (hour > 12 ? hour - 12 : hour ) }
-Date.prototype.getAMPM = function() { return (this.getHours() < 12) ? "AM" : "PM"; }
 Date.prototype.stripTime = function() { return new Date(this.getFullYear(), this.getMonth(), this.getDate());};
 Date.prototype.daysDistance = function(compare_date) { return Math.round((compare_date - this) / Date.one_day); };
 Date.prototype.toFormattedString = function(include_time){
@@ -36,10 +34,11 @@ Date.prototype.toFormattedString = function(include_time){
   //str = Date.months[this.getMonth()] + " " + this.getDate() + ", " + this.getFullYear();
   str = this.getDate() + "." + (this.getMonth()+1) + "." + this.getFullYear();
   
-  if (include_time) { hour = this.getHours(); str += " " + this.getAMPMHour() + ":" + this.getPaddedMinutes() + " " + this.getAMPM() }
+  if (include_time) { str += " " + this.getHours() + ":" + this.getPaddedMinutes() }
   return str;
 }
-Date.parseFormattedString = function(string) { return new Date(string.replace(/(\d+).(\d+).(\d+)/, '$2/$1/$3'));}
+Date.parseFormattedString = function(string) { return new getDateFromFormat(string, "d.M.y H:m");}
+//Date.parseFormattedString = function(string) { return new Date(string.replace(/(\d+).(\d+).(\d+)/, '$2/$1/$3'));}
 Math.floor_to_interval = function(n, i) { return Math.floor(n/i) * i;}
 window.f_height = function() { return( [window.innerHeight ? window.innerHeight : null, document.documentElement ? document.documentElement.clientHeight : null, document.body ? document.body.clientHeight : null].select(function(x){return x>0}).first()||0); }
 window.f_scrollTop = function() { return ([window.pageYOffset ? window.pageYOffset : null, document.documentElement ? document.documentElement.scrollTop : null, document.body ? document.body.scrollTop : null].select(function(x){return x>0}).first()||0 ); }
@@ -197,7 +196,7 @@ CalendarDateSelect.prototype = {
       
       var t = new Date();
       this.hour_select = new SelectBox(buttons_div,
-        blank_time.concat($R(0,23).map(function(x) {t.setHours(x); return $A([t.getAMPMHour()+ " " + t.getAMPM(),x])} )),
+        blank_time.concat($R(0,23).map(function(x) {t.setHours(x); return $A([x,x])} )),
         { 
           calendar_date_select: this, 
           onchange: function() { this.calendar_date_select.updateSelectedDate( { hour: this.value });},

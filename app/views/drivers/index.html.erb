@@ -1,0 +1,20 @@
+<%= javascript_include_tag 'jquery', 'nested_form' %>
+<script type="text/javascript">
+    function toggleGroup(form, button) {
+        form.slideToggle(150);
+        button.text(button.text() == '▼' ? '▲' : '▼');
+    }
+</script>
+
+<h2>Наши водители</h2>
+
+<%= link_to "Добавить", new_driver_path, :class => 'command' %>
+
+<div class="clients">
+  <%= will_paginate %>
+  <%= render @drivers %>
+  <%= will_paginate %>
+</div>
+
+<%= link_to "Добавить", new_driver_path, :class => 'command' %>
+

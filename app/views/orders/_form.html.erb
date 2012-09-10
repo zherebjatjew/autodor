@@ -2,33 +2,13 @@
 
 <% all_clients = [] %>
 <% Client.all.each { |c| all_clients << [c.name, c.id] } %>
-<%#= javascript_include_tag 'jquery', 'nested_form' %>
+<%= javascript_include_tag 'jquery', 'nested_form' %>
+<%= javascript_include_tag 'date' %>
 <script type="text/javascript">
-  function editCargo(form, button) {
+  function toggleGroup(form, button) {
     form.slideToggle(150);
     button.text(button.text() == '▼' ? '▲' : '▼');
   }
-
-  /*
-  function addCargo() {
-    var newDiv = $('div#cargo-template').clone();
-    var now = new Date();
-    var newId = ((now.getHours())*60 + now.getMinutes())*60 + now.getSeconds();
-    newDiv.attr("id", "box" + newId);
-    id = newDiv.find("#cargo_id");
-    id.attr("id", newId);
-    id.val(newId);
-    newDiv.find('div#cargo').attr("id", "cargo" + newId);
-    expand = newDiv.find('#expand');
-    expand.attr('id', 'expand' + newId);
-    expand.attr('onclick', 'editCargo($(cargo' + newId + '), $(expand' + newId + ')); return false;');
-    remove = newDiv.find('#remove');
-    remove.attr('remove' + newId);
-    remove.attr('onclick', 'delCargo($(box' + newId + ')); return false;');
-    $('div#cargos').append(newDiv);
-    newDiv.show(150);
-  }
-  */
 
   function delCargo(item) {
     // Attr change does not affect on checkbox state,
@@ -37,22 +17,7 @@
     item.hide(150);
   }
 
-  /*
   $.noConflict();
-  jQuery(document).ready(function() {
-    $('a#add-cargo').click(function() {
-      $('#cargos div:first').clone().find('id').val('')
-      .end().append('#cargos');
-    });
-
-    $('.delete-cargo').live('click', function() {
-      if ($('#cargos div').length > 1)
-        $(this).parent().remove();
-      else
-        alert('You need at least one cargo.')
-    });
-  });
-  */
 </script>
 
 <%= form_for(@order) do |f| %>
@@ -83,17 +48,21 @@
       <div class="field">
         <%= f.label :client_id, "Заказчик" %><br />
         <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i) %>
-        <%= link_to "Добавить", new_client_path %> 
+        <%= link_to "Добавить", new_client_path %>
       </div>
       <div class="field">
         <%= f.label :sender_id, "Отправитель" %><br />
         <%= f.select :sender_id, options_for_select(all_clients, @order.sender_id.to_i) %>
-        <%= link_to "Добавить", new_client_path %> 
+        <%= link_to "Добавить", new_client_path %><br />
+        <%= f.label :sender_date, "Дата доставки транспорта" %>
+        <%= f.calendar_date_select :sender_date, :time => true %>
       </div>
       <div class="field">
         <%= f.label :receiver_id, "Получатель" %><br />
         <%= f.select :receiver_id, options_for_select(all_clients, @order.receiver_id.to_i) %>
-        <%= link_to "Добавить", new_client_path %> 
+        <%= link_to "Добавить", new_client_path %><br />
+        <%= f.label :receiver_date, "Дата доставки транспорта" %>
+        <%= f.calendar_date_select :receiver_date, :time => true %>
       </div>
     </div>
 
