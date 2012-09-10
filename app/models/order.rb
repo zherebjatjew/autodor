@@ -53,4 +53,8 @@ class Order < ActiveRecord::Base
   #  Cargo.all :conditions => "order_id=#{id}"
   #end
 
+  def truck
+    Car.find truck_id
+  end
+
 end

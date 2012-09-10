@@ -7,7 +7,11 @@ Autodor::Application.routes.draw do
   resources :clients
   resources :cargos
   resources :drivers
+
+  match '/trailers/new' => 'cars#new_trailer', :as => :new_trailer
+  match '/trucks/new' => 'cars#new_truck', :as => :new_truck
   match '/users/:user/orders/new' => 'orders#new', :as => :new_order
+  match '/trucks' => 'cars#trucks', :as => :cars
   resources :sessions do
     member do
       get 'new'

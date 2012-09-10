@@ -1,0 +1,28 @@
+<h2>Добавление автомобиля</h2>
+
+<%= form_for @car do |f| %>
+    <%= f.hidden_field :is_trailer %>
+    <div class="field">
+      <%= f.label :model, 'Модель' %><br />
+      <%= f.text_field :model %>
+    </div>
+    <div class="field">
+      <%= f.label :identity, 'Государственный регистрацоинный номер' %><br />
+      <%= f.text_field :identity %>
+    </div>
+    <div class="field">
+      <%= f.label :base, 'Тип кузова' %><br />
+      <%= f.text_field :base %>
+    </div>
+    <div class="field">
+      <%= f.label :payload_kg, 'Грузоподъёмность' %><br />
+      <%= f.text_field :payload_kg %> кг
+    </div>
+    <div class="field">
+      <%= f.label :volume_m, 'Объём кузова' %><br />
+      <%= f.text_field :payload_kg %> м³
+    </div>
+    <div class="actions">
+      <%= f.submit "Сохранить" %>
+    </div>
+<% end %>

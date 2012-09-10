@@ -2,8 +2,8 @@
 
 <% all_clients = [] %>
 <% Client.all.each { |c| all_clients << [c.name, c.id] } %>
-<%= javascript_include_tag 'jquery', 'nested_form' %>
 <%= javascript_include_tag 'date' %>
+
 <script type="text/javascript">
   function toggleGroup(form, button) {
     form.slideToggle(150);
@@ -94,7 +94,25 @@
 
     <div class="box">
       <h2>Транспорт</h2>
-      <%= f.select :sender_id, options_for_select(all_clients, @order.sender_id.to_i) %>
+
+      <% all_trucks, all_trailers = [], [['Нет', 1]] %>
+      <% Car.all.each { |truck|
+        if truck.is_trailer?
+          all_trailers << ["#{truck.model} #{truck.identity}", truck.id]
+        else
+          all_trucks << ["#{truck.model} #{truck.identity}", truck.id]
+        end
+      }%>
+      <div class="field">
+        <%= f.label :truck_id, "Тягач" %><br />
+        <%= f.select :truck_id, options_for_select(all_trucks, @order.truck_id.to_i) %>
+        <%= link_to "Добавить", new_truck_path %>
+      </div>
+      <div class="field">
+        <%= f.label :trailer_id, "Прицеп" %><br />
+        <%= f.select :trailer_id, options_for_select(all_trailers, @order.trailer_id.to_i) %>
+        <%= link_to "Добавить", new_trailer_path %>
+      </div>
     </div>
   
     <div class="actions">

@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20120909041531) do
   create_table "cars", :force => true do |t|
     t.string   "model"
     t.string   "identity"
-    t.string   "type"
+    t.string   "base"
     t.float    "volume_m"
     t.float    "payload_kg"
     t.boolean  "is_trailer"
