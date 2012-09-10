@@ -11,7 +11,7 @@ module SessionsHelper
       store_location
       redirect_to signin_path, :notice => "Вы должны зарегистрироваться, чтобы получить доступ к этой странице"
     else
-      redirect_to user_path(current_user), :notice => "Недостаточно прав для доступа с странице"
+      redirect_to user_path(current_user), :notice => "Недостаточно прав для доступа к странице"
     end
   end
 
