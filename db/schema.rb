@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120908174403) do
+ActiveRecord::Schema.define(:version => 20120911034745) do
 
   create_table "cargos", :force => true do |t|
     t.string   "name"
@@ -76,16 +76,18 @@ ActiveRecord::Schema.define(:version => 20120908174403) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.date     "committed_at"
-    t.decimal  "forwarder_id"
+    t.integer  "forwarder_id"
     t.boolean  "signed",        :default => false, :null => false
     t.boolean  "paid",          :default => false, :null => false
     t.boolean  "completed",     :default => false, :null => false
-    t.decimal  "client_id"
-    t.decimal  "sender_id"
-    t.decimal  "receiver_id"
-    t.decimal  "driver_id"
+    t.integer  "client_id"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.integer  "driver_id"
     t.datetime "sender_date"
     t.datetime "receiver_date"
+    t.integer  "truck_id"
+    t.integer  "trailer_id"
   end
 
   create_table "users", :force => true do |t|
