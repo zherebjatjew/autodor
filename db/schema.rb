@@ -12,6 +12,13 @@
 
 ActiveRecord::Schema.define(:version => 20120911034745) do
 
+  create_table "car_owners", :force => true do |t|
+    t.integer  "car_id"
+    t.integer  "driver_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "cargos", :force => true do |t|
     t.string   "name"
     t.float    "weight_kg"
@@ -37,11 +44,10 @@ ActiveRecord::Schema.define(:version => 20120911034745) do
   create_table "cars", :force => true do |t|
     t.string   "model"
     t.string   "identity"
-    t.string   "type"
+    t.string   "base"
     t.float    "volume_m"
     t.float    "payload_kg"
     t.boolean  "is_trailer"
-    t.integer  "driver_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
