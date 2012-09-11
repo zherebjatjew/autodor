@@ -8,11 +8,13 @@ class Cargo < ActiveRecord::Base
   belongs_to :order
 
   def volume
-    "#{nice volume_m} м³"
+    volume_m.nil? "-" : "#{nice volume_m} м³"
   end
 
   def weight
-    if weight_kg < 1
+    if weight_kg.nil?
+      "-"
+    elsif weight_kg < 1
       "#{nice weight_kg*1000} г"
     elsif weight_kg < 1000
       "#{nice weight_kg} кг"
