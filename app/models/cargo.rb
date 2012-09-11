@@ -8,7 +8,7 @@ class Cargo < ActiveRecord::Base
   belongs_to :order
 
   def volume
-    volume_m.nil? "-" : "#{nice volume_m} м³"
+    volume_m.nil? ? "-" : "#{nice volume_m} м³"
   end
 
   def weight
