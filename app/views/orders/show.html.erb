@@ -82,7 +82,7 @@
       </tr>
       <tr>
         <td>5. Тип состава/Погрузка/Пломба
-        <td><%= "#{cargo.train_type}/#{cargo.load}/#{cargo.seal ? 'Да' : 'Нет'}" %>
+        <td><%= "#{cargo.train_type}/#{cargo.load ? 'Да' : 'Нет'}/#{cargo.seal ? 'Да' : 'Нет'}" %>
       </tr>
       <tr>
         <td>6. Пневмоподвеска/Лифт
@@ -125,25 +125,27 @@
       <td>3. Телефоны для связи (все)
       <td><%= driver.phone %>
     </tr>
+    <% truck = @order.truck %>
     <tr>
       <td>4. Марка автомобиля
-      <td>---
+      <td><%= truck.model %>
     </tr>
     <tr>
       <td>5. Гос. номер автомобиля
-      <td>---
+      <td><%= truck.identity %>
     </tr>
     <tr>
       <td>6. Тип кузова / V кузова, м<sup>3</sup>
-      <td>---
+      <td><%= truck.base %>
     </tr>
+    <% trailer = @order.trailer %>
     <tr>
       <td>7. Гос. номер прицепа
-      <td>---
+      <td><%= trailer.identity unless trailer.nil? %>
     </tr>
     <tr>
       <td>8. Тип прицепа / V прицепа, м<sup>3</sup>
-      <td>---
+      <td><%= "#{trailer.model}/#{trailer.volume}" unless trailer.nil? %>
     </tr>
   </table>
 

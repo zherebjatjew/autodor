@@ -1,6 +1,8 @@
 # encoding : UTF-8
 
 class ClientsController < ApplicationController
+  before_filter :authenticate
+
   def new
     @title = "Добавление клиента"
     @client = Client.new

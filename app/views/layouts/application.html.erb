@@ -3,8 +3,9 @@
   <head>
     <title><%= title %></title>
     <%= csrf_meta_tag %>
-    <%= javascript_include_tag :defaults %>
+    <%#= javascript_include_tag :defaults %>
     <%= javascript_include_tag :prototype %>
+    <%= javascript_include_tag 'jquery', 'nested_form' %>
     <%= javascript_include_tag :application %>
     <%= render 'layouts/stylesheets' %>
     <%= render 'layouts/calendar_date_select' %>
