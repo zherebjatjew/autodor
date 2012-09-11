@@ -25,7 +25,7 @@
   </div>
   <% if current_user.admin? && current_user != @user %>
     <div class="field">
-    <%= f.label :role, "Роль" %>
+    <%= f.label :role, "Роль" %><br />
     <%= f.select :role, options_for_select(UsersHelper.roles, @user.role) %>
     </div>
   <% end %>

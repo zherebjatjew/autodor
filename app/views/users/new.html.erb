@@ -25,6 +25,13 @@
     <%= f.label :password_confirmation, "Подтверждение пароля" %><br />
     <%= f.password_field :password_confirmation %>
   </div>
+  <% if current_user.admin? && current_user != @user %>
+    <div class="field">
+      <%= f.label :role, "Роль" %><br />
+      <%= f.select :role, options_for_select(UsersHelper.roles, @user.role) %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit "Создать" %>
   </div>
