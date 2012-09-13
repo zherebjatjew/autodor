@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913051513) do
+ActiveRecord::Schema.define(:version => 20120913081640) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20120913051513) do
     t.datetime "updated_at", :null => false
     t.string   "phone"
     t.integer  "author_id"
+    t.integer  "shipper_id"
   end
 
   create_table "orders", :force => true do |t|
@@ -101,6 +102,27 @@ ActiveRecord::Schema.define(:version => 20120913051513) do
     t.integer  "truck_id"
     t.integer  "trailer_id"
     t.integer  "author_id"
+  end
+
+  create_table "shippers", :force => true do |t|
+    t.integer  "author_id"
+    t.string   "name"
+    t.string   "director"
+    t.string   "director_short"
+    t.string   "registration"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "inn"
+    t.string   "kpp"
+    t.string   "ogrn"
+    t.string   "ati"
+    t.string   "corr_account"
+    t.string   "bic"
+    t.string   "phones"
+    t.string   "email"
+    t.string   "contact"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "users", :force => true do |t|

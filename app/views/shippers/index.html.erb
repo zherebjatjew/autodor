@@ -1,0 +1,9 @@
+<h2><%= @title %></h2>
+
+<%= will_paginate %>
+
+<%= render :partial => 'shipper', :object => @shippers %>
+
+<%= will_paginate %>
+
+<%= link_to "Добавить", new_shipper_path, :class => 'command' %>

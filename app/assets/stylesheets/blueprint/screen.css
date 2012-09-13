@@ -264,3 +264,4 @@ hr.space {background:#fff;color:#fff;visibility:hidden;}
 .clear {clear:both;}
 .flash_success {padding:1.5em;}
 .flash_error {padding: 1.5em;background-color: #d00;color: white;}
+.page-footer {display: none;}
