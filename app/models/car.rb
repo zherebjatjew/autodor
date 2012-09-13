@@ -7,6 +7,9 @@ class Car < ActiveRecord::Base
 
   has_many :drivers, :through => 'car_owner'
   has_many :orders, :foreign_key => 'truck_id'
+  belongs_to :author, :class_name => 'User'
+
+  before_save AuthorAssigner.new
 
   def stub
     # Since empty trailer was created as first record in table,
