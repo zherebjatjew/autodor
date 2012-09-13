@@ -21,6 +21,8 @@ class CargosController < ApplicationController
 
   def edit
     @cargo = Cargo.find params[:cargo]
+  end
+
   def update
   end
 end
