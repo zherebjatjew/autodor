@@ -1,13 +1,18 @@
 <h1>Наши клиенты</h1>
 <% @clients.each do |c| %>
   <div class="client_info">
-    <h2><%= c.name %></h2>
-    <p><strong>График работы: </strong><%= c.schedule %></p>
-    <% if c.organization %>
-      <p><strong>Контактное лицо: </strong><%= c.contact %></p>
-    <% end %>
-    <p><strong>Почтовый адрес: </strong><%= c.address %></p>
-    <p><%= c.notes %></p>
+    <div style="float:left;">
+      <h2><%= c.name %></h2>
+    </div>
+    <div style="float:left">
+      <p><strong>График работы: </strong><%= c.schedule %></p>
+      <% if c.organization %>
+        <p><strong>Контактное лицо: </strong><%= c.contact %></p>
+      <% end %>
+      <p><strong>Почтовый адрес: </strong><%= c.address %></p>
+      <p><strong>Телефоны: </strong><%= c.phones %></p>
+      <p><%= c.notes %></p>
+    </div>
   </div>
 <% end %>
 <%= link_to "Добавить", new_client_path, :style => 'command' %>

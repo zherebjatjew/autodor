@@ -1,16 +1,35 @@
 <div class="client_info">
-  <div style="float:left;width:30%"><h2><%= client.name %></h2></div><div style="float:right">
+  <div style="float:left;width:25%"><h2><%= client.name %></h2></div><div style="float:right">
     <%= link_to "Изменить", edit_client_path(client), :class => 'command' %>
     <% unless client.used? %>
       <%= link_to "Удалить", client, :method => 'delete', :confirm => "Вы точно больше не будете работать с этим клиентом?", :class => "command delete" %>
     <% end %>
   </div>
-  <div><p>
-    <strong>График работы: </strong><%= client.schedule %><br />
+  <div style="float:left;padding-bottom:0.75em;">
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>График работы: </strong>
+          <td><%= client.schedule %>
+        </tr>
     <% if client.organization %>
-      <strong>Контактное лицо: </strong><%= client.contact %><br />
+        <tr>
+          <td><strong>Контактное лицо: </strong>
+          <td><%= client.contact %>
+        </tr>
     <% end %>
-    <strong>Почтовый адрес: </strong><%= client.address %><br />
-    <%= client.note %>
-  </p></div>
+        <tr>
+          <td><strong>Почтовый адрес: </strong>
+          <td><%= client.address %>
+        </tr>
+        <tr>
+          <td><strong>Телефон: </strong>
+          <td><%= client.phones %></br >
+        </tr>
+      </tbody>
+    </table>
+    <div style="float:left;adding-bottom:0.75em;width:25%">
+      <%= client.note %>
+    </div>
+  </div>
 </div>
