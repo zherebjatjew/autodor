@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911034745) do
+ActiveRecord::Schema.define(:version => 20120913051513) do
+
+  create_table "car_owners", :force => true do |t|
+    t.integer  "car_id"
+    t.integer  "driver_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "author_id"
+  end
 
   create_table "cargos", :force => true do |t|
     t.string   "name"
@@ -32,18 +40,19 @@ ActiveRecord::Schema.define(:version => 20120911034745) do
     t.integer  "order_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.integer  "author_id"
   end
 
   create_table "cars", :force => true do |t|
     t.string   "model"
     t.string   "identity"
-    t.string   "type"
+    t.string   "base"
     t.float    "volume_m"
     t.float    "payload_kg"
     t.boolean  "is_trailer"
-    t.integer  "driver_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "author_id"
   end
 
   create_table "clients", :force => true do |t|
@@ -57,6 +66,8 @@ ActiveRecord::Schema.define(:version => 20120911034745) do
     t.string   "note"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.integer  "author_id"
+    t.string   "phones"
   end
 
   create_table "drivers", :force => true do |t|
@@ -68,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20120911034745) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "phone"
+    t.integer  "author_id"
   end
 
   create_table "orders", :force => true do |t|
@@ -88,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20120911034745) do
     t.datetime "receiver_date"
     t.integer  "truck_id"
     t.integer  "trailer_id"
+    t.integer  "author_id"
   end
 
   create_table "users", :force => true do |t|
@@ -99,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20120911034745) do
     t.string   "salt"
     t.string   "role",               :default => "operator"
     t.string   "schedule"
+    t.integer  "author_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

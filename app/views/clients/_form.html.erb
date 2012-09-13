@@ -35,6 +35,10 @@
     <%= f.text_field :address %>
   </div>
   <div class="field">
+    <%= f.label :phones, "Телефоны" %><br />
+    <%= f.text_field :phones %>
+  </div>
+  <div class="field">
     <%= f.label :born_at, "Дата рождения", :id => 'born_at_lable' %><br />
     <%= f.calendar_date_select :born_at %>
   </div>

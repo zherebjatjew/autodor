@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 class AddDatesToOrder < ActiveRecord::Migration
   def change
     add_column :orders, :sender_date, :datetime

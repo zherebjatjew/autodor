@@ -49,6 +49,8 @@ module ApplicationHelper
     }, :class => 'command'
   end
 
+private
+
   def js(data)
     if data.respond_to? :to_json
       data.to_json
@@ -58,3 +60,5 @@ module ApplicationHelper
   end
 
 end
+
+

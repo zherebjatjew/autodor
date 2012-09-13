@@ -19,6 +19,11 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   has_many :orders
+  has_many :clients, :foreign_key => 'author_id'
+  has_many :drivers, :foreign_key => 'author_id'
+  has_many :cars,    :foreign_key => 'author_id'
+
+  belongs_to :author, :class_name => 'User'
 
   def admin?
     role == "admin"

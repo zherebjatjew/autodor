@@ -1,6 +1,8 @@
 # encoding : UTF-8
 
 class ClientsController < ApplicationController
+  before_filter :authenticate
+
   def new
     @title = "Добавление клиента"
     @client = Client.new
@@ -14,6 +16,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new params[:client]
+    @client.author = current_user
     if @client.save
       # success
       flash[:success] = "Клиент #{@client.name} добавлен в Автодор"

@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new params[:order]
+    @order.author = current_user
     if @order.save
       flash[:success] = "Заявка создана!"
       redirect_to user_path(current_user), :method => 'show'

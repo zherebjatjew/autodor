@@ -31,6 +31,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params[:user]
+    @user.author = current_user
     if @user.save
       # success
       sign_in @user

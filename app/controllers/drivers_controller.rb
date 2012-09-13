@@ -11,6 +11,7 @@ class DriversController < ApplicationController
 
   def create
     @driver = Driver.new params[:driver]
+    @driver.author = current_user
     if @driver.save
       flash[:success] = "Водитель #{@driver.name} добавлен в Автодор"
       redirect_back_or drivers_path

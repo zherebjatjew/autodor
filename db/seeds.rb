@@ -13,3 +13,5 @@ admin = User.create!(:name => "Жеребятьев Дмитрий",
                      :password => "123456",
                      :password_confirmation => "123456",
                      :role => "admin")
+Car.create!(:model => 'Нет',
+            :is_trailer => true)
