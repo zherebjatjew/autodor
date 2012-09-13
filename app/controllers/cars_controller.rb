@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 class CarsController < ApplicationController
   before_filter :authenticate
 
