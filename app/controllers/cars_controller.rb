@@ -4,6 +4,7 @@ class CarsController < ApplicationController
   def trucks
     @cars = Car.find_by_is_trailer(false)
     @car = Car.new params[:car]
+    @car.author = current_user
     @car.save
     redirect_back_or :edit
   end
@@ -23,6 +24,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new params[:car]
+    @car.author = current_user
     if @car.save
       # success
       flash[:success] = "Транспорт #{@car.name} добавлен в Автодор"

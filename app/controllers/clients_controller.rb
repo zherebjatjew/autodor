@@ -16,6 +16,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new params[:client]
+    @client.author = current_user
     if @client.save
       # success
       flash[:success] = "Клиент #{@client.name} добавлен в Автодор"

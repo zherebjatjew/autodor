@@ -17,8 +17,6 @@ class Order < ActiveRecord::Base
   belongs_to :trailer, :class_name => 'Car'
   belongs_to :author, :class_name => 'User'
 
-  before_save AuthorAssigner.new
-
   validates :user_id, :presence => true
   validates :forwarder_id, :presence => true
   validates :client_id, :presence => true

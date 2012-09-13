@@ -53,8 +53,6 @@ class User < ActiveRecord::Base
     def encrypt_password
       self.salt = make_salt if new_record?
       self.encrypted_password = encrypt password
-#      self.author_id = current_user if new_record?
-      AuthorAssigner.new.before_save self
     end
 
     def encrypt string

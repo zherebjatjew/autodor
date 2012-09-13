@@ -6,6 +6,4 @@ class CarOwner < ActiveRecord::Base
   has_many cars
   has_many drivers
   belongs_to :author, :class_name => 'User'
-
-  before_save AuthorAssigner.new
 end

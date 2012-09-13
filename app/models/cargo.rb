@@ -10,5 +10,4 @@ class Cargo < ActiveRecord::Base
   belongs_to :order
   belongs_to :author, :class_name => 'User'
 
-  before_save AuthorAssigner.new
 end
