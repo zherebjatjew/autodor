@@ -18,7 +18,7 @@ class ShippersController < ApplicationController
     @shipper = Shipper.find params[:id]
     if @shipper.update_attributes params[:shipper]
       flash[:success] = "Информация о перевозчике обновлена"
-      redirect_back_or clients_path
+      redirect_back_or shippers_path
     else
       render 'edit'
     end
