@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Converter
 
   def volume(name = :volume_m)
