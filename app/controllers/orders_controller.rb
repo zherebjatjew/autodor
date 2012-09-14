@@ -34,7 +34,8 @@ class OrdersController < ApplicationController
 
   def index
     @title = "Все заказы"
-    @users = Order.paginate(:page => params[:page])
+    @user = current_user
+    @orders = Order.paginate(:page => params[:page])
   end
 
   def edit
