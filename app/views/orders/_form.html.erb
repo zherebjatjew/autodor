@@ -104,7 +104,7 @@
       <div class="field">
         <%= f.label :truck_id, "Тягач" %><br />
         <%= f.select :truck_id, options_for_select(all_trucks, @order.truck_id.to_i) %>
-        <%= link_to "Добавить", new_truck_path %>
+        <%= link_to "Добавить", new_truck_path, :id => 'create_truck' %>
       </div>
       <div class="field">
         <%= f.label :trailer_id, "Прицеп" %><br />
