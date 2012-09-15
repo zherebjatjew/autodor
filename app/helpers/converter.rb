@@ -13,7 +13,9 @@ module Converter
 
   def weight(name = :weight_kg)
     value = self.send name
-    if value < 1
+    if value.nil?
+      "-"
+    elsif value < 1
       "#{nice value*1000} г"
     elsif value < 1000
       "#{nice value} кг"

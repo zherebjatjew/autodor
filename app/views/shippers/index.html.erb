@@ -2,7 +2,9 @@
 
 <%= will_paginate %>
 
-<%= render :partial => 'shipper', :object => @shippers %>
+<% @shippers.each do |shipper| %>
+  <%= render :partial => 'shipper', :object => shipper %>
+<% end %>
 
 <%= will_paginate %>
 
