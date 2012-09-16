@@ -26,6 +26,15 @@ body {
   opacity: 0.6;
 }
 
+.ui-dialog-titlebar-close {
+  float:right;
+  padding-right: 0.3em;
+}
+
+.ui-dialog-title {
+  padding-left: 0.3em;
+}
+
 header {
   width: 100%;
   background: #8d5;

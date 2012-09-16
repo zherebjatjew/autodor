@@ -6,7 +6,9 @@ jQuery(document).ready(function() {
       width: 520,
       modal: true,
       open: function() {
-        return $j(this).load(url + ' #main');
+        return $j(this).load(url + ".js", function(data) {
+          $j('#ui-dialog-title-dialog-form').text('Add a car');
+        });
       },
       close: function() {
         $j('#dialog-form').remove();

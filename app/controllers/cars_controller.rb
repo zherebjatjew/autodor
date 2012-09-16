@@ -8,46 +8,72 @@ class CarsController < ApplicationController
     @car = Car.new params[:car]
     @car.author = current_user
     @car.save
-    redirect_back_or :edit
+    respond_to do |format|
+      format.html
+      format.js { render :nothing => true }
+    end
   end
 
   def trailers
     @cars = Car.find_by_is_trailer(true)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new_truck
     @car = Car.new :is_trailer => false
-    store_location
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new_trailer
     @car = Car.new :is_trailer => true
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
     @car = Car.new params[:car]
     @car.author = current_user
-    if @car.save
-      # success
-      flash[:success] = "Транспорт #{@car.name} добавлен в Автодор"
-      redirect_back_or cars_path
-    else
-      render :edit
+    respond_to do |format|
+      format.html {
+        if @car.save
+          # success
+          flash[:success] = "Транспорт #{@car.name} добавлен в Автодор"
+        else
+          render :edit
+        end
+      }
+      format.js
     end
   end
 
   def update
     @car = Car.find params[:id]
-    if @car.update_attributes params[:car]
-      flash[:success] = "Информация о транспорте обновлена"
-      redirect_back_or cars_path
-    else
-      render 'edit'
+    respond_to do |format|
+      format.html {
+        if @car.update_attributes params[:car]
+          flash[:success] = "Информация о транспорте обновлена"
+        else
+          render 'edit'
+        end
+      }
+      format.js
     end
   end
 
   def edit
     @title = "Изменение информации о транспорте"
     @car = Car.find params[:id]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end
