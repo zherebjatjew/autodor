@@ -9,10 +9,11 @@ Autodor::Application.routes.draw do
   resources :drivers
   resources :shippers
 
-  match '/trailers/new' => 'cars#new_trailer', :as => :new_trailer
-  match '/trucks/new' => 'cars#new_truck', :as => :new_truck
-  match '/users/:user/orders/new' => 'orders#new', :as => :new_order
+  match '/trailers/new' => 'cars#new_trailer', :as => 'new_trailer'
+  match '/trucks/new' => 'cars#new_truck', :as => 'new_truck'
+  match '/users/:user/orders/new' => 'orders#new', :as => 'new_order'
   match '/trucks' => 'cars#trucks', :as => :cars
+  match '/orders/:id/charge' => 'orders#charge', :as => 'charge'
   resources :sessions do
     member do
       get 'new'

@@ -1,30 +1,23 @@
 <div class="menu">
   <%= link_to "Изменить", edit_order_path(@order), :class => "command" %>
   <%= link_to_function "Напечатать", "window.print()", :class => "command" %>
-  <%= link_to "Поручение", charge_path(@order), :class => "command" %>
 </div>
-
 <div class="print_order">
   <h1>Заявка на оказание транспортно-экспедиционных услуг №<%= @order.id %> от <%= date_to_s @order.committed_at %></h1>
 
-  <div class="order_header">
-    Экспедитор и его адрес: <%= company_name %>, <%= company_address %><br />
-    Телефоны экспедитора: <%= company_phones %><br />
-    Контактное лицо экспедитора: <%= User.find(@order.user_id).name %><br />
-    Режим работы экспедитора: <%= User.find(@order.user_id).schedule %><br />
-  </div>
 
+  <h2>Общая информация об участниках</h2>
 
-  <h2>Информация об участниках</h2>
   <table border="1" cellpadding="0" cellspacing="0" class="print_order" style="width:100%">
     <tr>
       <th>Параметр
-      <th>Клиент
+      <th>Заказчик
       <th>Грузоотправитель
       <th>Грузополучатель
     </tr>
     <%= render 'member_table' %>
   </table>
+
 
   <h2>Информация о грузе, требуемом подвижном составе и оплате</h2>
 
@@ -35,8 +28,8 @@
         <td><%= cargo.name %>/<%= cargo.weight %>/<%= cargo.volume %>
       </tr>
       <tr>
-        <td>2. Вид упаковки
-        <td><%= cargo.packing %>
+        <td>2. Вид упаковки/Число мест
+        <td><%= "#{cargo.packing}/#{cargo.seat || '---'}" %>
       </tr>
       <tr>
         <td>3. Объявленная стоимость, руб.
@@ -44,7 +37,7 @@
       </tr>
       <tr>
         <td>4. Температурный режим
-        <td><%= cargo.temperature %>
+        <td><%= cargo.temperature.empty? ? "Не нужен" : cargo.temperature %>
       </tr>
       <tr>
         <td>5. Тип состава/Погрузка/Пломба
@@ -60,12 +53,15 @@
       </tr>
       <tr>
         <td>8. Ставка за перевозку, руб.
-        <td><%= cargo.transportation_charge %>
+        <td><%= cargo.inner_charge %>
       </tr>
       <tr>
-        <td>9. Сроки и форма оплаты
-        <td><%= cargo.payment_notes %>
+        <td>9. Предоплата, руб.
+        <td><%= "#{cargo.prepay_amount} #{cargo.payment_notes}" %>
       </tr>
+      <tr>
+        <td>10. Оплата, руб.
+        <td><%= "#{cargo.inner_charge - cargo.prepay_amount} #{cargo.payment_notes}" %>
       <tr>
         <td>10. Номер ТТН/Дата ТТН
         <td><%= "#{cargo.bill_id}/#{cargo.bill_date}" %>
@@ -79,60 +75,60 @@
   <% driver = @order.driver %>
 
   <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
+    <% shipper = @order.shipper || Shipper.new(:email => "", :phones => "") %>
     <tr>
-      <td style="width:75mm">1. ФИО, год рождения
+      <td style="width:75mm">1. Перевозчик
+      <td>
+        <%= "#{shipper.name}#{', ' + shipper.email unless shipper.email.empty?}#{', ' + shipper.phones unless shipper.phones.empty?}" %>
+      </td>
+    </tr>
+    <tr>
+      <td>2. Ф.И.О. Водителя
       <td><%= driver.name %>
     </tr>
     <tr>
-      <td>2. Паспортные данные, дата выдачи, код под-ния
+      <td>3. Паспортные данные, дата выдачи, код под-ния
       <td><%= driver.identity %>
     </tr>
     <tr>
-      <td>3. Телефоны для связи (все)
+      <td>4. Телефоны для связи (все)
       <td><%= driver.phone %>
     </tr>
     <% truck = @order.truck %>
-    <tr>
-      <td>4. Марка автомобиля
-      <td><%= truck.model %>
-    </tr>
-    <tr>
-      <td>5. Гос. номер автомобиля
-      <td><%= truck.identity %>
-    </tr>
-    <tr>
-      <td>6. Тип кузова / V кузова, м<sup>3</sup>
-      <td><%= truck.base %>
-    </tr>
     <% trailer = @order.trailer %>
     <tr>
-      <td>7. Гос. номер прицепа
-      <td><%= trailer.identity unless trailer.nil? %>
-    </tr>
-    <tr>
-      <td>8. Тип прицепа / V прицепа, м<sup>3</sup>
-      <td><%= "#{trailer.model}/#{trailer.volume}" unless trailer.nil? %>
+      <td>5. Автомобиль, прицеп
+      <% s = "#{truck.model}/#{truck.identity}" %>
+      <% s << (", #{trailer.model || "Нет"}/#{trailer.identity || "Нет"}") unless trailer.nil? %>
+      <td><%= s %>
     </tr>
   </table>
 
-  <h3>Клиент обязан:</h3>
+
+  <h3>Перевозчик обязан:</h3>
   
   <p>
-    Своевременно представить экспедитору полную, точную и достоверную информацию о свойствах
-  груза, об условиях его перевозки и иную информацию, необходимую для исполнения экспедитором
-  обязанностей, предусмотренных договором транспортной экспедиции, и документы, необходимые для
-  осуществления таможенного, санитарного контроля, других видов государственного контроля.
+    1. Проверять правильность записей, сделанных в ТТН относительно числа грузовых мест и вида товаров, а также внешнее состояние груза и его упаковки.
   </p>
   <p>
-    Срок разгрузки и загрузки - 12 часов, при условии подачи а/м не позднее указанного в заявке времени.
+    2. В случае обнаружения дефектов упаковки или груза, делать соответствующие отметки в документах грузоотправителя и требовать роспись его ответственного представителя.
+  </p>
+  <p>
+    3. Требовать от грузополучателя надлежащего оформления ТТН, а в случае отказа немедленно извещать об этом Заказчика.
+  </p>
+  <p>
+    4. Извещать Заказчика любыми доступными средствами о прибытии к месту погрузки, а также в случае возникновения экстренной ситуации (поломка и т.п.), не позднее одного часа после наступления указанных событий.
+  </p>
+  <p>
+    5. Соблюдать очерёдность погрузочно-разгрузочных работ, указанную в заявке.
   </p>
 
   <table border=0 cellpadding=0 cellspacing=0 style="width:100%" class="order_signs">
     <tr>
-      <td style="height:3em;vertical-align:bottom;text-align:right">Экспедитор:
+      <td style="height:3em;vertical-align:bottom;text-align:right">Перевозчик:
       <td style="border-bottom:1px solid;width:35%">
       <td>
-      <td style="height:3em;vertical-align:bottom;text-align:right">Клиент:
+      <td style="height:3em;vertical-align:bottom;text-align:right">Заказчик:
       <td style="border-bottom:1px solid;width:35%">
     </tr>
     <tr>

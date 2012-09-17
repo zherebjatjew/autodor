@@ -1,0 +1,44 @@
+    <tr>
+      <td>1. Наименование
+      <td><%= @order.client.name %>
+      <td><%= @order.sender.name %>
+      <td><%= @order.receiver.name %>
+    </tr>
+    <tr>
+      <td>2. Адрес
+      <td><%= @order.client.address %>
+      <td><%= @order.sender.address %>
+      <td><%= @order.receiver.address %>
+    </tr>
+    <tr>
+      <td>3. Контактное лицо
+      <td><%= @order.client.contact %>
+      <td><%= @order.sender.contact %>
+      <td><%= @order.receiver.contact %>
+    </tr>
+    <tr>
+      <td>Телефоны
+      <td><%= @order.client.phones %>
+      <td><%= @order.sender.phones %>
+      <td><%= @order.receiver.phones %>
+    </tr>
+    <tr>
+      <td>4. Дата подачи т-та
+      <td>Поле не заполняется
+      <td><%= date_to_s @order.sender_date %>
+      <td><%= date_to_s @order.receiver_date %>
+    </tr>
+    <tr>
+      <td>5. Не позднее
+      <td>Поле не заполняется
+      <td><%= time_to_s @order.sender_date %>
+      <td><%= time_to_s @order.receiver_date %>
+    </tr>
+    <tr>
+      <td>Режим работы
+      <td><%= company_schedule %>
+      <td>
+      <td>
+    </tr>
+
+

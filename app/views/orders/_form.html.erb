@@ -81,6 +81,16 @@
     </div>
 
     <div class="box">
+      <h2>Перевозчик</h2>
+      <% all_shippers = [] %>
+      <% Shipper.all.each { |shipper| all_shippers << [shipper.name, shipper.id] } %>
+      <div class="field">
+        <%= f.select :shipper_id, options_for_select(all_shippers, @order.shipper_id.to_i) %>
+        <%= link_to "Добавить", new_shipper_path %>
+      </div>
+    </div>
+
+    <div class="box">
       <h2>Водитель</h2>
       <% all_drivers = [] %>
       <% Driver.all.each { |c| all_drivers << [c.name, c.id] } %>

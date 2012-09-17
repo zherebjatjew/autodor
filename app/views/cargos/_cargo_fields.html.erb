@@ -17,6 +17,10 @@
     <%= f.text_field :packing %>
   </div>
   <div class="field">
+    <%= f.label :seat, "Число мест" %><br />
+    <%= f.text_field :seat %>
+  </div>
+  <div class="field">
     <%= f.label :cost, "Объявленная стоимость" %><br />
     <%= f.text_field :cost %>
   </div>
@@ -44,5 +48,13 @@
   <div class="field">
     <%= f.label :transportation_charge, "Ставка за перевозку" %><br />
     <%= f.text_field :transportation_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :inner_charge, "Ставка перевозчику" %><br />
+    <%= f.text_field :inner_charge %>
+  </div>
+  <div class="field">
+    <%= f.label :prepay_amount, "Аванс" %><br />
+    <%= f.text_field :prepay_amount %>
   </div>
 </div>
