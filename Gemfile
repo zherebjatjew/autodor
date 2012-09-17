@@ -27,9 +27,9 @@ group :assets do
 end
 
 gem 'jquery-rails', '~> 2.0.2'
+gem 'therubyracer', '~> 0.10.1', :platform => :ruby
 
 group :development do
-  gem 'therubyracer', '~> 0.10.1', :platform => :ruby
   gem 'rspec-rails', '~> 2.10.1'
   gem 'annotate', '~> 2.4.0'
   gem 'sqlite3-ruby', :require => "sqlite3"
@@ -37,7 +37,6 @@ group :development do
 end
 
 group :test do
-  gem 'therubyracer', '~> 0.10.1', :platform => :ruby
   gem 'rspec-rails', '~> 2.10.1'
   gem 'webrat', '~> 0.7.3'
   gem 'sqlite3-ruby', :require => 'sqlite3'
@@ -45,7 +44,6 @@ group :test do
 end
 
 group :production do
-  gem 'therubyracer', '~> 0.10.1'
   gem 'pg', '~> 0.13.2'
 end
 

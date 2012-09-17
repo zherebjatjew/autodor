@@ -198,27 +198,27 @@
   </tr>
   <tr>
     <td><strong>р/с </strong>40702810918100024299
-    <td><strong>р/с </strong>40702810022520001200
+    <td><strong>р/с </strong><%= @shipper.account %>
   </tr>
   <tr>
     <td><strong>Банк: </strong>ОАО АКБ «АВАНГАРД» г.Москва
-    <td><strong>Банк: </strong>Омский Филиал АКБ «АБСОЛЮТ БАНК» (ЗАО)
+    <td><strong>Банк: </strong><%= @shipper.ati %>
   </tr>
   <tr>
     <td><strong>к/с </strong>30101810000000000201
-    <td><strong>к/с </strong>30101810100000000842
+    <td><strong>к/с </strong><%= @shipper.corr_account %>
   </tr>
   <tr>
     <td><strong>БИК </strong>044525201
-    <td><strong>БИК </strong>045209842
+    <td><strong>БИК </strong><%= @shipper.bic %>
   </tr>
   <tr>
     <td><strong>Тел/факс </strong>8(3812) 465-717
-    <td><strong>Тел/факс </strong>8(3812)25-25-14
+    <td><strong>Тел/факс </strong><%= @shipper.phones %>
   </tr>
   <tr>
     <td><strong>e-mail: </strong>avtodor55@gmail.com
-    <td><strong>e-mail: </strong>loona707@rambler.ru
+    <td><strong>e-mail: </strong><%= @shipper.email %>
   </tr>
   <tr>
     <td><strong>Ответственное лицо: </strong>Осипов Сергей Владимирович
