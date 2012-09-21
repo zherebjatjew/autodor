@@ -15,47 +15,66 @@ end
 class Float
 
   def to_currency()
-    unit_name = "р."
-    subunit_name = "к."
-    hundrets = [ '', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот' ]
-    units = [ '', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать' ]
-    tens = [ '', '', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто' ]
-    thousands = [ '', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать' ]
- 
     whole = self.to_i
     orig = whole
     cent = self - whole
     s = ''
+    lc = Float.locale
     if (whole < 0)
-      s = 'минус'
+      s << lc[:minus]
       whole = -whole
     end
     if (whole == 0)
-      s = '0'
+      s << '0'
     else
-      if (whole > 1000000)
-        billions = whole/1000000
-        whole -= 1000000*billions
-        s << ' ' unless s.empty?
-        s << Float.digit_to_s(billions, units, tens, hundrets, thousands) << ' ' << billions.pluralize('миллион', 'миллиона', 'миллионов')
-      end
-      if (whole > 1000)
-        ths = whole/1000
-        whole -= 1000*ths
-        s << ' ' unless s.empty?
-        s << Float.digit_to_s(ths, units, tens, hundrets, thousands) << ' ' << ths.pluralize('тысяча', 'тысячи', 'тысяч')
-      end
+      whole = Float.add_range s, whole, 1000000000000
+      whole = Float.add_range s, whole, 1000000000
+      whole = Float.add_range s, whole, 1000000
+      whole = Float.add_range s, whole, 1000
       if (whole > 0)
         s << ' ' unless s.empty?
-        s << Float.digit_to_s(whole, units, tens, hundrets, thousands)
+        s << Float.digit_to_s(whole, lc)
       end
     end
-    "#{s} #{orig.pluralize('рубль', 'рубля', 'рублей')} #{(cent*100 + 0.5).to_i} коп."
+    rem = (cent*100 + 0.5).to_i
+    "#{s} #{orig.pluralize(*lc[:currency][:whole])} #{rem} #{rem.pluralize(*lc[:currency][:cent])}"
   end
 
 private
 
-  def self.digit_to_s(num, units, tens, hunds, ths)
+  @@ru = {
+    :minus => 'минус',
+    :hundreds => [ '', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот' ],
+    :units => [ '', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать' ],
+    :tens => [ '', '', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто' ],
+    :thousands => [ '', 'одна', 'две', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять', 'десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать' ],
+    :currency => { :whole => ['рубль', 'рубля', 'рублей'],
+                   :cent => ['коп.', 'коп.', 'коп.']
+    },
+    :ranges => { :'1000' => ['тысяча', 'тысячи', 'тысяч'],
+                 :'1000000' => ['миллион', 'миллиона', 'миллионов'],
+                 :'1000000000' => ['миллиард', 'миллиарда', 'миллиардов'],
+                 :'1000000000000' => ['триллион', 'триллиона', 'триллионов']
+    }
+  }
+
+  def self.locale
+    @@ru
+  end
+
+  # [CR] It is bad that 's' variable is changing indirectly
+  #      however it makes function call neater
+  def self.add_range(s, whole, range, lc = Float.locale)
+    if (whole > range)
+      triple = whole/range
+      whole -= range*triple
+      s << ' ' unless s.empty?
+      s << Float.digit_to_s(triple, lc) << ' ' << triple.pluralize(*(lc[:ranges][range.to_s.to_sym]))
+    end
+    whole
+  end
+
+  def self.digit_to_s(num, lc = Float.loacle)
     if (num > 999)
       return num.to_s
     end
@@ -63,17 +82,17 @@ private
     if (num > 99)
       hs = num/100
       num -= 100*hs
-      s << hunds[hs]
+      s << lc[:hundreds][hs]
     end
     if (num > 19)
       ds = num/10
       num -= 10*ds
-      s << ' ' unless s.empty? || tens[ds].empty?
-      s << tens[ds]
+      s << ' ' unless s.empty? || lc[:tens][ds].empty?
+      s << lc[:tens][ds]
     end
     if (num > 0)
-      s << ' ' unless s.empty? || units[num].empty?
-      s << units[num]
+      s << ' ' unless s.empty? || lc[:units][num].empty?
+      s << lc[:units][num]
     end
     s
   end
