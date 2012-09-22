@@ -40,7 +40,7 @@
       </tr>
       <tr>
         <td>3. Объявленная стоимость, руб.
-        <td><%= cargo.cost %>
+        <td><%= "#{cargo.cost} (#{cargo.cost.to_currency})" %>
       </tr>
       <tr>
         <td>4. Температурный режим
@@ -59,8 +59,8 @@
         <td><%= cargo.requirements %>
       </tr>
       <tr>
-        <td>8. Ставка за перевозку, руб.
-        <td><%= cargo.transportation_charge %>
+        <td>8. Ставка за перевозку с НДС, руб.
+        <td><%= "#{cargo.transportation_charge} (#{cargo.transportation_charge})" %>
       </tr>
       <tr>
         <td>9. Сроки и форма оплаты

@@ -33,7 +33,7 @@
       </tr>
       <tr>
         <td>3. Объявленная стоимость, руб.
-        <td><%= cargo.cost %>
+        <td><%= "#{cargo.cost} (#{cargo.cost.to_currency})" %>
       </tr>
       <tr>
         <td>4. Температурный режим
@@ -53,15 +53,16 @@
       </tr>
       <tr>
         <td>8. Ставка за перевозку, руб.
-        <td><%= cargo.inner_charge %>
+        <td><%= "#{cargo.inner_charge} (#{cargo.inner_charge.to_currency})" %>
       </tr>
       <tr>
         <td>9. Предоплата, руб.
-        <td><%= "#{cargo.prepay_amount} #{cargo.payment_notes}" %>
+        <td><%= "#{cargo.prepay_amount} (#{cargo.prepay_amount.to_currency}) #{cargo.payment_notes}" %>
       </tr>
       <tr>
         <td>10. Оплата, руб.
-        <td><%= "#{cargo.inner_charge - cargo.prepay_amount} #{cargo.payment_notes}" %>
+        <% rest = cargo.inner_charge - cargo.prepay_amount %>
+        <td><%= "#{rest} (#{rest.to_currency}) #{cargo.payment_notes}" %>
       <tr>
         <td>10. Номер ТТН/Дата ТТН
         <td><%= "#{cargo.bill_id}/#{cargo.bill_date}" %>
