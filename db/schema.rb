@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922150027) do
+ActiveRecord::Schema.define(:version => 20120923105414) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -145,5 +145,19 @@ ActiveRecord::Schema.define(:version => 20120922150027) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "workflow_names", :force => true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "workflows", :force => true do |t|
+    t.integer  "current"
+    t.integer  "next"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
