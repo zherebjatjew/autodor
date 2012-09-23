@@ -19,3 +19,5 @@
 *.bak
 .project
 
+.idea/*
+
