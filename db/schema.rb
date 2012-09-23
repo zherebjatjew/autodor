@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120917040736) do
+ActiveRecord::Schema.define(:version => 20120922150027) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20120917040736) do
     t.boolean  "lift"
     t.string   "requirements"
     t.decimal  "transportation_charge"
-    t.string   "payment_notes"
+    t.string   "tcharge_notes"
     t.integer  "bill_id"
     t.date     "bill_date"
     t.integer  "order_id"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20120917040736) do
     t.integer  "seat"
     t.decimal  "prepay_amount",         :default => 0.0
     t.decimal  "inner_charge",          :default => 0.0
+    t.string   "icharge_notes",         :default => ""
+    t.string   "prepay_notes",          :default => ""
   end
 
   create_table "cars", :force => true do |t|
