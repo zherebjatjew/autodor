@@ -1,9 +1,11 @@
+<% left = 'Заказчик' if left.nil? %>
+<% right = 'Клиент' if right.nil? %>
 <table class="page-footer">
   <tbody>
     <tr>
-      <td>Заказчик ___________________________
+      <td><%= left %> ___________________________
       <td style="text-align:center;width:20%">стр. <%= "#{page_num} из #{page_count}" %>
-      <td style="text-align:right;">Клиент _____________________________
+      <td style="text-align:right;"><%= right %> _____________________________
     </tr>
   </tbody>
 </table>
