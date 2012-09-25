@@ -29,11 +29,15 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by_id params[:id]
+    @cargos = @order.cargos
+#    @senders, @receivers = @order.checkpoints
     @title = "Заказ №#{@order.id} - #{@order.info}"
   end
 
   def charge
     @order = Order.find params[:id]
+    @cargos = @order.cargos
+#    @senders, @receivers = @order.checkpoints
     @title = "Поручение №#{params[:id]}"
   end
 

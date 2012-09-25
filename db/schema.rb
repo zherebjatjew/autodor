@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924104021) do
+ActiveRecord::Schema.define(:version => 20120925120112) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -47,6 +47,10 @@ ActiveRecord::Schema.define(:version => 20120924104021) do
     t.decimal  "inner_charge",          :default => 0.0
     t.string   "icharge_notes",         :default => ""
     t.string   "prepay_notes",          :default => ""
+    t.integer  "receiver_id"
+    t.integer  "sender_id"
+    t.date     "sender_date"
+    t.date     "receiver_date"
   end
 
   create_table "cars", :force => true do |t|
@@ -103,19 +107,15 @@ ActiveRecord::Schema.define(:version => 20120924104021) do
   create_table "orders", :force => true do |t|
     t.string   "info"
     t.integer  "user_id"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.date     "committed_at"
     t.integer  "forwarder_id"
-    t.boolean  "signed",        :default => false, :null => false
-    t.boolean  "paid",          :default => false, :null => false
-    t.boolean  "completed",     :default => false, :null => false
+    t.boolean  "signed",       :default => false, :null => false
+    t.boolean  "paid",         :default => false, :null => false
+    t.boolean  "completed",    :default => false, :null => false
     t.integer  "client_id"
-    t.integer  "sender_id"
-    t.integer  "receiver_id"
     t.integer  "driver_id"
-    t.datetime "sender_date"
-    t.datetime "receiver_date"
     t.integer  "truck_id"
     t.integer  "trailer_id"
     t.integer  "author_id"
@@ -157,5 +157,19 @@ ActiveRecord::Schema.define(:version => 20120924104021) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+
+  create_table "workflow_names", :force => true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "workflows", :force => true do |t|
+    t.integer  "current"
+    t.integer  "next"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

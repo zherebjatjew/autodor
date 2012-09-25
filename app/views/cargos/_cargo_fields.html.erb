@@ -1,3 +1,8 @@
+<%# if all_clients.nil? %>
+  <% all_clients = [] %>
+  <% Client.all.each { |c| all_clients << [c.name, c.id] } %>
+<%# end %>
+
 <div class="cargo" >
   <%= f.hidden_field :id %>
   <div class="field">
@@ -11,6 +16,22 @@
   <div class="field">
     <%= f.label :volume_m, "Объём" %><br />
     <%= f.text_field :volume_m %>
+  </div>
+  <div class="field">
+    <%= f.label :sender_id, "Грузоотправитель" %><br />
+    <%= f.select :sender_id, options_for_select(all_clients, f.object.sender_id.to_i) %>
+  </div>
+  <div class="field">
+    <%= f.label :sender_date, "Дата доставки транспорта" %>
+    <%= f.calendar_date_select :sender_date, :time => true %>
+  </div>
+  <div class="field">
+    <%= f.label :receiver_id, "Грузополучатель" %><br />
+    <%= f.select :receiver_id, options_for_select(all_clients, f.object.receiver_id.to_i) %>
+  </div>
+  <div class="field">
+    <%= f.label :receiver_date, "Дата доставки транспорта" %>
+    <%= f.calendar_date_select :receiver_date, :time => true %>
   </div>
   <div class="field">
     <%= f.label :packing, "Вид упаковки" %><br />
@@ -33,7 +54,7 @@
     <%= f.text_field :train_type %>
   </div>
   <div class="field">
-    <%= f.label :load, "Погрузка" %>
+    <%= f.label :load, "Погрузка" %></br />
     <%= f.text_field :load %>
   </div>
   <div class="field">

@@ -48,20 +48,6 @@
         <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i) %>
         <%= link_to "Добавить", new_client_path %>
       </div>
-      <div class="field">
-        <%= f.label :sender_id, "Отправитель" %><br />
-        <%= f.select :sender_id, options_for_select(all_clients, @order.sender_id.to_i) %>
-        <%= link_to "Добавить", new_client_path %><br />
-        <%= f.label :sender_date, "Дата доставки транспорта" %>
-        <%= f.calendar_date_select :sender_date, :time => true %>
-      </div>
-      <div class="field">
-        <%= f.label :receiver_id, "Получатель" %><br />
-        <%= f.select :receiver_id, options_for_select(all_clients, @order.receiver_id.to_i) %>
-        <%= link_to "Добавить", new_client_path %><br />
-        <%= f.label :receiver_date, "Дата доставки транспорта" %>
-        <%= f.calendar_date_select :receiver_date, :time => true %>
-      </div>
     </div>
 
     <div class="box">
@@ -70,7 +56,7 @@
         <% unless @order.id.nil? %>
           <% @order.cargos.each do |c| %>
             <%= f.fields_for :cargos, c, :child_index => (c.new_record? ? "index_to_replace_with_js" : nil) do |cargo_fm| %>
-              <%= render 'cargos/cargo', :f => cargo_fm %>
+              <%= render 'cargos/cargo', :f => cargo_fm, :cargo => c, :all_clients => all_clients %>
             <% end %>
           <% end %>
         <% end %>
