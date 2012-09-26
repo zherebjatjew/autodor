@@ -50,6 +50,10 @@ header {
   display: block;
 }
 
+.menu {
+  padding-bottom: 1em;
+}
+
 .header {
   background: #ae5;
   float: left;

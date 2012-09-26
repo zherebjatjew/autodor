@@ -3,15 +3,17 @@
   <script type="text/javascript">
     function setOrganization(organization) {
       if (organization==true) {
-        document.getElementById('name_label').textContent = 'Наименование';
-        document.getElementById('identity_label').textContent = 'ИНН';
-        document.getElementById('org_mode').checked = true;
-        document.getElementById('org_only').hidden = false;
+        $j('#name_label').text('Наименование');
+        $j('#identity_label').text('ИНН');
+        $j('#org_mode').attr('checked', 'checked');
+        $j('#org_only').show(150);
+        $j('#director_label').text('Представитель (в родительном падеже)');
       } else {
-        document.getElementById('name_label').textContent = 'ФИО';
-        document.getElementById('identity_label').textContent = 'Паспортные данные';
-        document.getElementById('usr_mode').checked = true;
-        document.getElementById('org_only').hidden = true;
+        $j('#name_label').text('ФИО');
+        $j('#identity_label').text('Паспортные данные');
+        $j('#usr_mode').attr('checked', 'checked');
+        $j('#org_only').hide(150);
+        $j('#director_label').text('Фамилия (в родительном падеже)');
       }
     }
     jQuery(document).ready(function() {
@@ -31,12 +33,28 @@
     <%= f.text_field :identity %>
   </div>
   <div class="field">
-    <%= f.label :address, "Почтовый адрес" %><br />
-    <%= f.text_field :address %>
+    <%= f.label :address, "Адрес м/я" %><br />
+    <%= f.text_field :address1 %>
+  </div>
+  <div class="field">
+    <%= f.label :address, "Адрес почтовый" %><br />
+    <%= f.text_field :address2 %>
   </div>
   <div class="field">
     <%= f.label :phones, "Телефоны" %><br />
     <%= f.text_field :phones %>
+  </div>
+  <div class="field">
+    <%= f.label :faxes, "Факсы" %><br />
+    <%= f.text_field :faxes %>
+  </div>
+  <div class="field">
+    <%= f.label :director, "Фамилия (в родительном падеже)", :id => 'director_label' %><br />
+    <%= f.text_field :director %>
+  </div>
+  <div class="field">
+    <%= f.label :email, "Электронная почта" %><br />
+    <%= f.text_field :email %>
   </div>
   <div class="field">
     <%= f.label :born_at, "Дата рождения", :id => 'born_at_lable' %><br />
@@ -51,6 +69,30 @@
   <div class="field">
     <%= f.label :schedule, "График работы" %><br />
     <%= f.text_field :schedule %>
+  </div>
+  <div class="field">
+    <%= f.label :inn, "ИНН" %><br />
+    <%= f.text_field :inn %>
+  </div>
+  <div class="field">
+    <%= f.label :inn, "КПП" %><br />
+    <%= f.text_field :kpp %>
+  </div>
+  <div class="field">
+    <%= f.label :inn, "р/с" %><br />
+    <%= f.text_field :account %>
+  </div>
+  <div class="field">
+    <%= f.label :inn, "Банк" %><br />
+    <%= f.text_field :ati %>
+  </div>
+  <div class="field">
+    <%= f.label :inn, "к/с" %><br />
+    <%= f.text_field :corr_account %>
+  </div>
+  <div class="field">
+    <%= f.label :inn, "БИК" %><br />
+    <%= f.text_field :bic %>
   </div>
   <div class="field">
     <%= f.label :note, "Заметки" %><br />

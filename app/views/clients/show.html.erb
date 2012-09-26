@@ -2,7 +2,7 @@
 <% @clients.each do |c| %>
   <div class="client_info">
     <div style="float:left;">
-      <h2><%= c.name %></h2>
+      <h2><%= link_to c.name, client_path(c) %></h2>
     </div>
     <div style="float:left">
       <p><strong>График работы: </strong><%= c.schedule %></p>

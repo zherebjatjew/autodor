@@ -1,7 +1,9 @@
 <div class="menu">
   <%= link_to "Изменить", edit_order_path(@order), :class => "command" %>
   <%= link_to_function "Напечатать", "window.print()", :class => "command" %>
+  <%= link_to "Поручение", charge_path(@order), :class => "command" %>
 </div>
+
 <div class="print_order">
   <h1>Заявка на оказание транспортно-экспедиционных услуг №<%= @order.id %> от <%= date_to_s @order.committed_at %></h1>
 
@@ -12,52 +14,16 @@
     Режим работы экспедитора: <%= User.find(@order.user_id).schedule %><br />
   </div>
 
-  <h2>Общая информация об участниках</h2>
 
-  <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
-    <tr><th>Параметр<th>Клиент<th>Грузоотправитель<th>Грузополучатель</tr>
+  <h2>Информация об участниках</h2>
+  <table border="1" cellpadding="0" cellspacing="0" class="print_order" style="width:100%">
     <tr>
-      <td>1. Наименование
-      <td><%= @order.client.name %>
-      <td><%= @order.sender.name %>
-      <td><%= @order.receiver.name %>
+      <th>Параметр
+      <th>Клиент
+      <th>Грузоотправитель
+      <th>Грузополучатель
     </tr>
-    <tr>
-      <td>2. Адрес
-      <td><%= @order.client.address %>
-      <td><%= @order.sender.address %>
-      <td><%= @order.receiver.address %>
-    </tr>
-    <tr>
-      <td>3. Контактное лицо
-      <td><%= @order.client.contact %>
-      <td><%= @order.sender.contact %>
-      <td><%= @order.receiver.contact %>
-    </tr>
-    <tr>
-      <td>Телефоны
-      <td><%= @order.client.phones %>
-      <td><%= @order.sender.phones %>
-      <td><%= @order.receiver.phones %>
-    </tr>
-    <tr>
-      <td>4. Дата подачи т-та
-      <td>Поле не заполняется
-      <td><%= date_to_s @order.sender_date %>
-      <td><%= date_to_s @order.receiver_date %>
-    </tr>
-    <tr>
-      <td>5. Не позднее
-      <td>Поле не заполняется
-      <td><%= time_to_s @order.sender_date %>
-      <td><%= time_to_s @order.receiver_date %>
-    </tr>
-    <tr>
-      <td>Режим работы
-      <td><%= company_schedule %>
-      <td>
-      <td>
-    </tr>
+    <%= render 'member_table' %>
   </table>
 
   <h2>Информация о грузе, требуемом подвижном составе и оплате</h2>
@@ -74,7 +40,7 @@
       </tr>
       <tr>
         <td>3. Объявленная стоимость, руб.
-        <td><%= cargo.cost %>
+        <td><%= "#{cargo.cost} (#{cargo.cost.to_currency})" %>
       </tr>
       <tr>
         <td>4. Температурный режим
@@ -93,12 +59,12 @@
         <td><%= cargo.requirements %>
       </tr>
       <tr>
-        <td>8. Ставка за перевозку, руб.
-        <td><%= cargo.transportation_charge %>
+        <td>8. Ставка за перевозку с НДС, руб.
+        <td><%= "#{cargo.transportation_charge} (#{cargo.transportation_charge})" %>
       </tr>
       <tr>
         <td>9. Сроки и форма оплаты
-        <td><%= cargo.payment_notes %>
+        <td><%= cargo.tcharge_notes %>
       </tr>
       <tr>
         <td>10. Номер ТТН/Дата ТТН

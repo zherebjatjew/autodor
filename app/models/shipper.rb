@@ -5,4 +5,5 @@ class Shipper < ActiveRecord::Base
 
   has_many :drivers
   belongs_to :author, :class_name => 'User'
+  has_many :orders, :foreign_key => 'shipper_id'
 end

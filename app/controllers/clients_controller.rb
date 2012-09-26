@@ -14,6 +14,14 @@ class ClientsController < ApplicationController
     store_location
   end
 
+  def show
+    @client = Client.find(params[:id])
+    @title = "Клиент #{@client.name}"
+    respond_to do |format|
+      format.html { render :conclusion }
+    end
+  end
+
   def create
     @client = Client.new params[:client]
     @client.author = current_user

@@ -5,10 +5,8 @@
   </td>
   <% if @user.admin? || @user.owns?(order) %>
     <td class="order">
-      <% if  @user.owns?(order) %>
-        <%= @user.name %>
-      <% else %>
-        <%= link_to @user.name, user_path(@user) %>
+      <% unless order.author.nil? %>
+        <%= link_to order.author.name, user_path(order.author) %>
       <% end %>
     </td>
   <% end %>

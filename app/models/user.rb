@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def owns? item
-    item.kind_of?(Order) && orders.include?(item)
+    item.author_id == id
   end
 
   def has_password? submitted_password

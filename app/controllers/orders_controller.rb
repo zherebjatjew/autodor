@@ -29,12 +29,18 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find_by_id params[:id]
-    @title = "Заказ #{@order.id} - #{@order.info}"
+    @title = "Заказ №#{@order.id} - #{@order.info}"
+  end
+
+  def charge
+    @order = Order.find params[:id]
+    @title = "Поручение №#{params[:id]}"
   end
 
   def index
     @title = "Все заказы"
-    @users = Order.paginate(:page => params[:page])
+    @user = current_user
+    @orders = Order.paginate(:page => params[:page])
   end
 
   def edit

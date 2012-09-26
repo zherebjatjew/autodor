@@ -1,0 +1,147 @@
+<div class="menu">
+  <%= link_to "Изменить", edit_order_path(@order), :class => "command" %>
+  <%= link_to_function "Напечатать", "window.print()", :class => "command" %>
+</div>
+<div class="print_order">
+  <h1>Заявка на оказание транспортно-экспедиционных услуг №<%= @order.id %> от <%= date_to_s @order.committed_at %></h1>
+
+
+  <h2>Общая информация об участниках</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0" class="print_order" style="width:100%">
+    <tr>
+      <th>Параметр
+      <th>Заказчик
+      <th>Грузоотправитель
+      <th>Грузополучатель
+    </tr>
+    <%= render 'member_table' %>
+  </table>
+
+
+  <h2>Информация о грузе, требуемом подвижном составе и оплате</h2>
+
+  <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
+    <% @order.cargos.each do |cargo| %>
+      <tr>
+        <td style="width:75mm">1. Наименование/Вес/Объём
+        <td><%= cargo.name %>/<%= cargo.weight %>/<%= cargo.volume %>
+      </tr>
+      <tr>
+        <td>2. Вид упаковки/Число мест
+        <td><%= "#{cargo.packing}/#{cargo.seat || '---'}" %>
+      </tr>
+      <tr>
+        <td>3. Объявленная стоимость, руб.
+        <td><%= "#{cargo.cost} (#{cargo.cost.to_currency})" %>
+      </tr>
+      <tr>
+        <td>4. Температурный режим
+        <td><%= cargo.temperature.empty? ? "Не нужен" : cargo.temperature %>
+      </tr>
+      <tr>
+        <td>5. Тип состава/Погрузка/Пломба
+        <td><%= "#{cargo.train_type}/#{cargo.load ? 'Да' : 'Нет'}/#{cargo.seal ? 'Да' : 'Нет'}" %>
+      </tr>
+      <tr>
+        <td>6. Пневмоподвеска/Лифт
+        <td><%= "Пневмоподвеска #{'не' if !cargo.pneumo}обязательна/Лифт #{'не' if !cargo.lift}обязателен" %>
+      </tr>
+      <tr>
+        <td>7. Дополнительные требования
+        <td><%= cargo.requirements %>
+      </tr>
+      <tr>
+        <td>8. Ставка за перевозку, руб.
+        <td><%= "#{cargo.inner_charge} (#{cargo.inner_charge.to_currency}) #{cargo.icharge_notes}" %>
+      </tr>
+      <tr>
+        <td>9. Предоплата, руб.
+        <td><%= "#{cargo.prepay_amount} (#{cargo.prepay_amount.to_currency}) #{cargo.prepay_notes}" %>
+      </tr>
+      <tr>
+        <td>10. Оплата, руб.
+        <% rest = cargo.inner_charge - cargo.prepay_amount %>
+        <td><%= "#{rest} (#{rest.to_currency}) #{cargo.prepay_notes}" %>
+      <tr>
+        <td>10. Номер ТТН/Дата ТТН
+        <td><%= "#{cargo.bill_id}/#{cargo.bill_date}" %>
+      </tr>
+    <% end %>
+  </table>
+
+
+
+  <h2>Информация о Водителе и транспортном средстве</h2>
+  <% driver = @order.driver %>
+
+  <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
+    <% shipper = @order.shipper || Shipper.new(:email => "", :phones => "") %>
+    <tr>
+      <td style="width:75mm">1. Перевозчик
+      <td>
+        <%= "#{shipper.name}#{', ' + shipper.email unless shipper.email.empty?}#{', ' + shipper.phones unless shipper.phones.empty?}" %>
+      </td>
+    </tr>
+    <tr>
+      <td>2. Ф.И.О. Водителя
+      <td><%= driver.name %>
+    </tr>
+    <tr>
+      <td>3. Паспортные данные, дата выдачи, код под-ния
+      <td><%= driver.identity %>
+    </tr>
+    <tr>
+      <td>4. Телефоны для связи (все)
+      <td><%= driver.phone %>
+    </tr>
+    <% truck = @order.truck %>
+    <% trailer = @order.trailer %>
+    <tr>
+      <td>5. Автомобиль, прицеп
+      <% s = "#{truck.model}/#{truck.identity}" %>
+      <% s << (", #{trailer.model || "Нет"}/#{trailer.identity || "Нет"}") unless trailer.nil? %>
+      <td><%= s %>
+    </tr>
+  </table>
+
+
+  <h3>Перевозчик обязан:</h3>
+  
+  <p>
+    1. Проверять правильность записей, сделанных в ТТН относительно числа грузовых мест и вида товаров, а также внешнее состояние груза и его упаковки.
+  </p>
+  <p>
+    2. В случае обнаружения дефектов упаковки или груза, делать соответствующие отметки в документах грузоотправителя и требовать роспись его ответственного представителя.
+  </p>
+  <p>
+    3. Требовать от грузополучателя надлежащего оформления ТТН, а в случае отказа немедленно извещать об этом Заказчика.
+  </p>
+  <p>
+    4. Извещать Заказчика любыми доступными средствами о прибытии к месту погрузки, а также в случае возникновения экстренной ситуации (поломка и т.п.), не позднее одного часа после наступления указанных событий.
+  </p>
+  <p>
+    5. Соблюдать очерёдность погрузочно-разгрузочных работ, указанную в заявке.
+  </p>
+
+  <table border=0 cellpadding=0 cellspacing=0 style="width:100%" class="order_signs">
+    <tr>
+      <td style="height:3em;vertical-align:bottom;text-align:right">Перевозчик:
+      <td style="border-bottom:1px solid;width:35%">
+      <td>
+      <td style="height:3em;vertical-align:bottom;text-align:right">Заказчик:
+      <td style="border-bottom:1px solid;width:35%">
+    </tr>
+    <tr>
+      <td>
+      <td>М.П.
+      <td>
+      <td>
+      <td>М.П.
+    </tr>
+  </table>
+</div>
+<div class="menu">
+  <%= link_to "Изменить", edit_order_path(@order), :class => "command" %>
+  <%= link_to_function "Напечатать", "window.print()", :class => "command" %>
+</div>

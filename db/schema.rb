@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913081640) do
+ActiveRecord::Schema.define(:version => 20120924104021) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -34,13 +34,19 @@ ActiveRecord::Schema.define(:version => 20120913081640) do
     t.boolean  "lift"
     t.string   "requirements"
     t.decimal  "transportation_charge"
-    t.string   "payment_notes"
+    t.string   "tcharge_notes"
     t.integer  "bill_id"
     t.date     "bill_date"
     t.integer  "order_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "author_id"
+    t.decimal  "debt_amount"
+    t.integer  "seat"
+    t.decimal  "prepay_amount",         :default => 0.0
+    t.decimal  "inner_charge",          :default => 0.0
+    t.string   "icharge_notes",         :default => ""
+    t.string   "prepay_notes",          :default => ""
   end
 
   create_table "cars", :force => true do |t|
@@ -60,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20120913081640) do
     t.string   "name",                            :null => false
     t.date     "born_at"
     t.string   "identity"
-    t.string   "address"
+    t.string   "address1"
     t.string   "contact"
     t.string   "schedule"
     t.string   "note"
@@ -68,6 +74,17 @@ ActiveRecord::Schema.define(:version => 20120913081640) do
     t.datetime "updated_at",                      :null => false
     t.integer  "author_id"
     t.string   "phones"
+    t.date     "signed_at"
+    t.string   "address2",     :default => ""
+    t.string   "inn"
+    t.string   "kpp"
+    t.string   "account"
+    t.string   "ati"
+    t.string   "corr_account"
+    t.string   "bic"
+    t.string   "faxes"
+    t.string   "email"
+    t.string   "director",     :default => ""
   end
 
   create_table "drivers", :force => true do |t|
@@ -102,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20120913081640) do
     t.integer  "truck_id"
     t.integer  "trailer_id"
     t.integer  "author_id"
+    t.integer  "shipper_id"
   end
 
   create_table "shippers", :force => true do |t|
@@ -123,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20120913081640) do
     t.string   "contact"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "account"
   end
 
   create_table "users", :force => true do |t|
