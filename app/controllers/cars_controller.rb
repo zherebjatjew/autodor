@@ -10,7 +10,7 @@ class CarsController < ApplicationController
     @car.save
     respond_to do |format|
       format.html
-      format.js { render :nothing => true }
+      format.js
     end
   end
 
@@ -64,7 +64,9 @@ class CarsController < ApplicationController
           render 'edit'
         end
       }
-      format.js
+      format.js {
+        @car.update_attributes params[:car]
+      }
     end
   end
 
