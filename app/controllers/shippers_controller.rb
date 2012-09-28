@@ -53,4 +53,15 @@ class ShippersController < ApplicationController
     end
   end
 
+  def orders
+    @title = "Заявки"
+    @shipper = Shipper.find params[:id]
+    @orders = @shipper.orders.paginate(:page => params[:page])
+    @user = current_user
+    respond_to do |format|
+      format.html { render 'orders/index' }
+      format.js { render 'orders/index' }
+    end
+  end
+
 end

@@ -1,3 +1,25 @@
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    $j('a[data-remote]').click(function(event) {
+      button = $j(this);
+      event.preventDefault();
+      shipper_id = button.attr('id').substring(6);
+      container = $j('#form' + shipper_id);
+      if (container.is(':hidden') && container.find('td').length == 0) {
+        container.load($j(this).attr('href') + '.js', function() {
+          if (container.find('td').length == 0) {
+            container.find('table').append('<tr><td>Нет ни одного заказа</tr>');
+          }
+        });
+      }
+      container.slideToggle(150, function() {
+        button.text(button.text() == '▼' ? '▲' : '▼');
+      });
+      return false;
+    });
+  });
+</script>
+
 <h2><%= @title %></h2>
 
 <%= will_paginate %>
