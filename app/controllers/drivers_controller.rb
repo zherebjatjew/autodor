@@ -6,17 +6,28 @@ class DriversController < ApplicationController
   def new
     @title = "Добавление водителя"
     @driver = Driver.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
     store_location
   end
 
   def create
     @driver = Driver.new params[:driver]
     @driver.author = current_user
-    if @driver.save
-      flash[:success] = "Водитель #{@driver.name} добавлен в Автодор"
-      redirect_back_or drivers_path
-    else
-      render :edit
+    respond_to do |format|
+      format.html {
+        if @driver.save
+          flash[:success] = "Водитель #{@driver.name} добавлен в Автодор"
+          redirect_back_or drivers_path
+        else
+          render :edit
+        end
+      }
+      format.js {
+        @driver.save
+      }
     end
   end
 
