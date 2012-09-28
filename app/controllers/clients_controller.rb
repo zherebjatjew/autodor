@@ -6,6 +6,10 @@ class ClientsController < ApplicationController
   def new
     @title = "Добавление клиента"
     @client = Client.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index
@@ -25,12 +29,17 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new params[:client]
     @client.author = current_user
-    if @client.save
-      # success
-      flash[:success] = "Клиент #{@client.name} добавлен в Автодор"
-      redirect_back_or clients_path
-    else
-      render :edit
+    respond_to do |format|
+      format.html {
+        if @client.save
+          # success
+          flash[:success] = "Клиент #{@client.name} добавлен в Автодор"
+          redirect_back_or clients_path
+        else
+          render :edit
+        end
+      }
+      format.js { @client.save }
     end
   end
 

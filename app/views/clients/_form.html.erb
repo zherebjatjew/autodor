@@ -1,4 +1,5 @@
-<%= form_for(@client) do |f| %>
+<h2><%= @title %></h2>
+<%= form_for(@client, :remote => true) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
   <script type="text/javascript">
     function setOrganization(organization) {
