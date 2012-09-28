@@ -1,0 +1,8 @@
+$j('.ui-dialog-titlebar-close').click();
+var cars = $j('#order_trailer_id');
+cars.empty();
+<% s = '' %>
+<% Car.trailers.each do |c| %>
+cars.append($j('<option></option>').attr("value", "<%= c.id.to_s %>").text("<%= "#{c.base} #{c.identity}" %>"));
+cars.val("<%= c.id.to_s %>");
+<% end %>

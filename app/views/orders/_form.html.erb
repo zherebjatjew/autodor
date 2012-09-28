@@ -100,12 +100,12 @@
       <div class="field">
         <%= f.label :truck_id, "Тягач" %><br />
         <%= f.select :truck_id, options_for_select(all_trucks, @order.truck_id.to_i) %>
-        <%= link_to "Добавить", new_truck_path, :id => 'create_truck', :remote => true %>
+        <%= link_to "Добавить", new_truck_path, :remote => true, :class => 'command', :alias => 'Добавление транспорта' %>
       </div>
       <div class="field">
         <%= f.label :trailer_id, "Прицеп" %><br />
         <%= f.select :trailer_id, options_for_select(all_trailers, @order.trailer_id.to_i) %>
-        <%= link_to "Добавить", new_trailer_path %>
+        <%= link_to "Добавить", new_trailer_path, :remote => true, :class => 'command', :alias => 'Добавление прицепа' %>
       </div>
     </div>
   

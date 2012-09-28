@@ -9,12 +9,14 @@ class CarsController < ApplicationController
     @car.save
     respond_to do |format|
       format.html
-      format.js
+      format.js { render @car.is_trailer? ? 'trailers' : 'trucks' }
     end
   end
 
   def trailers
-    @cars = Car.find_by_is_trailer(true)
+    @car = Car.new params[:car]
+    @car.author = current_user
+    @car.save
     respond_to do |format|
       format.html
       format.js
