@@ -3,14 +3,12 @@
 class Order < ActiveRecord::Base
   attr_accessible :info, :forwarder_id, :committed_at,
                   :signed, :paid, :completed, :client_id,
-                  :sender_id, :receiver_id, :driver_id, :cargos_attributes,
-                  :sender_date, :receiver_date, :truck_id, :trailer_id,
-                  :shipper_id
+                  :driver_id, :cargos_attributes,
+                  :truck_id, :trailer_id, :shipper_id
 
   belongs_to :user
   has_one :forwarder, :class_name => 'User'
   has_one :client
-  has_one :sender, :class_name => 'Client'
   has_one :receiver, :class_name => 'Client'
   belongs_to :shipper
   has_many :cargos
@@ -22,8 +20,6 @@ class Order < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :forwarder_id, :presence => true
   validates :client_id, :presence => true
-  validates :sender_id, :presence => true
-  validates :receiver_id, :presence => true
   validates :driver_id, :presence => true
 
   accepts_nested_attributes_for :cargos, :allow_destroy => true
@@ -40,12 +36,18 @@ class Order < ActiveRecord::Base
     Client.find client_id
   end
 
-  def sender
-    Client.find sender_id
-  end
-
-  def receiver
-    Client.find receiver_id
+  def checkpoints
+    senders = []
+    receivers = []
+    cargos.each do |cargo|
+#      if senders.empty? || senders[-1].id != cargo.sender_id
+        senders << cargo.sender
+#      end
+#      if receivers.empty? || receivers[-1].id != cargo.receiver_id
+        receivers << cargo.receiver
+#      end
+    end
+    [senders, receivers]
   end
 
   def driver

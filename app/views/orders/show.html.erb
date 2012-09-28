@@ -14,14 +14,13 @@
     Режим работы экспедитора: <%= User.find(@order.user_id).schedule %><br />
   </div>
 
-
   <h2>Информация об участниках</h2>
   <table border="1" cellpadding="0" cellspacing="0" class="print_order" style="width:100%">
     <tr>
       <th>Параметр
       <th>Клиент
-      <th>Грузоотправитель
-      <th>Грузополучатель
+      <th colspan="<%= @cargos.length %>">Грузоотправитель
+      <th colspan="<%= @cargos.length %>">Грузополучатель
     </tr>
     <%= render 'member_table' %>
   </table>
@@ -29,7 +28,7 @@
   <h2>Информация о грузе, требуемом подвижном составе и оплате</h2>
 
   <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
-    <% @order.cargos.each do |cargo| %>
+    <% @cargos.each do |cargo| %>
       <tr>
         <td style="width:75mm">1. Наименование/Вес/Объём
         <td><%= cargo.name %>/<%= cargo.weight %>/<%= cargo.volume %>
@@ -40,7 +39,7 @@
       </tr>
       <tr>
         <td>3. Объявленная стоимость, руб.
-        <td><%= "#{cargo.cost} (#{cargo.cost.to_currency})" %>
+        <td><%= "#{cargo.cost} (#{cargo.cost.to_currency unless cargo.cost.nil?})" %>
       </tr>
       <tr>
         <td>4. Температурный режим

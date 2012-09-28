@@ -1,44 +1,72 @@
     <tr>
       <td>1. Наименование
       <td><%= @order.client.name %>
-      <td><%= @order.sender.name %>
-      <td><%= @order.receiver.name %>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.sender.name %>
+      <% end %>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.receiver.name %>
+      <% end %>
     </tr>
     <tr>
       <td>2. Адрес
-      <td><%= @order.client.address %>
-      <td><%= @order.sender.address %>
-      <td><%= @order.receiver.address %>
+      <td><%= @order.client.address1 %>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.sender.address1 %>
+      <% end %>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.receiver.address1 %>
+      <% end %>
     </tr>
     <tr>
       <td>3. Контактное лицо
       <td><%= @order.client.contact %>
-      <td><%= @order.sender.contact %>
-      <td><%= @order.receiver.contact %>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.sender.contact %>
+      <% end %>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.receiver.contact %>
+      <% end %>
     </tr>
     <tr>
       <td>Телефоны
       <td><%= @order.client.phones %>
-      <td><%= @order.sender.phones %>
-      <td><%= @order.receiver.phones %>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.sender.phones %>
+      <% end %>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.receiver.phones %>
+      <% end %>
     </tr>
     <tr>
       <td>4. Дата подачи т-та
       <td>Поле не заполняется
-      <td><%= date_to_s @order.sender_date %>
-      <td><%= date_to_s @order.receiver_date %>
+      <% @cargos.each do |cargo| %>
+      <td><%= date_to_s cargo.sender_date %>
+      <% end %>
+      <% @cargos.each do |cargo| %>
+      <td><%= date_to_s cargo.receiver_date %>
+      <% end %>
     </tr>
     <tr>
       <td>5. Не позднее
       <td>Поле не заполняется
-      <td><%= time_to_s @order.sender_date %>
-      <td><%= time_to_s @order.receiver_date %>
+      <% @cargos.each do |cargo| %>
+      <td><%= time_to_s cargo.sender_date %>
+      <% end %>
+      <% @cargos.each do |cargo| %>
+      <td><%= time_to_s cargo.receiver_date %>
+      <% end %>
     </tr>
     <tr>
       <td>Режим работы
       <td><%= company_schedule %>
-      <td>
-      <td>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.sender.schedule %>
+      <% end %>
+      <% @cargos.each do |cargo| %>
+      <td><%= cargo.receiver.schedule %>
+      <% end %>
     </tr>
 
 
