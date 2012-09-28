@@ -15,4 +15,8 @@ class Car < ActiveRecord::Base
     Car.find 1
   end
 
+  def self.trucks
+    Car.where :is_trailer => false
+  end
+
 end
