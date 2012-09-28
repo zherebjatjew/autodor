@@ -72,7 +72,7 @@
       <% Shipper.all.each { |shipper| all_shippers << [shipper.name, shipper.id] } %>
       <div class="field">
         <%= f.select :shipper_id, options_for_select(all_shippers, @order.shipper_id.to_i) %>
-        <%= link_to "Добавить", new_shipper_path %>
+        <%= link_to "Добавить", new_shipper_path, :alias => 'Добавление перевозчика', :remote => true, :class => 'command' %>
       </div>
     </div>
 

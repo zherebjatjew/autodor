@@ -1,4 +1,6 @@
-<%= form_for @shipper do |f| %>
+<h2><%= @title %></h2>
+
+<%= form_for @shipper, :remote => true do |f| %>
   <div class="field">
     <%= f.label :name, "Наименование" %><br />
     <%= f.text_field :name %>

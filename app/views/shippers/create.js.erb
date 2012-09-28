@@ -1,0 +1,7 @@
+$j('.ui-dialog-titlebar-close').click();
+var shippers = $j('#order_shipper_id');
+shippers.empty();
+<% Shipper.all.each do |d| %>
+shippers.append($j('<option></option>').attr("value", "<%= d.id.to_s %>").text("<%= d.name %>"));
+shippers.val("<%= d.id.to_s %>");
+<% end %>

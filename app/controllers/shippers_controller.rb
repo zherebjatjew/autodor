@@ -5,12 +5,17 @@ class ShippersController < ApplicationController
   def create
     @shipper= Shipper.new params[:shipper]
     @shipper.author = current_user
-    if @shipper.save
-      # success
-      flash[:success] = "Перевозчик #{@shipper.name} добавлен в Автодор"
-      redirect_back_or shippers_path
-    else
-      render :edit
+    respond_to do |format|
+      format.html {
+        if @shipper.save
+           # success
+          flash[:success] = "Перевозчик #{@shipper.name} добавлен в Автодор"
+          redirect_back_or shippers_path
+        else
+          render :edit
+        end
+      }
+      format.js { @shipper.save }
     end
   end
 
@@ -42,6 +47,10 @@ class ShippersController < ApplicationController
   def new
     @title = "Добавление перевозчика"
     @shipper = Shipper.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 end
