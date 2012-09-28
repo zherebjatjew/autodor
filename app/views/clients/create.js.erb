@@ -1,8 +1,9 @@
 $j('.ui-dialog-titlebar-close').click();
-// TODO: Update all client selectors
-var clients = $j('#order_client_id');
-clients.empty();
-<% Client.all.each do |d| %>
-clients.append($j('<option></option>').attr("value", "<%= d.id.to_s %>").text("<%= d.name %>"));
-clients.val("<%= d.id.to_s %>");
-<% end %>
+
+$j('select.client-selector').each(function(index) {
+  clients = $j(this);
+  clients.empty();
+  <% Client.all.each do |d| %>
+  clients.append($j('<option></option>').attr("value", "<%= d.id.to_s %>").text("<%= d.name %>"));
+  <% end %>
+});

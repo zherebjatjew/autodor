@@ -19,7 +19,7 @@
   </div>
   <div class="field">
     <%= f.label :sender_id, "Грузоотправитель" %><br />
-    <%= f.select :sender_id, options_for_select(all_clients, f.object.sender_id.to_i) %>
+    <%= f.select :sender_id, options_for_select(all_clients, f.object.sender_id.to_i), {}, :class => 'client-selector' %>
   </div>
   <div class="field">
     <%= f.label :sender_date, "Дата доставки транспорта" %>
@@ -27,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label :receiver_id, "Грузополучатель" %><br />
-    <%= f.select :receiver_id, options_for_select(all_clients, f.object.receiver_id.to_i) %>
+    <%= f.select :receiver_id, options_for_select(all_clients, f.object.receiver_id.to_i), {}, :class => 'client-selector' %>
   </div>
   <div class="field">
     <%= f.label :receiver_date, "Дата доставки транспорта" %>

@@ -45,7 +45,7 @@
     <div class="box">
       <div class="field">
         <%= f.label :client_id, "Заказчик" %><br />
-        <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i) %>
+        <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i), {}, :class => 'client-selector' %>
         <%= link_to "Добавить", new_client_path, :remote => true, :alias => 'Добавление заказчика', :class => 'command' %>
       </div>
     </div>
