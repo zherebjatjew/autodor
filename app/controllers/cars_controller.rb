@@ -4,7 +4,6 @@ class CarsController < ApplicationController
   before_filter :authenticate
 
   def trucks
-    @cars = Car.find_by_is_trailer(false)
     @car = Car.new params[:car]
     @car.author = current_user
     @car.save
