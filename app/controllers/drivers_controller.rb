@@ -7,10 +7,20 @@ class DriversController < ApplicationController
     @title = "Добавление водителя"
     @driver = Driver.new
     respond_to do |format|
-      format.html
+      format.html { store_location }
       format.js
     end
-    store_location
+  end
+
+  def orders
+    @title = "Заказы водителя"
+    @driver = Driver.find params[:id]
+    @user = current_user
+    @orders = @driver.orders.paginate(:page => params[:page])
+    respond_to do |format|
+      format.html { render 'orders/index' }
+      format.js { render 'orders/index' }
+    end
   end
 
   def create

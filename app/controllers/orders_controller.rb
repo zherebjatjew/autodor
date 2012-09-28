@@ -45,6 +45,10 @@ class OrdersController < ApplicationController
     @title = "Все заказы"
     @user = current_user
     @orders = Order.paginate(:page => params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit

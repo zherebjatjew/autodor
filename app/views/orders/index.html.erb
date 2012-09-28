@@ -1,9 +1,7 @@
-<h1>Все заявки</h1>
-
-<%= will_paginate %>
+<%= will_paginate @orders %>
 
 <table class="orders">
   <%= render @orders %>
 </table>
 
-<%= will_paginate %>
+<%= will_paginate @orders %>
