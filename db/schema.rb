@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20120925120112) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.integer  "author_id"
-    t.decimal  "debt_amount"
     t.integer  "seat"
     t.decimal  "prepay_amount",         :default => 0.0
     t.decimal  "inner_charge",          :default => 0.0

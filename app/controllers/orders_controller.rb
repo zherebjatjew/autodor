@@ -2,7 +2,7 @@
 
 class OrdersController < ApplicationController
   before_filter :authenticate
-  before_filter :current_or_admin, :only => [:index, :destroy]
+  before_filter :current_or_admin, :only => [:index, :destroy, :edit, :update]
 
   def new
     @user = User.find params[:user]
@@ -79,6 +79,6 @@ class OrdersController < ApplicationController
   private
 
     def current_or_admin
-      deny_access unless (current_user.admin? || current_user.owns?(params[:id]))
+      deny_access unless (current_user.admin? || current_user.owns?(Order.find params[:id]))
     end
 end

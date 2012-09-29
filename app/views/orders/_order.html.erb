@@ -3,14 +3,12 @@
     <% created = order.created_at.strftime "%d.%m.%Y" %>
     <%= link_to "#{order.id}. #{created} #{order.info}", order %>
   </td>
-  <% if @user.admin? || @user.owns?(order) %>
-    <td class="order">
-      <% unless order.author.nil? %>
-        <%= link_to order.author.name, user_path(order.author) %>
-      <% end %>
-    </td>
-  <% end %>
-  <% if @user.admin? || @user.owns?(order) %>
+  <td class="order">
+    <% unless order.forwarder_id.nil? %>
+      <%= link_to order.forwarder.name, user_path(order.forwarder) %>
+    <% end %>
+  </td>
+  <% if current_user.admin? || current_user.owns?(order) %>
     <td class="button_cell">
       <%= link_to "изменить", edit_order_path(order), :class => "command" %>
     </td>

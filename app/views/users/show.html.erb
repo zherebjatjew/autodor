@@ -7,7 +7,9 @@
       </h2>
     </td>
     <td class="sidebar">
-      <%= link_to "Редактировать профиль", edit_user_path(@user) %><br />
+      <% if current_user.id == @user.id %>
+        <%= link_to "Редактировать профиль", edit_user_path(@user) %><br />
+      <% end %>
       <strong>График работы: </strong><%= @user.schedule %><br />
     </td>
   </tr>
