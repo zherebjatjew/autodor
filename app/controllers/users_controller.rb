@@ -25,7 +25,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @orders = @user.orders.order("created_at DESC").paginate :page => params[:page]
+    if @user.admin?
+      set = Order.order("created_at DESC")
+    else
+      set = Order.order("created_at DESC").where("forwarder_id = ? OR forwarder_id = NULL", @user.id)
+    end
+    @orders = set.order("created_at DESC").paginate :page => params[:page]
     @title = @user.name
   end
 

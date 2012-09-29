@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
-  has_many :orders
+  has_many :orders,  :foreign_key => 'forwarder_id'
   has_many :clients, :foreign_key => 'author_id'
   has_many :drivers, :foreign_key => 'author_id'
   has_many :cars,    :foreign_key => 'author_id'
@@ -30,7 +30,11 @@ class User < ActiveRecord::Base
   end
 
   def owns? item
-    item.author_id == id
+    if item.instance_of?(Order)
+      item.forwarder_id == id
+    else
+      item.author_id == id
+    end
   end
 
   def has_password? submitted_password
