@@ -10,6 +10,20 @@ class UsersController < ApplicationController
   def index
     @title = "Все пользователи"
     @users = User.paginate(:page => params[:page])
+    respond_to do |format|
+      format.html
+      format.json {
+        resp = []
+        @users.each do |user|
+          resp << { :name => user.name,
+                    :email => user.email,
+                    :role => user.role,
+                    :schedule => user.schedule
+                  }
+        end
+        render :json => resp.to_json
+      }
+    end
   end
 
   def new
@@ -67,18 +81,14 @@ class UsersController < ApplicationController
   private
 
     def correct_or_admin
-      unless current_user.admin?
-        @user = User.find params[:id]
-        deny_access unless current_user == @user
-      end
+      deny_access if current_user.nil? || (!current_user.admin? && current_user.id != params[:id])
     end
 
     def correct_user
-      @user = User.find params[:id]
-      deny_access unless currect_user?(@user)
+      deny_access if current_user.nil? || current_user.id != params[:id]
     end
 
     def admin_user
-      deny_access unless current_user.admin?
+      deny_access if current_user.nil? || !current_user.admin?
     end
 end
