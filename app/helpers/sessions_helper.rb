@@ -15,7 +15,7 @@ module SessionsHelper
         }
         format.json {
           render :status => 401,
-                 :json => { :message => "You have to authorize to access this data" }.to_json
+                 :json => { :message => "You have to be authorized to access this data" }.to_json
         }
       end
     else
@@ -25,7 +25,7 @@ module SessionsHelper
         }
         format.json {
           render :status => 403,
-                 :json => { :message => "You do not have privileges to access this data" }.to_json
+                 :json => { :message => "Not enough privileges to access this data" }.to_json
         }
       end
     end

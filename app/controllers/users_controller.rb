@@ -10,20 +10,6 @@ class UsersController < ApplicationController
   def index
     @title = "Все пользователи"
     @users = User.paginate(:page => params[:page])
-    respond_to do |format|
-      format.html
-      format.json {
-        resp = []
-        @users.each do |user|
-          resp << { :name => user.name,
-                    :email => user.email,
-                    :role => user.role,
-                    :schedule => user.schedule
-                  }
-        end
-        render :json => resp.to_json
-      }
-    end
   end
 
   def new
