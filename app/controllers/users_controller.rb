@@ -72,18 +72,14 @@ class UsersController < ApplicationController
   private
 
     def correct_or_admin
-      unless current_user.admin?
-        @user = User.find params[:id]
-        deny_access unless current_user == @user
-      end
+      deny_access if current_user.nil? || (!current_user.admin? && current_user.id != params[:id])
     end
 
     def correct_user
-      @user = User.find params[:id]
-      deny_access unless currect_user?(@user)
+      deny_access if current_user.nil? || current_user.id != params[:id]
     end
 
     def admin_user
-      deny_access unless current_user.admin?
+      deny_access if current_user.nil? || !current_user.admin?
     end
 end

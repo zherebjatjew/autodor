@@ -2,7 +2,19 @@
 
 class SessionsController < ApplicationController
   def new
-    @title = "Вход"
+    respond_to do |format|
+      format.html { @title = "Вход" }
+      format.json {
+#        render :status => 401,
+#               :json => { :message => "Login required" }.to_json
+        user = User.authentificate(params[:email], params[:password])
+        if user.nil?
+          render :status => 403, :json => { :message => "Invalid credentials" }.to_json
+        else
+          render :status => 200, :json => { :message => "You have logged in" }.to_json
+        end
+      }
+    end
   end
 
   def create
@@ -23,6 +35,9 @@ class SessionsController < ApplicationController
   
   def destroy
     sign_out
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { render :status => 200, :json => { :message => "You have logged out" }.to_json }
+    end
   end
 end

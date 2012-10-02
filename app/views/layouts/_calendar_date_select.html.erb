@@ -11,7 +11,7 @@
 </script>
 <%= stylesheet_link_tag 'calendar_date_select/gray' %>
 <%
-  CalendarDateSelect.format = (params[:fmt]||"natural").to_sym
+  CalendarDateSelect.format = (params[:fmt]||"finnish").to_sym
   params[:style]||="red"
   params[:style]=nil if params[:style]=="default"
 %>

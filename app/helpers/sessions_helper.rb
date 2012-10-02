@@ -7,11 +7,27 @@ module SessionsHelper
   end
 
   def deny_access
-    if signed_in?
-      store_location
-      redirect_to signin_path, :notice => "Вы должны зарегистрироваться, чтобы получить доступ к этой странице"
+    unless signed_in?
+      respond_to do |format|
+        format.html {
+          store_location
+          redirect_to signin_path, :notice => "Вы должны зарегистрироваться, чтобы получить доступ к этой странице"
+        }
+        format.json {
+          render :status => 401,
+                 :json => { :message => "You have to be authorized to access this data" }.to_json
+        }
+      end
     else
-      redirect_to user_path(current_user), :notice => "Недостаточно прав для доступа к странице"
+      respond_to do |format|
+        format.html {
+          redirect_to user_path(current_user), :notice => "Недостаточно прав для доступа к странице"
+        }
+        format.json {
+          render :status => 403,
+                 :json => { :message => "Not enough privileges to access this data" }.to_json
+        }
+      end
     end
   end
 
