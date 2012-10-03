@@ -49,9 +49,9 @@ class DriversController < ApplicationController
   def update
     @title = "Изменение информации о водителе"
     @driver = Driver.find params[:id]
-    if @client.update_attributes params[:client]
-      flash[:success] = "Информация о клиенте обновлена"
-      redirect_back_or clients_path
+    if @driver.update_attributes params[:driver]
+      flash[:success] = "Информация о водителе обновлена"
+      redirect_back_or driverss_path
     else
       render :edit
     end
@@ -60,6 +60,10 @@ class DriversController < ApplicationController
   def edit
     @title = "Изменение информации о водителе"
     @driver = Driver.find params[:id]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 end
