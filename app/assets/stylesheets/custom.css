@@ -31,8 +31,14 @@ body {
   padding-right: 0.3em;
 }
 
+.ui-dialog-content h1 {
+  display:none;
+}
+
 .ui-dialog-title {
   padding-left: 0.3em;
+  padding-top: 0.3em;
+  font-size: 1.5em;
 }
 
 header {
