@@ -7,6 +7,6 @@ class Driver < ActiveRecord::Base
   has_many :cars, :through => 'car_owner'
   belongs_to :author, :class_name => 'User'
 
-  validates :author, :presence => true
-  validates :identity, :uniqueness => true
+#  validates :author, :presence => true
+#  validates :identity, :uniqueness => true
 end

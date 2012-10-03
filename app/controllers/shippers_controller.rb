@@ -32,6 +32,10 @@ class ShippersController < ApplicationController
   def edit
     @title = "Изменение информации о перевозчике"
     @shipper = Shipper.find params[:id]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index

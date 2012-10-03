@@ -51,7 +51,7 @@ class DriversController < ApplicationController
     @driver = Driver.find params[:id]
     if @driver.update_attributes params[:driver]
       flash[:success] = "Информация о водителе обновлена"
-      redirect_back_or driverss_path
+      redirect_back_or drivers_path
     else
       render :edit
     end

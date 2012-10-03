@@ -7,19 +7,19 @@
   }
 
   $j(document).ready(function() {
-    $j('a[data-remote=false]').live('click', function(event) {
+    $j('a[data-remote=false].expand').live('click', function(event) {
       event.preventDefault();
       toggleExpansion($j(this));
       return false;
     });
   
-    $j('a[data-remote=false]').live('ajax:before', function(event) {
+    $j('a[data-remote=false].expand').live('ajax:before', function(event) {
       // Decpite we have turned 'data-remote' off, rails.js is still
       // executing ajax request on click, so we are to cancel it:
       return false;
     });
 
-    $j('a[data-remote=true]').live('ajax:complete', function(event, xhr, status) {
+    $j('a[data-remote=true].expand').live('ajax:complete', function(event, xhr, status) {
       button = $j(this);
       event.preventDefault();
       button.attr('data-remote', false);
@@ -33,6 +33,8 @@
       toggleExpansion(button);
       return false;
     });
+
+    $j('a[data-remote=true].edit').live('ajax:complete', editDialog);
   });
 </script>
 
