@@ -49,11 +49,20 @@ class DriversController < ApplicationController
   def update
     @title = "Изменение информации о водителе"
     @driver = Driver.find params[:id]
-    if @driver.update_attributes params[:driver]
-      flash[:success] = "Информация о водителе обновлена"
-      redirect_back_or drivers_path
-    else
-      render :edit
+    respond_to do |format|
+      format.html {
+        if @driver.update_attributes params[:driver]
+          flash[:success] = "Информация о водителе обновлена"
+          redirect_back_or drivers_path
+        else
+          render :edit
+        end
+      }
+      format.js {
+        if !@driver.update_attributes params[:driver]
+          render :json => driver.errors, :status => :unprocessable
+        end
+      }
     end
   end
 
@@ -61,7 +70,7 @@ class DriversController < ApplicationController
     @title = "Изменение информации о водителе"
     @driver = Driver.find params[:id]
     respond_to do |format|
-      format.html
+      format.html { store_location }
       format.js
     end
   end
