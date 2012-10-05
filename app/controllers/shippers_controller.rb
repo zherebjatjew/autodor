@@ -15,17 +15,30 @@ class ShippersController < ApplicationController
           render :edit
         end
       }
-      format.js { @shipper.save }
+      format.js {
+        if !@shipper.save
+          render :json => @shipper.errors, :status => :unprocessable
+        end
+      }
     end
   end
 
   def update
     @shipper = Shipper.find params[:id]
-    if @shipper.update_attributes params[:shipper]
-      flash[:success] = "Информация о перевозчике обновлена"
-      redirect_back_or shippers_path
-    else
-      render 'edit'
+    respond_to do |format|
+      format.html {
+        if @shipper.update_attributes params[:shipper]
+          flash[:success] = "Информация о перевозчике обновлена"
+          redirect_back_or shippers_path
+        else
+          render 'edit'
+        end
+      }
+      format.js {
+        if !@shipper.update_attributes(params[:shipper])
+          render :json => @shipper.errors, :status => :unprocessable
+        end
+      }
     end
   end
 

@@ -36,7 +36,9 @@ class DriversController < ApplicationController
         end
       }
       format.js {
-        @driver.save
+        if !@driver.save
+          render :json => @driver.errors, :status => :unprocessable
+        end
       }
     end
   end
@@ -60,7 +62,7 @@ class DriversController < ApplicationController
       }
       format.js {
         if !@driver.update_attributes params[:driver]
-          render :json => driver.errors, :status => :unprocessable
+          render :json => @driver.errors, :status => :unprocessable
         end
       }
     end
