@@ -6,7 +6,7 @@
 body {
   padding: 0;
   margin: 0;
-  background: #fcfcfc
+  background: #fcfcfc;
 }
 
 #dialog-form {
@@ -16,10 +16,14 @@ body {
 
 .ui-widget {
   background: white;
+  -webkit-box-shadow: 0 0 1em rgba(0,0,0,0.3);
+  -moz-box-shadow: 0 0 1em rgba(0,0,0,0.3);
+  filter: progid:DXImageTransform.Microsoft.shadow(direction=0, color=#808080, strength=3);
+  box-shadow: 0 0 1em rgba(0,0,0,0.3);
 }
 
 .ui-widget-overlay {
-  background: black;
+  background: white;
   position: absolute;
   top: 0;
   left: 0;
@@ -31,14 +35,26 @@ body {
   padding-right: 0.3em;
 }
 
+a.ui-dialog-titlebar-close {
+  color: black;
+}
+
+a:hover.ui-dialog-titlebar-close {
+  color: black;
+}
+
+a:visited.ui-dialog-titlebar-close {
+  color: black;
+}
+
 .ui-dialog-content h1 {
   display:none;
 }
 
-.ui-dialog-title {
+.ui-dialog-titlebar {
   padding-left: 0.3em;
-  padding-top: 0.3em;
-  font-size: 1.5em;
+  font-size: 1.3em;
+  background-color: #8d5;
 }
 
 header {
