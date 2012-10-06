@@ -5,8 +5,11 @@ class Client < ActiveRecord::Base
 
   belongs_to :author, :class_name => 'User'
 
+  validates :identity, :uniqueness => true
+
   def used?
-    !Order.find(:first, :conditions => "client_id=#{id} or sender_id=#{id} or receiver_id=#{id}").nil?
+    !Order.find_by_client_id(id).nil? ||
+    !Cargo.where("sender_id=#{id} OR receiver_id=#{id}").first().nil?
   end
 
   def city

@@ -1,0 +1,21 @@
+=begin
+= Autodor API description
+Autodor provides REST API for processing it's data
+
+== Introduction
+API methods are accessible by path. Typical path is (({http://host:port/api/command/token/argument1/argument2.format}))
+
+where
+* command - command name
+* token - security key (can be generated on user main page)
+* argument# - command argument
+* format - data format (json and xml are supported, json is the default one)
+
+== Command list
+=== Get orders
+Rerieves all orders available for the token owner
+(({http://avtodor55.ru/api/2Qwe4560Na86l0t/orders}))
+
+=== Get drivers
+=end
+

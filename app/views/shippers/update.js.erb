@@ -1,0 +1,4 @@
+$j('.ui-dialog-titlebar-close').click();
+// Update shipper data in list
+dv = $j('#<%= @shipper.id %>');
+dv.html('<%= escape_javascript render :partial => 'shipper', :locals => { :shipper => @shipper } %>');

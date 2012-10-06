@@ -1,4 +1,3 @@
-<h2><%= @title %></h2>
 <%= form_for(@client, :remote => true) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
   <script type="text/javascript">
@@ -23,7 +22,7 @@
   </script>
   <div class="field">
     <%= f.radio_button :organization, true, :onclick => 'window.setOrganization(true)', :id => 'org_mode' %> <%= link_to_function "Организация", 'window.setOrganization(true)', :class => 'radio_button_text' %><br />
-    <%= f.radio_button :organization, false, :onclick => 'window.setOrganization(false)', :class => 'radio_button_text', :id => 'usr_mode' %> <%= link_to_function "Физическое лицо", 'window.setOrganization(false)', :class => 'radio_button_text' %><br />
+    <%= f.radio_button :organization, false, :onclick => 'window.setOrganization(false)', :class => 'radio_button_text', :id => 'usr_mode' %> <%= link_to_function "Физическое лицо", 'window.setOrganization(false)', :class => 'radio_button_text' %>
   </div>
   <div class="field">
     <%= f.label :name, "ФИО", :id => 'name_label' %><br />

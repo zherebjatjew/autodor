@@ -20,7 +20,7 @@ class Order < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :forwarder_id, :presence => true
   validates :client_id, :presence => true
-  validates :driver_id, :presence => true
+  validates_associated :cargos
 
   accepts_nested_attributes_for :cargos, :allow_destroy => true
 
