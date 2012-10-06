@@ -1,7 +1,7 @@
 <%= form_for @order do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <div class="field">
-    <%= f.text_area :info %>
+    <%= f.text_area :info, :style => "height:2em" %>
   </div>
   <div class="actions">
     <%= f.submit "Принять" %>

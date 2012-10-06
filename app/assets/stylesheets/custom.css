@@ -103,10 +103,22 @@ header {
     width: 100%;
 }
 
-.cargo_item {
+.cargo-item {
   float: left;
   width: 100%;
-  margin: 0.25em;
+  padding: 0.25em;
+}
+
+.cargo-item-title {
+    float: left;
+    width: 100%;
+    padding: 0.25em;
+    background-color: #f7f7f7;
+}
+
+.cargo-form {
+    float:left;
+    padding-left:2em;
 }
 
 #cargo {
@@ -114,8 +126,18 @@ header {
 }
 
 .box {
-  float: left;
-  width: 100%;
+    float: left;
+    width: 100%;
+    -moz-border-radius:      0.5em;
+    -webkit-border-radius:  0.5em;
+    border-radius:          0.5em;
+    -moz-border-radius:     0.5em;
+    -webkit-border-radius: 0.5em;
+    border-radius:         0.5em;
+    border: 1px solid #f0f0f0;
+    background-color: #f9f9f9;
+    padding: 0.75em;
+    margin-bottom: 0.75em;
 }
 
 h1.header {
@@ -140,16 +162,13 @@ h1.header {
   filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
   box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
   width: 70%;
-  padding: 1em 6em 3em 6em;
+  padding: 1em 5% 3em 5%;
   background: white;
   z-index:1;
   float: left;
   line-height:2em;
-  margin-left: 10em;
-  margin-right: 10em;
+  margin: 0 10% 0 10%;
 }
-
-/* Links */
 
 a {
   color: #09c;
@@ -360,7 +379,7 @@ td.sidebar {
 }
 
 div.field, div.actions {
-  margin-bottom: 0.75em;
+  margin-bottom: 0.25em;
 }
 
 .field_with_errors {
@@ -510,7 +529,13 @@ a.radio_button_text:visited {
 }
 
 .clients {
-  margin: 2em 0 2em 0;
+    margin: 1em 0 1em 0;
+    float:left;
+    width:100%;
+}
+
+.list-nemu {
+    float:left;
 }
 
 .gradient {

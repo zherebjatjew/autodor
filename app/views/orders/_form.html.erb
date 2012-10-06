@@ -43,7 +43,7 @@
       </div>
       <div class="field">
         <%= f.label :info, "Комментарий" %><br />
-        <%= f.text_area :info %>
+        <%= f.text_area :info, :style => "height:2em" %>
       </div>
     </div>
     <div class="box">
@@ -55,7 +55,7 @@
     </div>
 
     <div class="box">
-      <h2>Груз</h2>
+      <%= f.label :cargos, "Груз" %>
       <div id="cargo" style="width:100%;float:left;">
         <% unless @order.id.nil? %>
           <% @order.cargos.each do |c| %>
@@ -71,28 +71,26 @@
     </div>
 
     <div class="box">
-      <h2>Перевозчик</h2>
       <% all_shippers = [] %>
       <% Shipper.all.each { |shipper| all_shippers << [shipper.name, shipper.id] } %>
       <div class="field">
+        <%= f.label :shipper_id, "Перевозчик" %><br />
         <%= f.select :shipper_id, options_for_select(all_shippers, @order.shipper_id.to_i) %>
         <%= link_to "Добавить", new_shipper_path, :alias => 'Добавление перевозчика', :remote => true, :class => 'command' %>
       </div>
     </div>
 
     <div class="box">
-      <h2>Водитель</h2>
       <% all_drivers = [] %>
       <% Driver.all.each { |c| all_drivers << [c.name, c.id] } %>
       <div class="field">
+        <%= f.label :driver_id, "Водитель" %><br />
         <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
         <%= link_to "Добавить", new_driver_path, :remote => true, :class => 'command', :alias => 'Добавление водителя' %>
       </div>
     </div>
 
     <div class="box">
-      <h2>Транспорт</h2>
-
       <% all_trucks, all_trailers = [], [['Нет', nil]] %>
       <% Car.all.each { |truck|
         if truck.is_trailer?

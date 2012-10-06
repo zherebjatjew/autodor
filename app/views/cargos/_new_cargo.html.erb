@@ -1,6 +1,6 @@
 <% id = (object.new_record? ? "index_to_replace_with_js" : object.id) %>
 <%# object.id = id %> 
-<div class="cargo_item" id="<%= id %>">
+<div class="cargo-item" id="<%= id %>">
   <%= form.fields_for :cargos, object, :child_index => id do |cargo_fm| %>
     <div style="float:left;width:100%">
       <div style="float:left"><%= object.name %></div>
