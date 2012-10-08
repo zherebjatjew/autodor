@@ -1,3 +1,12 @@
+<script>
+  $j(document).ready(function() {
+    $j('a[data-remote].order-status-option]').live('ajax:success', function(xhr, data, status) {
+      $(this).parent().parent().html(xhr.responseText);
+      return false;
+    });
+  });
+</script>
+
 <%= will_paginate @orders %>
 
 <table class="orders">

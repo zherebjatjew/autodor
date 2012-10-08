@@ -4,7 +4,8 @@ class Order < ActiveRecord::Base
   attr_accessible :info, :forwarder_id, :committed_at,
                   :signed, :paid, :completed, :client_id,
                   :driver_id, :cargos_attributes,
-                  :truck_id, :trailer_id, :shipper_id
+                  :truck_id, :trailer_id, :shipper_id,
+                  :status
 
   belongs_to :user
   has_one :forwarder, :class_name => 'User'

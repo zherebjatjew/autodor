@@ -1,0 +1,14 @@
+<%# order %>
+
+<div class="order-status">
+  <div class="order-status-driver">
+    <%= link_to "*", order_status_path(order, 1), :class => "order-status-option" + (" checked" if 1), :alt => "Новый", :remote => true %>
+    <%= link_to "*", order_status_path(order, 2), :class => "order-status-option", :alt => "Авансирован", :remote => true %>
+    <%= link_to "*", order_status_path(order, 3), :class => "order-status-option", :alt => "Закрыт", :remote => true %>
+  </div>
+  <div class="order-status-client">
+    <%= link_to "*", order_status_path(order, 1), :class => "order-status-option", :alt => "Новый", :remote => true %>
+    <%= link_to "*", order_status_path(order, 2), :class => "order-status-option", :alt => "Авансирован", :remote => true %>
+    <%= link_to "*", order_status_path(order, 3), :class => "order-status-option", :alt => "Закрыт", :remote => true %>
+  </div>
+</div>

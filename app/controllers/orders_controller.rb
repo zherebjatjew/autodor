@@ -21,6 +21,16 @@ class OrdersController < ApplicationController
     end
   end
 
+  def change_status
+    @order = Order.find params[:id]
+    @order.update_attributes(:status => params[:status])
+    if response.xhr?
+      render :_status
+    else
+      render :index
+    end
+  end
+
   def destroy
     @order = Order.find_by_id params[:id]
     @order.destroy

@@ -546,3 +546,19 @@ a.radio_button_text:visited {
   background: -o-linear-gradient(top, #eee, #ccc);
   background: -ms-linear-gradient(top, #eee, #ccc);
 }
+
+.order-status-option {
+  margin: 0;
+  padding: 0;
+  line-height: 0.75em;
+  border: 1px solid #eee;
+}
+
+.checked {
+  background-color: #8d5;
+}
+
+a.checked {
+  color: #8d5;
+}
+
