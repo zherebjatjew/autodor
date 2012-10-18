@@ -23,11 +23,19 @@ class OrdersController < ApplicationController
 
   def change_status
     @order = Order.find params[:id]
-    @order.update_attributes(:status => params[:status])
-    if response.xhr?
-      render :_status
-    else
-      render :index
+    puts "status=#{params[:status]}\n"
+    @order.update_attributes(:status_id => params[:status])
+    respond_to do |format|
+      format.html {
+        if request.xhr?
+          render :_status
+        else
+          render :index
+        end
+      }
+      format.js {
+        render :_status
+      }
     end
   end
 

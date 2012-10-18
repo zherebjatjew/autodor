@@ -549,16 +549,34 @@ a.radio_button_text:visited {
 
 .order-status-option {
   margin: 0;
-  padding: 0;
+  padding: 0 0.25em 0 0.25em;
   line-height: 0.75em;
   border: 1px solid #eee;
+  width: 1.5em;
+  color: white;
+  z-index: 1;
 }
 
-.checked {
-  background-color: #8d5;
+a.order-status-option:visited {
+  color: #8d5;
+}
+
+a.order-status-option:hover {
+  color: white;
 }
 
 a.checked {
+  background-color: #8d5;
+  color: #8d5;
+}
+
+a.checked:hover {
+  background-color: #8d5;
+  color: #8d5;
+}
+
+a.checked:visited {
+  background-color: #8d5;
   color: #8d5;
 }
 

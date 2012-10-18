@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
                   :signed, :paid, :completed, :client_id,
                   :driver_id, :cargos_attributes,
                   :truck_id, :trailer_id, :shipper_id,
-                  :status
+                  :status_id
 
   belongs_to :user
   has_one :forwarder, :class_name => 'User'
