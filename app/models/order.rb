@@ -18,10 +18,27 @@ class Order < ActiveRecord::Base
   belongs_to :trailer, :class_name => 'Car'
   belongs_to :author, :class_name => 'User'
 
+  class WorkflowValidator < ActiveModel::Validator
+    def validate(record)
+      # current_user is not available from a model
+#      is_admin = current_user.nil? || current_user.admin?
+      is_admin = true
+      old = Order.find record.id
+      if old.nil? 
+        if record.id != 1
+          record.errors[:base] << "Недопустимое начальное состояние заявки"
+        end
+      elsif Workflow.allowed(old.status_id, is_admin).find(record.status_id).nil?
+        record.errors[:base] << "Переход в это состояние невозможен"
+      end
+    end
+  end
+
   validates :user_id, :presence => true
   validates :forwarder_id, :presence => true
   validates :client_id, :presence => true
   validates_associated :cargos
+  validates_with WorkflowValidator
 
   accepts_nested_attributes_for :cargos, :allow_destroy => true
 
@@ -64,3 +81,4 @@ class Order < ActiveRecord::Base
   end
 
 end
+

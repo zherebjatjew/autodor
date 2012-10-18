@@ -1,3 +1,4 @@
+<% order = @order if order.nil? %>
 <tr>
   <td class="order">
     <%= render :partial => 'orders/status', :locals => { :order => order } %>

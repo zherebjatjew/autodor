@@ -3,8 +3,9 @@
 
 <div class="order-status">
   <div class="order-status-driver">
-    <%= link_to "*", order_status_path(order, 1), :class => "order-status-option" + (order.status_id == 1 ? " checked" : ""), :title => "Новый", :remote => true %>
-    <%= link_to "*", order_status_path(order, 2), :class => "order-status-option" + (order.status_id == 2 ? " checked" : ""), :title => "Авансирован", :remote => true %>
-    <%= link_to "*", order_status_path(order, 3), :class => "order-status-option" + (order.status_id == 3 ? " checked" : ""), :title => "Закрыт", :remote => true %>
+    <% allowed = Workflow.allowed(order.status_id, current_user.admin?) %>
+    <% (1..8).each do |status| %>
+      <%= link_to "*", allowed.find(status).nil? ? "#" : order_status_path(order, status), :class => "order-status-option" + (order.status_id >= status ? " checked" : ""), :title => WorkflowName.find(status).name, :remote => true %>
+    <% end %>
   </div>
 </div>

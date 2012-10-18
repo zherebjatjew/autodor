@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120925120112) do
+ActiveRecord::Schema.define(:version => 20121018104534) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120925120112) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.integer  "author_id"
+    t.decimal  "debt_amount"
     t.integer  "seat"
     t.decimal  "prepay_amount",         :default => 0.0
     t.decimal  "inner_charge",          :default => 0.0
@@ -119,6 +120,7 @@ ActiveRecord::Schema.define(:version => 20120925120112) do
     t.integer  "trailer_id"
     t.integer  "author_id"
     t.integer  "shipper_id"
+    t.integer  "status_id"
   end
 
   create_table "shippers", :force => true do |t|
@@ -159,16 +161,20 @@ ActiveRecord::Schema.define(:version => 20120925120112) do
 
   create_table "workflow_names", :force => true do |t|
     t.string   "name"
-    t.string   "image"
+    t.integer  "weight"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "workflows", :force => true do |t|
-    t.integer  "current"
-    t.integer  "next"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.boolean  "admin_only", :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
+
+  add_index "workflows", ["from_id"], :name => "index_workflows_on_from_id"
+  add_index "workflows", ["to_id"], :name => "index_workflows_on_to_id"
 
 end
