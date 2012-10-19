@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
   before_filter :current_or_admin, :only => [:index, :destroy, :edit, :update]
 
   def new
-    @user = User.find params[:user]
+    @user = current_user
     @order = @user.orders.new
     @order.forwarder = @user
   end
@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.new params[:order]
     @order.author = current_user
+    @order.user = current_user
     if @order.save
       flash[:success] = "Заявка создана!"
       redirect_to user_path(current_user), :method => 'show'
