@@ -8,12 +8,14 @@
         $j('#org_mode').attr('checked', 'checked');
         $j('#org_only').show(150);
         $j('#director_label').text('Представитель (в родительном падеже)');
+        $j('#born_at_label').text('Дата регистрации');
       } else {
         $j('#name_label').text('ФИО');
         $j('#identity_label').text('Паспортные данные');
         $j('#usr_mode').attr('checked', 'checked');
         $j('#org_only').hide(150);
         $j('#director_label').text('Фамилия (в родительном падеже)');
+        $j('#born_at_label').text('Дата рождения');
       }
     }
     jQuery(document).ready(function() {
@@ -57,7 +59,7 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :born_at, "Дата рождения", :id => 'born_at_lable' %><br />
+    <%= f.label :born_at, "Дата рождения", :id => 'born_at_label' %><br />
     <%= f.calendar_date_select :born_at %>
   </div>
   <div id="org_only">
