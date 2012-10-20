@@ -23,12 +23,12 @@ class Order < ActiveRecord::Base
       # current_user is not available from a model
 #      is_admin = current_user.nil? || current_user.admin?
       is_admin = true
-      old = Order.find record.id
-      if old.nil? 
-        if record.id != 1
+      if record.new_record?
+        if record.status_id != 1
           record.errors[:base] << "Недопустимое начальное состояние заявки"
         end
       elsif Workflow.allowed(old.status_id, is_admin).find(record.status_id).nil?
+        old = Order.find record.id
         record.errors[:base] << "Переход в это состояние невозможен"
       end
     end
@@ -38,7 +38,7 @@ class Order < ActiveRecord::Base
   validates :forwarder_id, :presence => true
   validates :client_id, :presence => true
   validates_associated :cargos
-  validates_with WorkflowValidator
+#  validates_with WorkflowValidator
 
   accepts_nested_attributes_for :cargos, :allow_destroy => true
 

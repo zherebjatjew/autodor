@@ -4,8 +4,8 @@
 <div class="order-status">
   <div class="order-status-driver">
     <% allowed = Workflow.allowed(order.status_id, current_user.admin?) %>
-    <% (1..8).each do |status| %>
-      <%= link_to "*", allowed.find(status).nil? ? "#" : order_status_path(order, status), :class => "order-status-option" + (order.status_id >= status ? " checked" : ""), :title => WorkflowName.find(status).name, :remote => true %>
-    <% end %>
+    <%# "Do not split the next line to prevent spacing between anchors" %>
+    <% (1..8).each do |status| %><%= link_to "*", allowed.find(status).nil? ? "#" : order_status_path(order, status), :class => "order-status-option" + (order.status_id >= status && order.status_id != 9 ? " checked" : ""), :title => WorkflowName.find(status).name, :remote => true %><% end %>
+    <%= link_to "*", allowed.find(9).nil? ? "#" : order_status_path(order, 9), :class => "order-status-option" + (order.status_id == 9 ? " cancelled" : ""), :title => WorkflowName.find(9).name, :remote => true %>
   </div>
 </div>

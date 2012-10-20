@@ -570,13 +570,29 @@ a.checked {
   color: #8d5;
 }
 
-a.checked:hover {
+a:hover.checked {
   background-color: #8d5;
   color: #8d5;
 }
 
-a.checked:visited {
+a:visited.checked {
   background-color: #8d5;
   color: #8d5;
 }
+
+a.cancelled {
+  background-color: #f88;
+  color: #f88;
+}
+
+a:hover.cancelled {
+    background-color: #f88;
+    color: #f88;
+}
+
+a:visited.cancelled {
+    background-color: #f88;
+    color: #f88;
+}
+
 

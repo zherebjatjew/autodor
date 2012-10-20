@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20121018104534) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.integer  "author_id"
-    t.decimal  "debt_amount"
     t.integer  "seat"
     t.decimal  "prepay_amount",         :default => 0.0
     t.decimal  "inner_charge",          :default => 0.0
@@ -120,7 +119,7 @@ ActiveRecord::Schema.define(:version => 20121018104534) do
     t.integer  "trailer_id"
     t.integer  "author_id"
     t.integer  "shipper_id"
-    t.integer  "status_id"
+    t.integer  "status_id",    :default => 1
   end
 
   create_table "shippers", :force => true do |t|

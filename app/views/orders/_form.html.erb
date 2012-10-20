@@ -18,7 +18,14 @@
   }
 
   $j(document).ready(function() {
-    $j('a[data-remote]').live('ajax:complete', editDialog);
+    $j('a[data-remote]').live('ajax:complete', function(e, xhr, status) {
+      if (/order-status-option/.exec($j(this).attr('class'))) {
+        $j(this).parent().parent().parent().html(xhr.responseText);
+        return false;
+      } else {
+        return editDialog(e, xhr, status);
+      }
+    });
   });
 </script>
 

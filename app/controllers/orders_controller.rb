@@ -8,11 +8,14 @@ class OrdersController < ApplicationController
     @user = User.find params[:user]
     @order = @user.orders.new
     @order.forwarder = @user
+    @order.status_id = 1
   end
 
   def create
     @order = current_user.orders.new params[:order]
     @order.author = current_user
+    @order.status_id = 1
+    @order.user = current_user
     if @order.save
       flash[:success] = "Заявка создана!"
       redirect_to user_path(current_user), :method => 'show'
