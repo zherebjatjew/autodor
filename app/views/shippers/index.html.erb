@@ -49,14 +49,14 @@
 
 <%= link_to "Добавить", new_shipper_path, :class => 'command append', :remote => true %>
 
+<div id="client">
 <%= will_paginate %>
 
-<div id="shipper-list">
 <% @shippers.each do |shipper| %>
   <%= render :partial => 'shipper', :object => shipper %>
 <% end %>
-</div>
 
 <%= will_paginate %>
+</div>
 
 <%= link_to "Добавить", new_shipper_path, :class => 'command append', :remote => true %>

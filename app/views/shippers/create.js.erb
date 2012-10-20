@@ -7,7 +7,13 @@ if (shippers != null) {
     shippers.val("<%= d.id.to_s %>");
     <% end %>
 }
-var index = $j('#shipper-list');
+var index = $j('div.clients');
 if (index != null) {
-    index.append("<%= escape_javascript(render :partial => 'shipper', :locals => { :shipper => @shipper }) %>");
+    page = index.find('.pagination');
+    add = "<%= escape_javascript(render :partial => 'shipper', :locals => { :shipper => @shipper }) %>";
+    if (page != null) {
+        page.before(add);
+    } else {
+        index.append(add);
+    }
 }
