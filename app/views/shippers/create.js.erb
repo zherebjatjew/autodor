@@ -1,7 +1,13 @@
 $j('.ui-dialog-titlebar-close').click();
 var shippers = $j('#order_shipper_id');
-shippers.empty();
-<% Shipper.all.each do |d| %>
-shippers.append($j('<option></option>').attr("value", "<%= d.id.to_s %>").text("<%= d.name %>"));
-shippers.val("<%= d.id.to_s %>");
-<% end %>
+if (shippers != null) {
+    shippers.empty();
+    <% Shipper.all.each do |d| %>
+    shippers.append($j('<option></option>').attr("value", "<%= d.id.to_s %>").text("<%= d.name %>"));
+    shippers.val("<%= d.id.to_s %>");
+    <% end %>
+}
+var index = $j('#shipper-list');
+if (index != null) {
+    index.append("<%= escape_javascript(render :partial => 'shipper', :locals => { :shipper => @shipper }) %>");
+}

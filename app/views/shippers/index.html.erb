@@ -39,17 +39,24 @@
 
     // Edit shipper data
     $j('a[data-remote].edit').live('ajax:complete', editDialog);
+
+    // Add new shipper
+    $j('a[data-remote].append').live('ajax:complete', editDialog);
   });
 </script>
 
 <h2><%= @title %></h2>
 
+<%= link_to "Добавить", new_shipper_path, :class => 'command append', :remote => true %>
+
 <%= will_paginate %>
 
+<div id="shipper-list">
 <% @shippers.each do |shipper| %>
   <%= render :partial => 'shipper', :object => shipper %>
 <% end %>
+</div>
 
 <%= will_paginate %>
 
-<%= link_to "Добавить", new_shipper_path, :class => 'command' %>
+<%= link_to "Добавить", new_shipper_path, :class => 'command append', :remote => true %>
