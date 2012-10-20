@@ -1,6 +1,6 @@
 $j('.ui-dialog-titlebar-close').click();
 var drivers = $j('#order_driver_id');
-if drivers != null {
+if (drivers != null) {
   drivers.empty();
   <% Driver.all.each do |d| %>
   drivers.append($j('<option></option>').attr("value", "<%= d.id.to_s %>").text("<%= d.name %>"));
