@@ -9,10 +9,10 @@ if (shippers != null) {
 }
 var index = $j('div.clients');
 if (index != null) {
-    page = index.find('.pagination').last();
+    page = index.find('.pagination');
     add = "<%= escape_javascript(render :partial => 'shipper', :locals => { :shipper => @shipper }) %>";
-    if (page != null) {
-        page.before(add);
+    if (page.size() != 0) {
+        page.last().before(add);
     } else {
         index.append(add);
     }
