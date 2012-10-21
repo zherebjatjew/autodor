@@ -47,7 +47,9 @@
 
 <h2><%= @title %></h2>
 
+<div class="list-menu">
 <%= link_to "Добавить", new_shipper_path, :class => 'command append', :remote => true %>
+</div>
 
 <div id="client">
 <%= will_paginate %>
@@ -59,4 +61,6 @@
 <%= will_paginate %>
 </div>
 
+<div class="list-menu">
 <%= link_to "Добавить", new_shipper_path, :class => 'command append', :remote => true %>
+</div>

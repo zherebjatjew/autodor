@@ -7,3 +7,14 @@ if (drivers != null) {
   drivers.val("<%= d.id.to_s %>");
   <% end %>
 }
+
+var index = $j('div.clients');
+if (index != null) {
+    page = index.find('.pagination').last();
+    add = "<%= escape_javascript(render :partial => 'driver', :locals => { :driver => @driver }) %>";
+    if (page != null) {
+        page.before(add);
+    } else {
+        index.append(add);
+    }
+}
