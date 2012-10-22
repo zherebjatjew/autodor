@@ -5,6 +5,7 @@ function editDialog(e, xhr, status) {
     autoOpen: false,
     width: 520,
     modal: true,
+    zIndex : 500,
     title: $j(this).attr('alias'),
     closeText: 'Закрыть',
     open: function() {
