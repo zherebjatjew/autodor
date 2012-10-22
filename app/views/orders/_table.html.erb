@@ -1,0 +1,17 @@
+<script type="text/javascript">
+  $j(document).ready(function() {
+    $j('a.order-status-option').live('ajax:complete', function(evt, xhr, status) {
+      $j(this).parent().parent().parent().html(xhr.responseText);
+      return false;
+    });
+  });
+</script>
+
+<% unless @orders.empty? %>
+  <%= will_paginate @orders %>
+  <table class="orders" summary="Мои заявки">
+    <%= render @orders %>
+  </table>
+  <%= will_paginate @orders %>
+<% end %>
+

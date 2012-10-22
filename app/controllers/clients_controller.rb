@@ -39,22 +39,48 @@ class ClientsController < ApplicationController
           render :edit
         end
       }
-      format.js { @client.save }
+      format.js {
+        if !@client.save
+          render :json => @client.errors, :status => 'unprocessable'
+        end
+      }
     end
   end
 
   def update
     @client = Client.find params[:id]
-    if @client.update_attributes params[:client]
-      flash[:success] = "Информация о клиенте обновлена"
-      redirect_back_or clients_path
-    else
-      render 'edit'
+    respond_to do |format|
+      format.html {
+        if @client.update_attributes params[:client]
+          flash[:success] = "Информация о клиенте обновлена"
+          redirect_back_or clients_path
+        else
+          render 'edit'
+        end
+      }
+      format.js {
+        if !@client.update_attributes params[:client]
+          render :json => @client.errors, :status => 'unprocessable'
+        end
+      }
     end
   end
 
   def edit
     @title = "Изменение информации о клиенте"
     @client = Client.find params[:id]
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def destroy
+    @client = Client.find(params[:id])
+    @client.delete()
+    respond_to do |format|
+      format.html { redirect_to 'index'}
+      format.js { @client }
+    end
   end
 end

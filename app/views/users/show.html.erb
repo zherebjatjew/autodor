@@ -14,11 +14,8 @@
     </td>
   </tr>
 </table>
-  <% unless @user.orders.empty? %>
-    <table class="orders" summary="Мои заявки">
-      <%= render @orders %>
-    </table>
-    <%= will_paginate @orders %>
-  <% end %>
-  <%= link_to "добавить заявку", new_order_path(@user), :class => 'command' %>
+
+<%= render 'orders/table' %>
+
+<%= link_to "добавить заявку", new_order_path(@user), :class => 'command' %>
 

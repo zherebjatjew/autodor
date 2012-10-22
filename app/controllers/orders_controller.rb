@@ -5,20 +5,40 @@ class OrdersController < ApplicationController
   before_filter :current_or_admin, :only => [:index, :destroy, :edit, :update]
 
   def new
-    @user = current_user
+    @user = User.find params[:user]
     @order = @user.orders.new
     @order.forwarder = @user
+    @order.status_id = 1
   end
 
   def create
     @order = current_user.orders.new params[:order]
     @order.author = current_user
+    @order.status_id = 1
     @order.user = current_user
     if @order.save
       flash[:success] = "Заявка создана!"
       redirect_to user_path(current_user), :method => 'show'
     else
       render :edit
+    end
+  end
+
+  def change_status
+    @order = Order.find params[:id]
+    if @order.update_attributes :status_id => params[:status]
+      respond_to do |format|
+        format.html {
+          if request.xhr?
+            render :_status
+          else
+            render :_order
+          end
+        }
+        format.js {
+          render :_status
+        }
+      end
     end
   end
 

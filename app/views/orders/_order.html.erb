@@ -1,4 +1,8 @@
+<% order = @order if order.nil? %>
 <tr>
+  <td class="order">
+    <%= render :partial => 'orders/status', :locals => { :order => order } %>
+  </td>
   <td class="order">  
     <% created = order.created_at.strftime "%d.%m.%Y" %>
     <%= link_to "#{order.id}. #{created} #{order.info}", order %>

@@ -1,9 +1,20 @@
 $j('.ui-dialog-titlebar-close').click();
 var drivers = $j('#order_driver_id');
-if drivers != null {
+if (drivers != null) {
   drivers.empty();
   <% Driver.all.each do |d| %>
   drivers.append($j('<option></option>').attr("value", "<%= d.id.to_s %>").text("<%= d.name %>"));
   drivers.val("<%= d.id.to_s %>");
   <% end %>
+}
+
+var index = $j('div.clients');
+if (index != null) {
+    page = index.find('.pagination');
+    add = "<%= escape_javascript(render :partial => 'driver', :locals => { :driver => @driver }) %>";
+    if (page.size() != 0) {
+        page.last().before(add);
+    } else {
+        index.append(add);
+    }
 }
