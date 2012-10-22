@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 class CreateWorkflowNames < ActiveRecord::Migration
   def change
     create_table :workflow_names do |t|
