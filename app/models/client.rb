@@ -5,8 +5,6 @@ class Client < ActiveRecord::Base
 
   belongs_to :author, :class_name => 'User'
 
-  validates :identity, :uniqueness => true
-
   def used?
     !Order.find_by_client_id(id).nil? ||
     !Cargo.where("sender_id=#{id} OR receiver_id=#{id}").first().nil?
