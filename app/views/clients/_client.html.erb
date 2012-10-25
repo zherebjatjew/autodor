@@ -1,12 +1,17 @@
 <div class="client_info" id="<%= client.id %>">
-  <div style="float:left;width:25%"><h2><%= link_to client.name, client_path(client) %></h2></div><div style="float:right">
+  <div class="column-right">
     <%= link_to "Изменить", edit_client_path(client), :class => 'command', :remote => true %>
     <% unless client.used? %>
       <%= link_to "Удалить", client, :method => 'delete', :remote => true, :confirm => "Вы точно больше не будете работать с этим клиентом?", :class => "command delete" %>
     <% end %>
   </div>
-  <div style="float:left;padding-bottom:0.75em;">
-    <table>
+ 
+  <div class="column-left">
+    <h2><%= link_to client.name, client_path(client) %></h2>
+  </div>
+
+  <div class="column-middle">
+    <table width="100%">
       <tbody>
         <tr>
           <td><strong>График работы: </strong>
@@ -26,10 +31,10 @@
           <td><strong>Телефон: </strong>
           <td><%= client.phones %><br />
         </tr>
+        <tr>
+          <td colspan="2"><%= client.note %>
+        </tr>
       </tbody>
     </table>
-    <div style="float:left;adding-bottom:0.75em;width:25%">
-      <%= client.note %>
-    </div>
   </div>
 </div>

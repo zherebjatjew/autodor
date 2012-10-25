@@ -528,6 +528,28 @@ a.radio_button_text:visited {
   width: 100%;
 }
 
+.column-left {
+  float: left;
+  overflow: hidden;
+  width: 25%;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  margin-right: 0.75em;
+}
+
+.column-right {
+  float: right;
+}
+
+.column-middle {
+  overflow: hidden;
+  padding-bottom:0.75em;
+}
+
+.column-middle td {
+  vertical-align: top;
+} 
+
 .clients {
     margin: 1em 0 1em 0;
     float:left;
