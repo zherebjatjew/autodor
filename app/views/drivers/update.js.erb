@@ -1,0 +1,4 @@
+$j('.ui-dialog-titlebar-close').click();
+// Update driver list
+dv = $j('#<%= @driver.id %>');
+dv.html('<%= escape_javascript render :partial => 'driver', :locals => { :driver => @driver } %>');

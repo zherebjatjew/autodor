@@ -7,3 +7,15 @@ $j('select.client-selector').each(function(index) {
   clients.append($j('<option></option>').attr("value", "<%= d.id.to_s %>").text("<%= d.name %>"));
   <% end %>
 });
+
+var index = $j('div.clients');
+if (index != null) {
+    page = index.find('.pagination');
+    add = "<%= escape_javascript(render :partial => 'client', :locals => { :client => @client }) %>";
+    if (page.size() != 0) {
+        page.last().before(add);
+    } else {
+        index.append(add);
+    }
+}
+

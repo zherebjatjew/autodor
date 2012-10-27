@@ -1,5 +1,3 @@
-<h2><%= @title %></h2>
-
 <%= form_for @shipper, :remote => true do |f| %>
   <div class="field">
     <%= f.label :name, "Наименование" %><br />
@@ -19,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :address1, "Адрес м/я" %><br />
-    <%= f.text_area :address1 %>
+    <%= f.text_area :address1, :style => "height:2em" %>
   </div>
   <div class="field">
     <%= f.label :address2, "Адрес почтовый" %><br />
-    <%= f.text_area :address2 %>
+    <%= f.text_area :address2, :style => "height:2em" %>
   </div>
   <div class="field">
     <%= f.label :inn, "ИНН" %><br />

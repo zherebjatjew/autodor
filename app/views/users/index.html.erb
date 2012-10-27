@@ -9,5 +9,7 @@
 <%= will_paginate %>
 
 <% if current_user.admin? %>
-  <%= link_to "Добавить", new_user_path, :class => 'command' %>
+    <div class="list-menu">
+      <%= link_to "Добавить", new_user_path, :class => 'command' %>
+    </div>
 <% end %>

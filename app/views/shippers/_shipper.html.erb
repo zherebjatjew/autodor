@@ -1,12 +1,12 @@
-<div style="float:left;width:100%;">
+<div id="<%= shipper.id %>" style="float:left;width:100%;">
   <div style="float:left;">
-    <%= link_to shipper.name, shipper_path(shipper) %>
+    <h3><%= link_to shipper.name, shipper_path(shipper) %></h3>
   </div>
   <div style="float:right;">
-    <%= link_to "Изменить", edit_shipper_path(shipper), :class => 'command' %>
+    <%= link_to "Изменить", edit_shipper_path(shipper), :remote => true, :class => 'command edit', :alias => 'Редактирование данных перевозчика' %>
   </div>
   <div style="float:right">
-    <%= link_to "▼", shipper_orders_path(shipper), :remote => true, :class => 'command', :id => "expand#{shipper.id}" %>
+    <%= link_to "▼", shipper_orders_path(shipper), :remote => true, :class => 'command expand', :id => "expand#{shipper.id}" %>
   </div>
   <div style="display:none;float:left;width:100%;padding-left:3em;" id="form<%= shipper.id %>"></div>
 </div>

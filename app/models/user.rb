@@ -6,14 +6,13 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :email, :name, :password, :password_confirmation, :role, :schedule
 
-  validates :name,     :presence => true,
-                       :length   => { :maximum => 50 }
+  validates :name,     :presence => true
   validates :email,    :presence => true,
-                       :format => { :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
-                       :uniqueness => { :case_sensitive => false }
-  validates :password, :presence => true,
-                       :confirmation => true,
-                       :length => { :within => 6..40 }
+                       :format => { :with => /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, :message => 'Неверный формат адреса' },
+                       :uniqueness => { :case_sensitive => false, :message => 'Такой адрес уже есть в базе' }
+  validates :password, :presence => true
+  validates :password, :confirmation => true
+#  validates :password, :length => { :within => 6..40, :message => '' }
 #  validates :role,     :inclusion => { :in => UsersHelper.roles, :message => "Такой роли не бывает" }
 
   before_save :encrypt_password

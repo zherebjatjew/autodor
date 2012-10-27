@@ -16,6 +16,7 @@ Autodor::Application.routes.draw do
   match '/orders/:id/charge' => 'orders#charge', :as => 'charge'
   match '/drivers/:id/orders' => 'drivers#orders', :as => 'driver_orders'
   match '/shippers/:id/orders' => 'shippers#orders', :as => 'shipper_orders'
+  match '/orders/:id/status/:status' => 'orders#change_status', :as => 'order_status'
   resources :sessions do
     member do
       get 'new'

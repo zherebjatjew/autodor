@@ -1,27 +1,49 @@
 <script type="text/javascript">
-  jQuery(document).ready(function() {
-    $j('a[data-remote]').click(function(event) {
-      button = $j(this);
-      event.preventDefault();
+  function toggleExpansion(button) {
       button.text(button.text() == '▼' ? '▲' : '▼');
       driver_id = button.attr('id').substring(6);
       container = $j('#form' + driver_id);
-      if (container.is(':hidden') && container.find('td').length == 0) {
-        container.load($j(this).attr('href') + '.js', function() {
-          if (container.find('td').length == 0) {
-            container.find('table').append('<tr><td>Нет ни одного заказа</tr>');
-          }
-        });
-      }
       container.slideToggle(150);
+  }
+
+  $j(document).ready(function() {
+    $j('a[data-remote=false].expand').live('click', function(event) {
+      event.preventDefault();
+      toggleExpansion($j(this));
       return false;
     });
+  
+    $j('a[data-remote=false].expand').live('ajax:before', function(event) {
+      // Despite we have turned 'data-remote' off, rails.js is still
+      // executing ajax request on click, so we are to cancel it:
+      return false;
+    });
+
+    $j('a[data-remote=true].expand').live('ajax:complete', function(event, xhr, status) {
+      button = $j(this);
+      event.preventDefault();
+      button.attr('data-remote', false);
+      driver_id = button.attr('id').substring(6);
+      container = $j('#form' + driver_id);
+      container.html(xhr.responseText);
+      if (container.find('td').length == 0) {
+        // To have just something within the table
+        container.find('table').append('<tr><td>Нет ни одного заказа</tr>');
+      }
+      toggleExpansion(button);
+      return false;
+    });
+
+    $j('a[data-remote=true].edit').live('ajax:complete', editDialog);
+
+    $j('a[data-remote=true].append').live('ajax:complete', editDialog);
   });
 </script>
 
 <h2>Наши водители</h2>
-
-<%= link_to "Добавить", new_driver_path, :class => 'command' %>
+<div class="list-menu">
+  <%= link_to "Добавить", new_driver_path, :class => 'command append', :remote => true %>
+</div>
 
 <div class="clients">
   <%= will_paginate %>
@@ -29,5 +51,6 @@
   <%= will_paginate %>
 </div>
 
-<%= link_to "Добавить", new_driver_path, :class => 'command' %>
-
+<div class="list-menu">
+  <%= link_to "Добавить", new_driver_path, :class => 'command append', :remote => true %>
+</div>

@@ -17,25 +17,14 @@
     item.hide(150);
   }
 
-  jQuery(document).ready(function() {
-    $j('a[data-remote]').click(function(e) {
-      var url = $j(this).attr('href');
-      var dialog_form = $j('<div id="dialog-form">Loading form...</div>').dialog({
-        autoOpen: false,
-        width: 520,
-        modal: true,
-        open: function() {
-          return $j(this).load(url + ".js", function(data) {
-            $j('#ui-dialog-title-dialog-form').text($j(this).attr('alias'));
-            $j('.ui-dialog-titlebar-close').text('Закрыть');
-          });
-        },
-        close: function() {
-          $j('#dialog-form').remove();
-        }
-      });
-      dialog_form.dialog('open');
-      e.preventDefault();
+  $j(document).ready(function() {
+    $j('a[data-remote]').live('ajax:complete', function(e, xhr, status) {
+      if (/order-status-option/.exec($j(this).attr('class'))) {
+        $j(this).parent().parent().parent().html(xhr.responseText);
+        return false;
+      } else {
+        return editDialog(e, xhr, status);
+      }
     });
   });
 </script>
@@ -61,7 +50,7 @@
       </div>
       <div class="field">
         <%= f.label :info, "Комментарий" %><br />
-        <%= f.text_area :info %>
+        <%= f.text_area :info, :style => "height:2em" %>
       </div>
     </div>
     <div class="box">
@@ -73,7 +62,7 @@
     </div>
 
     <div class="box">
-      <h2>Груз</h2>
+      <%= f.label :cargos, "Груз" %>
       <div id="cargo" style="width:100%;float:left;">
         <% unless @order.id.nil? %>
           <% @order.cargos.each do |c| %>
@@ -89,28 +78,26 @@
     </div>
 
     <div class="box">
-      <h2>Перевозчик</h2>
       <% all_shippers = [] %>
       <% Shipper.all.each { |shipper| all_shippers << [shipper.name, shipper.id] } %>
       <div class="field">
+        <%= f.label :shipper_id, "Перевозчик" %><br />
         <%= f.select :shipper_id, options_for_select(all_shippers, @order.shipper_id.to_i) %>
         <%= link_to "Добавить", new_shipper_path, :alias => 'Добавление перевозчика', :remote => true, :class => 'command' %>
       </div>
     </div>
 
     <div class="box">
-      <h2>Водитель</h2>
       <% all_drivers = [] %>
       <% Driver.all.each { |c| all_drivers << [c.name, c.id] } %>
       <div class="field">
+        <%= f.label :driver_id, "Водитель" %><br />
         <%= f.select :driver_id, options_for_select(all_drivers, @order.driver_id.to_i) %>
         <%= link_to "Добавить", new_driver_path, :remote => true, :class => 'command', :alias => 'Добавление водителя' %>
       </div>
     </div>
 
     <div class="box">
-      <h2>Транспорт</h2>
-
       <% all_trucks, all_trailers = [], [['Нет', nil]] %>
       <% Car.all.each { |truck|
         if truck.is_trailer?

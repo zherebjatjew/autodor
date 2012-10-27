@@ -1,20 +1,21 @@
-<h2><%= @title %></h2>
 <%= form_for(@client, :remote => true) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
   <script type="text/javascript">
     function setOrganization(organization) {
       if (organization==true) {
         $j('#name_label').text('Наименование');
-        $j('#identity_label').text('ИНН');
+        $j('#identity_label').text('Учредительный документ');
         $j('#org_mode').attr('checked', 'checked');
         $j('#org_only').show(150);
         $j('#director_label').text('Представитель (в родительном падеже)');
+        $j('#born_at_label').text('Дата регистрации');
       } else {
         $j('#name_label').text('ФИО');
         $j('#identity_label').text('Паспортные данные');
         $j('#usr_mode').attr('checked', 'checked');
         $j('#org_only').hide(150);
         $j('#director_label').text('Фамилия (в родительном падеже)');
+        $j('#born_at_label').text('Дата рождения');
       }
     }
     jQuery(document).ready(function() {
@@ -23,7 +24,7 @@
   </script>
   <div class="field">
     <%= f.radio_button :organization, true, :onclick => 'window.setOrganization(true)', :id => 'org_mode' %> <%= link_to_function "Организация", 'window.setOrganization(true)', :class => 'radio_button_text' %><br />
-    <%= f.radio_button :organization, false, :onclick => 'window.setOrganization(false)', :class => 'radio_button_text', :id => 'usr_mode' %> <%= link_to_function "Физическое лицо", 'window.setOrganization(false)', :class => 'radio_button_text' %><br />
+    <%= f.radio_button :organization, false, :onclick => 'window.setOrganization(false)', :class => 'radio_button_text', :id => 'usr_mode' %> <%= link_to_function "Физическое лицо", 'window.setOrganization(false)', :class => 'radio_button_text' %>
   </div>
   <div class="field">
     <%= f.label :name, "ФИО", :id => 'name_label' %><br />
@@ -58,7 +59,7 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :born_at, "Дата рождения", :id => 'born_at_lable' %><br />
+    <%= f.label :born_at, "Дата рождения", :id => 'born_at_label' %><br />
     <%= f.calendar_date_select :born_at %>
   </div>
   <div id="org_only">
@@ -97,7 +98,7 @@
   </div>
   <div class="field">
     <%= f.label :note, "Заметки" %><br />
-    <%= f.text_area :note, :style => "height:5em" %>
+    <%= f.text_area :note, :style => "height:2em" %>
   </div>
   <div class="actions">
     <%= f.submit "Сохранить" %>

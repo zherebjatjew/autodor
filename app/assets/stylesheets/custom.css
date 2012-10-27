@@ -6,7 +6,7 @@
 body {
   padding: 0;
   margin: 0;
-  background: #fcfcfc
+  background: #fcfcfc;
 }
 
 #dialog-form {
@@ -16,10 +16,14 @@ body {
 
 .ui-widget {
   background: white;
+  -webkit-box-shadow: 0 0 1em rgba(0,0,0,0.3);
+  -moz-box-shadow: 0 0 1em rgba(0,0,0,0.3);
+  filter: progid:DXImageTransform.Microsoft.shadow(direction=0, color=#808080, strength=3);
+  box-shadow: 0 0 1em rgba(0,0,0,0.3);
 }
 
 .ui-widget-overlay {
-  background: black;
+  background: white;
   position: absolute;
   top: 0;
   left: 0;
@@ -31,8 +35,26 @@ body {
   padding-right: 0.3em;
 }
 
-.ui-dialog-title {
+a.ui-dialog-titlebar-close {
+  color: black;
+}
+
+a:hover.ui-dialog-titlebar-close {
+  color: black;
+}
+
+a:visited.ui-dialog-titlebar-close {
+  color: black;
+}
+
+.ui-dialog-content h1 {
+  display:none;
+}
+
+.ui-dialog-titlebar {
   padding-left: 0.3em;
+  font-size: 1.3em;
+  background-color: #8d5;
 }
 
 header {
@@ -81,10 +103,22 @@ header {
     width: 100%;
 }
 
-.cargo_item {
+.cargo-item {
   float: left;
   width: 100%;
-  margin: 0.25em;
+  padding: 0.25em;
+}
+
+.cargo-item-title {
+    float: left;
+    width: 100%;
+    padding: 0.25em;
+    background-color: #f7f7f7;
+}
+
+.cargo-form {
+    float:left;
+    padding-left:2em;
 }
 
 #cargo {
@@ -92,8 +126,18 @@ header {
 }
 
 .box {
-  float: left;
-  width: 100%;
+    float: left;
+    width: 100%;
+    -moz-border-radius:      0.5em;
+    -webkit-border-radius:  0.5em;
+    border-radius:          0.5em;
+    -moz-border-radius:     0.5em;
+    -webkit-border-radius: 0.5em;
+    border-radius:         0.5em;
+    border: 1px solid #f0f0f0;
+    background-color: #f9f9f9;
+    padding: 0.75em;
+    margin-bottom: 0.75em;
 }
 
 h1.header {
@@ -118,16 +162,13 @@ h1.header {
   filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
   box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
   width: 70%;
-  padding: 1em 6em 3em 6em;
+  padding: 1em 5% 3em 5%;
   background: white;
   z-index:1;
   float: left;
   line-height:2em;
-  margin-left: 10em;
-  margin-right: 10em;
+  margin: 0 10% 0 10%;
 }
-
-/* Links */
 
 a {
   color: #09c;
@@ -338,7 +379,7 @@ td.sidebar {
 }
 
 div.field, div.actions {
-  margin-bottom: 0.75em;
+  margin-bottom: 0.25em;
 }
 
 .field_with_errors {
@@ -487,8 +528,36 @@ a.radio_button_text:visited {
   width: 100%;
 }
 
+.column-left {
+  float: left;
+  overflow: hidden;
+  width: 25%;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  margin-right: 0.75em;
+}
+
+.column-right {
+  float: right;
+}
+
+.column-middle {
+  overflow: hidden;
+  padding-bottom:0.75em;
+}
+
+.column-middle td {
+  vertical-align: top;
+} 
+
 .clients {
-  margin: 2em 0 2em 0;
+    margin: 1em 0 1em 0;
+    float:left;
+    width:100%;
+}
+
+.list-nemu {
+    float:left;
 }
 
 .gradient {
@@ -499,3 +568,53 @@ a.radio_button_text:visited {
   background: -o-linear-gradient(top, #eee, #ccc);
   background: -ms-linear-gradient(top, #eee, #ccc);
 }
+
+.order-status-option {
+  margin: 0;
+  padding: 0 0.25em 0 0.25em;
+  line-height: 0.75em;
+  border: 1px solid #eee;
+  width: 1.5em;
+  color: white;
+  z-index: 1;
+}
+
+a.order-status-option:visited {
+  color: #8d5;
+}
+
+a.order-status-option:hover {
+  color: white;
+}
+
+a.checked {
+  background-color: #8d5;
+  color: #8d5;
+}
+
+a:hover.checked {
+  background-color: #8d5;
+  color: #8d5;
+}
+
+a:visited.checked {
+  background-color: #8d5;
+  color: #8d5;
+}
+
+a.cancelled {
+  background-color: #f88;
+  color: #f88;
+}
+
+a:hover.cancelled {
+    background-color: #f88;
+    color: #f88;
+}
+
+a:visited.cancelled {
+    background-color: #f88;
+    color: #f88;
+}
+
+
