@@ -62,22 +62,6 @@
     </div>
 
     <div class="box">
-      <%= f.label :cargos, "Груз" %>
-      <div id="cargo" style="width:100%;float:left;">
-        <% unless @order.id.nil? %>
-          <% @order.cargos.each do |c| %>
-            <%= f.fields_for :cargos, c, :child_index => (c.new_record? ? "index_to_replace_with_js" : nil) do |cargo_fm| %>
-              <%= render 'cargos/cargo', :f => cargo_fm, :cargo => c, :all_clients => all_clients %>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-      <div>
-        <%= add_object_link("Добавить груз", f, Cargo.new, "cargos/new_cargo", "#cargo") %>
-      </div>
-    </div>
-
-    <div class="box">
       <% all_shippers = [] %>
       <% Shipper.all.each { |shipper| all_shippers << [shipper.name, shipper.id] } %>
       <div class="field">
@@ -117,10 +101,27 @@
         <%= link_to "Добавить", new_trailer_path, :remote => true, :class => 'command', :alias => 'Добавление прицепа' %>
       </div>
     </div>
-  
+
+    <div class="box" style="width:100%">
+      <%= f.label :cargos, "Груз" %>
+      <div id="cargo">
+        <% unless @order.id.nil? %>
+            <% @order.cargos.each do |c| %>
+                <%= f.fields_for :cargos, c, :child_index => (c.new_record? ? "index_to_replace_with_js" : nil) do |cargo_fm| %>
+                    <%= render 'cargos/cargo', :f => cargo_fm, :cargo => c, :all_clients => all_clients %>
+                <% end %>
+            <% end %>
+        <% end %>
+      </div>
+      <div>
+        <%= add_object_link("Добавить груз", f, Cargo.new, "cargos/new_cargo", "#cargo") %>
+      </div>
+    </div>
+
+  </div>
+
     <div class="actions">
       <%= f.submit "Сохранить" %>
     </div>
-  </div>
 
 <% end %>

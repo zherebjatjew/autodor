@@ -22,7 +22,7 @@
     <%= f.select :sender_id, options_for_select(all_clients, f.object.sender_id.to_i), {}, :class => 'client-selector' %>
   </div>
   <div class="field">
-    <%= f.label :sender_date, "Дата доставки транспорта" %>
+    <%= f.label :sender_date, "Дата доставки транспорта" %><br />
     <%= f.calendar_date_select :sender_date, :time => true %>
   </div>
   <div class="field">
@@ -30,7 +30,7 @@
     <%= f.select :receiver_id, options_for_select(all_clients, f.object.receiver_id.to_i), {}, :class => 'client-selector' %>
   </div>
   <div class="field">
-    <%= f.label :receiver_date, "Дата доставки транспорта" %>
+    <%= f.label :receiver_date, "Дата доставки транспорта" %><br />
     <%= f.calendar_date_select :receiver_date, :time => true %>
   </div>
   <div class="field">
