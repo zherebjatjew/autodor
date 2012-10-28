@@ -573,6 +573,7 @@ a.radio_button_text:visited {
   border: 1px solid #eee;
   width: 1.5em;
   color: white;
+  background-color: white;
   z-index: 1;
 }
 
