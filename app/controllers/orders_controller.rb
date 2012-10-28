@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
     if @order.save
       flash[:success] = "Заявка создана!"
-      redirect_to user_path(current_user), :method => 'show'
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find_by_id params[:id]
     @order.destroy
-    redirect_to user_path(current_user), :method => 'show'
+    redirect_to user_path(current_user)
   end
 
   def show

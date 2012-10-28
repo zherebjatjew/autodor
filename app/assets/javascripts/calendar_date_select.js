@@ -25,8 +25,8 @@ Date.one_day = 24*60*60*1000;
 Date.weekdays = $w("M T W T F S S");
 Date.first_day_of_week = 1;
 Date.months = $w("January February March April May June July August September October November December" );
-Date.padded2 = function(hour) { var padded2 = parseInt(hour, 10); if (hour < 10) padded2 = "0" + padded2; return padded2; }
-Date.prototype.getPaddedMinutes = function() { return Date.padded2(this.getMinutes()); }
+Date.padded2 = function(hour) { var padded2 = parseInt(hour, 10); if (hour < 10) padded2 = "0" + padded2; return padded2; };
+Date.prototype.getPaddedMinutes = function() { return Date.padded2(this.getMinutes()); };
 Date.prototype.stripTime = function() { return new Date(this.getFullYear(), this.getMonth(), this.getDate());};
 Date.prototype.daysDistance = function(compare_date) { return Math.round((compare_date - this) / Date.one_day); };
 Date.prototype.toFormattedString = function(include_time){
@@ -36,19 +36,19 @@ Date.prototype.toFormattedString = function(include_time){
   
   if (include_time) { str += " " + this.getHours() + ":" + this.getPaddedMinutes() }
   return str;
-}
-Date.parseFormattedString = function(string) { return new getDateFromFormat(string, "d.M.y H:m");}
+};
+Date.parseFormattedString = function(string) { return new getDateFromFormat(string, "d.M.y H:m");};
 //Date.parseFormattedString = function(string) { return new Date(string.replace(/(\d+).(\d+).(\d+)/, '$2/$1/$3'));}
-Math.floor_to_interval = function(n, i) { return Math.floor(n/i) * i;}
-window.f_height = function() { return( [window.innerHeight ? window.innerHeight : null, document.documentElement ? document.documentElement.clientHeight : null, document.body ? document.body.clientHeight : null].select(function(x){return x>0}).first()||0); }
-window.f_scrollTop = function() { return ([window.pageYOffset ? window.pageYOffset : null, document.documentElement ? document.documentElement.scrollTop : null, document.body ? document.body.scrollTop : null].select(function(x){return x>0}).first()||0 ); }
+Math.floor_to_interval = function(n, i) { return Math.floor(n/i) * i;};
+window.f_height = function() { return( [window.innerHeight ? window.innerHeight : null, document.documentElement ? document.documentElement.clientHeight : null, document.body ? document.body.clientHeight : null].select(function(x){return x>0}).first()||0); };
+window.f_scrollTop = function() { return ([window.pageYOffset ? window.pageYOffset : null, document.documentElement ? document.documentElement.scrollTop : null, document.body ? document.body.scrollTop : null].select(function(x){return x>0}).first()||0 ); };
 
 _translations = {
   "OK": "OK",
   "Now": "Now",
   "Today": "Today",
   "Clear": "Clear"
-}
+};
 SelectBox = Class.create();
 SelectBox.prototype = {
   initialize: function(parent_element, values, html_options, style_options) {
@@ -66,13 +66,13 @@ SelectBox.prototype = {
     return matched;
   },
   getValue: function() { return $F(this.element)}
-}
+};
 CalendarDateSelect = Class.create();
 CalendarDateSelect.prototype = {
   initialize: function(target_element, options) {
     this.target_element = $(target_element); // make sure it's an element, not a string
     if (!this.target_element) { alert("Target element " + target_element + " not found!"); return false;}
-    if (this.target_element.tagName != "INPUT") this.target_element = this.target_element.down("INPUT")
+    if (this.target_element.tagName != "INPUT") this.target_element = this.target_element.down("INPUT");
     
     this.target_element.calendar_date_select = this;
     this.last_click_at = 0;
@@ -93,10 +93,10 @@ CalendarDateSelect.prototype = {
     }).merge(options || {});
     this.use_time = this.options.get("time");
     this.parseDate();
-    this.callback("before_show")
+    this.callback("before_show");
     this.initCalendarDiv();
     if(!this.options.get("embedded")) {
-      this.positionCalendarDiv()
+      this.positionCalendarDiv();
       // set the click handler to check if a user has clicked away from the document
       Event.observe(document, "mousedown", this.closeIfClickedOut_handler = this.closeIfClickedOut.bindAsEventListener(this));
       Event.observe(document, "keypress", this.keyPress_handler = this.keyPress.bindAsEventListener(this));
@@ -124,7 +124,7 @@ CalendarDateSelect.prototype = {
       var parent = this.target_element.parentNode;
       var style = {}
     } else {
-      var parent = document.body
+      var parent = document.body;
       var style = { position:"absolute", visibility: "hidden", left:0, top:0 }
     }
     this.calendar_div = $(parent).build('div', {className: "calendar_date_select"}, style);
@@ -167,7 +167,7 @@ CalendarDateSelect.prototype = {
       weekdays_row.build("th", {innerHTML: weekday});
     });
     
-    var days_tbody = days_table.build("tbody")
+    var days_tbody = days_table.build("tbody");
     // Make the days!
     var row_number = 0, weekday;
     for(var cell_index = 0; cell_index<42; cell_index++)
@@ -215,7 +215,7 @@ CalendarDateSelect.prototype = {
       );
       
     } else if (! this.options.get("buttons")) buttons_div.remove();
-    
+
     if (this.options.get("buttons")) {
       buttons_div.build("span", {innerHTML: "&#160;"});
       if (this.options.get("time")=="mixed" || !this.options.get("time")) b = buttons_div.build("a", {
@@ -223,22 +223,22 @@ CalendarDateSelect.prototype = {
           href: "#",
           onclick: function() {this.today(false); return false;}.bindAsEventListener(this)
         });
-      
+
       if (this.options.get("time")=="mixed") buttons_div.build("span", {innerHTML: "&#160;|&#160;", className:"button_seperator"})
-      
+
       if (this.options.get("time")) b = buttons_div.build("a", {
         innerHTML: _translations["Now"],
         href: "#",
         onclick: function() {this.today(true); return false}.bindAsEventListener(this)
       });
-      
+
       if (!this.options.get("embedded") && !this.closeOnClick())
       {
-        buttons_div.build("span", {innerHTML: "&#160;|&#160;", className:"button_seperator"})
+        buttons_div.build("span", {innerHTML: "&#160;|&#160;", className:"button_seperator"});
         buttons_div.build("a", { innerHTML: _translations["OK"], href: "#", onclick: function() {this.close(); return false;}.bindAsEventListener(this) });
       }
       if (this.options.get('clear_button')) {
-        buttons_div.build("span", {innerHTML: "&#160;|&#160;", className:"button_seperator"})
+        buttons_div.build("span", {innerHTML: "&#160;|&#160;", className:"button_seperator"});
         buttons_div.build("a", { innerHTML: _translations["Clear"], href: "#", onclick: function() {this.clearDate(); if (!this.options.get("embedded")) this.close(); return false;}.bindAsEventListener(this) });
       }
     }
@@ -255,7 +255,7 @@ CalendarDateSelect.prototype = {
     this.beginning_date = new Date(this.date).stripTime();
     this.beginning_date.setDate(1);
     this.beginning_date.setHours(12); // Prevent daylight savings time boundaries from showing a duplicate day
-    var pre_days = this.beginning_date.getDay() // draw some days before the fact
+    var pre_days = this.beginning_date.getDay(); // draw some days before the fact
     if (pre_days < 3) pre_days += 7;
     this.beginning_date.setDate(1 - pre_days + Date.first_day_of_week);
     
@@ -320,7 +320,7 @@ CalendarDateSelect.prototype = {
   clearSelectedClass: function() {if (this.selected_cell) this.selected_cell.removeClassName("selected");},
   setSelectedClass: function() {
     if (!this.selection_made) return;
-    this.clearSelectedClass()
+    this.clearSelectedClass();
     if ($R(0,42).include( days_until = this.beginning_date.stripTime().daysDistance(this.selected_date.stripTime()) )) {
       this.selected_cell = this.calendar_day_grid[days_until];
       this.selected_cell.addClassName("selected");
@@ -332,7 +332,7 @@ CalendarDateSelect.prototype = {
   },
   parseDate: function()
   {
-    var value = $F(this.target_element).strip()
+    var value = $F(this.target_element).strip();
     this.selection_made = (value != "");
     this.date = value=="" ? NaN : Date.parseFormattedString(this.options.get("date") || value);
     if (isNaN(this.date)) this.date = new Date();
@@ -384,7 +384,7 @@ CalendarDateSelect.prototype = {
   closeOnClick: function() {
     if (this.options.get("embedded")) return false;
     if (this.options.get("close_on_click")===nil )
-      return (this.options.get("time")) ? false : true
+      return (this.options.get("time")) ? false : true;
     else
       return (this.options.get("close_on_click"))
   },
@@ -399,7 +399,7 @@ CalendarDateSelect.prototype = {
     return true;
   },
   setUseTime: function(turn_on) {
-    this.use_time = this.options.get("time") && (this.options.get("time")=="mixed" ? turn_on : true) // force use_time to true if time==true && time!="mixed"
+    this.use_time = this.options.get("time") && (this.options.get("time")=="mixed" ? turn_on : true); // force use_time to true if time==true && time!="mixed"
     if (this.use_time && this.selected_date) { // only set hour/minute if a date is already selected
       var minute = Math.floor_to_interval(this.selected_date.getMinutes(), this.options.get("minute_interval"));
       var hour = this.selected_date.getHours();
@@ -440,4 +440,4 @@ CalendarDateSelect.prototype = {
     if (e.keyCode==Event.KEY_ESC) this.close();
   },
   callback: function(name, param) { if (this.options.get(name)) { this.options.get(name).bind(this.target_element)(param); } }
-}
+};

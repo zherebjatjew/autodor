@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
     role == "admin"
   end
 
-  def owns? item
+  def owns? (item)
     if item.instance_of?(Order)
       item.forwarder_id == id
     else
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def has_password? submitted_password
+  def has_password? (submitted_password)
     encrypted_password == encrypt(submitted_password)
   end
 
@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
       self.encrypted_password = encrypt password
     end
 
-    def encrypt string
+    def encrypt (string)
       secure_hash "#{salt}--#{string}"
     end
 
@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
       secure_hash "#{Time.now.utc}--#{password}"
     end
 
-    def secure_hash string
+    def secure_hash (string)
       Digest::SHA2.hexdigest string
     end
 end

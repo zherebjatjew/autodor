@@ -69,8 +69,7 @@ function LZ(x) {return(x<0||x>9?"":"0")+x}
 // ------------------------------------------------------------------
 function isDate(val,format) {
     var date=getDateFromFormat(val,format);
-    if (date==0) { return false; }
-    return true;
+    return date != 0;
 }
 
 // -------------------------------------------------------------------
@@ -111,7 +110,7 @@ function formatDate(date,format) {
     var H=date.getHours();
     var m=date.getMinutes();
     var s=date.getSeconds();
-    var yyyy,yy,MMM,MM,dd,hh,h,mm,ss,ampm,HH,H,KK,K,kk,k;
+    var yyyy,yy,MMM,MM,dd,hh,h,mm,ss,ampm,HH,KK,K,kk,k;
     // Convert real date parts into formatted versions
     var value=new Object();
     if (y.length < 4) {y=""+(y-0+1900);}

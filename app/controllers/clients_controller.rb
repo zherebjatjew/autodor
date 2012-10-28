@@ -40,7 +40,7 @@ class ClientsController < ApplicationController
         end
       }
       format.js {
-        if !@client.save
+        unless @client.save
           render :json => @client.errors, :status => 'unprocessable'
         end
       }
@@ -59,7 +59,7 @@ class ClientsController < ApplicationController
         end
       }
       format.js {
-        if !@client.update_attributes params[:client]
+        unless @client.update_attributes params[:client]
           render :json => @client.errors, :status => 'unprocessable'
         end
       }

@@ -16,7 +16,7 @@ class ShippersController < ApplicationController
         end
       }
       format.js {
-        if !@shipper.save
+        unless @shipper.save
           render :json => @shipper.errors, :status => :unprocessable
         end
       }
@@ -35,7 +35,7 @@ class ShippersController < ApplicationController
         end
       }
       format.js {
-        if !@shipper.update_attributes(params[:shipper])
+        unless @shipper.update_attributes(params[:shipper])
           render :json => @shipper.errors, :status => :unprocessable
         end
       }

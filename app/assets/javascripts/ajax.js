@@ -1,7 +1,7 @@
 function editDialog(e, xhr, status) {
-  url = $j(this).attr('href');
-  header = $j(this).attr('alias');
-  dialog_form = $j('<div id="dialog-form">Загрузка формы...</div>').dialog({
+  var url = $j(this).attr('href');
+  var header = $j(this).attr('alias');
+  var dialog_form = $j('<div id="dialog-form">Загрузка формы...</div>').dialog({
     autoOpen: false,
     width: 520,
     modal: true,

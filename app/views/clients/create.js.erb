@@ -1,7 +1,7 @@
 $j('.ui-dialog-titlebar-close').click();
 
 $j('select.client-selector').each(function(index) {
-  clients = $j(this);
+  var clients = $j(this);
   clients.empty();
   <% Client.all.each do |d| %>
   clients.append($j('<option></option>').attr("value", "<%= d.id.to_s %>").text("<%= d.name %>"));

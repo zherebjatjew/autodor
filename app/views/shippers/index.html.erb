@@ -1,8 +1,8 @@
 <script type="text/javascript">
   function toggleExpansion(button) {
       button.text(button.text() == '▼' ? '▲' : '▼');
-      driver_id = button.attr('id').substring(6);
-      container = $j('#form' + driver_id);
+      var shipper_id = button.attr('id').substring(6);
+      var container = $j('#form' + shipper_id);
       container.slideToggle(150);
   }
 
@@ -23,11 +23,11 @@
 
     // Build order list
     $j('a[data-remote=true].expand').live('ajax:complete', function(event, xhr, status) {
-      button = $j(this);
+      var button = $j(this);
       event.preventDefault();
       button.attr('data-remote', false);
-      driver_id = button.attr('id').substring(6);
-      container = $j('#form' + driver_id);
+      var shipper_id = button.attr('id').substring(6);
+      var container = $j('#form' + shipper_id);
       container.html(xhr.responseText);
       if (container.find('td').length == 0) {
         // To have just something within the table
