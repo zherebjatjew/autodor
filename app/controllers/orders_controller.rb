@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     @order = @user.orders.new
     @order.forwarder = @user
     @order.status_id = 1
+    @tab = "me"
   end
 
   def create
@@ -77,6 +78,7 @@ class OrdersController < ApplicationController
     @order = Order.find params[:id]
     @cargos = @order.cargos
     @title = "Редактирование заявки"
+    @tab = "me"
     store_location
   end
 

@@ -49,6 +49,7 @@ class ShippersController < ApplicationController
       format.html
       format.js
     end
+    @tab = "shipper"
   end
 
   def index
@@ -65,6 +66,7 @@ class ShippersController < ApplicationController
   def new
     @title = "Добавление перевозчика"
     @shipper = Shipper.new
+    @tab = "shipper"
     respond_to do |format|
       format.html
       format.js

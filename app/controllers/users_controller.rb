@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def new
     @title = "Добавить"
     @user = User.new
+    @tab = "user"
   end
 
   def destroy
@@ -53,6 +54,7 @@ class UsersController < ApplicationController
   def edit
     @title = "Редактирование профиля"
     @user = User.find params[:id]
+    @tab = "user"
   end
 
   def update

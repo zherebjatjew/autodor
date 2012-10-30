@@ -10,6 +10,7 @@ class DriversController < ApplicationController
       format.html { store_location }
       format.js
     end
+    @tab = "driver"
   end
 
   def orders
@@ -72,6 +73,7 @@ class DriversController < ApplicationController
   def edit
     @title = "Изменение информации о водителе"
     @driver = Driver.find params[:id]
+    @tab = "driver"
     respond_to do |format|
       format.html { store_location }
       format.js
