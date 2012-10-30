@@ -31,7 +31,7 @@
 
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
-  <div style="width:100%;float:left">
+  <div>
     <div class="box">
       <div class="field">
         <%= f.label :forwarder, "Экспедитор" %><br />
@@ -97,7 +97,7 @@
       </div>
     </div>
 
-    <div class="box" style="width:100%">
+    <div class="box">
       <%= f.label :cargos, "Груз" %>
       <div id="cargo">
         <% unless @order.id.nil? %>

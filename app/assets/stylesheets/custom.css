@@ -5,7 +5,6 @@
 
 body {
   padding: 0;
-  margin-top: 0.5em;
 }
 
 #dialog-form {
@@ -54,6 +53,7 @@ a:visited.ui-dialog-titlebar-close {
   padding-left: 0.3em;
   font-size: 1.3em;
   background-color: #8d5;
+  display: none;
 }
 
 .header {
@@ -107,8 +107,6 @@ a:visited.ui-dialog-titlebar-close {
 }
 
 .box {
-    float: left;
-    width: 100%;
     -moz-border-radius: 0.5em;
     -webkit-border-radius: 0.5em;
     border-radius: 0.5em;
@@ -134,6 +132,10 @@ h1.header {
   line-height:2em;
   height: 100%;
   margin-left: 14em;
+}
+
+.main-block {
+  margin-top: 0.75em;
 }
 
 a {
@@ -181,7 +183,7 @@ nav ul li {
 nav ul li.active {
   background-color: green;
   z-index: 9;
-  font-weight: bold;
+  font-weight: bold;                                        ♠
   color: #376;
 }
 
@@ -349,8 +351,20 @@ td.sidebar {
   margin-bottom: -1em;
 }
 
-div.field, div.actions {
+div.field {
   margin-bottom: 0.25em;
+}
+
+div.field select, input {
+  width: 20em;
+}
+
+div.actions input {
+  width: auto;
+}
+
+div.cargo-item input {
+  width: auto;
 }
 
 .field_with_errors {
