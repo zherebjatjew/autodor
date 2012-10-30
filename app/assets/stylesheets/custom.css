@@ -189,7 +189,7 @@ nav ul li {
 nav ul li.active {
   background-color: green;
   z-index: 9;
-  font-weight: bold;                                        ♠
+  font-weight: bold;
   color: #376;
 }
 
