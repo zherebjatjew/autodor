@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
       redirect_to user_path(current_user)
     else
       render :edit
+      @tab = "me"
     end
   end
 

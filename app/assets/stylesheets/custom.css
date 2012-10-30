@@ -596,4 +596,9 @@ a:visited.cancelled {
     color: #f88;
 }
 
+div.pagination {
+  font-size: 1.25em;
+  color: #666;
+  font-weight: bold;
+}
 
