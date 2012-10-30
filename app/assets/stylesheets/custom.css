@@ -5,8 +5,7 @@
 
 body {
   padding: 0;
-  margin: 0;
-  background: #fcfcfc;
+  margin-top: 0.5em;
 }
 
 #dialog-form {
@@ -57,29 +56,16 @@ a:visited.ui-dialog-titlebar-close {
   background-color: #8d5;
 }
 
-header {
-  width: 100%;
-  background: #8d5;
-  padding-left: 1em;
-  padding-right:0;
+.header {
+  padding: 0;
   margin: 0;
-  color: #060;
-  z-index: 10;
-  -webkit-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  -moz-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
-  box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  display: block;
+  color: #444;
+  z-index: 4;
+  float: left;
 }
 
 .menu {
   padding-bottom: 1em;
-}
-
-.header {
-  background: #ae5;
-  float: left;
-  width: 100%;
 }
 
 .footer {
@@ -143,23 +129,11 @@ h1.header {
 }
 
 #main {
-  -moz-border-radius-bottomleft:      0.4em;
-  -webkit-border-bottom-left-radius:  0.4em;
-  border-bottom-left-radius:          0.4em;
-  -moz-border-radius-bottomright:     0.4em;
-  -webkit-border-bottom-right-radius: 0.4em;
-  border-bottom-right-radius:         0.4em;
-  -webkit-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  -moz-box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  filter: progid:DXImageTransform.Microsoft.shadow(direction=270, color=#808080, strength=6);
-  box-shadow: 0 0.4em 0.4em rgba(0,0,0,0.3);
-  width: 70%;
-  padding: 1em 5% 3em 5%;
+  padding: 0 1em 0 1em;
   background: white;
-  z-index:1;
-  float: left;
   line-height:2em;
-  margin: 0 10% 0 10%;
+  height: 100%;
+  margin-left: 14em;
 }
 
 a {
@@ -176,53 +150,58 @@ a:visited {
   color: #069;
 }
 
-nav {
-  float: right;
+.nav-bar {
+  float: left;
 }
 
-.nav-bar {
-  background: #ae5;
-  float: left;
+div.nav-bar h1 {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 
 nav {
   white-space: nowrap;
-  text-align:right;
   margin-left: 0;
-  padding: 0 10% 0 0;
-  background: #6b3;
-  font-family: "Helvetica",serif;
+  float: left;
 }
 
 nav ul {
   margin: 0;
-  color:white;
+  padding: 0;
+  float: left;
 }
 
 nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 0;
+  display: block;
   margin: 0;
+  padding-left: 0.5em;
+}
+
+nav ul li.active {
+  background-color: green;
+  z-index: 9;
+  font-weight: bold;
+  color: #376;
 }
 
 nav ul li a {
-  color: white;
+  color: #444;
+  display: block;
+  background-color: white;
   text-decoration: none;
-  padding: 0.2em 0.5em;
+  width: 12em;
+  padding: 0.5em;
+  overflow: hidden;
 }
 
 nav ul li a:visited {
-  color: white;
+  color: #444;
 }
 
 nav ul li a:hover {
-  background-color: #462;
-  -moz-border-radius:    0.2em;
-  -webkit-border-radius: 0.2em;
-  border-radius:         0.2em;
+  background-color: #df9;
   text-decoration: none;
-  color: white;
 }
 
 nav.footer {
@@ -516,26 +495,33 @@ a.radio_button_text:visited {
 }
 
 .client_info {
-  float: left;
-  width: 100%;
+  vertical-align: top;
 }
 
 .column-left {
-  float: left;
   overflow: hidden;
   width: 25%;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   margin-right: 0.75em;
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
 }
 
 .column-right {
-  float: right;
+  text-align: right;
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
 }
 
 .column-middle {
   overflow: hidden;
   padding-bottom:0.75em;
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
 }
 
 .column-middle td {
@@ -543,9 +529,9 @@ a.radio_button_text:visited {
 } 
 
 .clients {
-    margin: 1em 0 1em 0;
-    float:left;
-    width:100%;
+  margin: 1em 0 1em 0;
+  width:100%;
+  vertical-align: top;  
 }
 
 .list-nemu {

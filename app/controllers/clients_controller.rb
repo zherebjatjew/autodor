@@ -15,6 +15,7 @@ class ClientsController < ApplicationController
   def index
     @title = "Список клиентов"
     @clients = Client.paginate(:page => params[:page])
+    @tab = "client"
     store_location
   end
 

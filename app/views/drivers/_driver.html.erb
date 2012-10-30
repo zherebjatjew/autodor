@@ -1,11 +1,8 @@
 <% @user = current_user %>
 <div class="client_info" id="<%= driver.id %>">
-  <div style="float:left;width:30%"><h3><%= driver.name %></h3></div>
-  <div style="float:right">
+  <div class="column-left" style="width:30%"><h3><%= driver.name %></h3></div><div class="column-right" style="width:69%">
+    <%= link_to "▼", driver_orders_path(driver), :remote => true, :class => 'command expand', :id => "expand#{driver.id}" %>
     <%= link_to "Изменить", edit_driver_path(driver), :remote => true, :class => 'command edit', :alias => 'Редактирование данных водителя' %>
   </div>
-  <div style="float:right">
-    <%= link_to "▼", driver_orders_path(driver), :remote => true, :class => 'command expand', :id => "expand#{driver.id}" %>
-  </div>
-  <div style="display:none;float:left;width:100%;padding-left:3em;" id="form<%= driver.id %>"></div>
+  <div class="column-left" style="display:none;width:100%;padding-left:3em;" id="form<%= driver.id %>"></div>
 </div>

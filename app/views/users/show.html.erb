@@ -1,19 +1,15 @@
-<table class="profile" summary="Profile information">
-  <tr>
-    <td class="main">
-      <h2>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h2>
-    </td>
-    <td class="sidebar">
-      <% if current_user.id == @user.id %>
-        <%= link_to "Редактировать профиль", edit_user_path(@user) %><br />
-      <% end %>
-      <strong>График работы: </strong><%= @user.schedule %><br />
-    </td>
-  </tr>
-</table>
+<div class="client_info">
+  <div class="column-left">
+    <%= gravatar_for @user %>
+    <%= @user.name %>
+  </div>
+  <div class="column-middle">
+    <% if current_user.id == @user.id %>
+      <%= link_to "Редактировать профиль", edit_user_path(@user) %><br />
+    <% end %>
+    <strong>График работы: </strong><%= @user.schedule %><br />
+  </div>
+</div>
 
 <%= render 'orders/table' %>
 

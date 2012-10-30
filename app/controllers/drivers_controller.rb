@@ -46,6 +46,7 @@ class DriversController < ApplicationController
   def index
     @title = "Водители"
     @drivers = Driver.paginate(:page => params[:page])
+    @tab = "driver"
   end
 
   def update

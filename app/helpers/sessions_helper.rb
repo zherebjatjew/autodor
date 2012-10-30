@@ -3,6 +3,7 @@
 module SessionsHelper
 
   def authenticate
+    @tab = ""
     deny_access unless signed_in?
   end
 
