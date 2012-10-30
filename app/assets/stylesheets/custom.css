@@ -135,7 +135,8 @@ h1.header {
 }
 
 .main-block {
-  margin-top: 0.75em;
+  margin-top: 0em;
+    padding-top: 0.75em;
 }
 
 a {
@@ -160,6 +161,10 @@ div.nav-bar h1 {
   font-family: monospace;
   font-weight: bold;
   font-size: 1.5em;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+  background-color: #eee;
 }
 
 nav {
@@ -192,7 +197,7 @@ nav ul li a {
   display: block;
   background-color: white;
   text-decoration: none;
-  width: 12em;
+  width: 15em;
   padding: 0.5em;
   overflow: hidden;
 }
