@@ -3,11 +3,22 @@
 module SessionsHelper
 
   def authenticate
+    @tab = ""
     deny_access unless signed_in?
   end
 
   def deny_access
-    unless signed_in?
+    if signed_in?
+      respond_to do |format|
+        format.html {
+          redirect_to user_path(current_user), :notice => "Недостаточно прав для доступа к странице"
+        }
+        format.json {
+          render :status => 403,
+                 :json => { :message => "Not enough privileges to access this data" }.to_json
+        }
+      end
+    else
       respond_to do |format|
         format.html {
           store_location
@@ -18,20 +29,10 @@ module SessionsHelper
                  :json => { :message => "You have to be authorized to access this data" }.to_json
         }
       end
-    else
-      respond_to do |format|
-        format.html {
-          redirect_to user_path(current_user), :notice => "Недостаточно прав для доступа к странице"
-        }
-        format.json {
-          render :status => 403,
-                 :json => { :message => "Not enough privileges to access this data" }.to_json
-        }
-      end
     end
   end
 
-  def sign_in user
+  def sign_in (user)
     cookies.permanent.signed[:remember_token] = [user.id, user.salt]
     self.current_user = user
   end
@@ -41,7 +42,7 @@ module SessionsHelper
     self.current_user = nil
   end
 
-  def redirect_back_or default
+  def redirect_back_or (default)
     redirect_to(session[:return_to] || default)
     clear_location
   end
@@ -54,11 +55,11 @@ module SessionsHelper
     session[:return_to] = nil
   end
 
-  def current_user= user
+  def current_user= (user)
     @current_user = user
   end
 
-  def currect_user? user
+  def currect_user? (user)
     user == current_user
   end
 

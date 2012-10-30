@@ -31,7 +31,7 @@
 
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
-  <div style="width:100%;float:left">
+  <div>
     <div class="box">
       <div class="field">
         <%= f.label :forwarder, "Экспедитор" %><br />
@@ -44,11 +44,6 @@
         <%= f.calendar_date_select :committed_at %>
       </div>
       <div class="field">
-        <%= f.check_box :signed %>Подписана<br />
-        <%= f.check_box :paid %>Оплачена<br />
-        <%= f.check_box :completed %>Выполнена<br />
-      </div>
-      <div class="field">
         <%= f.label :info, "Комментарий" %><br />
         <%= f.text_area :info, :style => "height:2em" %>
       </div>
@@ -58,22 +53,6 @@
         <%= f.label :client_id, "Заказчик" %><br />
         <%= f.select :client_id, options_for_select(all_clients, @order.client_id.to_i), {}, :class => 'client-selector' %>
         <%= link_to "Добавить", new_client_path, :remote => true, :alias => 'Добавление заказчика', :class => 'command' %>
-      </div>
-    </div>
-
-    <div class="box">
-      <%= f.label :cargos, "Груз" %>
-      <div id="cargo" style="width:100%;float:left;">
-        <% unless @order.id.nil? %>
-          <% @order.cargos.each do |c| %>
-            <%= f.fields_for :cargos, c, :child_index => (c.new_record? ? "index_to_replace_with_js" : nil) do |cargo_fm| %>
-              <%= render 'cargos/cargo', :f => cargo_fm, :cargo => c, :all_clients => all_clients %>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-      <div>
-        <%= add_object_link("Добавить груз", f, Cargo.new, "cargos/new_cargo", "#cargo") %>
       </div>
     </div>
 
@@ -117,10 +96,27 @@
         <%= link_to "Добавить", new_trailer_path, :remote => true, :class => 'command', :alias => 'Добавление прицепа' %>
       </div>
     </div>
-  
+
+    <div class="box">
+      <%= f.label :cargos, "Груз" %>
+      <div id="cargo">
+        <% unless @order.id.nil? %>
+            <% @order.cargos.each do |c| %>
+                <%= f.fields_for :cargos, c, :child_index => (c.new_record? ? "index_to_replace_with_js" : nil) do |cargo_fm| %>
+                    <%= render 'cargos/cargo', :f => cargo_fm, :cargo => c, :all_clients => all_clients %>
+                <% end %>
+            <% end %>
+        <% end %>
+      </div>
+      <div>
+        <%= add_object_link("Добавить груз", f, Cargo.new, "cargos/new_cargo", "#cargo") %>
+      </div>
+    </div>
+
+  </div>
+
     <div class="actions">
       <%= f.submit "Сохранить" %>
     </div>
-  </div>
 
 <% end %>

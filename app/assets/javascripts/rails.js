@@ -50,7 +50,7 @@
   var alreadyInitialized = function() {
     var events = $._data(document, 'events');
     return events && events.click && $.grep(events.click, function(e) { return e.namespace === 'rails'; }).length;
-  }
+  };
 
   if ( alreadyInitialized() ) {
     $.error('jquery-ujs has already been loaded!');

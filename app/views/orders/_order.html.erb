@@ -1,20 +1,20 @@
 <% order = @order if order.nil? %>
-<tr>
-  <td class="order">
+<div class="client_info">
+  <div class="column-left" style="width:auto">
     <%= render :partial => 'orders/status', :locals => { :order => order } %>
-  </td>
-  <td class="order">  
+  </div>
+  <div class="column-middle" style="width:33%">  
     <% created = order.created_at.strftime "%d.%m.%Y" %>
     <%= link_to "#{order.id}. #{created} #{order.info}", order %>
-  </td>
-  <td class="order">
+  </div>
+  <div class="column-middle" style="width:15em">
     <% unless order.forwarder_id.nil? %>
       <%= link_to order.forwarder.name, user_path(order.forwarder) %>
     <% end %>
-  </td>
+  </div>
   <% if current_user.admin? || current_user.owns?(order) %>
-    <td class="button_cell">
+    <div class="column-right">
       <%= link_to "изменить", edit_order_path(order), :class => "command" %>
-    </td>
+    </div>
   <% end %>
-</tr>
+</div>

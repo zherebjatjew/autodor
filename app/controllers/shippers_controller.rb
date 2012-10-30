@@ -16,7 +16,7 @@ class ShippersController < ApplicationController
         end
       }
       format.js {
-        if !@shipper.save
+        unless @shipper.save
           render :json => @shipper.errors, :status => :unprocessable
         end
       }
@@ -35,7 +35,7 @@ class ShippersController < ApplicationController
         end
       }
       format.js {
-        if !@shipper.update_attributes(params[:shipper])
+        unless @shipper.update_attributes(params[:shipper])
           render :json => @shipper.errors, :status => :unprocessable
         end
       }
@@ -49,11 +49,13 @@ class ShippersController < ApplicationController
       format.html
       format.js
     end
+    @tab = "shipper"
   end
 
   def index
     @title = "Наши перевозчики"
     @shippers = Shipper.paginate(:page => params[:page])
+    @tab = "shipper"
   end
 
   def show
@@ -64,6 +66,7 @@ class ShippersController < ApplicationController
   def new
     @title = "Добавление перевозчика"
     @shipper = Shipper.new
+    @tab = "shipper"
     respond_to do |format|
       format.html
       format.js

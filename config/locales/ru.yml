@@ -1,6 +1,6 @@
 # encoding : UTF-8
 ru:
     will_paginate:
-        previous_label: "Назад"
-        next_label: "Вперёд"
+        previous_label: "<"
+        next_label: ">"
 #	hello: "Привет, мир"

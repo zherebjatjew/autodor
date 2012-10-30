@@ -1,7 +1,8 @@
 # encoding: UTF-8
 
 class Client < ActiveRecord::Base
-  attr_accessible :address1, :address2, :faxes, :inn, :kpp, :account, :corr_account, :ati, :bic, :born_at, :contact, :identity, :name, :note, :organization, :schedule, :phones, :email, :director
+  attr_accessible :address1, :address2, :faxes, :inn, :kpp, :account, :corr_account, :ati, :bic, :born_at, :contact,
+                  :identity, :name, :note, :organization, :schedule, :phones, :email, :director
 
   belongs_to :author, :class_name => 'User'
 

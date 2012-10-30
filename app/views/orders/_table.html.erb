@@ -9,9 +9,9 @@
 
 <% unless @orders.empty? %>
   <%= will_paginate @orders %>
-  <table class="orders" summary="Мои заявки">
+  <div class="clients">
     <%= render @orders %>
-  </table>
+  </div>
   <%= will_paginate @orders %>
 <% end %>
 

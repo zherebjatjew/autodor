@@ -12,7 +12,7 @@
     <%= render 'layouts/calendar_date_select' %>
   </head>
   <body>
-    <% if !flash.empty? %>
+    <% unless flash.empty? %>
       <section>
         <% flash.each do |key, value| %>
           <div class="flash_<%= key %>"><%= value%></div>
@@ -25,11 +25,11 @@
         <div class="main-block">
           <%= yield %>
         </div>
+        <div style="float:left;">
+          <%= debug(params) if Rails.env.development? %>
+        </div>
       </div>
-      <%= render 'layouts/footer' %>
-      <div style="float:left;">
-        <%= debug(params) if Rails.env.development? %>
-      </div>
+      <%#= render 'layouts/footer' %>
     </div>
   </body>
 </html>

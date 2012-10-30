@@ -21,8 +21,7 @@ a[href^="mailto:"], a[href$=".pdf"], a[href$=".doc"], a[href$=".xls"],
 a[href$=".rss"], a[href$=".rdf"], a[href^="aim:"] {
   padding:2px 22px 2px 0;
   margin:-2px 0;
-  background-repeat: no-repeat;
-  background-position: right center;
+    background: no-repeat right center;
 }
 
 /* External links */

@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     @order = @user.orders.new
     @order.forwarder = @user
     @order.status_id = 1
+    @tab = "me"
   end
 
   def create
@@ -18,9 +19,10 @@ class OrdersController < ApplicationController
     @order.user = current_user
     if @order.save
       flash[:success] = "Заявка создана!"
-      redirect_to user_path(current_user), :method => 'show'
+      redirect_to user_path(current_user)
     else
       render :edit
+      @tab = "me"
     end
   end
 
@@ -45,7 +47,7 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find_by_id params[:id]
     @order.destroy
-    redirect_to user_path(current_user), :method => 'show'
+    redirect_to user_path(current_user)
   end
 
   def show
@@ -76,6 +78,7 @@ class OrdersController < ApplicationController
     @order = Order.find params[:id]
     @cargos = @order.cargos
     @title = "Редактирование заявки"
+    @tab = "me"
     store_location
   end
 

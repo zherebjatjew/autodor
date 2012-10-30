@@ -12,8 +12,8 @@
   <div class="order_header">
     Экспедитор и его адрес: <%= company_name %>, <%= company_address %><br />
     Телефоны экспедитора: <%= company_phones %><br />
-    Контактное лицо экспедитора: <%= User.find(@order.user_id).name %><br />
-    Режим работы экспедитора: <%= User.find(@order.user_id).schedule %><br />
+    Контактное лицо экспедитора: <%= @order.forwarder.name %><br />
+    Режим работы экспедитора: <%= @order.forwarder.schedule %><br />
   </div>
 
   <h2>Информация об участниках</h2>

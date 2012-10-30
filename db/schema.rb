@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(:version => 20121018104534) do
     t.integer  "author_id"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", %w(email), :name => "index_users_on_email", :unique => true
 
   create_table "workflow_names", :force => true do |t|
     t.string   "name"
@@ -173,7 +173,7 @@ ActiveRecord::Schema.define(:version => 20121018104534) do
     t.datetime "updated_at",                    :null => false
   end
 
-  add_index "workflows", ["from_id"], :name => "index_workflows_on_from_id"
-  add_index "workflows", ["to_id"], :name => "index_workflows_on_to_id"
+  add_index "workflows", %w(from_id), :name => "index_workflows_on_from_id"
+  add_index "workflows", %w(to_id), :name => "index_workflows_on_to_id"
 
 end

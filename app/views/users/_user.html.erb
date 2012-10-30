@@ -1,12 +1,16 @@
-<tr>
-  <td class="avatar"><%= gravatar_for user, :size => 30 %>
-  <td><%= link_to user.name, user %>
-  <td><% if current_user.admin? %>
-  <td class="button_cell"><%= link_to "изменить", edit_user_path(user), :class => 'command' %>
-  <% if current_user != user %>
-    <td class="button_cell"><%= link_to "удалить", user, :method => :delete,
+<div class="clients">
+  <div class="column-left">
+    <%= gravatar_for user, :size => 30 %>
+    <%= link_to user.name, user %>
+  </div>
+  <div class="column-right" style="width:15em">
+    <% if current_user.admin? %>
+      <% if current_user != user %>
+        <%= link_to "удалить", user, :method => :delete,
                                      :confirm => "Вы точно хотите удалить пользователя #{user.name}?",
                                      :class => 'command delete' %>
-  <% end %>
-  <% end %>
-</tr>
+      <% end %>
+      <%= link_to "изменить", edit_user_path(user), :class => 'command' %>
+    <% end %>
+  </div>
+</div>

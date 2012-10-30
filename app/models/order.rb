@@ -27,9 +27,11 @@ class Order < ActiveRecord::Base
         if record.status_id != 1
           record.errors[:base] << "Недопустимое начальное состояние заявки"
         end
-      elsif Workflow.allowed(old.status_id, is_admin).find(record.status_id).nil?
+      else
         old = Order.find record.id
-        record.errors[:base] << "Переход в это состояние невозможен"
+        if Workflow.allowed(old.status_id, is_admin).find(record.status_id).nil?
+          record.errors[:base] << "Переход в это состояние невозможен"
+        end
       end
     end
   end
@@ -46,8 +48,8 @@ class Order < ActiveRecord::Base
   	User.find forwarder_id
   end
 
-  def forwarder= user
-  	forwarder_id = user.nil? ? nil : user.id
+  def forwarder= (user)
+    self.forwarder_id = user.nil? ? nil : user.id
   end
 
   def client

@@ -10,11 +10,13 @@ class UsersController < ApplicationController
   def index
     @title = "Все пользователи"
     @users = User.paginate(:page => params[:page])
+    @tab = "user"
   end
 
   def new
     @title = "Добавить"
     @user = User.new
+    @tab = "user"
   end
 
   def destroy
@@ -32,6 +34,7 @@ class UsersController < ApplicationController
     end
     @orders = set.order("created_at DESC").paginate :page => params[:page]
     @title = @user.name
+    @tab = "me" if current_user == @user
   end
 
   def create
@@ -51,6 +54,7 @@ class UsersController < ApplicationController
   def edit
     @title = "Редактирование профиля"
     @user = User.find params[:id]
+    @tab = "user"
   end
 
   def update
