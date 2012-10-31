@@ -1,6 +1,6 @@
 <h2>Добавление прицепа</h2>
 
-<%= form_for (@car, :remote => true) do |f| %>
+<%= form_for @car, :remote => true do |f| %>
     <%= f.hidden_field :is_trailer %>
     <div class="field">
       <%= f.label :identity, 'Государственный регистрационный номер' %><br />
