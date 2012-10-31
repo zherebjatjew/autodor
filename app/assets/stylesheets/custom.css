@@ -131,7 +131,7 @@ h1.header {
   background: white;
   line-height:2em;
   height: 100%;
-  margin-left: 14em;
+  margin-left: 17em;
 }
 
 .main-block {
@@ -162,6 +162,7 @@ div.nav-bar h1 {
   font-weight: bold;
   font-size: 1.5em;
   margin-bottom: 0;
+  margin-bottom: 0;
   padding-bottom: 0.5em;
   padding-top: 0.5em;
   background-color: #eee;
@@ -188,7 +189,7 @@ nav ul li {
 nav ul li.active {
   background-color: green;
   z-index: 9;
-  font-weight: bold;                                        ♠
+  font-weight: bold;
   color: #376;
 }
 
