@@ -1,6 +1,10 @@
 # encoding : UTF-8
 
 # Be sure to restart your server when you modify this file.
+#
+# Test:
+# rails console
+# > BigDecimal("1000000").to_currency
 
 class Integer
 
@@ -67,7 +71,7 @@ private
   # [CR] It is bad that 's' variable is changing indirectly
   #      however it makes function call neater
   def self.add_range(s, whole, range, lc = BigDecimal.locale)
-    if whole > range
+    if whole >= range
       triple = whole/range
       whole -= range*triple
       s << ' ' unless s.empty?
