@@ -1,5 +1,7 @@
 # encoding: UTF-8
 require 'digest'
+require 'client'
+require File.dirname(File.dirname(__FILE__)) + '/helpers/application_helper'
 require File.dirname(File.dirname(__FILE__)) + '/helpers/users_helper'
 
 class User < ActiveRecord::Base
@@ -24,6 +26,8 @@ class User < ActiveRecord::Base
 
   belongs_to :author, :class_name => 'User'
 
+  include ApplicationHelper
+
   def admin?
     role == "admin"
   end
@@ -38,6 +42,10 @@ class User < ActiveRecord::Base
 
   def has_password? (submitted_password)
     encrypted_password == encrypt(submitted_password)
+  end
+
+  def to_client
+    Client.new(:name => company_name, :contact => name, :address1 => company_address, :phones => company_phones, :schedule => schedule)
   end
 
   def self.authentificate email, submitted_password

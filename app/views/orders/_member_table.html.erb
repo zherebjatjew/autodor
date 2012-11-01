@@ -1,6 +1,6 @@
     <tr>
       <td>1. Наименование
-      <td><%= @order.client.name %>
+      <td><%= @client.name %>
       <% @cargos.each do |cargo| %>
       <td><%= cargo.sender.name %>
       <% end %>
@@ -10,7 +10,7 @@
     </tr>
     <tr>
       <td>2. Адрес
-      <td><%= @order.client.address1 %>
+      <td><%= @client.address1 %>
       <% @cargos.each do |cargo| %>
       <td><%= cargo.sender.address1 %>
       <% end %>
@@ -20,7 +20,7 @@
     </tr>
     <tr>
       <td>3. Контактное лицо
-      <td><%= @order.client.contact %>
+      <td><%= @client.contact %>
       <% @cargos.each do |cargo| %>
       <td><%= cargo.sender.contact %>
       <% end %>
@@ -30,7 +30,7 @@
     </tr>
     <tr>
       <td>Телефоны
-      <td><%= @order.client.phones %>
+      <td><%= @client.phones %>
       <% @cargos.each do |cargo| %>
       <td><%= cargo.sender.phones %>
       <% end %>
@@ -60,7 +60,7 @@
     </tr>
     <tr>
       <td>Режим работы
-      <td><%= @order.client.schedule %>
+      <td><%= @client.schedule %>
       <% @cargos.each do |cargo| %>
       <td><%= cargo.sender.schedule %>
       <% end %>

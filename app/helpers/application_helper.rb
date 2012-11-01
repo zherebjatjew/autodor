@@ -28,7 +28,7 @@ module ApplicationHelper
   end
 
   def company_schedule
-    "24/7"
+    ""
   end
 
   def date_to_s(date)
