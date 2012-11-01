@@ -1,0 +1,4 @@
+#!/bin/sh
+heroku maintenance:on
+git push heroku master
+heroku maintenance:off
