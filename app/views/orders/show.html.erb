@@ -61,7 +61,7 @@
       </tr>
       <tr>
         <td>8. Ставка за перевозку с НДС, руб.
-        <td><%= "#{cargo.transportation_charge} (#{cargo.transportation_charge})" %>
+        <td><%= "#{cargo.transportation_charge} (#{cargo.transportation_charge.to_currency unless cargo.transportation_charge.nil?})" %>
       </tr>
       <tr>
         <td>9. Сроки и форма оплаты

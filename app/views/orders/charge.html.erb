@@ -36,7 +36,9 @@
       </tr>
       <tr>
         <td>3. Объявленная стоимость, руб.
-        <td><%= "#{cargo.cost} (#{cargo.cost.to_currency})" %>
+        <td><% unless cargo.cost.nil? %>
+              <%= "#{cargo.cost} (#{cargo.cost.to_currency})" %>
+            <% end %>
       </tr>
       <tr>
         <td>4. Температурный режим
