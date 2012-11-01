@@ -1,8 +1,9 @@
 <h1>Контакты</h1>
 <p>
-  Телефон/факс 8 (3812) 46-57-17<br />
-  Сотовый телефон 8-913-678-33-50<br />
-  e-mail: avtodor55@gmail.com<br />
+  <% company = Company.instance %>
+  Телефон/факс <%= company.faxes %><br />
+  Сотовый телефон <%= company.phones %><br />
+  e-mail: <%= company.email %><br />
   <img src="assets/icq.png" alt="ICQ"/>: 637 925 555<br />
-  Адрес: <%= company_address %>
+  Адрес: <%= company.address1 %>
 </p>

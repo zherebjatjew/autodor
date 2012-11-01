@@ -15,7 +15,7 @@
   </div>
 </div>
 <p>
-<strong><%= company_name %></strong>, именуемое в дальнейшем «Экспедитор», в лице директора Осипова Сергея Владимировича, действующего на основании Устава, с одной стороны и <strong><%= @shipper.name %></strong>, именуемое в дальнейшем «Клиент», в лице <%= @shipper.director %>, действующего на основании <%= @shipper.registration %>, вместе или по-отдельности именуемые соответственно «Сторона»/»Стороны», заключили настоящий договор о нижеследующем:
+<strong><%= @owner.name %></strong>, именуемое в дальнейшем «Экспедитор», в лице директора <%= @owner.director %>, действующего на основании <%= @owner.identity %>, с одной стороны и <strong><%= @shipper.name %></strong>, именуемое в дальнейшем «Клиент», в лице <%= @shipper.director %>, действующего на основании <%= @shipper.registration %>, вместе или по-отдельности именуемые соответственно «Сторона»/»Стороны», заключили настоящий договор о нижеследующем:
 </p>
 <h3>1. Предмет договора</h3>
 <p>
@@ -181,44 +181,44 @@
 <h3>8. Реквизиты и подписи сторон:</h3>
 <table class="print_order">
   <tr>
-    <th>Экспедитор
+    <th style="width:50%">Экспедитор
     <th>Клиент
   </tr>
   <tr>
-    <td><strong>Адрес м/я: </strong><%= company_address %>
+    <td><strong>Адрес м/я: </strong><%= @owner.address1 %>
     <td><strong>Адрес м/я: </strong><%= @shipper.address1 %>
   </tr>
   <tr>
-    <td><strong>Адрес почтовый: </strong><%= company_address %>
+    <td><strong>Адрес почтовый: </strong><%= @owner.address2.empty? ? @owner.address1 : @owner.address2 %>
     <td><strong>Адрес почтовый: </strong><%= @shipper.address2 == "" ? @shipper.address1 : @shipper.address2 %>
   </tr>
   <tr>
-    <td><strong>ИНН/КПП </strong>5503234484 /550301001
-    <td><strong>ИНН/КПП </strong><%= "#{@shipper.inn} / #{@shipper.kpp}" %>
+    <td><strong>ИНН/КПП </strong><%= @owner.inn %>/<%= @owner.kpp %>
+    <td><strong>ИНН/КПП </strong><%= "#{@shipper.inn || '-'} / #{@shipper.kpp || '-'}" %>
   </tr>
   <tr>
-    <td><strong>р/с </strong>40702810918100024299
-    <td><strong>р/с </strong><%= @shipper.account %>
+    <td><strong>р/с </strong><%= @owner.account %>
+    <td><strong>р/с </strong><%= @shipper.account || '' %>
   </tr>
   <tr>
-    <td><strong>Банк: </strong>ОАО АКБ «АВАНГАРД» г.Москва
-    <td><strong>Банк: </strong><%= @shipper.ati %>
+    <td><strong>Банк: </strong><%= @owner.ati %>
+    <td><strong>Банк: </strong><%= @shipper.ati || '' %>
   </tr>
   <tr>
-    <td><strong>к/с </strong>30101810000000000201
-    <td><strong>к/с </strong><%= @shipper.corr_account %>
+    <td><strong>к/с </strong><%= @owner.corr_account %>
+    <td><strong>к/с </strong><%= @shipper.corr_account || '' %>
   </tr>
   <tr>
-    <td><strong>БИК </strong>044525201
-    <td><strong>БИК </strong><%= @shipper.bic %>
+    <td><strong>БИК </strong><%= @owner.bic %>
+    <td><strong>БИК </strong><%= @shipper.bic || '' %>
   </tr>
   <tr>
-    <td><strong>Тел/факс </strong>8(3812) 465-717
-    <td><strong>Тел/факс </strong><%= @shipper.phones %>
+    <td><strong>Тел/факс </strong><%= @owner.phones %>
+    <td><strong>Тел/факс </strong><%= @shipper.phones || '' %>
   </tr>
   <tr>
-    <td><strong>e-mail: </strong>avtodor55@gmail.com
-    <td><strong>e-mail: </strong><%= @shipper.email %>
+    <td><strong>e-mail: </strong><%= @owner.email %>
+    <td><strong>e-mail: </strong><%= @shipper.email || '' %>
   </tr>
   <tr>
     <td><strong>Ответственное лицо: </strong>Осипов Сергей Владимирович
@@ -232,11 +232,11 @@
     <th>Перевозчик
   </tr>
   <tr>
-    <th>Директор <%= company_name %>
+    <th>Директор <%= @owner.name %>
     <th>Директор <%= @shipper.name %>
   </tr>
   <tr>
-    <td>___________________(Осипов С.В.)
+    <td>___________________( <%= @owner.director_short %>)
     <td>___________________( <%= @shipper.director_short %>)
   </tr>
   <tr>

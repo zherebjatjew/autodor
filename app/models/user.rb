@@ -44,10 +44,6 @@ class User < ActiveRecord::Base
     encrypted_password == encrypt(submitted_password)
   end
 
-  def to_client
-    Client.new(:name => company_name, :contact => name, :address1 => company_address, :phones => company_phones, :schedule => schedule)
-  end
-
   def self.authentificate email, submitted_password
     user = find_by_email email
     return nil if user.nil?

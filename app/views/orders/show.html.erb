@@ -10,8 +10,8 @@
   <h1>Заявка на оказание транспортно-экспедиционных услуг №<%= @order.id %> от <%= date_to_s @order.committed_at %></h1>
 
   <div class="order_header">
-    Экспедитор и его адрес: <%= company_name %>, <%= company_address %><br />
-    Телефоны экспедитора: <%= company_phones %><br />
+    Экспедитор и его адрес: <%= @owner.name %>, <%= @owner.address1 %><br />
+    Телефоны экспедитора: <%= @owner.phones %><br />
     Контактное лицо экспедитора: <%= @order.forwarder.name %><br />
     Режим работы экспедитора: <%= @order.forwarder.schedule %><br />
   </div>

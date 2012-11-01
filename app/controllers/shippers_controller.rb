@@ -61,6 +61,7 @@ class ShippersController < ApplicationController
   def show
     @title = "Договор с перевозчиком"
     @shipper = Shipper.find(params[:id])
+    @owner = Company.instance
   end
 
   def new

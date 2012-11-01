@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018104534) do
+ActiveRecord::Schema.define(:version => 20121101093640) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -90,6 +90,30 @@ ActiveRecord::Schema.define(:version => 20121018104534) do
     t.string   "director",     :default => ""
   end
 
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.string   "address1"
+    t.string   "address2",       :default => ""
+    t.string   "faxes"
+    t.string   "inn"
+    t.string   "kpp"
+    t.string   "account"
+    t.string   "corr_account"
+    t.string   "ati"
+    t.string   "bic"
+    t.date     "born_at"
+    t.string   "identity"
+    t.string   "schedule"
+    t.string   "phones"
+    t.string   "email"
+    t.string   "director"
+    t.string   "director_short"
+    t.boolean  "organization",   :default => true
+    t.string   "contact"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
   create_table "drivers", :force => true do |t|
     t.string   "name",       :null => false
     t.date     "born_at"
@@ -156,7 +180,7 @@ ActiveRecord::Schema.define(:version => 20121018104534) do
     t.integer  "author_id"
   end
 
-  add_index "users", %w(email), :name => "index_users_on_email", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
   create_table "workflow_names", :force => true do |t|
     t.string   "name"
@@ -173,7 +197,7 @@ ActiveRecord::Schema.define(:version => 20121018104534) do
     t.datetime "updated_at",                    :null => false
   end
 
-  add_index "workflows", %w(from_id), :name => "index_workflows_on_from_id"
-  add_index "workflows", %w(to_id), :name => "index_workflows_on_to_id"
+  add_index "workflows", ["from_id"], :name => "index_workflows_on_from_id"
+  add_index "workflows", ["to_id"], :name => "index_workflows_on_to_id"
 
 end

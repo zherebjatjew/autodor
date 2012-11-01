@@ -21,6 +21,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    @owner = Company.instance
     @title = "Клиент #{@client.name}"
     respond_to do |format|
       format.html { render :conclusion }
