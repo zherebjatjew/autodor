@@ -60,7 +60,7 @@
     </tr>
     <tr>
       <td>Режим работы
-      <td><%= company_schedule %>
+      <td><%= @order.client.schedule %>
       <% @cargos.each do |cargo| %>
       <td><%= cargo.sender.schedule %>
       <% end %>
