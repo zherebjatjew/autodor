@@ -8,7 +8,6 @@ Autodor::Application.routes.draw do
   resources :cargos
   resources :drivers
   resources :shippers
-
   match '/trailers/new' => 'cars#new_trailer', :as => 'new_trailer'
   match '/trucks/new' => 'cars#new_truck', :as => 'new_truck'
   match '/users/:user/orders/new' => 'orders#new', :as => 'new_order'
@@ -17,6 +16,9 @@ Autodor::Application.routes.draw do
   match '/drivers/:id/orders' => 'drivers#orders', :as => 'driver_orders'
   match '/shippers/:id/orders' => 'shippers#orders', :as => 'shipper_orders'
   match '/orders/:id/status/:status' => 'orders#change_status', :as => 'order_status'
+  match '/home' => 'home#show', :as => 'home'
+  match '/home/update' => 'home#update', :as => 'update_home'
+  match '/company/edit' => 'home#edit', :as => 'edit_company'
   resources :sessions do
     member do
       get 'new'

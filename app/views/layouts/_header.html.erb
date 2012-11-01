@@ -18,7 +18,7 @@
             <% else %>
               <li><%= link_to "Войти", signin_path %></li>
             <% end %>
-            <li <%= "class='active'" if @tab=="help"%>><%= link_to "Справка", help_path %></li>
+            <li <%= "class='active'" if @tab=="home"%>><%= link_to "Справка", root_path %></li>
           </ul>
         </nav>
       </div>

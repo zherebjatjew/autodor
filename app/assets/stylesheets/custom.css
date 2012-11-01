@@ -365,6 +365,16 @@ div.field select, input {
   width: 20em;
 }
 
+div.actions {
+  margin-top: 1.5em;
+}
+
+.hint {
+  font-size: 0.75em;
+  color: #a9a9a9;
+  margin-top: -0.5em;
+}
+
 div.actions input {
   width: auto;
 }

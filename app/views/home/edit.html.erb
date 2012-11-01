@@ -1,0 +1,80 @@
+<h2><%= @title %></h2>
+<%= form_for @company, :url => update_home_path do |f| %>
+    <div class="column-left" style="width:auto">
+      <div class="box">
+        <div class="field">
+          <%= f.label :contact, "Директор (в именительном падеже)" %><br />
+          <%= f.text_field :contact %>
+        </div>
+        <div class="field">
+          <%= f.label :director, "Директор (в родительном падеже)" %><br />
+          <%= f.text_field :director %>
+        </div>
+        <div class="field">
+          <%= f.label :director_short, "Директор (кратко)" %><br />
+          <%= f.text_field :director_short %>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="field">
+          <%= f.label :address1, "Почтовый адрес" %><br />
+          <%= f.text_field :contact %>
+        </div>
+        <div class="field">
+          <%= f.label :address2, "Адрес места нахождения" %><br />
+          <%= f.text_field :address2 %><br />
+          <div class="hint">
+            Mожно оставить пустым, если совпадает с почтовым адресом
+          </div>
+        </div>
+        <div class="field">
+          <%= f.label :phones, "Телефоны" %><br />
+          <%= f.text_field :phones %>
+        </div>
+        <div class="field">
+          <%= f.label :faxes, "Факсы" %><br />
+          <%= f.text_field :faxes %>
+        </div>
+        <div class="field">
+          <%= f.label :email, "Электронная почта" %><br />
+          <%= f.text_field :email %>
+        </div>
+        <div class="field">
+          <%= f.label :schedule, "Часы работы" %><br />
+          <%= f.text_field :schedule %>
+        </div>
+      </div>
+    </div>
+
+    <div class="column-middle box" style="width:auto">
+        <div class="field">
+          <%= f.label :inn, "ИНН" %><br />
+          <%= f.text_field :inn %>
+        </div>
+        <div class="field">
+          <%= f.label :kpp, "КПП" %><br />
+          <%= f.text_field :kpp %>
+        </div>
+        <div class="field">
+          <%= f.label :ati, "Банк" %><br />
+          <%= f.text_field :ati %>
+        </div>
+        <div class="field">
+          <%= f.label :account, "Расчётный счёт" %><br />
+          <%= f.text_field :account %>
+        </div>
+        <div class="field">
+          <%= f.label :corr_account, "Корр. счёт" %><br />
+          <%= f.text_field :corr_account %>
+        </div>
+        <div class="field">
+          <%= f.label :bic, "БИК" %><br />
+          <%= f.text_field :bic %>
+        </div>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Сохранить" %>
+    </div>
+<% end %>

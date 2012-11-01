@@ -1,5 +1,35 @@
-<h1>Автодор</h1>
-<p>
-  Домашняя страница
-</p>
-<%= link_to "Войти", signin_path, :class => "signin_button round" %>
+<h1><%= @company.name %></h1>
+<div>
+  <div class="column-left" style="width:auto" >
+    <div>
+      Директор: <%= @company.contact %>
+    </div>
+    <div>
+      Наш адрес: <%= @company.address1 %><br />
+      Телефоны: <%= @company.phones %><br />
+      Факсы: <%= @company.faxes %><br />
+      email: <%= @company.email %><br />
+    </div>
+    <div>
+      Часы работы: <%= @company.schedule %>
+    </div>
+  </div>
+
+  <% if current_user.nil? %>
+      <div class="column-middle" style="width:auto">
+        <%= render 'sessions/new' %>
+      </div>
+  <% elsif current_user.admin? %>
+      <div class="column-middle" style="width:auto">
+        ИНН: <%= @company.inn %><br />
+        КПП: <%= @company.kpp %><br />
+        Банк: <%= @company.ati %><br />
+        р/с: <%= @company.account %><br />
+        к/с: <%= @company.corr_account %><br />
+        БИК: <%= @company.bic %>
+      </div>
+      <div class="actions">
+        <%= link_to "Изменить", edit_company_path, :class => 'command' %>
+      </div>
+  <% end %>
+</div>
