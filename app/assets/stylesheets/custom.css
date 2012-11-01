@@ -365,6 +365,10 @@ div.field select, input {
   width: 20em;
 }
 
+.radio_button {
+  width: auto;
+}
+
 div.actions {
   margin-top: 1.5em;
 }

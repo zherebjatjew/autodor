@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101093640) do
+ActiveRecord::Schema.define(:version => 20121101163030) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20121101093640) do
     t.string   "faxes"
     t.string   "email"
     t.string   "director",     :default => ""
+    t.integer  "num",          :default => 0,     :null => false
   end
 
   create_table "companies", :force => true do |t|
