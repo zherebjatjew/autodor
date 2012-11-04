@@ -21,7 +21,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
-    @owner = Company.instance
+    @owner = current_user.to_client
     @title = "Клиент #{@client.name}"
     respond_to do |format|
       format.html { render :conclusion }

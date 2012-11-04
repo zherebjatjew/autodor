@@ -1,9 +1,10 @@
 # encoding : UTF-8
 
 class ShippersController < ApplicationController
+  before_filter :authenticate
 
   def create
-    @shipper= Shipper.new params[:shipper]
+    @shipper = Shipper.new params[:shipper]
     @shipper.author = current_user
     respond_to do |format|
       format.html {
@@ -61,7 +62,7 @@ class ShippersController < ApplicationController
   def show
     @title = "Договор с перевозчиком"
     @shipper = Shipper.find(params[:id])
-    @owner = Company.instance
+    @owner = current_user.to_client
   end
 
   def new

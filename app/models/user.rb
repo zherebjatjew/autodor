@@ -55,6 +55,14 @@ class User < ActiveRecord::Base
     (user && user.salt == cookie_salt) ? user : nil
   end
 
+  def to_client
+    res = Company.instance
+    res.contact = name
+    res.schedule = schedule
+    res.email = email
+    res
+  end
+
   private
 
     def encrypt_password

@@ -54,7 +54,7 @@ class OrdersController < ApplicationController
     @order = Order.find_by_id params[:id]
     @cargos = @order.cargos
     @client = @order.client
-    @owner = Company.instance
+    @owner = current_user.to_client
 #    @senders, @receivers = @order.checkpoints
     @title = "Заказ №#{@order.id} - #{@order.info}"
   end
@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
   def charge
     @order = Order.find params[:id]
     @cargos = @order.cargos
-    @client = Company.instance
+    @client = current_user.to_client
 #    @senders, @receivers = @order.checkpoints
     @title = "Поручение №#{params[:id]}"
   end
