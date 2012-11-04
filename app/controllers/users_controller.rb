@@ -42,7 +42,6 @@ class UsersController < ApplicationController
     @user.author = current_user
     if @user.save
       # success
-      sign_in @user
       flash[:success] = "Пользователь #{@user.name} добавлен в Автодор"
       redirect_to @user
     else
