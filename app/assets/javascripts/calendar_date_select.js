@@ -130,7 +130,7 @@ CalendarDateSelect.prototype = {
     this.calendar_div = $(parent).build('div', {className: "calendar_date_select"}, style);
     
     var that = this;
-    // create the divs
+    // create_truck the divs
     $w("top header body buttons footer bottom").each(function(name) {
       eval("var " + name + "_div = that." + name + "_div = that.calendar_div.build('div', { className: 'cds_"+name+"' }, { clear: 'left'} ); ");
     });

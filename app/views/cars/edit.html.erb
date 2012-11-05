@@ -1,6 +1,6 @@
-<h2>Добавление автомобиля</h2>
+<h1><%= @title %></h1>
 
-<%= form_for @car, :url => new_truck_path(@car), :remote => true do |f| %>
+<%= form_for @car, :url => update_car_path(@car), :remote => true do |f| %>
     <%= f.hidden_field :is_trailer %>
     <div class="field">
       <%= f.label :model, 'Модель' %><br />
@@ -11,7 +11,7 @@
       <%= f.text_field :identity %>
     </div>
     <div class="field">
-      <%= f.label :base, 'Тип кузова' %><br />
+      <%= f.label :base, 'Тип' %><br />
       <%= f.text_field :base %>
     </div>
     <div class="field">

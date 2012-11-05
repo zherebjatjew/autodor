@@ -5,8 +5,8 @@
 #
 # Examples:
 #
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Emanuel', :city => cities.first)
+#   cities = City.create_truck([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
+#   Mayor.create_truck(:name => 'Emanuel', :city => cities.first)
 
 admin = User.create!(:name => "Жеребятьев Дмитрий",
                      :email => "zherebjatjew@gmail.com",

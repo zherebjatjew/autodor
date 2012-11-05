@@ -15,6 +15,18 @@ class Car < ActiveRecord::Base
     Car.find 1
   end
 
+  def stub?
+    id == 1
+  end
+
+  def used?
+    if is_trailer?
+      !Order.find_by_trailer_id(id).nil?
+    else
+      !Order.find_by_truck_id(id).nil?
+    end
+  end
+
   def self.trucks
     Car.where :is_trailer => false
   end

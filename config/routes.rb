@@ -9,7 +9,12 @@ Autodor::Application.routes.draw do
   resources :drivers
   resources :shippers
   match '/trailers/new' => 'cars#new_trailer', :as => 'new_trailer'
-  match '/trucks/new' => 'cars#new_truck', :as => 'new_truck'
+  match '/trucks/new' => 'cars#new_truck', :via => 'GET', :as => 'new_truck'
+  match '/trucks/new' => 'cars#create_truck', :via => 'POST', :as => 'new_truck'
+  match '/trucks' => 'cars#trucks', :as => 'trucks'
+  match '/cars/:id' => 'cars#edit', :via => 'GET', :as => 'edit_car'
+  match '/cars/:id' => 'cars#update', :via => 'PUT', :as => 'update_car'
+  match '/cars/:id' => 'cars#destroy', :via => 'DELETE', :as => 'delete_car'
   match '/users/:user/orders/new' => 'orders#new', :as => 'new_order'
   match '/trucks' => 'cars#trucks', :as => :cars
   match '/orders/:id/charge' => 'orders#charge', :as => 'charge'
@@ -22,7 +27,7 @@ Autodor::Application.routes.draw do
   resources :sessions do
     member do
       get 'new'
-      post 'create'
+      post 'create_truck'
       delete 'destroy'
     end
   end

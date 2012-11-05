@@ -1,7 +1,20 @@
 $j('.ui-dialog-titlebar-close').click();
-var cars = $j('#order_trailer_id');
-cars.empty();
-<% Car.trucks.each do |c| %>
-cars.append($j('<option></option>').attr("value", "<%= c.id.to_s %>").text("<%= "#{c.base} #{c.identity}" %>"));
-cars.val("<%= c.id.to_s %>");
-<% end %>
+var cars = $j('#order_truck_id');
+if (cars != null) {
+    cars.empty();
+    <% Car.trucks.each do |c| %>
+    cars.append($j('<option></option>').attr("value", "<%= c.id.to_s %>").text("<%= "#{c.model} #{c.identity}" %>"));
+    cars.val("<%= c.id.to_s %>");
+    <% end %>
+}
+
+var index = $j('div.clients');
+if (index != null) {
+    page = index.find('.pagination');
+    add = "<%= escape_javascript(render :partial => 'car', :locals => { :car => @car }) %>";
+    if (page.size() != 0) {
+        page.last().before(add);
+    } else {
+        index.append(add);
+    }
+}

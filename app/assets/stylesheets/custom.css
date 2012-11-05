@@ -530,6 +530,7 @@ a.radio_button_text:visited {
 
 .client_info {
   vertical-align: top;
+  margin-bottom: 0.5em;
 }
 
 .column-left {

@@ -1,3 +1,21 @@
-<h2>Автомобили</h2>
+<script type="text/javascript">
+    $j(document).ready(function() {
+        $j('a.edit[data-remote="true"]').live('ajax:complete', editDialog);
+        $j('a.create[data-remote="true"]').live('ajax:complete', editDialog);
+    })
+</script>
+<h2><%= @title %></h2>
 
-<%= render :partial => 'trucks', :collection => @cars %>
+<div class="list-menu">
+  <%= link_to "Добавить", new_truck_path, :class => 'command create', :remote => 'true' %>
+</div>
+
+<div class="clients">
+    <%= will_paginate %>
+    <%= render @cars %>
+    <%= will_paginate %>
+</div>
+
+<div class="list-menu">
+  <%= link_to "Добавить", new_truck_path, :class => 'command create', :remote => 'true' %>
+</div>

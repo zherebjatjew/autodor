@@ -10,7 +10,7 @@ describe User do
     }
   end
 
-  it "should create a new instance given valid attributes" do
+  it "should create_truck a new instance given valid attributes" do
     User.create! @attr
   end
 

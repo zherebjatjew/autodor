@@ -4,19 +4,19 @@ class CarsController < ApplicationController
   before_filter :authenticate
 
   def trucks
-    @car = Car.new params[:car]
-    @car.author = current_user
-    @car.save
+    @cars = Car.trucks.paginate(:page => params[:page])
+    @title = 'Автомобили'
+    @tab = 'truck'
     respond_to do |format|
       format.html
-      format.js { render @car.is_trailer? ? 'trailers' : 'trucks' }
+      format.js
     end
   end
 
   def trailers
-    @car = Car.new params[:car]
-    @car.author = current_user
-    @car.save
+    @cars = Car.trailers.paginate(:page => params[:page])
+    @title = 'Прицепы'
+    @tab = 'trucks'
     respond_to do |format|
       format.html
       format.js
@@ -39,7 +39,7 @@ class CarsController < ApplicationController
     end
   end
 
-  def create
+  def create_truck
     @car = Car.new params[:car]
     @car.author = current_user
     respond_to do |format|
@@ -51,7 +51,9 @@ class CarsController < ApplicationController
           render :edit
         end
       }
-      format.js
+      format.js {
+        @car.save
+      }
     end
   end
 
@@ -78,5 +80,11 @@ class CarsController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def destroy
+    Car.find(params[:id]).destroy
+    flash[:success] = "Транспорт удалён"
+    redirect_to trucks_path
   end
 end

@@ -234,14 +234,14 @@ div.append-bottom, .append-bottom {
   margin-bottom:1.5em;
 }
 
-/* Use a .box to create a padded box inside a column.  */
+/* Use a .box to create_truck a padded box inside a column.  */
 .box {
   padding: 1.5em;
   margin-bottom: 1.5em;
   background: #e5eCf9;
 }
 
-/* Use this to create a horizontal ruler across a column. */
+/* Use this to create_truck a horizontal ruler across a column. */
 hr {
   background: #ddd;
   color: #ddd;

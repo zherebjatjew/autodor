@@ -1,0 +1,27 @@
+$j('.ui-dialog-titlebar-close').click();
+dv = $j('#<%= @car.id %>');
+if (dv != null) {
+    dv.html('<%= escape_javascript render :partial => 'car', :locals => { :client => @car } %>');
+}
+var cars;
+if (<%= @car.is_trailer %>) {
+    cars = $j('#order_trailer_id');
+    if (cars != null) {
+        cars.empty();
+    <% Car.trailers.each do |c| %>
+        cars.append($j('<option></option>').attr("value", "<%= c.id.to_s %>").text("<%= "#{c.model} #{c.identity}" %>"));
+        cars.val("<%= c.id.to_s %>");
+    <% end %>
+    }
+} else {
+    cars = $j('#order_truck_id');
+    if (cars != null) {
+        cars.empty();
+    <% Car.trucks.each do |c| %>
+        cars.append($j('<option></option>').attr("value", "<%= c.id.to_s %>").text("<%= "#{c.model} #{c.identity}" %>"));
+        cars.val("<%= c.id.to_s %>");
+    <% end %>
+    }
+}
+
+

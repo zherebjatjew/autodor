@@ -1,3 +1,12 @@
-<div class="client_info">
-  <%= link_to car.model + ' ' + car.inedntity, edit_car_path(car) %>
+<div class="client_info" id="<%= car.id %>">
+  <% unless car.stub? %>
+    <div class="column-left">
+      <%= link_to (car.model || '-') + ' ' + (car.identity || '-'), edit_car_path(car), :class => 'edit', :remote => true %>
+    </div>
+    <% unless car.used? %>
+      <div class="column-right">
+        <%= link_to "Удалить", delete_car_path(car), :class => 'command delete', :method => 'delete', :remote => true %>
+      </div>
+    <% end %>
+  <% end %>
 </div>
