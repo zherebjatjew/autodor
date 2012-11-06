@@ -14,9 +14,9 @@ class CarsController < ApplicationController
   end
 
   def trailers
-    @cars = Car.trailers.paginate(:page => params[:page])
+    @cars = Car.trailers(true).paginate(:page => params[:page])
     @title = 'Прицепы'
-    @tab = 'trucks'
+    @tab = 'trailer'
     respond_to do |format|
       format.html
       format.js
@@ -83,8 +83,8 @@ class CarsController < ApplicationController
   end
 
   def destroy
-    Car.find(params[:id]).destroy
+    @car = Car.find(params[:id])
+    @car.destroy
     flash[:success] = "Транспорт удалён"
-    redirect_to trucks_path
   end
 end

@@ -1,7 +1,7 @@
 $j('.ui-dialog-titlebar-close').click();
 dv = $j('#<%= @car.id %>');
 if (dv != null) {
-    dv.html('<%= escape_javascript render :partial => 'car', :locals => { :client => @car } %>');
+    dv.html('<%= escape_javascript render :partial => 'car', :locals => { :car => @car } %>');
 }
 var cars;
 if (<%= @car.is_trailer %>) {

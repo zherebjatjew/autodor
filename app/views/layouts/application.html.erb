@@ -12,15 +12,15 @@
     <%= render 'layouts/calendar_date_select' %>
   </head>
   <body>
-    <% unless flash.empty? %>
-      <section>
-        <% flash.each do |key, value| %>
-          <div class="flash_<%= key %>"><%= value%></div>
-        <% end %>
-      </section>
-    <% end %>
     <div class="container">
       <%= render 'layouts/header' %>
+      <% unless flash.empty? %>
+          <section>
+            <% flash.each do |key, value| %>
+                <div class="flash_<%= key %>"><%= value%></div>
+            <% end %>
+          </section>
+      <% end %>
       <div id="main">
         <div class="main-block">
           <%= yield %>

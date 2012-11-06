@@ -31,8 +31,12 @@ class Car < ActiveRecord::Base
     Car.where :is_trailer => false
   end
 
-  def self.trailers
-    Car.where :is_trailer => true
+  def self.trailers(real_only = false)
+    if real_only
+      Car.where(:is_trailer => true).where('id != 1')
+    else
+      Car.where :is_trailer => true
+    end
   end
 
 end

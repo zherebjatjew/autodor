@@ -77,7 +77,7 @@
     </div>
 
     <div class="box">
-      <% all_trucks, all_trailers = [], [['Нет', nil]] %>
+      <% all_trucks, all_trailers = [], [] %>
       <% Car.all.each { |truck|
         if truck.is_trailer?
           all_trailers << ["#{truck.model} #{truck.identity}", truck.id]

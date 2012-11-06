@@ -8,15 +8,18 @@ Autodor::Application.routes.draw do
   resources :cargos
   resources :drivers
   resources :shippers
-  match '/trailers/new' => 'cars#new_trailer', :as => 'new_trailer'
+  match '/trailers/new' => 'cars#new_trailer', :via => 'GET', :as => 'new_trailer'
+  match '/trailers/new' => 'cars#create_trailer', :via => 'POST', :as => 'new_trailer'
   match '/trucks/new' => 'cars#new_truck', :via => 'GET', :as => 'new_truck'
   match '/trucks/new' => 'cars#create_truck', :via => 'POST', :as => 'new_truck'
-  match '/trucks' => 'cars#trucks', :as => 'trucks'
+  match '/trucks' => 'cars#trucks', :via => 'GET', :as => 'trucks'
   match '/cars/:id' => 'cars#edit', :via => 'GET', :as => 'edit_car'
   match '/cars/:id' => 'cars#update', :via => 'PUT', :as => 'update_car'
   match '/cars/:id' => 'cars#destroy', :via => 'DELETE', :as => 'delete_car'
+  #match '/trucks' => 'cars#trucks'
+  match '/trailers' => 'cars#trailers'
   match '/users/:user/orders/new' => 'orders#new', :as => 'new_order'
-  match '/trucks' => 'cars#trucks', :as => :cars
+  match '/trucks' => 'cars#create_truck', :via => 'POST', :as => :cars
   match '/orders/:id/charge' => 'orders#charge', :as => 'charge'
   match '/drivers/:id/orders' => 'drivers#orders', :as => 'driver_orders'
   match '/shippers/:id/orders' => 'shippers#orders', :as => 'shipper_orders'
