@@ -52,8 +52,7 @@ a:visited.ui-dialog-titlebar-close {
 .ui-dialog-titlebar {
   padding-left: 0.3em;
   font-size: 1.3em;
-  background-color: #8d5;
-  display: none;
+  background-color: transparent;
 }
 
 .header {
@@ -132,6 +131,7 @@ h1.header {
   line-height:2em;
   height: 100%;
   margin-left: 17em;
+  margin-right: 0;
 }
 
 .main-block {
