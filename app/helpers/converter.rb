@@ -3,7 +3,8 @@
 module Converter
 
   def volume(name = :volume_m)
-    value = self.send name
+    value = send name
+    puts "value=#{value}"
     if value.nil?
       "-"
     else
@@ -12,7 +13,7 @@ module Converter
   end
 
   def weight(name = :weight_kg)
-    value = self.send name
+    value = send name
     if value.nil?
       "-"
     elsif value < 1

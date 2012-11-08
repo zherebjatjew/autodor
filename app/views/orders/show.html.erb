@@ -103,7 +103,7 @@
     </tr>
     <tr>
       <td>6. Тип кузова / V кузова, м<sup>3</sup>
-      <td><%= truck.base %>
+      <td><%= truck.base %><%= ('/'+truck.volume) unless truck.volume_m.nil? %>
     </tr>
     <% trailer = @order.trailer %>
     <tr>
@@ -112,7 +112,7 @@
     </tr>
     <tr>
       <td>8. Тип прицепа / V прицепа, м<sup>3</sup>
-      <td><%= "#{trailer.model}/#{trailer.volume}" unless trailer.nil? %>
+      <td><%= "#{trailer.model}/#{trailer.volume}" %>
     </tr>
   </table>
 
