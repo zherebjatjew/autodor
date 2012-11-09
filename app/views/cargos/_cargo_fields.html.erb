@@ -11,11 +11,11 @@
   </div>
   <div class="field">
     <%= f.label :weight_kg, "Масса" %><br />
-    <%= f.text_field :weight_kg %>
+    <%= f.text_field :weight_kg %> кг
   </div>
   <div class="field">
     <%= f.label :volume_m, "Объём" %><br />
-    <%= f.text_field :volume_m %>
+    <%= f.text_field :volume_m %> м³
   </div>
   <div class="field">
     <%= f.label :sender_id, "Грузоотправитель" %><br />
@@ -72,7 +72,7 @@
   </div>
   <div class="field">
     <%= f.label :tcharge_notes, "Сроки и форма оплаты" %><br />
-    <%= f.text_field :tcharge_notes %>
+    <%= f.text_area :tcharge_notes, :style => "width:30em;height:3em;" %>
   </div>
   <div class="field">
     <%= f.label :inner_charge, "Ставка перевозчику" %><br />
@@ -80,7 +80,7 @@
   </div>
   <div class="field">
     <%= f.label :icharge_notes, "Сроки и форма оплаты" %><br />
-    <%= f.text_field :icharge_notes %>
+    <%= f.text_area :icharge_notes, :style => "width:30em;height:3em;" %>
   </div>
   <div class="field">
     <%= f.label :prepay_amount, "Предоплата" %><br />
@@ -88,6 +88,6 @@
   </div>
   <div class="field">
     <%= f.label :prepay_notes, "Сроки и форма оплаты" %><br />
-    <%= f.text_field :prepay_notes %>
+    <%= f.text_area :prepay_notes, :style => "width:30em;height:3em;" %>
   </div>
 </div>

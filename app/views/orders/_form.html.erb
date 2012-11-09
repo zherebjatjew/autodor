@@ -31,7 +31,7 @@
 
 <%= form_for(@order) do |f| %>
   <% render 'shared/error_messages', :object => f.object %>
-  <div>
+    <div class="column-left" style="width:auto;">
     <div class="box">
       <div class="field">
         <%= f.label :forwarder, "Экспедитор" %><br />
@@ -45,7 +45,7 @@
       </div>
       <div class="field">
         <%= f.label :info, "Комментарий" %><br />
-        <%= f.text_area :info, :style => "height:2em" %>
+        <%= f.text_area :info, :style => "height:3em" %>
       </div>
     </div>
     <div class="box">
@@ -96,7 +96,9 @@
         <%= link_to "Добавить", new_trailer_path, :remote => true, :class => 'command', :alias => 'Добавление прицепа' %>
       </div>
     </div>
+      </div>
 
+    <div class="column-middle" style="width:auto;">
     <div class="box">
       <%= f.label :cargos, "Груз" %>
       <div id="cargo">
@@ -111,6 +113,7 @@
       <div>
         <%= add_object_link("Добавить груз", f, Cargo.new, "cargos/new_cargo", "#cargo") %>
       </div>
+    </div>
     </div>
 
   </div>

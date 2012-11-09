@@ -56,7 +56,8 @@ class OrdersController < ApplicationController
     @client = @order.client
     @owner = current_user.to_client
 #    @senders, @receivers = @order.checkpoints
-    @title = "Заказ №#{@order.id} - #{@order.info}"
+    @title = "Заявка №#{@order.id} - #{@order.info}"
+    @tab = "me"
   end
 
   def charge
@@ -65,10 +66,11 @@ class OrdersController < ApplicationController
     @client = current_user.to_client
 #    @senders, @receivers = @order.checkpoints
     @title = "Поручение №#{params[:id]}"
+    @tab = "me"
   end
 
   def index
-    @title = "Все заказы"
+    @title = "Все заявки"
     @user = current_user
     @orders = Order.paginate(:page => params[:page])
     respond_to do |format|
