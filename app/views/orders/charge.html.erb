@@ -58,7 +58,7 @@
       </tr>
       <tr>
         <td>8. Ставка за перевозку, руб.
-        <td><%= "#{cargo.inner_charge} (#{cargo.inner_charge.to_currency}) #{cargo.icharge_notes}" %>
+        <td><%= "#{cargo.inner_charge} (#{cargo.inner_charge.to_currency})" %>
       </tr>
       <tr>
         <td>9. Предоплата, руб.
@@ -67,7 +67,7 @@
       <tr>
         <td>10. Оплата, руб.
         <% rest = cargo.inner_charge - cargo.prepay_amount %>
-        <td><%= "#{rest} (#{rest.to_currency}) #{cargo.prepay_notes}"  %>
+        <td><%= "#{rest} (#{rest.to_currency}) #{cargo.icharge_notes}"  %>
       <tr>
         <td>10. Номер ТТН/Дата ТТН
         <td><%= "#{cargo.bill_id}/#{cargo.bill_date}" %>
