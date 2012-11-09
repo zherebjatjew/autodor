@@ -74,35 +74,26 @@ a:visited.ui-dialog-titlebar-close {
 }
 
 .cargo_item {
-    float: left;
     width: 100%;
     margin: 0.25em;
 }
 
 #cargo {
-    width: 100%;
 }
 
 .cargo-item {
-  float: left;
-  width: 100%;
   padding: 0.25em;
 }
 
 .cargo-item-title {
-    float: left;
-    width: 100%;
     padding: 0.25em;
-    background-color: #f7f7f7;
 }
 
 .cargo-form {
-    float:left;
-    padding-left:2em;
+    padding-left: 2em;
 }
 
 .cargo {
-    float: left;
 }
 
 .box {

@@ -1,17 +1,17 @@
 <% item = f.object %>
 <div class="cargo-item" id="<%= item.id %>">
   <div class="cargo-item-title">
-    <div style="float:left"><%= item.name %></div>
-    <div style="float:right">
+    <div class="column-left" style="width:auto;"><%= item.name %></div>
+    <div class="column-middle" style="padding-left:0.5em"><%= item.volume_m %></div>
+    <div class="column-middle" style="padding-left:0.5em"><%= item.weight_kg %></div>
+    <div class="column-right" style="width:auto">
+      <%= link_to_function "▼", "toggleGroup($j(form#{item.id}), $j(expand#{item.id}))", :class => 'command', :id => "expand#{item.id}" %>
+    </div>
+    <div class="column-right" style="width:auto">
       <%#= link_to_function "Удалить", "delCargo($(\"\##{item.id}\"))", :class => 'command delete', :id => "remove#{item.id}" %>
       <%= f.check_box :_destroy, :options => { :style => 'width:auto' } %>
       <%= f.label :_destroy, "Удалить" %>
     </div>
-    <div style="float:right">
-      <%= link_to_function "▼", "toggleGroup($j(form#{item.id}), $j(expand#{item.id}))", :class => 'command', :id => "expand#{item.id}" %>
-    </div>
-    <div style="float:right;padding-left:0.5em"><%= item.volume_m %></div>
-    <div style="float:right;padding-left:0.5em"><%= item.weight_kg %></div>
   </div>
   <div id="form<%= item.id %>" class="cargo-form" style="display:none">
     <%= render 'cargos/cargo_fields', :f => f, :cargo => item, :all_clients => all_clients %>
