@@ -19,7 +19,7 @@ class Shipper < ActiveRecord::Base
   end
 
   def self.next
-    lst = all.sort_by{|value| -value.id}.first()
+    lst = Shipper.order("num DESC").first()
     lst.nil? ? 1 : lst.id+1
   end
 end

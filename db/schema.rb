@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114110724) do
+ActiveRecord::Schema.define(:version => 20121114120028) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(:version => 20121114110724) do
     t.integer  "num",          :default => 0,     :null => false
   end
 
+  add_index "clients", ["num"], :name => "idx_clients_num"
+
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.string   "address1"
@@ -169,6 +171,8 @@ ActiveRecord::Schema.define(:version => 20121114110724) do
     t.string   "account"
     t.integer  "num"
   end
+
+  add_index "shippers", ["num"], :name => "idx_shippers_num"
 
   create_table "users", :force => true do |t|
     t.string   "name"
