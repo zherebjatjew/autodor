@@ -56,7 +56,7 @@ class ShippersController < ApplicationController
 
   def index
     @title = "Наши перевозчики"
-    @shippers = Shipper.paginate(:page => params[:page])
+    @shippers = Shipper.order("num DESC").paginate(:page => params[:page])
     @tab = "shipper"
   end
 
