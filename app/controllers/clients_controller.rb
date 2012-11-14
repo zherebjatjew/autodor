@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
 
   def new
     @title = "Добавление клиента"
-    @client = Client.new
+    @client = Client.new(:num => Client.next)
     respond_to do |format|
       format.html
       format.js

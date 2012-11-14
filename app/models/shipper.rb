@@ -9,5 +9,5 @@ class Shipper < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
-  # TODO Add account numbers validation.
+  # TODO Add account number validation.
 end

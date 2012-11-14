@@ -356,7 +356,7 @@ div.field select, input {
   width: 20em;
 }
 
-.radio_button {
+.radio-button {
   width: auto;
 }
 
@@ -498,16 +498,16 @@ table.order_signs td {
   background:#fff;
 }
 
-a.radio_button_text {
+a.radio-button-text {
   text-decoration: none;
   color: #222;
 }
 
-a.radio_button_text:hover {
+a.radio-button-text:hover {
   color: #222;
 }
 
-a.radio_button_text:visited {
+a.radio-button-text:visited {
   color: #222;
 }
 

@@ -1,113 +1,117 @@
 <%= form_for(@client, :remote => true) do |f| %>
-  <% render 'shared/error_messages', :object => f.object %>
-  <script type="text/javascript">
-    function setOrganization(organization) {
-      if (organization==true) {
-        $j('#name_label').text('Наименование');
-        $j('#identity_label').text('Учредительный документ');
-        $j('#org_mode').attr('checked', 'checked');
-        $j('#org_only').show(150);
-        $j('#director_label').text('Представитель (в родительном падеже)');
-        $j('#born_at_label').text('Дата регистрации');
-      } else {
-        $j('#name_label').text('ФИО');
-        $j('#identity_label').text('Паспортные данные');
-        $j('#usr_mode').attr('checked', 'checked');
-        $j('#org_only').hide(150);
-        $j('#director_label').text('Фамилия (в родительном падеже)');
-        $j('#born_at_label').text('Дата рождения');
-      }
-    }
-    jQuery(document).ready(function() {
-        setOrganization(<%= @client.organization %>);
-    });
-  </script>
-  <div class="field">
-    <%= f.label :num, "Номер договора" %><br />
-    <%= f.text_field :num %><br />
-    <div class="hint">
-      Поставьте 0, чтобы назначить автоматически
+    <% render 'shared/error_messages', :object => f.object %>
+    <script type="text/javascript">
+        function setOrganization(organization) {
+            if (organization==true) {
+                $j('#name_label').text('Наименование');
+                $j('#identity_label').text('Учредительный документ');
+                $j('#org_mode').attr('checked', 'checked');
+                $j('#org_only').show(150);
+                $j('#director_label').text('Представитель (в родительном падеже)');
+                $j('#born_at_label').text('Дата регистрации');
+            } else {
+                $j('#name_label').text('ФИО');
+                $j('#identity_label').text('Паспортные данные');
+                $j('#usr_mode').attr('checked', 'checked');
+                $j('#org_only').hide(150);
+                $j('#director_label').text('Фамилия (в родительном падеже)');
+                $j('#born_at_label').text('Дата рождения');
+            }
+        }
+        jQuery(document).ready(function() {
+            setOrganization(<%= @client.organization %>);
+        });
+    </script>
+    <div class="column-left" style="width:auto;">
+      <div class="field">
+        <%= f.label :num, "Номер договора" %><br />
+        <%= f.text_field :num %><br />
+        <div class="hint">
+          Поставьте 0, чтобы назначить автоматически
+        </div>
+      </div>
+      <div class="field">
+        <%= f.radio_button :organization, true, :onclick => 'window.setOrganization(true)', :id => 'org_mode', :class => 'radio-button' %> <%= link_to_function "Организация", 'window.setOrganization(true)', :class => 'radio-button-text' %><br />
+        <%= f.radio_button :organization, false, :onclick => 'window.setOrganization(false)', :id => 'usr_mode', :class => 'radio-button' %> <%= link_to_function "Физическое лицо", 'window.setOrganization(false)', :class => 'radio-button-text' %>
+      </div>
+      <div class="field">
+        <%= f.label :name, "ФИО", :id => 'name_label' %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :director, "Фамилия (в родительном падеже)", :id => 'director_label' %><br />
+        <%= f.text_field :director %>
+      </div>
+      <div class="field">
+        <%= f.label :identity, "Паспортные данные", :id => 'identity_label' %><br />
+        <%= f.text_field :identity %>
+      </div>
+      <div class="field">
+        <%= f.label :born_at, "Дата рождения", :id => 'born_at_label' %><br />
+        <%= f.calendar_date_select :born_at %>
+      </div>
+      <div class="field">
+        <%= f.label :address, "Адрес м/я" %><br />
+        <%= f.text_field :address1 %>
+      </div>
+      <div class="field">
+        <%= f.label :address, "Адрес почтовый" %><br />
+        <%= f.text_field :address2 %>
+      </div>
+      <div class="field">
+        <%= f.label :phones, "Телефоны" %><br />
+        <%= f.text_field :phones %>
+      </div>
+      <div class="field">
+        <%= f.label :faxes, "Факсы" %><br />
+        <%= f.text_field :faxes %>
+      </div>
+      <div class="field">
+        <%= f.label :email, "Электронная почта" %><br />
+        <%= f.text_field :email %>
+      </div>
     </div>
-  </div>
-  <div class="field">
-    <%= f.radio_button :organization, true, :onclick => 'window.setOrganization(true)', :id => 'org_mode' %> <%= link_to_function "Организация", 'window.setOrganization(true)', :class => 'radio-button' %><br />
-    <%= f.radio_button :organization, false, :onclick => 'window.setOrganization(false)', :class => 'radio-button-text', :id => 'usr_mode' %> <%= link_to_function "Физическое лицо", 'window.setOrganization(false)', :class => 'radio_button_text' %>
-  </div>
-  <div class="field">
-    <%= f.label :name, "ФИО", :id => 'name_label' %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :identity, "Паспортные данные", :id => 'identity_label' %><br />
-    <%= f.text_field :identity %>
-  </div>
-  <div class="field">
-    <%= f.label :address, "Адрес м/я" %><br />
-    <%= f.text_field :address1 %>
-  </div>
-  <div class="field">
-    <%= f.label :address, "Адрес почтовый" %><br />
-    <%= f.text_field :address2 %>
-  </div>
-  <div class="field">
-    <%= f.label :phones, "Телефоны" %><br />
-    <%= f.text_field :phones %>
-  </div>
-  <div class="field">
-    <%= f.label :faxes, "Факсы" %><br />
-    <%= f.text_field :faxes %>
-  </div>
-  <div class="field">
-    <%= f.label :director, "Фамилия (в родительном падеже)", :id => 'director_label' %><br />
-    <%= f.text_field :director %>
-  </div>
-  <div class="field">
-    <%= f.label :email, "Электронная почта" %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :born_at, "Дата рождения", :id => 'born_at_label' %><br />
-    <%= f.calendar_date_select :born_at %>
-  </div>
-  <div id="org_only">
-    <div class="field">
-      <%= f.label :contact, "Контактное лицо" %><br />
-      <%= f.text_field :contact %>
+    <div class="column-middle">
+      <div id="org_only">
+        <div class="field">
+          <%= f.label :contact, "Контактное лицо" %><br />
+          <%= f.text_field :contact %>
+        </div>
+      </div>
+      <div class="field">
+        <%= f.label :schedule, "График работы" %><br />
+        <%= f.text_field :schedule %>
+      </div>
+      <div class="field">
+        <%= f.label :inn, "ИНН" %><br />
+        <%= f.text_field :inn %>
+      </div>
+      <div class="field">
+        <%= f.label :inn, "КПП" %><br />
+        <%= f.text_field :kpp %>
+      </div>
+      <div class="field">
+        <%= f.label :inn, "р/с" %><br />
+        <%= f.text_field :account %>
+      </div>
+      <div class="field">
+        <%= f.label :inn, "Банк" %><br />
+        <%= f.text_field :ati %>
+      </div>
+      <div class="field">
+        <%= f.label :inn, "к/с" %><br />
+        <%= f.text_field :corr_account %>
+      </div>
+      <div class="field">
+        <%= f.label :inn, "БИК" %><br />
+        <%= f.text_field :bic %>
+      </div>
+      <div class="field">
+        <%= f.label :note, "Заметки" %><br />
+        <%= f.text_area :note, :style => "height:2em" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Сохранить" %>
+      </div>
     </div>
-  </div>
-  <div class="field">
-    <%= f.label :schedule, "График работы" %><br />
-    <%= f.text_field :schedule %>
-  </div>
-  <div class="field">
-    <%= f.label :inn, "ИНН" %><br />
-    <%= f.text_field :inn %>
-  </div>
-  <div class="field">
-    <%= f.label :inn, "КПП" %><br />
-    <%= f.text_field :kpp %>
-  </div>
-  <div class="field">
-    <%= f.label :inn, "р/с" %><br />
-    <%= f.text_field :account %>
-  </div>
-  <div class="field">
-    <%= f.label :inn, "Банк" %><br />
-    <%= f.text_field :ati %>
-  </div>
-  <div class="field">
-    <%= f.label :inn, "к/с" %><br />
-    <%= f.text_field :corr_account %>
-  </div>
-  <div class="field">
-    <%= f.label :inn, "БИК" %><br />
-    <%= f.text_field :bic %>
-  </div>
-  <div class="field">
-    <%= f.label :note, "Заметки" %><br />
-    <%= f.text_area :note, :style => "height:2em" %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Сохранить" %>
-  </div>
 <% end %>
