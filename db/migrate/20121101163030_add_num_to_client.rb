@@ -1,3 +1,5 @@
+# encoding : UTF-8
+
 class AddNumToClient < ActiveRecord::Migration
   def up
     add_column :clients, :num, :integer, :default => 0, :null => false

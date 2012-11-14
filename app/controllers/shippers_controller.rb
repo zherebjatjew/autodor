@@ -6,6 +6,7 @@ class ShippersController < ApplicationController
   def create
     @shipper = Shipper.new params[:shipper]
     @shipper.author = current_user
+    @shipper.num = Shipper.next
     respond_to do |format|
       format.html {
         if @shipper.save

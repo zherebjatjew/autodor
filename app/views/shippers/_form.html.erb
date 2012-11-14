@@ -1,72 +1,82 @@
 <%= form_for @shipper, :remote => true do |f| %>
-  <div class="field">
-    <%= f.label :name, "Наименование" %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :director, "Директор (в родительном падеже)" %><br />
-    <%= f.text_field :director %>
-  </div>
-  <div class="field">
-    <%= f.label :director_short, "Директор (кратко, в именительном падеже)" %><br />
-    <%= f.text_field :director_short %>
-  </div>
-  <div class="field">
-    <%= f.label :registration, "Документ о регистрации (в родительном падеже)" %><br />
-    <%= f.text_field :registration %>
-  </div>
-  <div class="field">
-    <%= f.label :address1, "Адрес м/я" %><br />
-    <%= f.text_area :address1, :style => "height:2em" %>
-  </div>
-  <div class="field">
-    <%= f.label :address2, "Адрес почтовый" %><br />
-    <%= f.text_area :address2, :style => "height:2em" %>
-  </div>
-  <div class="field">
-    <%= f.label :inn, "ИНН" %><br />
-    <%= f.text_field :inn %>
-  </div>
-  <div class="field">
-    <%= f.label :kpp, "КПП" %><br />
-    <%= f.text_field :kpp %>
-  </div>
-  <div class="field">
-    <%= f.label :ogrn, "ОГРН" %><br />
-    <%= f.text_field :ogrn %>
-  </div>
-  <div class="field">
-    <%= f.label :ati, "АТИ" %><br />
-    <%= f.text_field :ati %>
-  </div>
-  <div class="field">
-    <%= f.label :account, "Расчётный счёт" %><br />
-    <%= f.text_field :account %>
-  </div>
-  <div class="field">
-    <%= f.label :corr_account, "Корр. счёт" %><br />
-    <%= f.text_field :corr_account %>
-  </div>
-  <div class="field">
-    <%= f.label :bic, "БИК" %><br />
-    <%= f.text_field :bic %>
-  </div>
-  <div class="field">
-    <%= f.label :phones, "Телефон/факс" %><br />
-    <%= f.text_field :phones %>
-  </div>
-  <div class="field">
-    <%= f.label :email, "Электронная почта" %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :contact, "Ответственное лицо" %><br />
-    <%= f.text_field :contact %>
-  </div>
+    <div class="column-left" style="width:auto;">
+      <div class="field">
+        <%= f.label :name, "Наименование" %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :num, "Номер договора" %><br />
+        <%= f.text_field :num %><br />
+        <div class="hint">
+          Поставьте 0, чтобы назначить автоматически
+        </div>
+      </div>
+      <div class="field">
+        <%= f.label :director, "Директор (в родительном падеже)" %><br />
+        <%= f.text_field :director %>
+      </div>
+      <div class="field">
+        <%= f.label :director_short, "Директор (кратко, в именительном падеже)" %><br />
+        <%= f.text_field :director_short %>
+      </div>
+      <div class="field">
+        <%= f.label :registration, "Документ о регистрации (в родительном падеже)" %><br />
+        <%= f.text_field :registration %>
+      </div>
+      <div class="field">
+        <%= f.label :contact, "Ответственное лицо" %><br />
+        <%= f.text_field :contact %>
+      </div>
+      <div class="field">
+        <%= f.label :phones, "Телефон/факс" %><br />
+        <%= f.text_field :phones %>
+      </div>
+      <div class="field">
+        <%= f.label :email, "Электронная почта" %><br />
+        <%= f.text_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label :address1, "Адрес м/я" %><br />
+        <%= f.text_area :address1, :style => "height:2em" %>
+      </div>
+      <div class="field">
+        <%= f.label :address2, "Адрес почтовый" %><br />
+        <%= f.text_area :address2, :style => "height:2em" %>
+      </div>
+    </div>
+    <div class="column-middle">
+      <div class="field">
+        <%= f.label :inn, "ИНН" %><br />
+        <%= f.text_field :inn %>
+      </div>
+      <div class="field">
+        <%= f.label :kpp, "КПП" %><br />
+        <%= f.text_field :kpp %>
+      </div>
+      <div class="field">
+        <%= f.label :ogrn, "ОГРН" %><br />
+        <%= f.text_field :ogrn %>
+      </div>
+      <div class="field">
+        <%= f.label :ati, "АТИ" %><br />
+        <%= f.text_field :ati %>
+      </div>
+      <div class="field">
+        <%= f.label :account, "Расчётный счёт" %><br />
+        <%= f.text_field :account %>
+      </div>
+      <div class="field">
+        <%= f.label :corr_account, "Корр. счёт" %><br />
+        <%= f.text_field :corr_account %>
+      </div>
+      <div class="field">
+        <%= f.label :bic, "БИК" %><br />
+        <%= f.text_field :bic %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Сохранить" %>
-  </div>
-
+      <div class="actions">
+        <%= f.submit "Сохранить" %>
+      </div>
+    </div>
 <% end %>
 
