@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114120028) do
+ActiveRecord::Schema.define(:version => 20121119091536) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20121114120028) do
     t.string   "prepay_notes",          :default => ""
     t.integer  "receiver_id"
     t.integer  "sender_id"
-    t.date     "sender_date"
-    t.date     "receiver_date"
+    t.datetime "sender_date"
+    t.datetime "receiver_date"
   end
 
   create_table "cars", :force => true do |t|
