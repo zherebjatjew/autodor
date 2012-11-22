@@ -199,6 +199,7 @@ nav ul li a:visited {
 }
 
 nav ul li a:hover {
+  color: #444;
   background-color: #df9;
   text-decoration: none;
 }
