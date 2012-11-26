@@ -3,6 +3,7 @@
 Autodor::Application.routes.draw do
 
   resources :orders
+  match '/users/:user/enable' => 'users#enable', :as => 'enable_user', :action => 'put'
   resources :users
   resources :clients
   resources :cargos
@@ -11,6 +12,8 @@ Autodor::Application.routes.draw do
   match '/trailers/new' => 'cars#new_trailer', :as => 'new_trailer'
   match '/trucks/new' => 'cars#new_truck', :as => 'new_truck'
   match '/users/:user/orders/new' => 'orders#new', :as => 'new_order'
+  match '/users/:user/enable' => 'users#enable', :as => 'enable_user'
+  match '/users/:user/disable' => 'users#disable', :as => 'disable_user'
   match '/trucks' => 'cars#trucks', :as => :cars
   match '/orders/:id/charge' => 'orders#charge', :as => 'charge'
   match '/drivers/:id/orders' => 'drivers#orders', :as => 'driver_orders'

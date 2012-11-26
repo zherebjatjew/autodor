@@ -64,6 +64,11 @@ a:visited.ui-dialog-titlebar-close {
   float: left;
 }
 
+.inline-img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .menu {
   padding-bottom: 1em;
 }
@@ -321,6 +326,14 @@ a.delete:hover {
   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.3);
   filter: progid:DXImageTransform.Microsoft.shadow(direction=0, color=#808080, strength=10);
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+a.enable {
+  background-color: #7d7;
+}
+
+a.enable:hover {
+  background-color: #beb;
 }
 
 footer {

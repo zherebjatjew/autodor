@@ -1,3 +1,4 @@
+<% user = @user if user.nil? %>
 <div class="clients">
   <div class="column-left">
     <%= gravatar_for user, :size => 30 %>
@@ -6,9 +7,11 @@
   <div class="column-right" style="width:15em">
     <% if current_user.admin? %>
       <% if current_user != user %>
-        <%= link_to "удалить", user, :method => :delete,
-                                     :confirm => "Вы точно хотите удалить пользователя #{user.name}?",
-                                     :class => 'command delete' %>
+        <% if user.banned? %>
+          <%= link_to "разблокировать", enable_user_path(user), :remote => true, :class => 'command enable' %>
+        <% else %>
+          <%= link_to "заблокировать", disable_user_path(user), :remote => true, :class => 'command delete' %>
+        <% end %>
       <% end %>
       <%= link_to "изменить", edit_user_path(user), :class => 'command' %>
     <% end %>

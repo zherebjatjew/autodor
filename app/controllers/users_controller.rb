@@ -5,11 +5,12 @@ class UsersController < ApplicationController
   before_filter :authenticate
   before_filter :correct_user,     :only => :new_order
   before_filter :correct_or_admin, :only => [:edit, :update]
-  before_filter :admin_user,       :only => [:destroy, :index, :new, :create]
+  before_filter :admin_user,       :only => [:destroy, :index, :new, :create, :enable, :disable]
+  before_filter :not_me,           :only => [:enable, :disable]
 
   def index
     @title = "Все пользователи"
-    @users = User.paginate(:page => params[:page])
+    @users = User.order('banned').paginate(:page => params[:page])
     @tab = "user"
   end
 
@@ -68,6 +69,50 @@ class UsersController < ApplicationController
     end
   end
 
+  def enable
+    @user = User.find params[:user]
+    respond_to do |format|
+      format.html {
+        if @user.update_attribute(:banned, false)
+          flash[:success] = "Пользователь разблокирован"
+        else
+          flash[:error] = "Невозможно разблокировать пользователя"
+        end
+        if request.xhr?
+          render '_user', :layout => false
+        else
+          render 'index'
+        end
+      }
+      format.json {
+        @user.update_attribute(:banned, false)
+        render '_user'
+      }
+    end
+  end
+
+  def disable
+    @user = User.find params[:user]
+    respond_to do |format|
+      format.html {
+        if @user.update_attribute(:banned, true)
+          flash[:success] = "Пользователь заблокирован"
+        else
+          flash[:error] = "Невозможно заблокировать пользователя"
+        end
+        if request.xhr?
+          render '_user', :layout => false
+        else
+          render 'index'
+        end
+      }
+      format.json {
+        @user.update_attribute(:banned, true)
+        render '_user'
+      }
+    end
+  end
+
   def new_order
     @order = @user.orders.create!
     redirect_to @order
@@ -85,5 +130,9 @@ class UsersController < ApplicationController
 
     def admin_user
       deny_access if current_user.nil? || !current_user.admin?
+    end
+
+    def not_me
+      deny_access if current_user.id == params[:id]
     end
 end
