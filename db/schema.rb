@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121119091536) do
+ActiveRecord::Schema.define(:version => 20121123114206) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20121119091536) do
     t.string   "prepay_notes",          :default => ""
     t.integer  "receiver_id"
     t.integer  "sender_id"
-    t.datetime "sender_date"
-    t.datetime "receiver_date"
+    t.date     "sender_date"
+    t.date     "receiver_date"
   end
 
   create_table "cars", :force => true do |t|
@@ -90,8 +90,6 @@ ActiveRecord::Schema.define(:version => 20121119091536) do
     t.string   "director",     :default => ""
     t.integer  "num",          :default => 0,     :null => false
   end
-
-  add_index "clients", ["num"], :name => "idx_clients_num"
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -169,10 +167,7 @@ ActiveRecord::Schema.define(:version => 20121119091536) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "account"
-    t.integer  "num"
   end
-
-  add_index "shippers", ["num"], :name => "idx_shippers_num"
 
   create_table "users", :force => true do |t|
     t.string   "name"

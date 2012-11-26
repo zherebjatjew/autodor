@@ -1,3 +1,12 @@
+<script type="text/javascript">
+  $j(document).ready(function() {
+    $j('a[data-remote]').live('ajax:complete', function(e, xhr, status) {
+      $j(this).parent().parent().html(xhr.responseText);
+      return false;
+    });
+  });
+</script>
+
 <%= will_paginate %>
 
 <%= render @users %>

@@ -36,7 +36,7 @@
       <div class="field">
         <%= f.label :forwarder, "Экспедитор" %><br />
         <% usrs = [] %>
-        <% User.all.each { |u| usrs << [u.name, u.id]} %>
+        <% User.where(:banned => false).each { |u| usrs << [u.name, u.id]} %>
         <%= f.select :forwarder_id, options_for_select(usrs, @order.forwarder_id.to_i) %>
       </div>
       <div class="field">
