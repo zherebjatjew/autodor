@@ -46,8 +46,18 @@ class User < ActiveRecord::Base
 
   def self.authentificate email, submitted_password
     user = find_by_email email
-    return nil if user.nil?
-    return user if user.has_password? submitted_password
+    if user.nil?
+      logger.info "Authentication of #{email} failed: unknown user"
+    elsif user.banned
+      logger.info "Authentication of #{email} failed: user was banned"
+      user = nil
+    elsif user.has_password? submitted_password
+      logger.info "User #{email} was authenticated successfuly"
+    else
+      logger.info "Authentication of user #{email} failed: wrong password"
+      user = nil
+    end
+    user
   end
 
   def self.authentificate_with_salt id, cookie_salt
