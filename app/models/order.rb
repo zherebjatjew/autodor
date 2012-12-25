@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
                   :signed, :paid, :completed, :client_id,
                   :driver_id, :cargos_attributes,
                   :truck_id, :trailer_id, :shipper_id,
-                  :status_id
+                  :status_id, :num
 
   belongs_to :user
   has_one :forwarder, :class_name => 'User'
@@ -17,6 +17,8 @@ class Order < ActiveRecord::Base
   belongs_to :truck, :class_name => 'Car'
   belongs_to :trailer, :class_name => 'Car'
   belongs_to :author, :class_name => 'User'
+
+  before_save { self.num = Order.next if num == 0 }
 
   class WorkflowValidator < ActiveModel::Validator
     def validate(record)
@@ -54,6 +56,11 @@ class Order < ActiveRecord::Base
 
   def client
     Client.find client_id
+  end
+
+  def self.next
+    lst = Order.order("num DESC").first()
+    lst.nil? ? 1 : lst.id+1
   end
 
   def checkpoints

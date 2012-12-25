@@ -5,7 +5,7 @@
   </div>
   <div class="column-middle" style="width:33%">  
     <% created = order.created_at.strftime "%d.%m.%Y" %>
-    <%= link_to "#{order.id}. #{created} #{order.info}", order %>
+    <%= link_to "#{order.num}. #{created} #{order.info}", order %>
   </div>
   <div class="column-middle" style="width:15em">
     <% unless order.forwarder_id.nil? %>

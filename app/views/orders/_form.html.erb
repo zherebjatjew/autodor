@@ -34,6 +34,13 @@
     <div class="column-left" style="width:auto;">
     <div class="box">
       <div class="field">
+        <%= f.label :num, "Номер договора" %><br />
+        <%= f.text_field :num %><br />
+        <div class="hint">
+          Поставьте 0, чтобы назначить автоматически
+        </div>
+      </div>
+      <div class="field">
         <%= f.label :forwarder, "Экспедитор" %><br />
         <% usrs = [] %>
         <% User.where(:banned => false).each { |u| usrs << [u.name, u.id]} %>

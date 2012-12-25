@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
     @client = @order.client
     @owner = current_user.to_client
 #    @senders, @receivers = @order.checkpoints
-    @title = "Заявка №#{@order.id} - #{@order.info}"
+    @title = "Заявка №#{@order.num} - #{@order.info}"
     @tab = "me"
   end
 
