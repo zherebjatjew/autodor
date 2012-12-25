@@ -5,11 +5,13 @@
   </div>
   <div class="column-middle" style="width:33%">  
     <% created = order.created_at.strftime "%d.%m.%Y" %>
-    <%= link_to "#{order.id}. #{created} #{order.info}", order %>
+    <%= link_to "#{order.num}. #{created} #{order.info}", order %>
   </div>
   <div class="column-middle" style="width:15em">
     <% unless order.forwarder_id.nil? %>
-      <%= link_to order.forwarder.name, user_path(order.forwarder) %>
+      <% fwd = order.forwarder %>
+      <%= link_to fwd.name, user_path(fwd) %>
+      <%= user_status(fwd) %>
     <% end %>
   </div>
   <% if current_user.admin? || current_user.owns?(order) %>

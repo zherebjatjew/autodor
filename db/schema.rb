@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114120028) do
+ActiveRecord::Schema.define(:version => 20121224045930) do
 
   create_table "car_owners", :force => true do |t|
     t.integer  "car_id"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20121114120028) do
     t.string   "prepay_notes",          :default => ""
     t.integer  "receiver_id"
     t.integer  "sender_id"
-    t.date     "sender_date"
-    t.date     "receiver_date"
+    t.datetime "sender_date"
+    t.datetime "receiver_date"
   end
 
   create_table "cars", :force => true do |t|
@@ -133,13 +133,10 @@ ActiveRecord::Schema.define(:version => 20121114120028) do
   create_table "orders", :force => true do |t|
     t.string   "info"
     t.integer  "user_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.date     "committed_at"
     t.integer  "forwarder_id"
-    t.boolean  "signed",       :default => false, :null => false
-    t.boolean  "paid",         :default => false, :null => false
-    t.boolean  "completed",    :default => false, :null => false
     t.integer  "client_id"
     t.integer  "driver_id"
     t.integer  "truck_id"
@@ -147,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20121114120028) do
     t.integer  "author_id"
     t.integer  "shipper_id"
     t.integer  "status_id",    :default => 1
+    t.integer  "num",          :default => 0, :null => false
   end
 
   create_table "shippers", :force => true do |t|
@@ -184,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20121114120028) do
     t.string   "role",               :default => "operator"
     t.string   "schedule"
     t.integer  "author_id"
+    t.boolean  "banned",             :default => false,      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

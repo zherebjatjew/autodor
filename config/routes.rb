@@ -19,6 +19,8 @@ Autodor::Application.routes.draw do
   #match '/trucks' => 'cars#trucks'
   match '/trailers' => 'cars#trailers'
   match '/users/:user/orders/new' => 'orders#new', :as => 'new_order'
+  match '/users/:user/enable' => 'users#enable', :as => 'enable_user'
+  match '/users/:user/disable' => 'users#disable', :as => 'disable_user'
   match '/trucks' => 'cars#create_truck', :via => 'POST', :as => :cars
   match '/orders/:id/charge' => 'orders#charge', :as => 'charge'
   match '/drivers/:id/orders' => 'drivers#orders', :as => 'driver_orders'

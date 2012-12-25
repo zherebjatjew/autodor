@@ -10,8 +10,16 @@ module ApplicationHelper
     end
   end
 
+  def user_status(user)
+    if user.banned?
+      image_tag("disabled.png", :alt => "Заблокирован", :class => "inline-img")
+    else
+      ''
+    end
+  end
+
   def logo
-    l = image_tag("logo.png", :alt => "Logo", :class => "round")
+    l = image_tag("logo.png", :alt => "Логотип", :class => "round")
     link_to l, root_path
   end
 
