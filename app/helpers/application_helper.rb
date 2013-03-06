@@ -24,19 +24,19 @@ module ApplicationHelper
   end
 
   def company_name
-    "ООО «АвтоДор Омск»"
+    Company.first.name
   end
 
   def company_address
-    "644047, г.Омск, ул. 2-я Береговая, 17а"
+    Company.first.address1
   end
 
   def company_phones
-    "89136783350 – МТС, 83812465717-ГТС"
+    Company.first.phones
   end
 
   def company_schedule
-    ""
+    Company.first.schedule
   end
 
   def date_to_s(date)
