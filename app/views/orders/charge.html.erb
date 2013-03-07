@@ -78,7 +78,7 @@
 
 
   <h2>Информация о Водителе и транспортном средстве</h2>
-  <% driver = @order.driver %>
+  <% driver = @order.driver unless @order.driver_id.nil? %>
 
   <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
     <% shipper = @order.shipper || Shipper.new(:email => "", :phones => "") %>
@@ -90,22 +90,23 @@
     </tr>
     <tr>
       <td>2. Ф.И.О. Водителя
-      <td><%= driver.name %>
+      <td><%= driver.name unless driver.nil? %>
     </tr>
     <tr>
       <td>3. Паспортные данные, дата выдачи, код под-ния
-      <td><%= driver.identity %>
+      <td><%= driver.identity unless driver.nil? %>
     </tr>
     <tr>
       <td>4. Телефоны для связи (все)
-      <td><%= driver.phone %>
+      <td><%= driver.phone unless driver.nil? %>
     </tr>
-    <% truck = @order.truck %>
-    <% trailer = @order.trailer %>
+    <% truck = @order.truck unless @order.truck_id.nil? %>
+    <% trailer = @order.trailer unless @order.trailer_id.nil? %>
     <tr>
       <td>5. Автомобиль, прицеп
-      <% s = "#{truck.model}/#{truck.identity}" %>
-      <% s << (", #{trailer.model || "Нет"}/#{trailer.identity || "Нет"}") unless trailer.nil? %>
+      <% s = "" %>
+      <% s << ("#{truck.model}/#{truck.identity}" + ", " unless trailer.nil?) unless truck.nil? %>
+      <% s << ("#{trailer.model || "Нет"}/#{trailer.identity || "Нет"}") unless trailer.nil? %>
       <td><%= s %>
     </tr>
   </table>

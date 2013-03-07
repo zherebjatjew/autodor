@@ -77,33 +77,33 @@
 
 
   <h2>Информация о Водителе и транспортном средстве</h2>
-  <% driver = @order.driver %>
+  <% driver = @order.driver unless @order.driver_id.nil? %>
 
   <table border=1 cellpadding=0 cellspacing=0 class="print_order" style="width:100%">
     <tr>
       <td style="width:75mm">1. ФИО, год рождения
-      <td><%= driver.name %>
+      <td><%= driver.name unless driver.nil? %>
     </tr>
     <tr>
       <td>2. Паспортные данные, дата выдачи, код под-ния
-      <td><%= driver.identity %>
+      <td><%= driver.identity unless driver.nil? %>
     </tr>
     <tr>
       <td>3. Телефоны для связи (все)
-      <td><%= driver.phone %>
+      <td><%= driver.phone unless driver.nil? %>
     </tr>
-    <% truck = @order.truck %>
+    <% truck = @order.truck unless @order.truck_id.nil? %>
     <tr>
       <td>4. Марка автомобиля
-      <td><%= truck.model %>
+      <td><%= truck.model unless truck.nil? %>
     </tr>
     <tr>
       <td>5. Гос. номер автомобиля
-      <td><%= truck.identity %>
+      <td><%= truck.identity unless truck.nil? %>
     </tr>
     <tr>
       <td>6. Тип кузова / V кузова, м<sup>3</sup>
-      <td><%= truck.base %><%= ('/'+truck.volume) unless truck.volume_m.nil? %>
+      <td><%= (truck.base + (('/'+truck.volume) unless truck.volume_m.nil?)) unless truck.nil? %>
     </tr>
     <% trailer = @order.trailer %>
     <tr>
