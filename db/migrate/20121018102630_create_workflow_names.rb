@@ -1,7 +1,7 @@
 # encoding : UTF-8
 
 class CreateWorkflowNames < ActiveRecord::Migration
-  def change
+  def up
     create_table :workflow_names do |t|
       t.string :name
       t.integer :weight
@@ -18,5 +18,9 @@ class CreateWorkflowNames < ActiveRecord::Migration
     WorkflowName.create! :name => 'Закрыта', :weight => 8
     WorkflowName.create! :name => 'Отменена', :weight => 9
     WorkflowName.create! :name => 'Приостановлена', :weight => 10
+  end
+
+  def down
+    drop_table :workflow_names
   end
 end

@@ -50,6 +50,17 @@ Company.create!(:name => "Рога и копыта",
 
 ################################################################
 # Workflows
+WorkflowName.create! :name => 'Новая', :weight => 1
+WorkflowName.create! :name => 'Согласована', :weight => 2
+WorkflowName.create! :name => 'Авансирована', :weight => 3
+WorkflowName.create! :name => 'Погрузка', :weight => 4
+WorkflowName.create! :name => 'Доставка', :weight => 5
+WorkflowName.create! :name => 'Доставлена', :weight => 6
+WorkflowName.create! :name => 'Оплачена', :weight => 7
+WorkflowName.create! :name => 'Закрыта', :weight => 8
+WorkflowName.create! :name => 'Отменена', :weight => 9
+WorkflowName.create! :name => 'Приостановлена', :weight => 10
+
 # Cancel
 Workflow.create! :from_id => 1, :to_id => 9, :admin_only => true
 Workflow.create! :from_id => 2, :to_id => 9, :admin_only => true
