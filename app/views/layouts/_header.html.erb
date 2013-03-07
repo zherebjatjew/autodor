@@ -7,14 +7,14 @@
         <nav>
           <ul>
             <% if signed_in? %>
-              <li <%= "class='active'" if @tab=="me" %>><%= link_to current_user.name, user_path(current_user) %></li>
-              <li <%= "class='active'" if @tab=="client" %>><%= link_to "Клиенты", clients_path %></li>
-              <li <%= "class='active'" if @tab=="shipper" %>><%= link_to "Перевозчики", shippers_path %></li>
-              <li <%= "class='active'" if @tab=="driver" %>><%= link_to "Водители", drivers_path %></li>
-              <li <%= "class='active'" if @tab=="truck" %>><%= link_to "Транспорт", trucks_path %></li>
-                <li <%= "class='active'" if @tab=="trailer" %>><%= link_to "Прицепы", trailers_path %></li>
+              <li <%= "class=active" if @tab=="me" %>><%= link_to current_user.name, user_path(current_user) %></li>
+              <li <%= "class=active" if @tab=="client" %>><%= link_to "Клиенты", clients_path %></li>
+              <li <%= "class=active" if @tab=="shipper" %>><%= link_to "Перевозчики", shippers_path %></li>
+              <li <%= "class=active" if @tab=="driver" %>><%= link_to "Водители", drivers_path %></li>
+              <li <%= "class=active" if @tab=="truck" %>><%= link_to "Транспорт", trucks_path %></li>
+                <li <%= "class=active" if @tab=="trailer" %>><%= link_to "Прицепы", trailers_path %></li>
               <% if current_user.admin? %>
-                <li <%= "class='active'" if @tab=="user"%>><%= link_to "Пользователи", users_path %></li>
+                <li <%= "class=active" if @tab=="user"%>><%= link_to "Пользователи", users_path %></li>
               <% end %>
               <li><%= link_to "Выйти", signout_path, :method => :delete %></li>
             <% else %>
