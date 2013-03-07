@@ -8,6 +8,8 @@
 #   cities = City.create_truck([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create_truck(:name => 'Emanuel', :city => cities.first)
 
+###########################################################
+# Users
 admin = User.create!(:name => "Жеребятьев Дмитрий",
                      :email => "zherebjatjew@gmail.com",
                      :password => "123456",
@@ -20,9 +22,13 @@ User.create!(:name => "Селиванова Наталья",
              :password_confirmation => "123456",
              :role => "admin")
 
+###########################################################
+# Trucks & trailers
 Car.create!(:model => 'Нет',
             :is_trailer => true)
 
+###########################################################
+# Company
 Company.create!(:name => "Рога и копыта",
                 :address1 => "Омск",
                 :address2 => "Омск",
@@ -41,3 +47,64 @@ Company.create!(:name => "Рога и копыта",
                 :director => "Иванов Иван Иванович",
                 :director_short => "Иванов И.И.",
                 :contact => "Петров А.А.");
+
+################################################################
+# Workflows
+# Cancel
+Workflow.create! :from_id => 1, :to_id => 9, :admin_only => true
+Workflow.create! :from_id => 2, :to_id => 9, :admin_only => true
+Workflow.create! :from_id => 3, :to_id => 9, :admin_only => true
+Workflow.create! :from_id => 4, :to_id => 9, :admin_only => true
+Workflow.create! :from_id => 5, :to_id => 9, :admin_only => true
+Workflow.create! :from_id => 6, :to_id => 9, :admin_only => true
+Workflow.create! :from_id => 7, :to_id => 9, :admin_only => true
+
+# Suspend
+Workflow.create! :from_id => 1, :to_id => 10, :admin_only => true
+Workflow.create! :from_id => 2, :to_id => 10, :admin_only => true
+Workflow.create! :from_id => 3, :to_id => 10, :admin_only => true
+Workflow.create! :from_id => 4, :to_id => 10, :admin_only => true
+Workflow.create! :from_id => 5, :to_id => 10, :admin_only => true
+Workflow.create! :from_id => 6, :to_id => 10, :admin_only => true
+Workflow.create! :from_id => 7, :to_id => 10, :admin_only => true
+
+# Normal workflows
+Workflow.create! :from_id => 1, :to_id => 2
+Workflow.create! :from_id => 2, :to_id => 3
+Workflow.create! :from_id => 2, :to_id => 4
+Workflow.create! :from_id => 3, :to_id => 2
+Workflow.create! :from_id => 3, :to_id => 4
+Workflow.create! :from_id => 4, :to_id => 5
+Workflow.create! :from_id => 5, :to_id => 6
+Workflow.create! :from_id => 6, :to_id => 7
+Workflow.create! :from_id => 7, :to_id => 8
+
+# Rollbacks
+Workflow.create! :from_id => 2, :to_id => 1
+Workflow.create! :from_id => 3, :to_id => 2
+Workflow.create! :from_id => 5, :to_id => 4
+Workflow.create! :from_id => 6, :to_id => 5
+Workflow.create! :from_id => 7, :to_id => 6
+Workflow.create! :from_id => 8, :to_id => 7
+
+# Admin corrections (can do anything)
+Workflow.create! :from_id => 9, :to_id => 1, :admin_only => true
+Workflow.create! :from_id => 9, :to_id => 2, :admin_only => true
+Workflow.create! :from_id => 9, :to_id => 3, :admin_only => true
+Workflow.create! :from_id => 9, :to_id => 4, :admin_only => true
+Workflow.create! :from_id => 9, :to_id => 5, :admin_only => true
+Workflow.create! :from_id => 9, :to_id => 6, :admin_only => true
+Workflow.create! :from_id => 9, :to_id => 7, :admin_only => true
+Workflow.create! :from_id => 9, :to_id => 8, :admin_only => true
+Workflow.create! :from_id => 9, :to_id => 8, :admin_only => true
+Workflow.create! :from_id => 9, :to_id => 10, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 1, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 2, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 3, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 4, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 5, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 6, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 7, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 8, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 8, :admin_only => true
+Workflow.create! :from_id => 10, :to_id => 9, :admin_only => true
